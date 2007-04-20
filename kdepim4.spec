@@ -22,8 +22,6 @@
 
 
 
-%define use_enable_indexlib 0
-%{?_enable_indexlib: %{expand: %%global use_enable_indexlib 1}}
 
 %define use_enable_pie 1
 %{?_no_enable_pie: %{expand: %%global use_enable_pie 0}}
@@ -170,12 +168,12 @@ Common files for kdepim
 %_datadir/apps/akonadi/agents/knut.svg
 %_datadir/apps/akonadi/agents/knutresource.desktop
 %_iconsdir/*/*/*/button_*
-%_datadir/services/imap4.protocol
-%_datadir/services/imaps.protocol
-%_datadir/services/kcmsdsummary.desktop
-%_datadir/servicetypes/dbusimap.desktop
-%_datadir/servicetypes/kaddressbook_contacteditorwidget.desktop
-%_datadir/servicetypes/kaddressbookimprotocol.desktop
+%_datadir/kde4/services/imap4.protocol
+%_datadir/kde4/services/imaps.protocol
+%_datadir/kde4/services/kcmsdsummary.desktop
+%_datadir/kde4/servicetypes/dbusimap.desktop
+%_datadir/kde4/servicetypes/kaddressbook_contacteditorwidget.desktop
+%_datadir/kde4/servicetypes/kaddressbookimprotocol.desktop
 %_bindir/kode
 %_bindir/kxml_compiler
 %_bindir/kleopatra
@@ -187,6 +185,8 @@ Common files for kdepim
 %_bindir/akonadiconsole
 %_bindir/akonadiserver
 %_bindir/akonadi
+%_bindir/akonadi_nntp_resource
+%_bindir/akonadi_vcard_resource
 %_bindir/egroupwarewizard
 %_bindir/groupwarewizard
 %_bindir/kabcclient
@@ -197,14 +197,18 @@ Common files for kdepim
 %_bindir/kxforms
 %_bindir/schematest
 
-%_datadir/services/akonadi.protocol
-%_datadir/icons/crystalsvg/16x16/actions/file.png
-%_datadir/icons/crystalsvg/16x16/actions/message.png
+%_datadir/kde4/services/akonadi.protocol
+
+%dir %_datadir/apps/akonadi/agents/
+%_datadir/apps/akonadi/agents/nntpresource.desktop
+%_datadir/apps/akonadi/agents/vcard.svg
+%_datadir/apps/akonadi/agents/vcardresource.desktop
+
 %_datadir/icons/crystalsvg/16x16/actions/new_from_template.png
 %_datadir/icons/crystalsvg/22x22/actions/new_from_template.png
 
-%_datadir/services/kcmapptsummary.desktop
-%_datadir/services/kcmtodosummary.desktop
+%_datadir/kde4/services/kcmapptsummary.desktop
+%_datadir/kde4/services/kcmtodosummary.desktop
 %_datadir/config.kcfg/kxforms.kcfg
 %_datadir/config.kcfg/mailtransport.kcfg
 
@@ -228,6 +232,10 @@ Common files for kdepim
 %_libdir/kde4/kio_mbox.*
 %_libdir/kde4/kio_sieve.*
 %_libdir/kde4/kcal_*
+
+%_libdir/strigi/strigiea_ics.so
+%_libdir/strigi/strigiea_rfc822.so
+
 %_libdir/kcal_resourcefeatureplan.so.*
 %_libdir/kabc_groupdav.so.*
 %_libdir/kcal_groupdav.so.*
@@ -235,31 +243,31 @@ Common files for kdepim
 %_libdir/kde4/kcm_kontactsummary.*
 
 %_libdir/kde4/kcm_mailtransport.so
-%_datadir/services/kcm_mailtransport.desktop
+%_datadir/kde4/services/kcm_mailtransport.desktop
 
 
 %_datadir/applications/kde4/groupwarewizard.desktop
 %_datadir/apps/kconf_update/kpgp-3.1-upgrade-address-data.pl
 %_datadir/apps/kconf_update/kpgp.upd
-%dir %_datadir/services/kresources
-%_datadir/services/kresources/*
-%_datadir/services/kcmkontactsummary.desktop
-%_datadir/services/kleopatra_*
+%dir %_datadir/kde4/services/kresources
+%_datadir/kde4/services/kresources/*
+%_datadir/kde4/services/kcmkontactsummary.desktop
+%_datadir/kde4/services/kleopatra_*
 %_datadir/config.kcfg/egroupware.kcfg
 %_datadir/config.kcfg/knoteconfig.kcfg
 %_datadir/config.kcfg/slox.kcfg
-%_datadir/services/sieve.protocol
-%_datadir/servicetypes/dbuscalendar.desktop
-%_datadir/servicetypes/korgprintplugin.desktop		 
+%_datadir/kde4/services/sieve.protocol
+%_datadir/kde4/servicetypes/dbuscalendar.desktop
+%_datadir/kde4/servicetypes/korgprintplugin.desktop		 
 %_datadir/applications/kde4/konsolekalendar.desktop
 %_iconsdir/*/*/*/konsolekalendar.*
 
 %_iconsdir/*/*/*/korganizer*
 %_datadir/apps/korgac/icons/crystalsvg/22x22/actions/korgac.png
 %_datadir/apps/korgac/icons/crystalsvg/22x22/actions/korgac_disabled.png
-%_datadir/services/mbox.protocol
-%exclude %_datadir/services/kresources/knotes_manager.desktop
-%exclude %_datadir/services/kresources/kabc
+%_datadir/kde4/services/mbox.protocol
+%exclude %_datadir/kde4/services/kresources/knotes_manager.desktop
+%exclude %_datadir/kde4/services/kresources/kabc
 
 %_datadir/applications/kde4/kwsdl_compiler.desktop
 %_datadir/apps/kconf_update/migrate-transports.pl
@@ -315,18 +323,18 @@ aKregator is KDE RSS aggregator with great look and feel.
 %_bindir/kontact-akregator.sh
 %_libdir/kde4/libakregator*
 %_libdir/libakregatorprivate.*
-%_datadir/services/kontact/akregatorplugin.desktop
+%_datadir/kde4/services/kontact/akregatorplugin.desktop
 %_datadir/applications/kde4/akregator.desktop
 %dir %_datadir/apps/akregator
 %_datadir/apps/akregator/*
 %_iconsdir/*/*/*/rss_tag*
 %_iconsdir/*/*/*/akregator*
 %_datadir/config.kcfg/akregator.kcfg
-%_datadir/services/akregator_part.desktop   
-%_datadir/services/feed.protocol
-%_datadir/services/kontact/akregatorplugin3.2.desktop
-%_datadir/services/akregator_mk4storage_plugin.desktop
-%_datadir/servicetypes/akregator_plugin.desktop
+%_datadir/kde4/services/akregator_part.desktop   
+%_datadir/kde4/services/feed.protocol
+%_datadir/kde4/services/kontact/akregatorplugin3.2.desktop
+%_datadir/kde4/services/akregator_mk4storage_plugin.desktop
+%_datadir/kde4/servicetypes/akregator_plugin.desktop
 %dir %_docdir/HTML/en/akregator/
 %doc %_docdir/HTML/en/akregator/*.png
 %doc %_docdir/HTML/en/akregator/*.bz2
@@ -399,12 +407,10 @@ based on kdepim.
 
 %dir %_includedir/libakonadi/
 %_includedir/libakonadi/*.h
-%_includedir/libakonadiresources/org.kde.Akonadi.Resource.xml
 %dir %_includedir/libakonadiresources/
 %_includedir/libakonadiresources/*.h
 %_libdir/kabc_groupdav.so
 
-%_includedir/akonadi/*.h
 %_includedir/kcal/*.h
 %_includedir/kdepimprotocols.h
 %dir %_includedir/libakonadi/components/
@@ -499,15 +505,13 @@ KDE Mailer
 %_bindir/kmail_clamav.sh
 %_bindir/kmail_fprot.sh
 %_bindir/kmail_sav.sh
-%_bindir/indexlib-config
-%multiarch %multiarch_bindir/indexlib-config
 %_libdir/kde4/kcm_kmail.*
 %_libdir/kde4/kcm_kmailsummary.*
 %_libdir/libkmailprivate.so.*
 %_libdir/kde4/libkmailpart.*
 %_libdir/kde4/libkmail_*
-%_datadir/services/kcmkmailsummary.desktop
-%_datadir/services/kmail_*
+%_datadir/kde4/services/kcmkmailsummary.desktop
+%_datadir/kde4/services/kmail_*
 %_datadir/config.kcfg/kmail.kcfg
 %_datadir/apps/kconf_update/kmail*
 %_datadir/applications/kde4/KMail.desktop
@@ -522,7 +526,7 @@ KDE Mailer
 %_datadir/apps/kconf_update/upgrade-transport.pl
 %dir %_datadir/apps/kmailcvt/
 %_datadir/apps/kmailcvt/*
-%_datadir/servicetypes/dbusmail.desktop
+%_datadir/kde4/servicetypes/dbusmail.desktop
 
 %dir %_docdir/HTML/en/kmail/
 %doc %_docdir/HTML/en/kmail/*.bz2
@@ -530,22 +534,6 @@ KDE Mailer
 
 %_datadir/config.kcfg/customtemplates_kfg.kcfg
 %_datadir/config.kcfg/templatesconfiguration_kfg.kcfg
-#----------------------------------------------------------------------
-
-%package -n %lib_name-index
-Group:      Development/KDE and Qt
-Summary:    Library for kmail
-
-%description -n %lib_name-index
-Library for kmail
-
-%post -n %lib_name-index -p /sbin/ldconfig
-%postun -n %lib_name-index -p /sbin/ldconfig
-
-%files -n %lib_name-index
-%defattr(-,root,root,-)
-%_libdir/libindex.so.*
-
 #----------------------------------------------------------------------
 
 %package knode
@@ -563,12 +551,12 @@ KDE News Reader.
 %_bindir/knode            
 %_bindir/kontact-knode.sh
 %_libdir/kde4/libknodepart.*
-%_datadir/services/knewsservice.protocol
+%_datadir/kde4/services/knewsservice.protocol
 %_datadir/applications/kde4/KNode.desktop
 %_iconsdir/*/*/*/knode*
 %dir %_datadir/apps/knode
 %_datadir/apps/knode/*
-%_datadir/services/knode_*
+%_datadir/kde4/services/knode_*
 %_libdir/kde4/kcm_knode.*
 %dir %_docdir/HTML/en/knode/
 %doc %_docdir/HTML/en/knode/*.png
@@ -608,18 +596,12 @@ Devel files for knode
 %package -n %lib_name-kmail-devel
 Group:      Development/KDE and Qt
 Summary:    Devel files for kmail
-Requires:   %lib_name-index = %epoch:%version-%release
 
 %description -n %lib_name-kmail-devel
 Devel files for kmail
 
 %files -n %lib_name-kmail-devel
 %defattr(-,root,root,-)
-%_libdir/libindex.so
-%dir %_includedir/index/
-%_includedir/index/create.h
-%_includedir/index/index.h
-%_includedir/index/lockfile.h
 %dir %_includedir/gpgme++/
 %_includedir/gpgme++/*.h
 %dir %_includedir/gpgme++/interfaces/
@@ -649,7 +631,7 @@ Time tracker.
 %files karm
 %defattr(-,root,root)
 %_bindir/karm
-%_datadir/services/karm_part.desktop
+%_datadir/kde4/services/karm_part.desktop
 %_iconsdir/*/*/*/karm*
 %_libdir/kde4/libkarmpart.*
 %dir %_datadir/apps/karm/
@@ -677,7 +659,6 @@ Ktnef.
 %_datadir/apps/ktnef/*
 %_iconsdir/*/*/*/ktnef*
 %_datadir/applications/kde4/ktnef.desktop
-%_datadir/mimelnk/application/ms-tnef.desktop
 
 #----------------------------------------------------------------------
 
@@ -727,7 +708,7 @@ A color configurable tooltip notes application for desktop
 %_iconsdir/*/*/*/knotes*
 %_datadir/applications/kde4/knotes.desktop
 %_datadir/config.kcfg/knotesglobalconfig.kcfg
-%_datadir/services/kresources/knotes_manager.desktop
+%_datadir/kde4/services/kresources/knotes_manager.desktop
 %dir %_docdir/HTML/en/knotes/
 %doc %_docdir/HTML/en/knotes/*.bz2
 %doc %_docdir/HTML/en/knotes/*.docbook
@@ -750,27 +731,23 @@ The KDE addressbook application.
 %_iconsdir/*/*/*/kaddressbook*
 %_bindir/kontact-addressbook.sh
 %_datadir/applications/kde4/kaddressbook.desktop
-%_datadir/services/kfile_ics.desktop
-%_datadir/services/kfile_vcf.desktop
 %_libdir/kde4/kabc_*
-%_libdir/kde4/kfile_vcf.*
-%_libdir/kde4/kfile_ics.*
 %_libdir/kde4/libkaddressbookpart.*
 %_libdir/kde4/kcm_kabconfig.*
 %_libdir/kde4/kcm_kabldapconfig.*
 %_libdir/kde4/libkaddrbk_*.*
 %_libdir/kde4/ldifvcardthumbnail.*
 %_libdir/kde4/kcm_kabcustomfields.*
-%dir %_datadir/services/kaddressbook/
-%_datadir/services/kaddressbook/*
-%_datadir/services/kabconfig.desktop
-%_datadir/services/kabldapconfig.desktop
-%_datadir/services/ldifvcardthumbnail.desktop
-%_datadir/servicetypes/dbusaddressbook.desktop
-%_datadir/servicetypes/kaddressbook_*
-%_datadir/services/kabcustomfields.desktop
-%dir %_datadir/services/kresources/kabc/
-%_datadir/services/kresources/kabc/*
+%dir %_datadir/kde4/services/kaddressbook/
+%_datadir/kde4/services/kaddressbook/*
+%_datadir/kde4/services/kabconfig.desktop
+%_datadir/kde4/services/kabldapconfig.desktop
+%_datadir/kde4/services/ldifvcardthumbnail.desktop
+%_datadir/kde4/servicetypes/dbusaddressbook.desktop
+%_datadir/kde4/servicetypes/kaddressbook_*
+%_datadir/kde4/services/kabcustomfields.desktop
+%dir %_datadir/kde4/services/kresources/kabc/
+%_datadir/kde4/services/kresources/kabc/*
 %dir %_docdir/HTML/en/kaddressbook/
 %doc %_docdir/HTML/en/kaddressbook/*.png
 %doc %_docdir/HTML/en/kaddressbook/*.bz2
@@ -834,6 +811,9 @@ A calendar-of-events and todo-list manager.
 
 %files korganizer
 %defattr(-,root,root)
+
+%config(noreplace) %_datadir/config/korganizer.knsrc
+
 %_bindir/kalarm
 %_bindir/kalarmd
 %_bindir/konsolekalendar
@@ -860,15 +840,20 @@ A calendar-of-events and todo-list manager.
 %_datadir/applications/kde4/korganizer.desktop
 %_iconsdir/*/*/*/kalarm*
 %_datadir/config.kcfg/korganizer.kcfg
-%_datadir/services/korganizer_*
-%dir %_datadir/services/korganizer/
-%_datadir/services/korganizer/*
-%dir %_datadir/services/webcal.protocol
-%_datadir/servicetypes/calendardecoration.desktop
-%_datadir/servicetypes/calendarplugin.desktop
-%_datadir/servicetypes/korganizerpart.desktop
+%_datadir/kde4/services/korganizer_*
+%dir %_datadir/kde4/services/korganizer/
+%_datadir/kde4/services/korganizer/*
+%dir %_datadir/kde4/services/webcal.protocol
+%_datadir/kde4/servicetypes/calendardecoration.desktop
+%_datadir/kde4/servicetypes/calendarplugin.desktop
+%_datadir/kde4/servicetypes/korganizerpart.desktop
 
 %_datadir/config.kcfg/kalarmconfig.kcfg
+
+%_datadir/apps/kconf_update/kalarm-1.2.1-general.pl
+%_datadir/apps/kconf_update/kalarm-1.9.5-defaults.pl
+%_datadir/apps/kconf_update/kalarm-version.pl
+%_datadir/apps/kconf_update/kalarm.upd
 
 %dir %_docdir/HTML/en/kalarm/
 %doc %_docdir/HTML/en/kalarm/*.png
@@ -964,6 +949,29 @@ Sync phone book entries between your palmtop and computer
 #%dir %_sysconfdir/dynamic/launchers/visor/
 #%config(noreplace) %_sysconfdir/dynamic/launchers/visor/kpilot.desktop
 #/etc/dynamic/launchers/visor/kpilot.desktop
+%_iconsdir/crystalsvg/128x128/apps/mobile_phone.png
+%_iconsdir/crystalsvg/16x16/actions/hotsync.png
+%_iconsdir/crystalsvg/16x16/actions/playsound.png
+%_iconsdir/crystalsvg/16x16/apps/mobile_phone.png
+%_iconsdir/crystalsvg/22x22/actions/hotsync.png
+%_iconsdir/crystalsvg/32x32/actions/hotsync.png
+%_iconsdir/crystalsvg/32x32/apps/mobile_phone.png
+%_iconsdir/crystalsvg/48x48/actions/hotsync.png
+%_iconsdir/crystalsvg/48x48/apps/mobile_phone.png
+%_iconsdir/crystalsvg/64x64/apps/mobile_phone.png
+%_iconsdir/hicolor/16x16/apps/kitchensync.png
+%_iconsdir/hicolor/22x22/apps/kitchensync.png
+%_iconsdir/hicolor/32x32/apps/kitchensync.png
+%_iconsdir/hicolor/48x48/apps/kitchensync.png
+
+%_datadir/apps/kitchensync/about/kitchensync.css
+%_datadir/apps/kitchensync/about/main.html
+%_datadir/apps/kitchensync/about/top-right-kitchensync.png
+%_datadir/apps/kitchensync/kitchensync_part.rc
+%_datadir/apps/kitchensync/kitchensyncui.rc
+
+%_datadir/applications/kde4/kitchensync.desktop
+
 #----------------------------------------------------------------------
 
 %package -n %lib_name-kpilot
@@ -978,6 +986,13 @@ Librairy for kpilot program
 %files -n %lib_name-kpilot
 %defattr(-,root,root)
 
+%_bindir/kitchensync
+
+%_libdir/kde4/ktexteditorkabcbridge.so
+%_libdir/kde4/libkitchensyncpart.so
+%_libdir/libkitchensyncprivate.so.*
+%_libdir/libqopensync.so.*
+
 #----------------------------------------------------------------------
 
 %package -n %lib_name-kpilot-devel
@@ -991,6 +1006,9 @@ Devel files for kpilot program
 
 %files -n %lib_name-kpilot-devel
 %defattr(-,root,root)
+%_libdir/libqopensync.so
+%_libdir/libkitchensyncprivate.so
+
 #----------------------------------------------------------------------
 
 
@@ -1018,9 +1036,9 @@ KDE Kontact, an integrated personal information suite container application for 
 %files kontact
 %defattr(-,root,root)
 %_bindir/kontact
-%dir %_datadir/services/kontact/
-%_datadir/services/kontact/*
-%_datadir/services/kontactconfig.desktop
+%dir %_datadir/kde4/services/kontact/
+%_datadir/kde4/services/kontact/*
+%_datadir/kde4/services/kontactconfig.desktop
 %_datadir/applications/kde4/Kontact.desktop
 %dir %_datadir/apps/kontact/
 %_datadir/apps/kontact/*
@@ -1029,7 +1047,7 @@ KDE Kontact, an integrated personal information suite container application for 
 %_libdir/kde4/libkontact*
 %_libdir/kde4/kcm_kontact*
 %_datadir/config.kcfg/kontact.kcfg
-%_datadir/servicetypes/kontactplugin.desktop
+%_datadir/kde4/servicetypes/kontactplugin.desktop
 %_iconsdir/*/*/*/kontact*
 %dir %_docdir/HTML/en/kontact/
 %doc %_docdir/HTML/en/kontact/*.png
@@ -1186,10 +1204,8 @@ install -d -m 0755 %buildroot/%_libdir/rpm/
 install -d -m 0755 %buildroot/%_libdir/rpm/mkmultiarch
 
 
-%multiarch_binaries $RPM_BUILD_ROOT/%_bindir/indexlib-config
 
 %clean
 rm -fr %buildroot
-
 
 

@@ -110,6 +110,8 @@ BuildRequires: libsasl-devel
 BuildRequires:	pilot-link-devel
 BuildRequires:	libxslt-proc
 
+BuildRequires:	opensync-devel
+
 Requires:	%name-karm = %epoch:%version-%release
 Requires:	%name-knotes = %epoch:%version-%release
 Requires:	%name-kaddressbook = %epoch:%version-%release

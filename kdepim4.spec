@@ -1,4 +1,4 @@
-%define branch_date 20070311
+%define branch_date 20070418
 
 # remove it when kde4 will be official kde package
 %define _prefix /opt/kde4/

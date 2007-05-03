@@ -107,7 +107,7 @@ BuildRequires: bluez-devel
 BuildRequires: libsasl-devel
 BuildRequires:	pilot-link-devel
 BuildRequires:	libxslt-proc
-
+BuildRequires:	boost-devel
 BuildRequires:	opensync-devel
 
 Requires:	%name-karm = %epoch:%version-%release

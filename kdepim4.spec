@@ -167,6 +167,11 @@ Common files for kdepim
 %_datadir/apps/akonadi/agents/icalresource.desktop
 %_datadir/apps/akonadi/agents/knut.svg
 %_datadir/apps/akonadi/agents/knutresource.desktop
+%_datadir/apps/akonadi/agents/maildirresource.desktop
+%_datadir/apps/akonadi/plugins/serializer/akonadi_serializer_addressee.desktop
+%_datadir/apps/akonadi/plugins/serializer/akonadi_serializer_mail.desktop
+%_datadir/apps/akonadi/searchproviders/messagesearchprovider.desktop
+
 %_iconsdir/*/*/*/button_*
 %_datadir/kde4/services/imap4.protocol
 %_datadir/kde4/services/imaps.protocol
@@ -187,6 +192,8 @@ Common files for kdepim
 %_bindir/akonadi
 %_bindir/akonadi_nntp_resource
 %_bindir/akonadi_vcard_resource
+%_bindir/akonadi_maildir_resource
+%_bindir/akonadi_message_searchprovider
 %_bindir/egroupwarewizard
 %_bindir/groupwarewizard
 %_bindir/kabcclient
@@ -204,8 +211,6 @@ Common files for kdepim
 %_datadir/apps/akonadi/agents/vcard.svg
 %_datadir/apps/akonadi/agents/vcardresource.desktop
 
-%_datadir/icons/crystalsvg/16x16/actions/new_from_template.png
-%_datadir/icons/crystalsvg/22x22/actions/new_from_template.png
 
 %_datadir/kde4/services/kcmapptsummary.desktop
 %_datadir/kde4/services/kcmtodosummary.desktop
@@ -263,8 +268,6 @@ Common files for kdepim
 %_iconsdir/*/*/*/konsolekalendar.*
 
 %_iconsdir/*/*/*/korganizer*
-%_datadir/apps/korgac/icons/crystalsvg/22x22/actions/korgac.png
-%_datadir/apps/korgac/icons/crystalsvg/22x22/actions/korgac_disabled.png
 %_datadir/kde4/services/mbox.protocol
 %exclude %_datadir/kde4/services/kresources/knotes_manager.desktop
 %exclude %_datadir/kde4/services/kresources/kabc
@@ -385,7 +388,8 @@ based on kdepim.
 %_libdir/libksieve.so
 %_libdir/libmimelib.so
 %_libdir/libqgpgme.so
-
+%_libdir/libakonadimodels.so
+%_libdir/libmaildir.so
 
 %dir %_includedir/ksieve/
 %_includedir/ksieve/*.h
@@ -401,14 +405,11 @@ based on kdepim.
 
 %_libdir/libakonadi.so
 %_libdir/libakonadicomponents.so
-%_libdir/libakonadiresources.so
 %_libdir/libakonadisearchprovider.so
 %_libdir/kcal_groupdav.so
 
 %dir %_includedir/libakonadi/
 %_includedir/libakonadi/*.h
-%dir %_includedir/libakonadiresources/
-%_includedir/libakonadiresources/*.h
 %_libdir/kabc_groupdav.so
 
 %_includedir/kcal/*.h
@@ -445,6 +446,11 @@ based on kdepim.
 %_libdir/libkocorehelper.so.*
 %_libdir/libgpgme++.so.*
 
+%_libdir/kde4/libakonadi_serializer_addressee.so
+%_libdir/kde4/libakonadi_serializer_mail.so
+
+%_libdir/libakonadimodels.so.*
+%_libdir/libmaildir.so.*
 %_libdir/kde4/kio_akonadi.so
 %_libdir/libkcal_*.so.*
 %_libdir/libkleopatra.so.*
@@ -472,7 +478,6 @@ based on kdepim.
 %_libdir/libmimelib.so.*
 %_libdir/libqgpgme.so.*
 %_libdir/libakonadicomponents.so.*
-%_libdir/libakonadiresources.so.*
 %_libdir/libakonadisearchprovider.so.*
 %_libdir/kde4/kpartsdesignerplugin.so
 
@@ -814,6 +819,8 @@ A calendar-of-events and todo-list manager.
 
 %config(noreplace) %_datadir/config/korganizer.knsrc
 
+%_datadir/apps/korgac/icons/oxygen/22x22/actions/korgac.png
+%_datadir/apps/korgac/icons/oxygen/22x22/actions/korgac_disabled.png
 %_bindir/kalarm
 %_bindir/kalarmd
 %_bindir/konsolekalendar
@@ -949,20 +956,24 @@ Sync phone book entries between your palmtop and computer
 #%dir %_sysconfdir/dynamic/launchers/visor/
 #%config(noreplace) %_sysconfdir/dynamic/launchers/visor/kpilot.desktop
 #/etc/dynamic/launchers/visor/kpilot.desktop
-%_iconsdir/crystalsvg/128x128/apps/mobile_phone.png
-%_iconsdir/crystalsvg/16x16/actions/hotsync.png
-%_iconsdir/crystalsvg/16x16/actions/playsound.png
-%_iconsdir/crystalsvg/16x16/apps/mobile_phone.png
-%_iconsdir/crystalsvg/22x22/actions/hotsync.png
-%_iconsdir/crystalsvg/32x32/actions/hotsync.png
-%_iconsdir/crystalsvg/32x32/apps/mobile_phone.png
-%_iconsdir/crystalsvg/48x48/actions/hotsync.png
-%_iconsdir/crystalsvg/48x48/apps/mobile_phone.png
-%_iconsdir/crystalsvg/64x64/apps/mobile_phone.png
 %_iconsdir/hicolor/16x16/apps/kitchensync.png
 %_iconsdir/hicolor/22x22/apps/kitchensync.png
 %_iconsdir/hicolor/32x32/apps/kitchensync.png
 %_iconsdir/hicolor/48x48/apps/kitchensync.png
+
+%_iconsdir/oxygen/128x128/apps/mobile_phone.png
+%_iconsdir/oxygen/16x16/actions/hotsync.png
+%_iconsdir/oxygen/16x16/actions/new_from_template.png
+%_iconsdir/oxygen/16x16/actions/playsound.png
+%_iconsdir/oxygen/16x16/apps/mobile_phone.png
+%_iconsdir/oxygen/22x22/actions/hotsync.png
+%_iconsdir/oxygen/22x22/actions/new_from_template.png
+%_iconsdir/oxygen/32x32/actions/hotsync.png
+%_iconsdir/oxygen/32x32/apps/mobile_phone.png
+%_iconsdir/oxygen/48x48/actions/hotsync.png
+%_iconsdir/oxygen/48x48/apps/mobile_phone.png
+%_iconsdir/oxygen/64x64/apps/mobile_phone.png
+
 
 %_datadir/apps/kitchensync/about/kitchensync.css
 %_datadir/apps/kitchensync/about/main.html
@@ -1207,5 +1218,7 @@ install -d -m 0755 %buildroot/%_libdir/rpm/mkmultiarch
 
 %clean
 rm -fr %buildroot
+
+
 
 

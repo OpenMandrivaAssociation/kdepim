@@ -1948,7 +1948,7 @@ Requires: %libmaildir = %epoch:%version
 Requires: %libkcal_resourcefeatureplan = %epoch:%version
 
 %description  devel
-This package contains header files needed if you wish to build applications based on kdegraphics.
+This package contains header files needed if you wish to build applications based on kdepim.
 
 %files devel
 %defattr(-,root,root)

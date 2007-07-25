@@ -36,7 +36,8 @@ BuildRequires: X11-devel
 BuildRequires: flex 
 BuildRequires: byacc 
 BuildRequires: pam
-BuildRequires: libmal-devel >= 0.31
+# MAL conduit is disabled upstream: see source
+# BuildRequires: libmal-devel >= 0.31
 BuildRequires: libncurses-devel
 BuildRequires: readline-devel
 BuildRequires: pilot-link-devel

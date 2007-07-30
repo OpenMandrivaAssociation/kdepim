@@ -9,7 +9,7 @@
 
 %define branch 1
 %{?_branch: %{expand: %%global branch 1}}
-%define revision 680510
+%define revision 694342
 
 %if %unstable
 %define dont_strip 1
@@ -17,7 +17,7 @@
 
 Name: kdepim4
 Summary: K Desktop Environment
-Version: 3.90.2
+Version: 3.92
 Release: %mkrel 0.%revision
 Epoch: 1
 Group: Graphical desktop/KDE
@@ -114,7 +114,7 @@ Core files fro kdepim.
 
 #-----------------------------------------------------------------------------
 
-%define libkode %mklibname kode 5
+%define libkode %mklibname kode 4
 
 %package -n %libkode
 Summary: KDE 4 library
@@ -132,7 +132,7 @@ KDE 4 library.
 
 #-----------------------------------------------------------------------------
 
-%define libkschema %mklibname kschema 5
+%define libkschema %mklibname kschema 4
 
 %package -n %libkschema
 Summary: KDE 4 library
@@ -150,7 +150,7 @@ KDE 4 library.
 
 #-----------------------------------------------------------------------------
 
-%define libkschemawidgets %mklibname kschemawidgets 5
+%define libkschemawidgets %mklibname kschemawidgets 4
 
 %package -n %libkschemawidgets
 Summary: KDE 4 library
@@ -168,7 +168,7 @@ KDE 4 library.
 
 #-----------------------------------------------------------------------------
 
-%define libkxmlcommon %mklibname kxmlcommon 5
+%define libkxmlcommon %mklibname kxmlcommon 4
 
 %package -n %libkxmlcommon
 Summary: KDE 4 library
@@ -186,7 +186,7 @@ KDE 4 library.
 
 #-----------------------------------------------------------------------------
 
-%define libschema %mklibname schema 5
+%define libschema %mklibname schema 4
 
 %package -n %libschema
 Summary: KDE 4 library
@@ -204,7 +204,7 @@ KDE 4 library.
 
 #-----------------------------------------------------------------------------
 
-%define libwscl %mklibname wscl 5
+%define libwscl %mklibname wscl 4
 
 %package -n %libwscl
 Summary: KDE 4 library
@@ -222,7 +222,7 @@ KDE 4 library.
 
 #-----------------------------------------------------------------------------
 
-%define libwsdl %mklibname wsdl 5
+%define libwsdl %mklibname wsdl 4
 
 %package -n %libwsdl
 Summary: KDE 4 library
@@ -263,7 +263,7 @@ Dialog KDE base widgets
 
 #-----------------------------------------------------------------------------
 
-%define libakonadi %mklibname akonadi 5
+%define libakonadi %mklibname akonadi 4
 
 %package -n %libakonadi
 Summary: KDE 4 library
@@ -281,7 +281,7 @@ KDE 4 library.
 
 #-----------------------------------------------------------------------------
 
-%define libakonadicomponents %mklibname akonadicomponents 5
+%define libakonadicomponents %mklibname akonadicomponents 4
 
 %package -n %libakonadicomponents
 Summary: KDE 4 library
@@ -299,7 +299,7 @@ KDE 4 library.
 
 #-----------------------------------------------------------------------------
 
-%define libakonadiprivate %mklibname akonadiprivate 5
+%define libakonadiprivate %mklibname akonadiprivate 4
 
 %package -n %libakonadiprivate
 Summary: KDE 4 library
@@ -317,7 +317,7 @@ KDE 4 library.
 
 #-----------------------------------------------------------------------------
 
-%define libakonadisearchprovider %mklibname akonadisearchprovider 5
+%define libakonadisearchprovider %mklibname akonadisearchprovider 4
 
 %package -n %libakonadisearchprovider
 Summary: KDE 4 library
@@ -335,7 +335,7 @@ KDE 4 library.
 
 #-----------------------------------------------------------------------------
 
-%define libkabcakonadi %mklibname kabcakonadi 5
+%define libkabcakonadi %mklibname kabcakonadi 4
 
 %package -n %libkabcakonadi
 Summary: KDE 4 library
@@ -353,7 +353,7 @@ KDE 4 library.
 
 #-----------------------------------------------------------------------------
 
-%define libkcal_resourcefeatureplan %mklibname kcal_resourcefeatureplan 5
+%define libkcal_resourcefeatureplan %mklibname kcal_resourcefeatureplan 4
 
 %package -n %libkcal_resourcefeatureplan
 Summary: KDE 4 library
@@ -371,7 +371,7 @@ KDE 4 library.
 
 #-----------------------------------------------------------------------------
 
-%define libkmimeakonadi %mklibname kmimeakonadi 5
+%define libkmimeakonadi %mklibname kmimeakonadi 4
 
 %package -n %libkmimeakonadi
 Summary: KDE 4 library
@@ -432,7 +432,7 @@ Dialog KDE base widgets
 
 #-----------------------------------------------------------------------------
 
-%define libkdepim %mklibname kdepim 5
+%define libkdepim %mklibname kdepim 4
 
 %package -n %libkdepim
 Summary: KDE 4 library
@@ -458,7 +458,7 @@ KDE 4 library.
 
 #-----------------------------------------------------------------------------
 
-%define libkholidays %mklibname kholidays 5
+%define libkholidays %mklibname kholidays 4
 
 %package -n %libkholidays
 Summary: KDE 4 library
@@ -477,7 +477,7 @@ KDE 4 library.
 
 #-----------------------------------------------------------------------------
 
-%define libkleopatra %mklibname kleopatra 5
+%define libkleopatra %mklibname kleopatra 4
 
 %package -n %libkleopatra
 Summary: KDE 4 library
@@ -497,7 +497,7 @@ KDE 4 library.
 
 #-----------------------------------------------------------------------------
 
-%define libkpgp %mklibname kpgp 5
+%define libkpgp %mklibname kpgp 4
 
 %package -n %libkpgp
 Summary: KDE 4 library
@@ -542,7 +542,7 @@ Dialog KDE base widgets
 
 #-----------------------------------------------------------------------------
 
-%define libkpimidentities %mklibname kpimidentities 5
+%define libkpimidentities %mklibname kpimidentities 4
 
 %package -n %libkpimidentities
 Summary: KDE 4 library
@@ -560,7 +560,7 @@ KDE 4 library.
 
 #-----------------------------------------------------------------------------
 
-%define libksieve %mklibname ksieve 5
+%define libksieve %mklibname ksieve 4
 
 %package -n %libksieve
 Summary: KDE 4 library
@@ -578,7 +578,7 @@ KDE 4 library.
 
 #-----------------------------------------------------------------------------
 
-%define libmimelib %mklibname mimelib 5
+%define libmimelib %mklibname mimelib 4
 
 %package -n %libmimelib
 Summary: KDE 4 library
@@ -596,7 +596,7 @@ KDE 4 library.
 
 #-----------------------------------------------------------------------------
 
-%define libakregatorinterfaces %mklibname akregatorinterfaces 5
+%define libakregatorinterfaces %mklibname akregatorinterfaces 4
 
 %package -n %libakregatorinterfaces
 Summary: KDE 4 library
@@ -614,7 +614,7 @@ KDE 4 library.
 
 #-----------------------------------------------------------------------------
 
-%define libakregatorprivate %mklibname akregatorprivate 5
+%define libakregatorprivate %mklibname akregatorprivate 4
 
 %package -n %libakregatorprivate
 Summary: KDE 4 library
@@ -660,7 +660,7 @@ Dialog KDE base widgets
 
 #-----------------------------------------------------------------------------
 
-%define libgpgmepp %mklibname gpgmepp 5
+%define libgpgmepp %mklibname gpgmepp 4
 
 %package -n %libgpgmepp
 Summary: KDE 4 library
@@ -735,7 +735,7 @@ Dialog KDE base widgets
 
 #-----------------------------------------------------------------------------
 
-%define libknodecommon %mklibname knodecommon 5
+%define libknodecommon %mklibname knodecommon 4
 
 %package -n %libknodecommon
 Summary: KDE 4 library
@@ -783,7 +783,7 @@ Dialog KDE base widgets
 
 #-----------------------------------------------------------------------------
 
-%define libkabinterfaces %mklibname kabinterfaces 5
+%define libkabinterfaces %mklibname kabinterfaces 4
 
 %package -n %libkabinterfaces
 Summary: KDE 4 library
@@ -801,7 +801,7 @@ KDE 4 library.
 
 #-----------------------------------------------------------------------------
 
-%define libkaddressbook %mklibname kaddressbook 5
+%define libkaddressbook %mklibname kaddressbook 4
 
 %package -n %libkaddressbook
 Summary: KDE 4 library
@@ -852,7 +852,7 @@ Dialog KDE base widgets
 
 #-----------------------------------------------------------------------------
 
-%define libkalarm_resources %mklibname kalarm_resources 5
+%define libkalarm_resources %mklibname kalarm_resources 4
 
 %package -n %libkalarm_resources
 Summary: KDE 4 library
@@ -953,7 +953,7 @@ Dialog KDE base widgets
 
 #-----------------------------------------------------------------------------
 
-%define libkmailprivate %mklibname kmailprivate 5
+%define libkmailprivate %mklibname kmailprivate 4
 
 %package -n %libkmailprivate
 Summary: KDE 4 library
@@ -1064,7 +1064,7 @@ Dialog KDE base widgets
 
 #-----------------------------------------------------------------------------
 
-%define libkontact %mklibname kontact 5
+%define libkontact %mklibname kontact 4
 
 %package -n %libkontact
 Summary: KDE 4 library
@@ -1082,7 +1082,7 @@ KDE 4 library.
 
 #-----------------------------------------------------------------------------
 
-%define libkpinterfaces %mklibname kpinterfaces 5
+%define libkpinterfaces %mklibname kpinterfaces 4
 
 %package -n %libkpinterfaces
 Summary: KDE 4 library
@@ -1142,7 +1142,7 @@ Dialog KDE base widgets
 
 #-----------------------------------------------------------------------------
 
-%define libkocorehelper %mklibname kocorehelper 5
+%define libkocorehelper %mklibname kocorehelper 4
 
 %package -n %libkocorehelper
 Summary: KDE 4 library
@@ -1160,7 +1160,7 @@ KDE 4 library.
 
 #-----------------------------------------------------------------------------
 
-%define libkorg_stdprinting %mklibname korg_stdprinting 5
+%define libkorg_stdprinting %mklibname korg_stdprinting 4
 
 %package -n %libkorg_stdprinting
 Summary: KDE 4 library
@@ -1178,7 +1178,7 @@ KDE 4 library.
 
 #-----------------------------------------------------------------------------
 
-%define libkorganizer %mklibname korganizer 5
+%define libkorganizer %mklibname korganizer 4
 
 %package -n %libkorganizer
 Summary: KDE 4 library
@@ -1196,7 +1196,7 @@ KDE 4 library.
 
 #-----------------------------------------------------------------------------
 
-%define libkorganizer_calendar %mklibname korganizer_calendar 5
+%define libkorganizer_calendar %mklibname korganizer_calendar 4
 
 %package -n %libkorganizer_calendar
 Summary: KDE 4 library
@@ -1214,7 +1214,7 @@ KDE 4 library.
 
 #-----------------------------------------------------------------------------
 
-%define libkorganizer_eventviewer %mklibname korganizer_eventviewer 5
+%define libkorganizer_eventviewer %mklibname korganizer_eventviewer 4
 
 %package -n %libkorganizer_eventviewer
 Summary: KDE 4 library
@@ -1232,7 +1232,7 @@ KDE 4 library.
 
 #-----------------------------------------------------------------------------
 
-%define libkorganizer_interfaces %mklibname korganizer_interfaces 5
+%define libkorganizer_interfaces %mklibname korganizer_interfaces 4
 
 %package -n %libkorganizer_interfaces
 Summary: KDE 4 library
@@ -1292,7 +1292,7 @@ Dialog KDE base widgets
 
 #-----------------------------------------------------------------------------
 
-%define libkmobiletools %mklibname kmobiletools 5
+%define libkmobiletools %mklibname kmobiletools 4
 
 %package -n %libkmobiletools
 Summary: KDE 4 library
@@ -1310,7 +1310,7 @@ KDE 4 library.
 
 #-----------------------------------------------------------------------------
 
-%define libkmobiletools_at %mklibname kmobiletools_at 5
+%define libkmobiletools_at %mklibname kmobiletools_at 4
 
 %package -n %libkmobiletools_at
 Summary: KDE 4 library
@@ -1328,7 +1328,7 @@ KDE 4 library.
 
 #-----------------------------------------------------------------------------
 
-%define libkmobiletoolsengineui %mklibname kmobiletoolsengineui 5
+%define libkmobiletoolsengineui %mklibname kmobiletoolsengineui 4
 
 %package -n %libkmobiletoolsengineui
 Summary: KDE 4 library
@@ -1468,7 +1468,7 @@ Dialog KDE base widgets
 
 #-----------------------------------------------------------------------------
 
-%define libkabc_groupdav %mklibname kabc_groupdav 5
+%define libkabc_groupdav %mklibname kabc_groupdav 4
 
 %package -n %libkabc_groupdav
 Summary: KDE 4 library
@@ -1486,7 +1486,7 @@ KDE 4 library.
 
 #-----------------------------------------------------------------------------
 
-%define libkabc_slox %mklibname kabc_slox 5
+%define libkabc_slox %mklibname kabc_slox 4
 
 %package -n %libkabc_slox
 Summary: KDE 4 library
@@ -1504,7 +1504,7 @@ KDE 4 library.
 
 #-----------------------------------------------------------------------------
 
-%define libkabc_xmlrpc %mklibname kabc_xmlrpc 5
+%define libkabc_xmlrpc %mklibname kabc_xmlrpc 4
 
 %package -n %libkabc_xmlrpc
 Summary: KDE 4 library
@@ -1522,7 +1522,7 @@ KDE 4 library.
 
 #-----------------------------------------------------------------------------
 
-%define libkabckolab %mklibname kabckolab 5
+%define libkabckolab %mklibname kabckolab 4
 
 %package -n %libkabckolab
 Summary: KDE 4 library
@@ -1540,7 +1540,7 @@ KDE 4 library.
 
 #-----------------------------------------------------------------------------
 
-%define libkcal_groupdav %mklibname kcal_groupdav 5
+%define libkcal_groupdav %mklibname kcal_groupdav 4
 
 %package -n %libkcal_groupdav
 Summary: KDE 4 library
@@ -1558,7 +1558,7 @@ KDE 4 library.
 
 #-----------------------------------------------------------------------------
 
-%define libkcal_resourceblog %mklibname kcal_resourceblog 5
+%define libkcal_resourceblog %mklibname kcal_resourceblog 4
 
 %package -n %libkcal_resourceblog
 Summary: KDE 4 library
@@ -1576,7 +1576,7 @@ KDE 4 library.
 
 #-----------------------------------------------------------------------------
 
-%define libkcal_resourceremote %mklibname kcal_resourceremote 5
+%define libkcal_resourceremote %mklibname kcal_resourceremote 4
 
 %package -n %libkcal_resourceremote
 Summary: KDE 4 library
@@ -1594,7 +1594,7 @@ KDE 4 library.
 
 #-----------------------------------------------------------------------------
 
-%define libkcal_slox %mklibname kcal_slox 5
+%define libkcal_slox %mklibname kcal_slox 4
 
 %package -n %libkcal_slox
 Summary: KDE 4 library
@@ -1612,7 +1612,7 @@ KDE 4 library.
 
 #-----------------------------------------------------------------------------
 
-%define libkcal_xmlrpc %mklibname kcal_xmlrpc 5
+%define libkcal_xmlrpc %mklibname kcal_xmlrpc 4
 
 %package -n %libkcal_xmlrpc
 Summary: KDE 4 library
@@ -1630,7 +1630,7 @@ KDE 4 library.
 
 #-----------------------------------------------------------------------------
 
-%define libkcalkolab %mklibname kcalkolab 5
+%define libkcalkolab %mklibname kcalkolab 4
 
 %package -n %libkcalkolab
 Summary: KDE 4 library
@@ -1648,7 +1648,7 @@ KDE 4 library.
 
 #-----------------------------------------------------------------------------
 
-%define libkgroupwarebase %mklibname kgroupwarebase 5
+%define libkgroupwarebase %mklibname kgroupwarebase 4
 
 %package -n %libkgroupwarebase
 Summary: KDE 4 library
@@ -1666,7 +1666,7 @@ KDE 4 library.
 
 #-----------------------------------------------------------------------------
 
-%define libkgroupwaredav %mklibname kgroupwaredav 5
+%define libkgroupwaredav %mklibname kgroupwaredav 4
 
 %package -n %libkgroupwaredav
 Summary: KDE 4 library
@@ -1684,7 +1684,7 @@ KDE 4 library.
 
 #-----------------------------------------------------------------------------
 
-%define libknotes_xmlrpc %mklibname knotes_xmlrpc 5
+%define libknotes_xmlrpc %mklibname knotes_xmlrpc 4
 
 %package -n %libknotes_xmlrpc
 Summary: KDE 4 library
@@ -1702,7 +1702,7 @@ KDE 4 library.
 
 #-----------------------------------------------------------------------------
 
-%define libknoteskolab %mklibname knoteskolab 5
+%define libknoteskolab %mklibname knoteskolab 4
 
 %package -n %libknoteskolab
 Summary: KDE 4 library
@@ -1720,7 +1720,7 @@ KDE 4 library.
 
 #-----------------------------------------------------------------------------
 
-%define libkslox %mklibname kslox 5
+%define libkslox %mklibname kslox 4
 
 %package -n %libkslox
 Summary: KDE 4 library
@@ -1823,7 +1823,7 @@ Dialog KDE base widgets
 
 #-----------------------------------------------------------------------------
 
-%define libqgpgme %mklibname qgpgme 5
+%define libqgpgme %mklibname qgpgme 4
 
 %package -n %libqgpgme
 Summary: KDE 4 library
@@ -1864,7 +1864,7 @@ Dialog KDE base widgets
 
 #-----------------------------------------------------------------------------
 
-%define libmaildir %mklibname maildir 5
+%define libmaildir %mklibname maildir 4
 
 %package -n %libmaildir
 Summary: KDE 4 library
@@ -1963,16 +1963,7 @@ This package contains header files needed if you wish to build applications base
 %setup -q -n kdepim-%version
 
 %build
-%cmake_kde4 \
-%if %use_enable_final
-      -DKDE4_ENABLE_FINAL=ON \
-%endif
-%if %use_enable_pie
-      -DKDE4_ENABLE_FPIE=ON \
-%endif
-%if %unstable
-      -DCMAKE_BUILD_TYPE=debugfull
-%endif
+%cmake_kde4
 
 %make
 

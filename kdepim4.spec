@@ -7,9 +7,9 @@
 %define unstable 1
 %{?_unstable: %{expand: %%global unstable 1}}
 
-%define branch 0
+%define branch 1
 %{?_branch: %{expand: %%global branch 1}}
-%define revision 694342
+%define revision 698242
 
 %if %unstable
 %define dont_strip 1
@@ -42,7 +42,7 @@ BuildRequires: libncurses-devel
 BuildRequires: readline-devel
 BuildRequires: pilot-link-devel
 BuildRequires: libgpg-error-devel
-BuildRequires: gnokii-devel
+BuildRequires: gnokii-devel >= 0.6.18
 BuildRequires: libxml2-utils
 BuildRequires: gnupg
 BuildRequires: bluez-devel 
@@ -96,6 +96,8 @@ Information Management applications for the K Desktop Environment.
 Summary: Core files for kdepim
 Group: Graphical desktop/KDE	
 Requires: kdelibs4-core
+Obsoletes: libkdepim42-common
+Obsoletes: kdepim4-common
 
 %description core
 Core files fro kdepim.
@@ -117,6 +119,7 @@ Core files fro kdepim.
 %package -n %libkode
 Summary: KDE 4 library
 Group: System/Libraries
+Obsoletes: %{_lib}kdepim42-common
 
 %description -n %libkode
 KDE 4 library.
@@ -135,6 +138,7 @@ KDE 4 library.
 %package -n %libkschema
 Summary: KDE 4 library
 Group: System/Libraries
+Obsoletes: %{_lib}kdepim42-common
 
 %description -n %libkschema
 KDE 4 library.
@@ -153,6 +157,7 @@ KDE 4 library.
 %package -n %libkschemawidgets
 Summary: KDE 4 library
 Group: System/Libraries
+Obsoletes: %{_lib}kdepim42-common
 
 %description -n %libkschemawidgets
 KDE 4 library.
@@ -171,6 +176,7 @@ KDE 4 library.
 %package -n %libkxmlcommon
 Summary: KDE 4 library
 Group: System/Libraries
+Obsoletes: %{_lib}kdepim42-common
 
 %description -n %libkxmlcommon
 KDE 4 library.
@@ -189,6 +195,7 @@ KDE 4 library.
 %package -n %libschema
 Summary: KDE 4 library
 Group: System/Libraries
+Obsoletes: %{_lib}kdepim42-common
 
 %description -n %libschema
 KDE 4 library.
@@ -207,6 +214,7 @@ KDE 4 library.
 %package -n %libwscl
 Summary: KDE 4 library
 Group: System/Libraries
+Obsoletes: %{_lib}kdepim42-common
 
 %description -n %libwscl
 KDE 4 library.
@@ -225,6 +233,7 @@ KDE 4 library.
 %package -n %libwsdl
 Summary: KDE 4 library
 Group: System/Libraries
+Obsoletes: %{_lib}kdepim42-common
 
 %description -n %libwsdl
 KDE 4 library.
@@ -266,6 +275,7 @@ Dialog KDE base widgets
 %package -n %libakonadi
 Summary: KDE 4 library
 Group: System/Libraries
+Obsoletes: %{_lib}kdepim42-common
 
 %description -n %libakonadi
 KDE 4 library.
@@ -284,6 +294,7 @@ KDE 4 library.
 %package -n %libakonadicomponents
 Summary: KDE 4 library
 Group: System/Libraries
+Obsoletes: %{_lib}kdepim42-common
 
 %description -n %libakonadicomponents
 KDE 4 library.
@@ -302,6 +313,7 @@ KDE 4 library.
 %package -n %libakonadiprivate
 Summary: KDE 4 library
 Group: System/Libraries
+Obsoletes: %{_lib}kdepim42-common
 
 %description -n %libakonadiprivate
 KDE 4 library.
@@ -320,6 +332,7 @@ KDE 4 library.
 %package -n %libakonadisearchprovider
 Summary: KDE 4 library
 Group: System/Libraries
+Obsoletes: %{_lib}kdepim42-common
 
 %description -n %libakonadisearchprovider
 KDE 4 library.
@@ -338,6 +351,7 @@ KDE 4 library.
 %package -n %libkabcakonadi
 Summary: KDE 4 library
 Group: System/Libraries
+Obsoletes: %{_lib}kdepim42-common
 
 %description -n %libkabcakonadi
 KDE 4 library.
@@ -356,6 +370,7 @@ KDE 4 library.
 %package -n %libkmimeakonadi
 Summary: KDE 4 library
 Group: System/Libraries
+Obsoletes: %{_lib}kdepim42-common
 
 %description -n %libkmimeakonadi
 KDE 4 library.
@@ -380,18 +395,9 @@ Dialog KDE base widgets
 
 %files -n kde4-akonadi
 %defattr(-,root,root)
-%_kde_bindir/akonadi
 %_kde_bindir/akonamail
 %_kde_bindir/akonadi
-%_kde_bindir/akonadi_control
-%_kde_bindir/akonadi_ical_resource
-%_kde_bindir/akonadi_knut_resource
-%_kde_bindir/akonadi_maildir_resource
-%_kde_bindir/akonadi_mailthreader_agent
-%_kde_bindir/akonadi_message_searchprovider
-%_kde_bindir/akonadi_nntp_resource
-%_kde_bindir/akonadi_strigi_searchprovider
-%_kde_bindir/akonadi_vcard_resource
+%_kde_bindir/akonadi_*
 %_kde_bindir/akonadiconsole
 %_kde_bindir/akonadiserver
 %_kde_bindir/thememain
@@ -399,19 +405,17 @@ Dialog KDE base widgets
 %_kde_bindir/kabcviewer
 %_kde_bindir/kagenda
 %_kde_appsdir/akonadi
+%_kde_appsdir/desktoptheme/default/widgets/akonadi.*
+%_kde_datadir/kde4/services/kresources/kcal/blog.desktop
+%_kde_datadir/kde4/services/plasma-applet-plasmobiff.desktop
+%_kde_datadir/kde4/services/plasma-engine-akonadi.desktop
 %_kde_datadir/dbus-1/services/org.kde.Akonadi.Control.service
 %_kde_datadir/kde4/services/akonadi.protocol
-%_datadir/dbus-1/interfaces/org.kde.Akonadi.AgentManager.xml
-%_datadir/dbus-1/interfaces/org.kde.Akonadi.CachePolicyManager.xml
-%_datadir/dbus-1/interfaces/org.kde.Akonadi.NotificationManager.xml
-%_datadir/dbus-1/interfaces/org.kde.Akonadi.ProfileManager.xml
-%_datadir/dbus-1/interfaces/org.kde.Akonadi.SearchProviderManager.xml
-%_datadir/dbus-1/interfaces/org.kde.Akonadi.Tracer.xml
-%_datadir/dbus-1/interfaces/org.kde.Akonadi.TracerNotification.xml
+%_datadir/dbus-1/interfaces/org.kde.Akonadi.*
 %_kde_libdir/kde4/kio_akonadi.so
-%_kde_libdir/kde4/libakonadi_serializer_addressee.so
-%_kde_libdir/kde4/libakonadi_serializer_kcal.so
-%_kde_libdir/kde4/libakonadi_serializer_mail.so
+%_kde_libdir/kde4/libakonadi_*
+%_kde_libdir/kde4/plasma_engine_akonadi.so
+%_kde_libdir/kde4/plasma_applet_plasmobiff.so
 
 #-----------------------------------------------------------------------------
 
@@ -420,6 +424,8 @@ Dialog KDE base widgets
 %package -n %libkdepim
 Summary: KDE 4 library
 Group: System/Libraries
+Obsoletes: %{_lib}kdepim42-common
+Obsoletes: %{_lib}kdepim42-index
 
 %description -n %libkdepim
 KDE 4 library.
@@ -444,6 +450,7 @@ KDE 4 library.
 %package -n %libkholidays
 Summary: KDE 4 library
 Group: System/Libraries
+Obsoletes: %{_lib}kdepim42-common
 
 %description -n %libkholidays
 KDE 4 library.
@@ -463,6 +470,7 @@ KDE 4 library.
 %package -n %libkpgp
 Summary: KDE 4 library
 Group: System/Libraries
+Obsoletes: %{_lib}kdepim42-common
 
 %description -n %libkpgp
 KDE 4 library.
@@ -508,6 +516,7 @@ Dialog KDE base widgets
 %package -n %libksieve
 Summary: KDE 4 library
 Group: System/Libraries
+Obsoletes: %{_lib}kdepim42-common
 
 %description -n %libksieve
 KDE 4 library.
@@ -526,6 +535,7 @@ KDE 4 library.
 %package -n %libmimelib
 Summary: KDE 4 library
 Group: System/Libraries
+Obsoletes: %{_lib}kdepim42-common
 
 %description -n %libmimelib
 KDE 4 library.
@@ -544,6 +554,7 @@ KDE 4 library.
 %package -n %libakregatorinterfaces
 Summary: KDE 4 library
 Group: System/Libraries
+Obsoletes: %{_lib}kdepim42-common
 
 %description -n %libakregatorinterfaces
 KDE 4 library.
@@ -562,6 +573,7 @@ KDE 4 library.
 %package -n %libakregatorprivate
 Summary: KDE 4 library
 Group: System/Libraries
+Obsoletes: %{_lib}kdepim42-common
 
 %description -n %libakregatorprivate
 KDE 4 library.
@@ -606,6 +618,7 @@ Dialog KDE base widgets
 %package -n %libkitchensyncprivate
 Summary: KDE 4 library
 Group: System/Libraries
+Obsoletes: %{_lib}kdepim42-common
 
 %description -n %libkitchensyncprivate
 KDE 4 library.
@@ -624,6 +637,7 @@ KDE 4 library.
 %package -n %libqopensync
 Summary: KDE 4 library
 Group: System/Libraries
+Obsoletes: %{_lib}kdepim42-common
 
 %description -n %libqopensync
 KDE 4 library.
@@ -660,6 +674,8 @@ Dialog KDE base widgets
 %package -n %libknodecommon
 Summary: KDE 4 library
 Group: System/Libraries
+Obsoletes: %{_lib}kdepim42-common
+Obsoletes: %{_lib}kdepim42-knode
 
 %description -n %libknodecommon
 KDE 4 library.
@@ -707,6 +723,7 @@ Dialog KDE base widgets
 %package -n %libkabinterfaces
 Summary: KDE 4 library
 Group: System/Libraries
+Obsoletes: %{_lib}kdepim42-common
 
 %description -n %libkabinterfaces
 KDE 4 library.
@@ -725,6 +742,8 @@ KDE 4 library.
 %package -n %libkaddressbook
 Summary: KDE 4 library
 Group: System/Libraries
+Obsoletes: %{_lib}kdepim42-common
+Obsoletes: %{_lib}kdepim42-kaddressbook
 
 %description -n %libkaddressbook
 KDE 4 library.
@@ -775,6 +794,7 @@ Dialog KDE base widgets
 %package -n %libkalarm_resources
 Summary: KDE 4 library
 Group: System/Libraries
+Obsoletes: %{_lib}kdepim42-common
 
 %description -n %libkalarm_resources
 KDE 4 library.
@@ -873,6 +893,7 @@ Dialog KDE base widgets
 %package -n %libkmailprivate
 Summary: KDE 4 library
 Group: System/Libraries
+Obsoletes: %{_lib}kdepim42-common
 
 %description -n %libkmailprivate
 KDE 4 library.
@@ -982,6 +1003,8 @@ Dialog KDE base widgets
 %package -n %libkontact
 Summary: KDE 4 library
 Group: System/Libraries
+Obsoletes: %{_lib}kdepim42-common
+Obsoletes: %{_lib}kdepim42-kontact
 
 %description -n %libkontact
 KDE 4 library.
@@ -1000,6 +1023,7 @@ KDE 4 library.
 %package -n %libkpinterfaces
 Summary: KDE 4 library
 Group: System/Libraries
+Obsoletes: %{_lib}kdepim42-common
 
 %description -n %libkpinterfaces
 KDE 4 library.
@@ -1059,6 +1083,7 @@ Dialog KDE base widgets
 %package -n %libkocorehelper
 Summary: KDE 4 library
 Group: System/Libraries
+Obsoletes: %{_lib}kdepim42-common
 
 %description -n %libkocorehelper
 KDE 4 library.
@@ -1077,6 +1102,7 @@ KDE 4 library.
 %package -n %libkorg_stdprinting
 Summary: KDE 4 library
 Group: System/Libraries
+Obsoletes: %{_lib}kdepim42-common
 
 %description -n %libkorg_stdprinting
 KDE 4 library.
@@ -1095,6 +1121,8 @@ KDE 4 library.
 %package -n %libkorganizer
 Summary: KDE 4 library
 Group: System/Libraries
+Obsoletes: %{_lib}kdepim42-common
+Obsoletes: %{_lib}kdepim42-korganizer
 
 %description -n %libkorganizer
 KDE 4 library.
@@ -1113,6 +1141,7 @@ KDE 4 library.
 %package -n %libkorganizer_calendar
 Summary: KDE 4 library
 Group: System/Libraries
+Obsoletes: %{_lib}kdepim42-common
 
 %description -n %libkorganizer_calendar
 KDE 4 library.
@@ -1131,6 +1160,7 @@ KDE 4 library.
 %package -n %libkorganizer_eventviewer
 Summary: KDE 4 library
 Group: System/Libraries
+Obsoletes: %{_lib}kdepim42-common
 
 %description -n %libkorganizer_eventviewer
 KDE 4 library.
@@ -1149,6 +1179,7 @@ KDE 4 library.
 %package -n %libkorganizer_interfaces
 Summary: KDE 4 library
 Group: System/Libraries
+Obsoletes: %{_lib}kdepim42-common
 
 %description -n %libkorganizer_interfaces
 KDE 4 library.
@@ -1206,6 +1237,7 @@ Dialog KDE base widgets
 %package -n %libkmobiletools
 Summary: KDE 4 library
 Group: System/Libraries
+Obsoletes: %{_lib}kdepim42-common
 
 %description -n %libkmobiletools
 KDE 4 library.
@@ -1224,6 +1256,7 @@ KDE 4 library.
 %package -n %libkmobiletools_at
 Summary: KDE 4 library
 Group: System/Libraries
+Obsoletes: %{_lib}kdepim42-common
 
 %description -n %libkmobiletools_at
 KDE 4 library.
@@ -1242,6 +1275,7 @@ KDE 4 library.
 %package -n %libkmobiletoolsengineui
 Summary: KDE 4 library
 Group: System/Libraries
+Obsoletes: %{_lib}kdepim42-common
 
 %description -n %libkmobiletoolsengineui
 KDE 4 library.
@@ -1276,7 +1310,6 @@ Dialog KDE base widgets
 %_kde_datadir/kde4/services/kmobiletools_mainpart.desktop
 %_kde_datadir/kde4/services/fake_engine.desktop
 %_kde_datadir/kde4/servicetypes/kmobiletoolsengine.desktop
-%_kde_libdir/kde4/libakonadi_serializer_sms.so
 %_kde_libdir/kde4/libkmobiletoolsmainpart.so
 %_kde_docdir/HTML/en/kmobiletools
 
@@ -1307,6 +1340,8 @@ Dialog KDE base widgets
 %package -n %libkpilot
 Summary: KDE 4 library
 Group: System/Libraries
+Obsoletes: %{_lib}kdepim42-common
+Obsoletes: %{_lib}kdepim42-kpilot
 
 %description -n %libkpilot
 KDE 4 library.
@@ -1343,23 +1378,14 @@ Dialog KDE base widgets
 %_kde_datadir/config.kcfg/popmail.kcfg
 %_kde_datadir/config.kcfg/timeconduit.kcfg
 %_kde_datadir/config.kcfg/vcalconduitbase.kcfg
+%_kde_datadir/config.kcfg/keyringconduit.kcfg
 %_kde_datadir/kde4/services/kpilot_config.desktop
-%_kde_datadir/kde4/services/memofile-conduit.desktop
-%_kde_datadir/kde4/services/notepad-conduit.desktop
-%_kde_datadir/kde4/services/null-conduit.desktop
-%_kde_datadir/kde4/services/popmail-conduit.desktop
+%_kde_datadir/kde4/services/*-conduit.desktop
+%_kde_datadir/kde4/services/kpilot-conduit-keyring.desktop
 %_kde_datadir/kde4/services/time_conduit.desktop
-%_kde_datadir/kde4/services/todo-conduit.desktop
-%_kde_datadir/kde4/services/vcal-conduit.desktop
 %_kde_datadir/kde4/servicetypes/kpilotconduit.desktop
 %_kde_libdir/kde4/kcm_kpilot.so
-%_kde_libdir/kde4/libconduit_memofile.so
-%_kde_libdir/kde4/libconduit_notepad.so
-%_kde_libdir/kde4/libconduit_null.so
-%_kde_libdir/kde4/libconduit_popmail.so
-%_kde_libdir/kde4/libconduit_time.so
-%_kde_libdir/kde4/libconduit_todo.so
-%_kde_libdir/kde4/libconduit_vcal.so
+%_kde_libdir/kde4/kpilot_*
 %_kde_docdir/HTML/en/kpilot
 
 #-----------------------------------------------------------------------------
@@ -1369,6 +1395,7 @@ Dialog KDE base widgets
 %package -n %libkabc_groupdav
 Summary: KDE 4 library
 Group: System/Libraries
+Obsoletes: %{_lib}kdepim42-common
 
 %description -n %libkabc_groupdav
 KDE 4 library.
@@ -1387,6 +1414,7 @@ KDE 4 library.
 %package -n %libkabc_slox
 Summary: KDE 4 library
 Group: System/Libraries
+Obsoletes: %{_lib}kdepim42-common
 
 %description -n %libkabc_slox
 KDE 4 library.
@@ -1405,6 +1433,7 @@ KDE 4 library.
 %package -n %libkabc_xmlrpc
 Summary: KDE 4 library
 Group: System/Libraries
+Obsoletes: %{_lib}kdepim42-common
 
 %description -n %libkabc_xmlrpc
 KDE 4 library.
@@ -1423,6 +1452,7 @@ KDE 4 library.
 %package -n %libkabckolab
 Summary: KDE 4 library
 Group: System/Libraries
+Obsoletes: %{_lib}kdepim42-common
 
 %description -n %libkabckolab
 KDE 4 library.
@@ -1441,6 +1471,7 @@ KDE 4 library.
 %package -n %libkcal_groupdav
 Summary: KDE 4 library
 Group: System/Libraries
+Obsoletes: %{_lib}kdepim42-common
 
 %description -n %libkcal_groupdav
 KDE 4 library.
@@ -1454,11 +1485,31 @@ KDE 4 library.
 
 #-----------------------------------------------------------------------------
 
+%define libkcal_resourceblog %mklibname kcal_resourceblog 4
+
+%package -n %libkcal_resourceblog
+Summary: KDE 4 library
+Group: System/Libraries
+Obsoletes: %{_lib}kdepim42-common
+
+%description -n %libkcal_resourceblog
+KDE 4 library.
+
+%post -n %libkcal_resourceblog -p /sbin/ldconfig
+%postun -n %libkcal_resourceblog -p /sbin/ldconfig
+
+%files -n %libkcal_resourceblog
+%defattr(-,root,root)
+%_kde_libdir/libkcal_resourceblog.so.*
+
+#-----------------------------------------------------------------------------
+
 %define libkcal_resourceremote %mklibname kcal_resourceremote 4
 
 %package -n %libkcal_resourceremote
 Summary: KDE 4 library
 Group: System/Libraries
+Obsoletes: %{_lib}kdepim42-common
 
 %description -n %libkcal_resourceremote
 KDE 4 library.
@@ -1477,6 +1528,7 @@ KDE 4 library.
 %package -n %libkcal_slox
 Summary: KDE 4 library
 Group: System/Libraries
+Obsoletes: %{_lib}kdepim42-common
 
 %description -n %libkcal_slox
 KDE 4 library.
@@ -1495,6 +1547,7 @@ KDE 4 library.
 %package -n %libkcal_xmlrpc
 Summary: KDE 4 library
 Group: System/Libraries
+Obsoletes: %{_lib}kdepim42-common
 
 %description -n %libkcal_xmlrpc
 KDE 4 library.
@@ -1513,6 +1566,7 @@ KDE 4 library.
 %package -n %libkcalkolab
 Summary: KDE 4 library
 Group: System/Libraries
+Obsoletes: %{_lib}kdepim42-common
 
 %description -n %libkcalkolab
 KDE 4 library.
@@ -1531,6 +1585,7 @@ KDE 4 library.
 %package -n %libkgroupwarebase
 Summary: KDE 4 library
 Group: System/Libraries
+Obsoletes: %{_lib}kdepim42-common
 
 %description -n %libkgroupwarebase
 KDE 4 library.
@@ -1549,6 +1604,7 @@ KDE 4 library.
 %package -n %libkgroupwaredav
 Summary: KDE 4 library
 Group: System/Libraries
+Obsoletes: %{_lib}kdepim42-common
 
 %description -n %libkgroupwaredav
 KDE 4 library.
@@ -1567,6 +1623,7 @@ KDE 4 library.
 %package -n %libknotes_xmlrpc
 Summary: KDE 4 library
 Group: System/Libraries
+Obsoletes: %{_lib}kdepim42-common
 
 %description -n %libknotes_xmlrpc
 KDE 4 library.
@@ -1585,6 +1642,7 @@ KDE 4 library.
 %package -n %libknoteskolab
 Summary: KDE 4 library
 Group: System/Libraries
+Obsoletes: %{_lib}kdepim42-common
 
 %description -n %libknoteskolab
 KDE 4 library.
@@ -1603,6 +1661,7 @@ KDE 4 library.
 %package -n %libkslox
 Summary: KDE 4 library
 Group: System/Libraries
+Obsoletes: %{_lib}kdepim42-common
 
 %description -n %libkslox
 KDE 4 library.
@@ -1621,6 +1680,7 @@ KDE 4 library.
 %package -n %libakonadiprotocol
 Summary: KDE 4 library
 Group: System/Libraries
+Obsoletes: %{_lib}kdepim42-common
 
 %description -n %libakonadiprotocol
 KDE 4 library.
@@ -1639,6 +1699,7 @@ KDE 4 library.
 %package -n %libkabcommon
 Summary: KDE 4 library
 Group: System/Libraries
+Obsoletes: %{_lib}kdepim42-common
 
 %description -n %libkabcommon
 KDE 4 library.
@@ -1657,6 +1718,7 @@ KDE 4 library.
 %package -n %libkcal_resourcefeatureplan
 Summary: KDE 4 library
 Group: System/Libraries
+Obsoletes: %{_lib}kdepim42-common
 
 %description -n %libkcal_resourcefeatureplan
 KDE 4 library.
@@ -1676,6 +1738,7 @@ KDE 4 library.
 %package -n %libkfeed
 Summary: KDE 4 library
 Group: System/Libraries
+Obsoletes: %{_lib}kdepim42-common
 
 %description -n %libkfeed
 KDE 4 library.
@@ -1694,6 +1757,7 @@ KDE 4 library.
 %package -n %libkleo
 Summary: KDE 4 library
 Group: System/Libraries
+Obsoletes: %{_lib}kdepim42-common
 
 %description -n %libkleo
 KDE 4 library.
@@ -1713,6 +1777,7 @@ KDE 4 library.
 %package -n %libkmobiletools_fake
 Summary: KDE 4 library
 Group: System/Libraries
+Obsoletes: %{_lib}kdepim42-common
 
 %description -n %libkmobiletools_fake
 KDE 4 library.
@@ -1743,27 +1808,14 @@ Dialog KDE base widgets
 %_kde_datadir/kde4/services/kresources/kabc/kabc_slox.desktop
 %_kde_datadir/kde4/services/kresources/kabc/kabc_xmlrpc.desktop
 %_kde_datadir/kde4/services/kresources/kabc/kolab.desktop
-%_kde_datadir/kde4/services/kresources/kcal/kabc.desktop
-%_kde_datadir/kde4/services/kresources/kcal/kcal_groupdav.desktop
-%_kde_datadir/kde4/services/kresources/kcal/kcal_opengroupware.desktop
-%_kde_datadir/kde4/services/kresources/kcal/kcal_ox.desktop
-%_kde_datadir/kde4/services/kresources/kcal/kcal_resourcefeatureplan.desktop
-%_kde_datadir/kde4/services/kresources/kcal/kcal_slox.desktop
-%_kde_datadir/kde4/services/kresources/kcal/kcal_xmlrpc.desktop
-%_kde_datadir/kde4/services/kresources/kcal/kolab.desktop
-%_kde_datadir/kde4/services/kresources/kcal/remote.desktop
+%_kde_datadir/kde4/services/kresources/kcal/*
 %_kde_datadir/kde4/services/kresources/knotes/knotes_xmlrpc.desktop
 %_kde_datadir/kde4/services/kresources/knotes/kolabresource.desktop
 %_kde_libdir/kde4/kabc_groupdav.so
 %_kde_libdir/kde4/kabc_kolab.so
 %_kde_libdir/kde4/kabc_slox.so
 %_kde_libdir/kde4/kabc_xmlrpc.so
-%_kde_libdir/kde4/kcal_groupdav.so
-%_kde_libdir/kde4/kcal_kabc.so
-%_kde_libdir/kde4/kcal_kolab.so
-%_kde_libdir/kde4/kcal_remote.so
-%_kde_libdir/kde4/kcal_slox.so
-%_kde_libdir/kde4/kcal_xmlrpc.so
+%_kde_libdir/kde4/kcal_*
 %_kde_libdir/kde4/knotes_kolab.so
 %_kde_libdir/kde4/knotes_xmlrpc.so
 
@@ -1774,6 +1826,7 @@ Summary: Dialog KDE base widgets
 Group: Graphical desktop/KDE
 Requires: %name-core = %epoch:%version
 Obsoletes: %name-ktnef
+Obsoletes: %{_lib}kdepim42-ktnef
 
 %description -n kde4-ktnef
 Dialog KDE base widgets
@@ -1801,9 +1854,7 @@ Dialog KDE base widgets
 %_kde_appsdir/kmail/plugins/bodypartformatter/text_vcard.desktop
 %_kde_appsdir/kmail/plugins/bodypartformatter/text_xdiff.desktop
 %_kde_libdir/kde4/ktexteditorkabcbridge.so
-%_kde_libdir/kde4/libkmail_bodypartformatter_text_calendar.so
-%_kde_libdir/kde4/libkmail_bodypartformatter_text_vcard.so
-%_kde_libdir/kde4/libkmail_bodypartformatter_text_xdiff.so
+%_kde_libdir/kde4/libkmail_*
 
 #-----------------------------------------------------------------------------
 
@@ -1835,6 +1886,7 @@ Dialog KDE base widgets
 %package -n %libmaildir
 Summary: KDE 4 library
 Group: System/Libraries
+Obsoletes: %{_lib}kdepim42-common
 
 %description -n %libmaildir
 KDE 4 library.

@@ -4,12 +4,15 @@
 %define use_enable_final 0
 %{?_no_enable_final: %{expand: %%global use_enable_final 0}}
 
+%define with_kitchensync 0
+%{?_with_kitchensync: %{expand: %%global with_kitchensync 1}}
+
 %define unstable 1
 %{?_unstable: %{expand: %%global unstable 1}}
 
 %define branch 1
 %{?_branch: %{expand: %%global branch 1}}
-%define revision 698242
+%define revision 705333
 
 %if %unstable
 %define dont_strip 1
@@ -50,13 +53,17 @@ BuildRequires: libsasl-devel
 BuildRequires: pilot-link-devel
 BuildRequires: libxslt-proc
 BuildRequires: boost-devel
-BuildRequires: opensync-devel
+%if %{with_kitchensync}
+BuildRequires: opensync-devel >= 0.31
+%endif
 Requires: %name-core
 Requires: kde4-kode
 Requires: kde4-akonadi
 Requires: kde4-kleopatra
 Requires: kde4-akregator
+%if %{with_kitchensync}
 Requires: kde4-kitchensync
+%endif
 Requires: kde4-knode
 Requires: kde4-kaddressbook
 Requires: kde4-kalarm
@@ -81,7 +88,9 @@ Information Management applications for the K Desktop Environment.
            kalarm.
 	- kaplan: A shell for the PIM apps, still experimental.
 	- karm: Time tracker.
+%if %{with_kitchensync}
 	- kitchensync: Synchronisation framework, still under heavy development.
+%endif
 	- kfile-plugins: vCard KFIleItem plugin.
 	- knotes: yellow notes application
 	- konsolecalendar: Command line tool for accessing calendar files.
@@ -613,6 +622,8 @@ Dialog KDE base widgets
 
 #-----------------------------------------------------------------------------
 
+%if %{with_kitchensync}
+
 %define libkitchensyncprivate %mklibname kitchensyncprivate 4.2.0
 
 %package -n %libkitchensyncprivate
@@ -666,6 +677,8 @@ Dialog KDE base widgets
 %_kde_datadir/applications/kde4/kitchensync.desktop
 %_kde_appsdir/kitchensync
 %_kde_libdir/kde4/libkitchensyncpart.so
+
+%endif
 
 #-----------------------------------------------------------------------------
 
@@ -1378,10 +1391,8 @@ Dialog KDE base widgets
 %_kde_datadir/config.kcfg/popmail.kcfg
 %_kde_datadir/config.kcfg/timeconduit.kcfg
 %_kde_datadir/config.kcfg/vcalconduitbase.kcfg
-%_kde_datadir/config.kcfg/keyringconduit.kcfg
 %_kde_datadir/kde4/services/kpilot_config.desktop
 %_kde_datadir/kde4/services/*-conduit.desktop
-%_kde_datadir/kde4/services/kpilot-conduit-keyring.desktop
 %_kde_datadir/kde4/services/time_conduit.desktop
 %_kde_datadir/kde4/servicetypes/kpilotconduit.desktop
 %_kde_libdir/kde4/kcm_kpilot.so
@@ -1925,8 +1936,10 @@ Requires: %libksieve = %epoch:%version
 Requires: %libmimelib = %epoch:%version
 Requires: %libakregatorinterfaces = %epoch:%version
 Requires: %libakregatorprivate = %epoch:%version
+%if %{with_kitchensync}
 Requires: %libkitchensyncprivate = %epoch:%version
 Requires: %libqopensync = %epoch:%version
+%endif
 Requires: %libknodecommon = %epoch:%version
 Requires: %libkabinterfaces = %epoch:%version
 Requires: %libkaddressbook = %epoch:%version

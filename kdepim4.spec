@@ -10,7 +10,7 @@
 %define unstable 1
 %{?_unstable: %{expand: %%global unstable 1}}
 
-%define branch 1
+%define branch 0
 %{?_branch: %{expand: %%global branch 1}}
 %define revision 705333
 
@@ -20,7 +20,7 @@
 
 Name: kdepim4
 Summary: K Desktop Environment
-Version: 3.92.0
+Version: 3.93.0
 Release: %mkrel 1
 Epoch: 1
 Group: Graphical desktop/KDE
@@ -414,6 +414,8 @@ Dialog KDE base widgets
 %_kde_bindir/kabcviewer
 %_kde_bindir/kagenda
 %_kde_appsdir/akonadi
+%_kde_datadir/akonadi
+%_kde_datadir/config/akonadi
 %_kde_appsdir/desktoptheme/default/widgets/akonadi.*
 %_kde_datadir/kde4/services/kresources/kcal/blog.desktop
 %_kde_datadir/kde4/services/plasma-applet-plasmobiff.desktop
@@ -788,6 +790,7 @@ Dialog KDE base widgets
 %_kde_datadir/kde4/services/kabcustomfields.desktop
 %_kde_datadir/kde4/services/kabldapconfig.desktop
 %_kde_datadir/kde4/services/kaddressbook
+%_kde_datadir/kde4/services/addressbook_service.desktop
 %_kde_datadir/kde4/services/ldifvcardthumbnail.desktop
 %_kde_datadir/kde4/servicetypes/dbusaddressbook.desktop
 %_kde_datadir/kde4/servicetypes/kaddressbook*
@@ -818,6 +821,26 @@ KDE 4 library.
 %files -n %libkalarm_resources
 %defattr(-,root,root)
 %_kde_libdir/libkalarm_resources.so.*
+
+#-----------------------------------------------------------------------------
+
+%define libkmtaddressbook_service %mklibname kmtaddressbook_service 4
+
+%package -n %libkmtaddressbook_service
+Summary: KDE 4 library
+Group: System/Libraries
+Obsoletes: %{_lib}kdepim42-common
+
+%description -n %libkmtaddressbook_service
+KDE 4 library.
+
+%post -n %libkmtaddressbook_service -p /sbin/ldconfig
+%postun -n %libkmtaddressbook_service -p /sbin/ldconfig
+
+%files -n %libkmtaddressbook_service
+%defattr(-,root,root)
+%_kde_libdir/libkmtaddressbook_service.so.*
+
 
 #-----------------------------------------------------------------------------
 
@@ -1322,7 +1345,7 @@ Dialog KDE base widgets
 %_kde_datadir/kde4/services/at_engine.desktop
 %_kde_datadir/kde4/services/kmobiletools_mainpart.desktop
 %_kde_datadir/kde4/services/fake_engine.desktop
-%_kde_datadir/kde4/servicetypes/kmobiletoolsengine.desktop
+%_kde_datadir/kde4/servicetypes/kmobile*
 %_kde_libdir/kde4/libkmobiletoolsmainpart.so
 %_kde_docdir/HTML/en/kmobiletools
 
@@ -1391,8 +1414,9 @@ Dialog KDE base widgets
 %_kde_datadir/config.kcfg/popmail.kcfg
 %_kde_datadir/config.kcfg/timeconduit.kcfg
 %_kde_datadir/config.kcfg/vcalconduitbase.kcfg
+%_kde_datadir/config.kcfg/keyringconduit.kcfg
 %_kde_datadir/kde4/services/kpilot_config.desktop
-%_kde_datadir/kde4/services/*-conduit.desktop
+%_kde_datadir/kde4/services/*-conduit* 
 %_kde_datadir/kde4/services/time_conduit.desktop
 %_kde_datadir/kde4/servicetypes/kpilotconduit.desktop
 %_kde_libdir/kde4/kcm_kpilot.so

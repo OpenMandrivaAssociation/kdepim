@@ -10,9 +10,9 @@
 %define unstable 1
 %{?_unstable: %{expand: %%global unstable 1}}
 
-%define branch 0
+%define branch 1
 %{?_branch: %{expand: %%global branch 1}}
-%define revision 705333
+%define revision 708397
 
 %if %unstable
 %define dont_strip 1
@@ -405,6 +405,8 @@ Dialog KDE base widgets
 %files -n kde4-akonadi
 %defattr(-,root,root)
 %_kde_bindir/akonamail
+%_kde_bindir/akonadictl 
+%_kde_bindir/kcontactmanager
 %_kde_bindir/akonadi
 %_kde_bindir/akonadi_*
 %_kde_bindir/akonadiconsole
@@ -416,17 +418,12 @@ Dialog KDE base widgets
 %_kde_appsdir/akonadi
 %_kde_datadir/akonadi
 %_kde_datadir/config/akonadi
-%_kde_appsdir/desktoptheme/default/widgets/akonadi.*
 %_kde_datadir/kde4/services/kresources/kcal/blog.desktop
-%_kde_datadir/kde4/services/plasma-applet-plasmobiff.desktop
-%_kde_datadir/kde4/services/plasma-engine-akonadi.desktop
 %_kde_datadir/dbus-1/services/org.kde.Akonadi.Control.service
 %_kde_datadir/kde4/services/akonadi.protocol
 %_datadir/dbus-1/interfaces/org.kde.Akonadi.*
 %_kde_libdir/kde4/kio_akonadi.so
 %_kde_libdir/kde4/libakonadi_*
-%_kde_libdir/kde4/plasma_engine_akonadi.so
-%_kde_libdir/kde4/plasma_applet_plasmobiff.so
 
 #-----------------------------------------------------------------------------
 

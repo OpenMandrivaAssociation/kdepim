@@ -35,6 +35,8 @@ Patch0: kdepim-fix_kpilot_conduit_base.patch
 Buildroot:	%_tmppath/%name-%version-%release-root
 BuildRequires: kdelibs4-devel
 BuildRequires: kdepimlibs4-devel
+# rely on kdebase for the plasma applet
+BuildRequires: kdebase4-workspace-devel 
 BuildRequires: gpgme-devel 
 BuildRequires: X11-devel 
 BuildRequires: flex 

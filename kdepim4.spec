@@ -56,6 +56,8 @@ BuildRequires: libsasl-devel
 BuildRequires: pilot-link-devel
 BuildRequires: libxslt-proc
 BuildRequires: boost-devel
+BuildRequires: qca2-devel
+BuildRequires: glib2-devel
 %if %{with_kitchensync}
 BuildRequires: opensync-devel >= 0.31
 %endif

@@ -58,6 +58,7 @@ BuildRequires: libxslt-proc
 BuildRequires: boost-devel
 BuildRequires: qca2-devel
 BuildRequires: glib2-devel
+BuildRequires: mysql-devel
 %if %{with_kitchensync}
 BuildRequires: opensync-devel >= 0.31
 %endif
@@ -275,6 +276,7 @@ Plasma engines and applets from %name
 %defattr(-,root,root)
 %_kde_libdir/kde4/plasma_*
 %_kde_datadir/kde4/services/plasma-*
+%_kde_libdir/kde4/plugins/sqldrivers/libqsqlmysqlembedded.so
 %_kde_appsdir/desktoptheme/default/widgets/akonadi.svg
 
 #-----------------------------------------------------------------------------
@@ -1870,7 +1872,6 @@ Dialog KDE base widgets
 %_kde_appsdir/kmail/plugins/bodypartformatter/text_calendar.desktop
 %_kde_appsdir/kmail/plugins/bodypartformatter/text_vcard.desktop
 %_kde_appsdir/kmail/plugins/bodypartformatter/text_xdiff.desktop
-%_kde_libdir/kde4/plugins/sqldrivers/libqsqlmysqlembedded.so
 %_kde_libdir/kde4/ktexteditorkabcbridge.so
 %_kde_libdir/kde4/libkmail_*
 

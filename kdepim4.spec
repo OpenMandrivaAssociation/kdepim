@@ -12,7 +12,7 @@
 
 %define branch 1
 %{?_branch: %{expand: %%global branch 1}}
-%define revision 714150
+%define revision 726734
 
 %if %unstable
 %define dont_strip 1
@@ -20,7 +20,7 @@
 
 Name: kdepim4
 Summary: K Desktop Environment
-Version: 3.93.0
+Version: 3.94.0
 Release: %mkrel 0.%revision.1
 Epoch: 2
 Group: Graphical desktop/KDE
@@ -443,6 +443,8 @@ Dialog KDE base widgets
 %_kde_datadir/config/akonadi
 %_kde_datadir/kde4/services/kresources/kcal/blog.desktop
 %_kde_datadir/dbus-1/services/org.kde.Akonadi.Control.service
+%_kde_datadir/applications/kde4/kcontactmanager.desktop
+%_kde_appsdir/kcontactmanager/kcontactmanagerui.rc
 %_kde_datadir/kde4/services/akonadi.protocol
 %_datadir/dbus-1/interfaces/org.kde.Akonadi.*
 %_kde_libdir/kde4/kio_akonadi.so
@@ -1868,6 +1870,7 @@ Dialog KDE base widgets
 %_kde_appsdir/kmail/plugins/bodypartformatter/text_calendar.desktop
 %_kde_appsdir/kmail/plugins/bodypartformatter/text_vcard.desktop
 %_kde_appsdir/kmail/plugins/bodypartformatter/text_xdiff.desktop
+%_kde_libdir/kde4/plugins/sqldrivers/libqsqlmysqlembedded.so
 %_kde_libdir/kde4/ktexteditorkabcbridge.so
 %_kde_libdir/kde4/libkmail_*
 

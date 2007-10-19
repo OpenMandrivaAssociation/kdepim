@@ -58,7 +58,7 @@ BuildRequires: libxslt-proc
 BuildRequires: boost-devel
 BuildRequires: qca2-devel
 BuildRequires: glib2-devel
-BuildRequires: mysql-devel
+BuildRequires: mysql-static-devel
 %if %{with_kitchensync}
 BuildRequires: opensync-devel >= 0.33
 %endif

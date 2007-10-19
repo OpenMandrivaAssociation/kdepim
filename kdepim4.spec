@@ -4,8 +4,8 @@
 %define use_enable_final 0
 %{?_no_enable_final: %{expand: %%global use_enable_final 0}}
 
-%define with_kitchensync 0
-%{?_with_kitchensync: %{expand: %%global with_kitchensync 1}}
+%define with_kitchensync 1
+%{?_with_kitchensync: %{expand: %%global with_kitchensync 0}}
 
 %define unstable 1
 %{?_unstable: %{expand: %%global unstable 1}}
@@ -60,7 +60,7 @@ BuildRequires: qca2-devel
 BuildRequires: glib2-devel
 BuildRequires: mysql-devel
 %if %{with_kitchensync}
-BuildRequires: opensync-devel >= 0.31
+BuildRequires: opensync-devel >= 0.33
 %endif
 Requires: %name-core
 Requires: kde4-kode

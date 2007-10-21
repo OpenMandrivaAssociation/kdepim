@@ -989,7 +989,6 @@ Dialog KDE base widgets
 %_datadir/dbus-1/interfaces/org.kde.kmail.kmailpart.xml
 %_datadir/dbus-1/interfaces/org.kde.kmail.mailcomposer.xml
 %_kde_libdir/kde4/kcm_kmail.so
-%_kde_libdir/kde4/libkmail_bodypartformatter_application_octetstream.so
 %_kde_libdir/kde4/libkmailpart.so
 %_kde_docdir/HTML/en/kmail
 
@@ -1859,11 +1858,12 @@ Dialog KDE base widgets
 
 #-----------------------------------------------------------------------------
 
-%package plugins
-Summary: Dialog KDE base widgets
-Group: Graphical desktop/KDE
-Requires: %name-core = %epoch:%version
+%package   plugins
+Summary:   Dialog KDE base widgets
+Group:     Graphical desktop/KDE
+Requires:  %name-core = %epoch:%version
 Obsoletes: %name-plugins < 1:3.93.0-1
+Conflicts: kde4-kmail <= 1:3.94.0-0.726734.2
 
 %description plugins
 Dialog KDE base widgets

@@ -21,7 +21,7 @@
 Name: kdepim4
 Summary: K Desktop Environment
 Version: 3.94.0
-Release: %mkrel 0.%revision.1
+Release: %mkrel 0.%revision.2
 Epoch: 2
 Group: Graphical desktop/KDE
 License: GPL
@@ -1748,7 +1748,6 @@ KDE 4 library.
 %files -n %libkcal_resourcefeatureplan
 %defattr(-,root,root)
 %_kde_libdir/libkcal_resourcefeatureplan.so.*
-%_kde_libdir/kde4/kcal_resourcefeatureplan_plugin.so
 
 #-----------------------------------------------------------------------------
 
@@ -1815,6 +1814,7 @@ Summary: Dialog KDE base widgets
 Group: Graphical desktop/KDE
 Requires: %name-core = %epoch:%version
 Obsoletes: %name-kresources < 1:3.93.0-1
+Conflicts: %{_lib}kcal_resourcefeatureplan4 < 3.93.0-0.726734.2
 
 %description kresources
 Dialog KDE base widgets
@@ -1830,6 +1830,7 @@ Dialog KDE base widgets
 %_kde_datadir/kde4/services/kresources/kcal/*
 %_kde_datadir/kde4/services/kresources/knotes/knotes_xmlrpc.desktop
 %_kde_datadir/kde4/services/kresources/knotes/kolabresource.desktop
+%_kde_libdir/kde4/kcal_resourcefeatureplan_plugin.so
 %_kde_libdir/kde4/kabc_groupdav.so
 %_kde_libdir/kde4/kabc_kolab.so
 %_kde_libdir/kde4/kabc_slox.so

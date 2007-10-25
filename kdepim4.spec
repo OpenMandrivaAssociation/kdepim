@@ -12,7 +12,7 @@
 
 %define branch 1
 %{?_branch: %{expand: %%global branch 1}}
-%define revision 726734
+%define revision 729215
 
 %if %unstable
 %define dont_strip 1
@@ -20,8 +20,8 @@
 
 Name: kdepim4
 Summary: K Desktop Environment
-Version: 3.94.0
-Release: %mkrel 0.%revision.2
+Version: 3.94.1
+Release: %mkrel 0.%revision.1
 Epoch: 2
 Group: Graphical desktop/KDE
 License: GPL
@@ -55,7 +55,7 @@ BuildRequires: bluez-devel
 BuildRequires: libsasl-devel
 BuildRequires: pilot-link-devel
 BuildRequires: libxslt-proc
-BuildRequires: boost-devel
+#BuildRequires: boost-devel
 BuildRequires: qca2-devel
 BuildRequires: glib2-devel
 BuildRequires: mysql-static-devel

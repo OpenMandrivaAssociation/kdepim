@@ -114,6 +114,7 @@ Group: Graphical desktop/KDE
 Requires: kdelibs4-core
 Obsoletes: libkdepim42-common < 1:3.93.0-1
 Obsoletes: kdepim4-common < 1:3.93.0-1
+Obsoletes: %{_lib}akonadisearchprovider4 < 2:3.94.1-0.729215.1
 
 %description core
 Core files fro kdepim.
@@ -358,25 +359,6 @@ KDE 4 library.
 %files -n %libakonadiprivate
 %defattr(-,root,root)
 %_kde_libdir/libakonadiprivate.so.*
-
-#-----------------------------------------------------------------------------
-
-%define libakonadisearchprovider %mklibname akonadisearchprovider 4
-
-%package -n %libakonadisearchprovider
-Summary: KDE 4 library
-Group: System/Libraries
-Obsoletes: %{_lib}kdepim42-common < 1:3.93.0-1
-
-%description -n %libakonadisearchprovider
-KDE 4 library.
-
-%post -n %libakonadisearchprovider -p /sbin/ldconfig
-%postun -n %libakonadisearchprovider -p /sbin/ldconfig
-
-%files -n %libakonadisearchprovider
-%defattr(-,root,root)
-%_kde_libdir/libakonadisearchprovider.so.*
 
 #-----------------------------------------------------------------------------
 
@@ -1269,6 +1251,10 @@ Dialog KDE base widgets
 %_kde_libdir/kde4/libkorg_*
 %_kde_libdir/kde4/libkorganizerpart.so
 
+%dir %_kde_docdir/HTML/en/korganizer
+%doc %_kde_docdir/HTML/en/korganizer/*.docbook
+%doc %_kde_docdir/HTML/en/korganizer/*.png
+%doc %_kde_docdir/HTML/en/korganizer/index.cache.bz2
 #-----------------------------------------------------------------------------
 
 %define libkmobiletools %mklibname kmobiletools 4
@@ -1829,7 +1815,6 @@ Dialog KDE base widgets
 %_kde_datadir/kde4/services/kresources/kcal/*
 %_kde_datadir/kde4/services/kresources/knotes/knotes_xmlrpc.desktop
 %_kde_datadir/kde4/services/kresources/knotes/kolabresource.desktop
-%_kde_libdir/kde4/kcal_resourcefeatureplan_plugin.so
 %_kde_libdir/kde4/kabc_groupdav.so
 %_kde_libdir/kde4/kabc_kolab.so
 %_kde_libdir/kde4/kabc_slox.so
@@ -1935,7 +1920,6 @@ Requires: %libwsdl = %epoch:%version
 Requires: %libakonadi = %epoch:%version
 Requires: %libakonadicomponents = %epoch:%version
 Requires: %libakonadiprivate = %epoch:%version
-Requires: %libakonadisearchprovider = %epoch:%version
 Requires: %libkabcakonadi = %epoch:%version
 Requires: %libkmimeakonadi = %epoch:%version
 Requires: %libkdepim = %epoch:%version

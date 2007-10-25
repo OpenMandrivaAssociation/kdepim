@@ -55,7 +55,7 @@ BuildRequires: bluez-devel
 BuildRequires: libsasl-devel
 BuildRequires: pilot-link-devel
 BuildRequires: libxslt-proc
-#BuildRequires: boost-devel
+BuildRequires: boost-devel
 BuildRequires: qca2-devel
 BuildRequires: glib2-devel
 BuildRequires: mysql-static-devel

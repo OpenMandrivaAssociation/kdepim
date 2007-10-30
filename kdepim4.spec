@@ -12,7 +12,7 @@
 
 %define branch 1
 %{?_branch: %{expand: %%global branch 1}}
-%define revision 729215
+%define revision 730680
 
 %if %unstable
 %define dont_strip 1
@@ -1257,25 +1257,6 @@ Dialog KDE base widgets
 %doc %_kde_docdir/HTML/en/korganizer/index.cache.bz2
 #-----------------------------------------------------------------------------
 
-%define libkmobiletools %mklibname kmobiletools 4
-
-%package -n %libkmobiletools
-Summary: KDE 4 library
-Group: System/Libraries
-Obsoletes: %{_lib}kdepim42-common < 1:3.93.0-1
-
-%description -n %libkmobiletools
-KDE 4 library.
-
-%post -n %libkmobiletools -p /sbin/ldconfig
-%postun -n %libkmobiletools -p /sbin/ldconfig
-
-%files -n %libkmobiletools
-%defattr(-,root,root)
-%_kde_libdir/libkmobiletools.so.*
-
-#-----------------------------------------------------------------------------
-
 %define libkmobiletoolsengineui %mklibname kmobiletoolsengineui 4
 
 %package -n %libkmobiletoolsengineui
@@ -1773,6 +1754,27 @@ KDE 4 library.
 %_kde_libdir/libkleo.so.*
 %_kde_appsdir/libkleopatra/*
 
+
+#-----------------------------------------------------------------------------
+
+%define libkmobiletoolslib %mklibname kmobiletoolslib 4
+
+%package -n %libkmobiletoolslib
+Summary: KDE 4 library
+Group: System/Libraries
+Obsoletes: %{_lib}kdepim42-common < 1:3.93.0-1
+Obsoletes: %{_lib}kmobiletools4 < 1:3.94.1-0.730680.1
+
+%description -n %libkmobiletoolslib
+KDE 4 library.
+
+%post -n %libkmobiletoolslib -p /sbin/ldconfig
+%postun -n %libkmobiletoolslib -p /sbin/ldconfig
+
+%files -n %libkmobiletoolslib
+%defattr(-,root,root)
+%_kde_libdir/libkmobiletoolslib.so.*
+
 #-----------------------------------------------------------------------------
 
 %define libkmobiletools_fake %mklibname kmobiletools_fake 4
@@ -1929,6 +1931,7 @@ Requires: %libksieve = %epoch:%version
 Requires: %libmimelib = %epoch:%version
 Requires: %libakregatorinterfaces = %epoch:%version
 Requires: %libakregatorprivate = %epoch:%version
+Requires: %libkmobiletoolslib = %epoch:%version
 %if %{with_kitchensync}
 Requires: %libkitchensyncprivate = %epoch:%version
 Requires: %libqopensync = %epoch:%version
@@ -1946,7 +1949,6 @@ Requires: %libkorganizer = %epoch:%version
 Requires: %libkorganizer_calendar = %epoch:%version
 Requires: %libkorganizer_eventviewer = %epoch:%version
 Requires: %libkorganizer_interfaces = %epoch:%version
-Requires: %libkmobiletools = %epoch:%version
 Requires: %libkmobiletoolsengineui = %epoch:%version
 Requires: %libkpilot = %epoch:%version
 Requires: %libkabc_groupdav = %epoch:%version

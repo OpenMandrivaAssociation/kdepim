@@ -1816,11 +1816,14 @@ Dialog KDE base widgets
 %_kde_datadir/kde4/services/kresources/kabc/kolab.desktop
 %_kde_datadir/kde4/services/kresources/kcal/*
 %_kde_datadir/kde4/services/kresources/knotes/knotes_xmlrpc.desktop
+%_kde_datadir/kde4/services/kresources/kabc/scalix.desktop
+%_kde_datadir/kde4/services/kresources/knotes/scalix.desktop
 %_kde_datadir/kde4/services/kresources/knotes/kolabresource.desktop
 %_kde_libdir/kde4/kabc_groupdav.so
 %_kde_libdir/kde4/kabc_kolab.so
 %_kde_libdir/kde4/kabc_slox.so
 %_kde_libdir/kde4/kabc_xmlrpc.so
+%_kde_libdir/kde4/kabc_scalix.so
 %_kde_libdir/kde4/kcal_*
 %_kde_libdir/kde4/knotes_kolab.so
 %_kde_libdir/kde4/knotes_xmlrpc.so
@@ -1880,11 +1883,16 @@ Dialog KDE base widgets
 %_kde_bindir/groupwarewizard
 %_kde_bindir/kolabwizard
 %_kde_bindir/sloxwizard
+%_kde_bindir/scalixwizard
+%_kde_libdir/kde4/kio_scalix.so
 %_kde_datadir/applications/kde4/groupwarewizard.desktop
 %_kde_datadir/config.kcfg/egroupware.kcfg
 %_kde_datadir/config.kcfg/groupwise.kcfg
 %_kde_datadir/config.kcfg/kolab.kcfg
 %_kde_datadir/config.kcfg/slox.kcfg
+%_kde_datadir/config.kcfg/scalix.kcfg
+%_kde_datadir/kde4/services/scalix.protocol
+%_kde_datadir/kde4/services/scalixs.protocol
 
 #-----------------------------------------------------------------------------
 
@@ -1904,6 +1912,64 @@ KDE 4 library.
 %files -n %libmaildir
 %defattr(-,root,root)
 %_kde_libdir/libmaildir.so.*
+
+#-----------------------------------------------------------------------------
+
+%define libkabcscalix %mklibname kabcscalix 4
+
+%package -n %libkabcscalix
+Summary: KDE 4 library
+Group: System/Libraries
+Obsoletes: %{_lib}kdepim42-common < 1:3.93.0-1
+
+%description -n %libkabcscalix
+KDE 4 library.
+
+%post -n %libkabcscalix -p /sbin/ldconfig
+%postun -n %libkabcscalix -p /sbin/ldconfig
+
+%files -n %libkabcscalix
+%defattr(-,root,root)
+%_kde_libdir/libkabcscalix.so.*
+
+
+#-----------------------------------------------------------------------------
+
+%define libkcalscalix %mklibname kcalscalix 4
+
+%package -n %libkcalscalix
+Summary: KDE 4 library
+Group: System/Libraries
+Obsoletes: %{_lib}kdepim42-common < 1:3.93.0-1
+
+%description -n %libkcalscalix
+KDE 4 library.
+
+%post -n %libkcalscalix -p /sbin/ldconfig
+%postun -n %libkcalscalix -p /sbin/ldconfig
+
+%files -n %libkcalscalix
+%defattr(-,root,root)
+%_kde_libdir/libkcalscalix.so.*
+
+#-----------------------------------------------------------------------------
+
+%define libknotesscalix %mklibname knotesscalix 4
+
+%package -n %libknotesscalix
+Summary: KDE 4 library
+Group: System/Libraries
+Obsoletes: %{_lib}kdepim42-common < 1:3.93.0-1
+
+%description -n %libknotesscalix
+KDE 4 library.
+
+%post -n %libknotesscalix -p /sbin/ldconfig
+%postun -n %libknotesscalix -p /sbin/ldconfig
+
+%files -n %libknotesscalix
+%defattr(-,root,root)
+%_kde_libdir/libknotesscalix.so.*
 
 #-----------------------------------------------------------------------------
 
@@ -1972,6 +2038,9 @@ Requires: %libkfeed = %epoch:%version
 Requires: %libkleo = %epoch:%version
 Requires: %libkmobiletools_fake = %epoch:%version
 Requires: %libmaildir = %epoch:%version
+Requires: %libknotesscalix = %epoch:%version
+Requires: %libkabcscalix  = %epoch:%version
+Requires: %libkcalscalix  = %epoch:%version
 
 %description  devel
 This package contains header files needed if you wish to build applications based on kdepim.

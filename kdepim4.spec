@@ -12,7 +12,7 @@
 
 %define branch 1
 %{?_branch: %{expand: %%global branch 1}}
-%define revision 730680
+%define revision 731772
 
 %if %unstable
 %define dont_strip 1
@@ -20,7 +20,7 @@
 
 Name: kdepim4
 Summary: K Desktop Environment
-Version: 3.94.1
+Version: 3.95.1
 Release: %mkrel 0.%revision.1
 Epoch: 2
 Group: Graphical desktop/KDE

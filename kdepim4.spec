@@ -1015,6 +1015,7 @@ Dialog KDE base widgets
 %_datadir/dbus-1/interfaces/org.kde.KNotes.xml
 %_kde_libdir/kde4/knotes_local.so
 %_kde_libdir/kde4/kcm_kontactknt.so
+%_kde_libdir/kde4/knotes_scalix.so
 %_kde_docdir/HTML/en/knotes
 
 #-----------------------------------------------------------------------------

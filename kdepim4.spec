@@ -21,7 +21,7 @@
 Name: kdepim4
 Summary: K Desktop Environment
 Version: 3.95.1
-Release: %mkrel 0.%revision.1
+Release: %mkrel 0.%revision.2
 Epoch: 2
 Group: Graphical desktop/KDE
 License: GPL

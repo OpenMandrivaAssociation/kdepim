@@ -12,7 +12,7 @@
 
 %define branch 1
 %{?_branch: %{expand: %%global branch 1}}
-%define revision 731772
+%define revision 734816
 
 %if %unstable
 %define dont_strip 1
@@ -20,8 +20,8 @@
 
 Name: kdepim4
 Summary: K Desktop Environment
-Version: 3.95.1
-Release: %mkrel 0.%revision.2
+Version: 3.95.2
+Release: %mkrel 0.%revision.1
 Epoch: 2
 Group: Graphical desktop/KDE
 License: GPL
@@ -1249,8 +1249,8 @@ Dialog KDE base widgets
 %_datadir/dbus-1/interfaces/org.kde.korganizer.KOrgac.xml
 %_datadir/dbus-1/interfaces/org.kde.korganizer.Korganizer.xml
 %_kde_libdir/kde4/kcm_korganizer.so
-%_kde_libdir/kde4/libkorg_*
-%_kde_libdir/kde4/libkorganizerpart.so
+%_kde_libdir/kde4/korg_*
+%_kde_libdir/kde4/korganizerpart.so
 
 %dir %_kde_docdir/HTML/en/korganizer
 %doc %_kde_docdir/HTML/en/korganizer/*.docbook

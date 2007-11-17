@@ -12,7 +12,7 @@
 
 %define branch 1
 %{?_branch: %{expand: %%global branch 1}}
-%define revision 734816
+%define revision 737116
 
 %if %unstable
 %define dont_strip 1
@@ -20,7 +20,7 @@
 
 Name: kdepim4
 Summary: K Desktop Environment
-Version: 3.95.2
+Version: 3.96.0
 Release: %mkrel 0.%revision.1
 Epoch: 2
 Group: Graphical desktop/KDE
@@ -432,7 +432,7 @@ Dialog KDE base widgets
 %_kde_datadir/kde4/services/akonadi.protocol
 %_datadir/dbus-1/interfaces/org.kde.Akonadi.*
 %_kde_libdir/kde4/kio_akonadi.so
-%_kde_libdir/kde4/libakonadi_*
+%_kde_libdir/kde4/akonadi_*
 
 #-----------------------------------------------------------------------------
 
@@ -624,8 +624,8 @@ Dialog KDE base widgets
 %_kde_datadir/kde4/services/feed.protocol
 %_kde_datadir/kde4/servicetypes/akregator_plugin.desktop
 %_datadir/dbus-1/interfaces/org.kde.akregator.part.xml
-%_kde_libdir/kde4/libakregator_mk4storage_plugin.so
-%_kde_libdir/kde4/libakregatorpart.so
+%_kde_libdir/kde4/akregator_mk4storage_plugin.so
+%_kde_libdir/kde4/akregatorpart.so
 %_kde_docdir/HTML/en/akregator
 
 #-----------------------------------------------------------------------------
@@ -684,8 +684,7 @@ Dialog KDE base widgets
 %_kde_bindir/kitchensync
 %_kde_datadir/applications/kde4/kitchensync.desktop
 %_kde_appsdir/kitchensync
-%_kde_libdir/kde4/libkitchensyncpart.so
-
+%_kde_libdir/kde4/kitchensyncpart.so
 %endif
 
 #-----------------------------------------------------------------------------
@@ -734,7 +733,7 @@ Dialog KDE base widgets
 %_kde_datadir/kde4/services/knode_config_read_news.desktop
 %_datadir/dbus-1/interfaces/org.kde.knode.xml
 %_kde_libdir/kde4/kcm_knode.so
-%_kde_libdir/kde4/libknodepart.so
+%_kde_libdir/kde4/knodepart.so
 %_kde_docdir/HTML/en/knode
 
 #-----------------------------------------------------------------------------
@@ -805,8 +804,8 @@ Dialog KDE base widgets
 %_kde_libdir/kde4/kcm_kabcustomfields.so
 %_kde_libdir/kde4/kcm_kabldapconfig.so
 %_kde_libdir/kde4/ldifvcardthumbnail.so
-%_kde_libdir/kde4/libkaddrbk_*
-%_kde_libdir/kde4/libkaddressbookpart.so
+%_kde_libdir/kde4/kaddrbk_*
+%_kde_libdir/kde4/kaddressbookpart.so
 %_kde_docdir/HTML/en/kaddressbook
 
 #-----------------------------------------------------------------------------
@@ -904,7 +903,7 @@ Dialog KDE base widgets
 %_kde_appsdir/karmpart
 %_kde_appsdir/ktimetracker/*
 %_kde_datadir/kde4/services/karm_part.desktop
-%_kde_libdir/kde4/libkarmpart.so
+%_kde_libdir/kde4/karmpart.so
 %_kde_docdir/HTML/en/ktimetracker/
 %_datadir/dbus-1/interfaces/org.kde.ktimetracker.ktimetracker.xml
 
@@ -971,7 +970,8 @@ Dialog KDE base widgets
 %_datadir/dbus-1/interfaces/org.kde.kmail.kmailpart.xml
 %_datadir/dbus-1/interfaces/org.kde.kmail.mailcomposer.xml
 %_kde_libdir/kde4/kcm_kmail.so
-%_kde_libdir/kde4/libkmailpart.so
+%_kde_libdir/kde4/kmailpart.so
+%_kde_libdir/kde4/kmail_bodypartformatter_*
 %_kde_docdir/HTML/en/kmail
 
 #-----------------------------------------------------------------------------
@@ -1095,7 +1095,8 @@ Dialog KDE base widgets
 %_kde_libdir/kde4/kcm_kontactsummary.so
 %_kde_libdir/kde4/kcm_sdsummary.so
 %_kde_libdir/kde4/kcm_todosummary.so
-%_kde_libdir/kde4/libkontact_*
+#TODO: Move all Files on the main package ( ex kontact_akregator.so  in akregator )
+%_kde_libdir/kde4/kontact_*
 %_kde_docdir/HTML/en/kontact
 
 #-----------------------------------------------------------------------------
@@ -1296,7 +1297,7 @@ Dialog KDE base widgets
 %_kde_datadir/kde4/services/kmobiletools_mainpart.desktop
 %_kde_datadir/kde4/services/fake_engine.desktop
 %_kde_datadir/kde4/servicetypes/kmobile*
-%_kde_libdir/kde4/libkmobiletoolsmainpart.so
+%_kde_libdir/kde4/kmobiletoolsmainpart.so
 %_kde_docdir/HTML/en/kmobiletools
 
 #-----------------------------------------------------------------------------
@@ -1865,7 +1866,7 @@ Dialog KDE base widgets
 %_kde_appsdir/kmail/plugins/bodypartformatter/text_vcard.desktop
 %_kde_appsdir/kmail/plugins/bodypartformatter/text_xdiff.desktop
 %_kde_libdir/kde4/ktexteditorkabcbridge.so
-%_kde_libdir/kde4/libkmail_*
+#%_kde_libdir/kde4/libkmail_*
 
 #-----------------------------------------------------------------------------
 

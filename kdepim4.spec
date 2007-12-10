@@ -12,7 +12,7 @@
 
 %define branch 1
 %{?_branch: %{expand: %%global branch 1}}
-%define revision 742825
+%define revision 747029
 
 %if %unstable
 %define dont_strip 1
@@ -20,7 +20,7 @@
 
 Name: kdepim4
 Summary: K Desktop Environment
-Version: 3.96.1
+Version: 3.97.1
 Release: %mkrel 0.%revision.1
 Epoch: 2
 Group: Graphical desktop/KDE
@@ -418,7 +418,6 @@ Dialog KDE base widgets
 %_kde_bindir/akonadi_*
 %_kde_bindir/akonadiconsole
 %_kde_bindir/akonadiserver
-%_kde_bindir/thememain
 %_kde_bindir/kabceditor
 %_kde_bindir/kabcviewer
 %_kde_bindir/kagenda
@@ -1886,6 +1885,7 @@ Dialog KDE base widgets
 %_kde_bindir/kolabwizard
 %_kde_bindir/sloxwizard
 %_kde_bindir/scalixwizard
+%_kde_bindir/scalixadmin
 %_kde_libdir/kde4/kio_scalix.so
 %_kde_datadir/applications/kde4/groupwarewizard.desktop
 %_kde_datadir/config.kcfg/egroupware.kcfg

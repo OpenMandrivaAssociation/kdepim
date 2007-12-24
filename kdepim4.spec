@@ -12,7 +12,7 @@
 
 %define branch 1
 %{?_branch: %{expand: %%global branch 1}}
-%define revision 747029
+%define revision 752060
 
 %if %unstable
 %define dont_strip 1
@@ -21,14 +21,15 @@
 Name: kdepim4
 Summary: K Desktop Environment
 Version: 3.97.1
-Release: %mkrel 0.%revision.1
 Epoch: 2
 Group: Graphical desktop/KDE
 License: GPL
 URL: http://www.kde.org
 %if %branch
+Release: %mkrel 0.%revision.1
 Source:	ftp://ftp.kde.org/pub/kde/stable/%version/src/kdepim-%version.%revision.tar.bz2
 %else
+Release: %mkrel 1
 Source:	ftp://ftp.kde.org/pub/kde/stable/%version/src/kdepim-%version.tar.bz2
 %endif
 Patch0: kdepim-fix_kpilot_conduit_base.patch
@@ -967,6 +968,7 @@ Dialog KDE base widgets
 %_kde_datadir/kde4/servicetypes/dbusmail.desktop
 %_datadir/dbus-1/interfaces/org.kde.kmail.kmailpart.xml
 %_datadir/dbus-1/interfaces/org.kde.kmail.mailcomposer.xml
+%_datadir/dbus-1/interfaces/org.kde.kmail.kmail.xml
 %_kde_libdir/kde4/kcm_kmail.so
 %_kde_libdir/kde4/kmailpart.so
 %_kde_libdir/kde4/kmail_bodypartformatter_*
@@ -1137,26 +1139,6 @@ KDE 4 library.
 
 #-----------------------------------------------------------------------------
 
-%define libkorganizer %mklibname korganizer 4
-
-%package -n %libkorganizer
-Summary: KDE 4 library
-Group: System/Libraries
-Obsoletes: %{_lib}kdepim42-common < 1:3.93.0-1
-Obsoletes: %{_lib}kdepim42-korganizer < 1:3.93.0-1
-
-%description -n %libkorganizer
-KDE 4 library.
-
-%post -n %libkorganizer -p /sbin/ldconfig
-%postun -n %libkorganizer -p /sbin/ldconfig
-
-%files -n %libkorganizer
-%defattr(-,root,root)
-%_kde_libdir/libkorganizer.so.*
-
-#-----------------------------------------------------------------------------
-
 %define libkorganizer_calendar %mklibname korganizer_calendar 4
 
 %package -n %libkorganizer_calendar
@@ -1255,6 +1237,27 @@ Dialog KDE base widgets
 %doc %_kde_docdir/HTML/en/korganizer/*.docbook
 %doc %_kde_docdir/HTML/en/korganizer/*.png
 %doc %_kde_docdir/HTML/en/korganizer/index.cache.bz2
+
+#-----------------------------------------------------------------------------
+
+%define libkorganizerprivate %mklibname korganizerprivate 4
+
+%package -n %libkorganizerprivate
+Summary: KDE 4 library
+Group: System/Libraries
+Obsoletes: %{_lib}korganizer4 < 1:3.97.1-0.752060.1
+Obsoletes: %{_lib}kdepim42-korganizer < 1:3.93.0-
+
+%description -n %libkorganizerprivate
+KDE 4 library.
+
+%post -n %libkorganizerprivate -p /sbin/ldconfig
+%postun -n %libkorganizerprivate -p /sbin/ldconfig
+
+%files -n %libkorganizerprivate
+%defattr(-,root,root)
+%_kde_libdir/libkorganizerprivate.so.*
+
 #-----------------------------------------------------------------------------
 
 %define libkmobiletoolsengineui %mklibname kmobiletoolsengineui 4
@@ -2012,7 +2015,7 @@ Requires: %libkontact = %epoch:%version
 Requires: %libkpinterfaces = %epoch:%version
 Requires: %libkocorehelper = %epoch:%version
 Requires: %libkorg_stdprinting = %epoch:%version
-Requires: %libkorganizer = %epoch:%version
+Requires: %libkorganizerprivate = %epoch:%version
 Requires: %libkorganizer_calendar = %epoch:%version
 Requires: %libkorganizer_eventviewer = %epoch:%version
 Requires: %libkorganizer_interfaces = %epoch:%version

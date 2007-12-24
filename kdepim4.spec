@@ -2064,7 +2064,7 @@ This package contains header files needed if you wish to build applications base
 %build
 %cmake_kde4
 
-%make
+make
 
 %install
 rm -fr %buildroot

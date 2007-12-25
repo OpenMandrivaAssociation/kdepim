@@ -26,7 +26,7 @@ Group: Graphical desktop/KDE
 License: GPL
 URL: http://www.kde.org
 %if %branch
-Release: %mkrel 0.%revision.1
+Release: %mkrel 0.%revision.2
 Source:	ftp://ftp.kde.org/pub/kde/stable/%version/src/kdepim-%version.%revision.tar.bz2
 %else
 Release: %mkrel 1
@@ -421,7 +421,10 @@ Dialog KDE base widgets
 %_kde_bindir/kabceditor
 %_kde_bindir/kabcviewer
 %_kde_bindir/kagenda
-%_kde_appsdir/akonadi
+%_kde_appsdir/akonadi/plugins/serializer/akonadi_serializer_addressee.desktop
+%_kde_appsdir/akonadi/plugins/serializer/akonadi_serializer_bookmark.desktop
+%_kde_appsdir/akonadi/plugins/serializer/akonadi_serializer_kcal.desktop
+%_kde_appsdir/akonadi/plugins/serializer/akonadi_serializer_mail.desktop
 %_kde_datadir/akonadi
 %_kde_datadir/config/akonadi
 %_kde_datadir/kde4/services/kresources/kcal/blog.desktop
@@ -950,7 +953,14 @@ Dialog KDE base widgets
 %_kde_appsdir/kconf_update/kmail*
 %_kde_appsdir/kconf_update/upgrade-signature.pl
 %_kde_appsdir/kconf_update/upgrade-transport.pl
-%_kde_appsdir/kmail
+%dir %_kde_appsdir/kmail
+%dir %_kde_appsdir/kmail/about
+%_kde_appsdir/kmail/about/*
+%_kde_appsdir/kmail/*rc
+%dir %_kde_appsdir/kmail/pics
+%_kde_appsdir/kmail/pics/*.png
+%_kde_appsdir/kmail/tips
+%_kde_appsdir/kmail/plugins/bodypartformatter/application_octetstream.desktop
 %_kde_datadir/config.kcfg/custommimeheader.kcfg
 %_kde_datadir/config.kcfg/customtemplates_kfg.kcfg
 %_kde_datadir/config.kcfg/kmail.kcfg
@@ -1817,7 +1827,16 @@ Dialog KDE base widgets
 %_kde_datadir/kde4/services/kresources/kabc/kabc_slox.desktop
 %_kde_datadir/kde4/services/kresources/kabc/kabc_xmlrpc.desktop
 %_kde_datadir/kde4/services/kresources/kabc/kolab.desktop
-%_kde_datadir/kde4/services/kresources/kcal/*
+%_kde_datadir/kde4/services/kresources/kcal/kabc.desktop
+%_kde_datadir/kde4/services/kresources/kcal/kcal_groupdav.desktop
+%_kde_datadir/kde4/services/kresources/kcal/kcal_opengroupware.desktop
+%_kde_datadir/kde4/services/kresources/kcal/kcal_ox.desktop
+%_kde_datadir/kde4/services/kresources/kcal/kcal_resourcefeatureplan.desktop
+%_kde_datadir/kde4/services/kresources/kcal/kcal_slox.desktop
+%_kde_datadir/kde4/services/kresources/kcal/kcal_xmlrpc.desktop
+%_kde_datadir/kde4/services/kresources/kcal/kolab.desktop
+%_kde_datadir/kde4/services/kresources/kcal/remote.desktop
+%_kde_datadir/kde4/services/kresources/kcal/scalix.desktop
 %_kde_datadir/kde4/services/kresources/knotes/knotes_xmlrpc.desktop
 %_kde_datadir/kde4/services/kresources/kabc/scalix.desktop
 %_kde_datadir/kde4/services/kresources/knotes/scalix.desktop
@@ -1867,7 +1886,6 @@ Dialog KDE base widgets
 %_kde_appsdir/kmail/plugins/bodypartformatter/text_vcard.desktop
 %_kde_appsdir/kmail/plugins/bodypartformatter/text_xdiff.desktop
 %_kde_libdir/kde4/ktexteditorkabcbridge.so
-#%_kde_libdir/kde4/libkmail_*
 
 #-----------------------------------------------------------------------------
 

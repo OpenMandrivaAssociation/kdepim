@@ -33,6 +33,7 @@ Release: %mkrel 1
 Source:	ftp://ftp.kde.org/pub/kde/stable/%version/src/kdepim-%version.tar.bz2
 %endif
 Patch0: kdepim-fix_kpilot_conduit_base.patch
+Buildroot:	%_tmppath/%name-%version-%release-root
 BuildRequires: kdelibs4-devel
 BuildRequires: kdepimlibs4-devel
 # rely on kdebase for the plasma applet

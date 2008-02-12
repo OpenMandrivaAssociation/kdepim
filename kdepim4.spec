@@ -2066,7 +2066,8 @@ Requires: %libkabcscalix  = %epoch:%version
 Requires: %libkcalscalix  = %epoch:%version
 
 %description  devel
-This package contains header files needed if you wish to build applications based on kdepim.
+This package contains header files needed if you wish to build applications
+based on kdepim.
 
 %files devel
 %defattr(-,root,root)

@@ -4,15 +4,11 @@
 %define use_enable_final 0
 %{?_no_enable_final: %{expand: %%global use_enable_final 0}}
 
-%define with_kitchensync 1
-%{?_with_kitchensync: %{expand: %%global with_kitchensync 0}}
+%define with_kitchensync 0
+%{?_with_kitchensync: %{expand: %%global with_kitchensync 1}}
 
-%define unstable 1
+%define unstable 0
 %{?_unstable: %{expand: %%global unstable 1}}
-
-%define branch 1
-%{?_branch: %{expand: %%global branch 1}}
-%define revision 752060
 
 %if %unstable
 %define dont_strip 1
@@ -20,19 +16,13 @@
 
 Name: kdepim4
 Summary: K Desktop Environment
-Version: 3.97.1
+Version: 4.0.68
 Epoch: 2
 Group: Graphical desktop/KDE
 License: GPL
 URL: http://www.kde.org
-%if %branch
-Release: %mkrel 0.%revision.2
-Source:	ftp://ftp.kde.org/pub/kde/stable/%version/src/kdepim-%version.%revision.tar.bz2
-%else
 Release: %mkrel 1
 Source:	ftp://ftp.kde.org/pub/kde/stable/%version/src/kdepim-%version.tar.bz2
-%endif
-Patch0: kdepim-fix_kpilot_conduit_base.patch
 Buildroot:	%_tmppath/%name-%version-%release-root
 BuildRequires: kdelibs4-devel
 BuildRequires: kdepimlibs4-devel
@@ -59,32 +49,32 @@ BuildRequires: libxslt-proc
 BuildRequires: boost-devel
 BuildRequires: qca2-devel
 BuildRequires: glib2-devel
+BuildRequires: libassuan-devel
 BuildRequires: mysql-static-devel
 %if %{with_kitchensync}
-BuildRequires: opensync-devel >= 0.33
+BuildRequires: libopensync-devel
 %endif
 Requires: %name-core
-Requires: kde4-kode
-Requires: kde4-akonadi
-Requires: kde4-kleopatra
-Requires: kde4-akregator
+Requires: kode
+Requires: akonadi
+Requires: kleopatra
+Requires: akregator
 %if %{with_kitchensync}
-Requires: kde4-kitchensync
+Requires: kitchensync
 %endif
-Requires: kde4-knode
-Requires: kde4-kaddressbook
-Requires: kde4-kalarm
-Requires: kde4-ktimetracker
-Requires: kde4-kmail
-Requires: kde4-kmailcvt
-Requires: kde4-knotes
-Requires: kde4-kontact
-Requires: kde4-korganizer
-Requires: kde4-kmobiletools
-Requires: kde4-korn
-Requires: kde4-kpilot
-Requires: kde4-ktnef
-Requires: %{name}-plasma-applets
+Requires: knode
+Requires: kaddressbook
+Requires: kalarm
+Requires: ktimetracker
+Requires: kmail
+Requires: kmailcvt
+Requires: knotes
+Requires: kontact
+Requires: korganizer
+Requires: kmobiletools
+Requires: korn
+Requires: kpilot
+Requires: ktnef
 
 %description
 Information Management applications for the K Desktop Environment.
@@ -129,6 +119,7 @@ Core files fro kdepim.
 %_kde_docdir/HTML/en/konsolekalendar
 %_kde_libdir/strigi/*
 %_kde_iconsdir/*/*/*/*
+%_kde_appsdir/kdepim/icons/*/*/*/*
 
 #-----------------------------------------------------------------------------
 
@@ -278,21 +269,22 @@ Plasma engines and applets from %name
 %defattr(-,root,root)
 %_kde_libdir/kde4/plasma_*
 %_kde_datadir/kde4/services/plasma-*
-%_kde_libdir/kde4/plugins/sqldrivers/libqsqlmysqlembedded.so
 %_kde_appsdir/desktoptheme/default/widgets/akonadi.svg
 
 #-----------------------------------------------------------------------------
 
-%package -n kde4-kode
+%package -n kode
 Summary: Dialog KDE base widgets
 Group: Graphical desktop/KDE
 Requires: %name-core = %epoch:%version
 Obsoletes: %name-kode < 1:3.93.0-1
+Obsoletes: kde4-kode < 2:4.0.68
+Provides: kde4-kode = %epoch:%version
 
-%description -n kde4-kode
+%description -n kode
 Dialog KDE base widgets
 
-%files -n kde4-kode
+%files -n kode
 %defattr(-,root,root)
 %_kde_bindir/kode
 %_kde_bindir/kung
@@ -306,41 +298,98 @@ Dialog KDE base widgets
 
 #-----------------------------------------------------------------------------
 
-%define libakonadi %mklibname akonadi 4
+%define libimap %mklibname imap 4
 
-%package -n %libakonadi
+%package -n %libimap
 Summary: KDE 4 library
 Group: System/Libraries
 Obsoletes: %{_lib}kdepim42-common < 1:3.93.0-1
 
-%description -n %libakonadi
+%description -n %libimap
 KDE 4 library.
 
-%post -n %libakonadi -p /sbin/ldconfig
-%postun -n %libakonadi -p /sbin/ldconfig
+%post -n %libimap -p /sbin/ldconfig
+%postun -n %libimap -p /sbin/ldconfig
 
-%files -n %libakonadi
+%files -n %libimap
 %defattr(-,root,root)
-%_kde_libdir/libakonadi.so.*
+%_kde_libdir/libimap.so.*
 
 #-----------------------------------------------------------------------------
 
-%define libakonadicomponents %mklibname akonadicomponents 4
+%define libakonadi_kabc %mklibname akonadi-kabc 4
 
-%package -n %libakonadicomponents
+%package -n %libakonadi_kabc
 Summary: KDE 4 library
 Group: System/Libraries
 Obsoletes: %{_lib}kdepim42-common < 1:3.93.0-1
 
-%description -n %libakonadicomponents
+%description -n %libakonadi_kabc
 KDE 4 library.
 
-%post -n %libakonadicomponents -p /sbin/ldconfig
-%postun -n %libakonadicomponents -p /sbin/ldconfig
+%post -n %libakonadi_kabc -p /sbin/ldconfig
+%postun -n %libakonadi_kabc -p /sbin/ldconfig
 
-%files -n %libakonadicomponents
+%files -n %libakonadi_kabc
 %defattr(-,root,root)
-%_kde_libdir/libakonadicomponents.so.*
+%_kde_libdir/libakonadi-kabc.so.*
+
+#-----------------------------------------------------------------------------
+
+%define libakonadi_kcal %mklibname akonadi-kcal 4
+
+%package -n %libakonadi_kcal
+Summary: KDE 4 library
+Group: System/Libraries
+Obsoletes: %{_lib}kdepim42-common < 1:3.93.0-1
+
+%description -n %libakonadi_kcal
+KDE 4 library.
+
+%post -n %libakonadi_kcal -p /sbin/ldconfig
+%postun -n %libakonadi_kcal -p /sbin/ldconfig
+
+%files -n %libakonadi_kcal
+%defattr(-,root,root)
+%_kde_libdir/libakonadi-kcal.so.*
+
+#-----------------------------------------------------------------------------
+
+%define libkaddressbookprivate %mklibname kaddressbookprivate 4
+
+%package -n %libkaddressbookprivate
+Summary: KDE 4 library
+Group: System/Libraries
+Obsoletes: %{_lib}kdepim42-common < 1:3.93.0-1
+
+%description -n %libkaddressbookprivate
+KDE 4 library.
+
+%post -n %libkaddressbookprivate -p /sbin/ldconfig
+%postun -n %libkaddressbookprivate -p /sbin/ldconfig
+
+%files -n %libkaddressbookprivate
+%defattr(-,root,root)
+%_kde_libdir/libkaddressbookprivate.so.*
+
+#-----------------------------------------------------------------------------
+
+%define libkontactprivate %mklibname kontactprivate 4
+
+%package -n %libkontactprivate
+Summary: KDE 4 library
+Group: System/Libraries
+Obsoletes: %{_lib}kdepim42-common < 1:3.93.0-1
+
+%description -n %libkontactprivate
+KDE 4 library.
+
+%post -n %libkontactprivate -p /sbin/ldconfig
+%postun -n %libkontactprivate -p /sbin/ldconfig
+
+%files -n %libkontactprivate
+%defattr(-,root,root)
+%_kde_libdir/libkontactprivate.so.*
 
 #-----------------------------------------------------------------------------
 
@@ -363,79 +412,51 @@ KDE 4 library.
 
 #-----------------------------------------------------------------------------
 
-%define libkabcakonadi %mklibname kabcakonadi 4
-
-%package -n %libkabcakonadi
-Summary: KDE 4 library
-Group: System/Libraries
-Obsoletes: %{_lib}kdepim42-common < 1:3.93.0-1
-
-%description -n %libkabcakonadi
-KDE 4 library.
-
-%post -n %libkabcakonadi -p /sbin/ldconfig
-%postun -n %libkabcakonadi -p /sbin/ldconfig
-
-%files -n %libkabcakonadi
-%defattr(-,root,root)
-%_kde_libdir/libkabcakonadi.so.*
-
-#-----------------------------------------------------------------------------
-
-%define libkmimeakonadi %mklibname kmimeakonadi 4
-
-%package -n %libkmimeakonadi
-Summary: KDE 4 library
-Group: System/Libraries
-Obsoletes: %{_lib}kdepim42-common < 1:3.93.0-1
-
-%description -n %libkmimeakonadi
-KDE 4 library.
-
-%post -n %libkmimeakonadi -p /sbin/ldconfig
-%postun -n %libkmimeakonadi -p /sbin/ldconfig
-
-%files -n %libkmimeakonadi
-%defattr(-,root,root)
-%_kde_libdir/libkmimeakonadi.so.*
-
-#-----------------------------------------------------------------------------
-
-%package -n kde4-akonadi
+%package -n akonadi
 Summary: Dialog KDE base widgets
 Group: Graphical desktop/KDE
 Requires: %name-core = %epoch:%version
 Obsoletes: %name-akonadi < 1:3.93.0-1
+Obsoletes: kde4-akonadi < 2:4.0.68
+Provides: kde4-akonadi = %epoch:%version
 
-%description -n kde4-akonadi
+%description -n akonadi
 Dialog KDE base widgets
 
-%files -n kde4-akonadi
+%files -n akonadi
 %defattr(-,root,root)
 %_kde_bindir/akonamail
 %_kde_bindir/akonadictl 
 %_kde_bindir/kcontactmanager
-%_kde_bindir/akonadi
 %_kde_bindir/akonadi_*
 %_kde_bindir/akonadiconsole
 %_kde_bindir/akonadiserver
+%_kde_bindir/akonaditray
+%_kde_bindir/akonalendar
 %_kde_bindir/kabceditor
 %_kde_bindir/kabcviewer
-%_kde_bindir/kagenda
 %_kde_appsdir/akonadi/plugins/serializer/akonadi_serializer_addressee.desktop
 %_kde_appsdir/akonadi/plugins/serializer/akonadi_serializer_bookmark.desktop
 %_kde_appsdir/akonadi/plugins/serializer/akonadi_serializer_kcal.desktop
 %_kde_appsdir/akonadi/plugins/serializer/akonadi_serializer_mail.desktop
 %_kde_datadir/akonadi
+%_kde_appsdir/akonadiconsole/akonadiconsoleui.rc
 %_kde_datadir/config/akonadi
 %_kde_datadir/kde4/services/kresources/kcal/blog.desktop
+%_kde_datadir/applications/kde4/akonadiconsole.desktop
 %_kde_datadir/dbus-1/services/org.kde.Akonadi.Control.service
 %_kde_datadir/applications/kde4/kcontactmanager.desktop
 %_kde_appsdir/kcontactmanager/kcontactmanagerui.rc
 %_kde_datadir/kde4/services/akonadi.protocol
-%_datadir/dbus-1/interfaces/org.kde.Akonadi.*
 %_kde_libdir/kde4/kio_akonadi.so
+%_kde_libdir/kde4/kabc_akonadi.so
 %_kde_libdir/kde4/akonadi_*
+%_kde_libdir/kde4/kcm_akonadi_*
+%_kde_datadir/kde4/services/kcm_akonadi_resources.desktop
+%_kde_datadir/kde4/services/kresources/kabc/akonadi.desktop
+%_kde_datadir/kde4/services/kresources/kcal/akonadi.desktop
+%_kde_datadir/mime/packages/akonadi-mime.xml
+%_kde_appsdir/nepomuk/ontologies/*
 
 #-----------------------------------------------------------------------------
 
@@ -506,28 +527,28 @@ KDE 4 library.
 
 #-----------------------------------------------------------------------------
 
-%package -n kde4-kleopatra
+%package -n kleopatra
 Summary: Dialog KDE base widgets
 Group: Graphical desktop/KDE
 Requires: %name-core = %epoch:%version
 Obsoletes: %name-kleopatra < 1:3.93.0-1
+Obsoletes: kde4-kleopatra < 2:4.0.68
+Provides: kde4-kleopatra = %epoch:%version
 
-%description -n kde4-kleopatra
+%description -n kleopatra
 Dialog KDE base widgets
 
-%files -n kde4-kleopatra
+%files -n kleopatra
 %defattr(-,root,root)
 %_kde_bindir/kleopatra
-%_kde_bindir/kwatchgnupg
+%_kde_bindir/kgpgconf
+%_kde_configdir/libkleopatrarc
 %_kde_datadir/applications/kde4/kleopatra_import.desktop
-%_kde_appsdir/kleopatra/kleopatraui.rc
-%_kde_appsdir/kwatchgnupg/kwatchgnupgui.rc
-%_kde_appsdir/kwatchgnupg/pics/kwatchgnupg.png
-%_kde_appsdir/kwatchgnupg/pics/kwatchgnupg2.png
-%_kde_datadir/kde4/services/kleopatra_config_appear.desktop
-%_kde_datadir/kde4/services/kleopatra_config_dirserv.desktop
-%_kde_datadir/kde4/services/kleopatra_config_dnorder.desktop
+%dir %_kde_appsdir/kleopatra
+%_kde_appsdir/kleopatra/*
+%_kde_datadir/kde4/services/kleopatra_config_*
 %_kde_libdir/kde4/kcm_kleopatra.so
+%doc %_kde_docdir/*/*/kleopatra
 
 #-----------------------------------------------------------------------------
 
@@ -607,29 +628,29 @@ KDE 4 library.
 
 #-----------------------------------------------------------------------------
 
-%package -n kde4-akregator
+%package -n akregator
 Summary: Dialog KDE base widgets
 Group: Graphical desktop/KDE
 Requires: %name-core = %epoch:%version
 Obsoletes: %name-akregator < 1:3.93.0-1
+Obsoletes: kde4-akregator < 2:4.0.68
+Provides: kde4-akregator = %epoch:%version
 
-%description -n kde4-akregator
+%description -n akregator
 Dialog KDE base widgets
 
-%files -n kde4-akregator
+%files -n akregator
 %defattr(-,root,root)
 %_kde_bindir/akregator
 %_kde_datadir/applications/kde4/akregator.desktop
 %_kde_appsdir/akregator
 %_kde_datadir/config.kcfg/akregator.kcfg
-%_kde_datadir/kde4/services/akregator_mk4storage_plugin.desktop
-%_kde_datadir/kde4/services/akregator_part.desktop
+%_kde_datadir/kde4/services/akregator_*
 %_kde_datadir/kde4/services/feed.protocol
 %_kde_datadir/kde4/servicetypes/akregator_plugin.desktop
 %_datadir/dbus-1/interfaces/org.kde.akregator.part.xml
-%_kde_libdir/kde4/akregator_mk4storage_plugin.so
-%_kde_libdir/kde4/akregatorpart.so
-%_kde_docdir/HTML/en/akregator
+%_kde_libdir/kde4/akregator*
+%doc %_kde_docdir/HTML/en/akregator
 
 #-----------------------------------------------------------------------------
 
@@ -673,16 +694,18 @@ KDE 4 library.
 
 #-----------------------------------------------------------------------------
 
-%package -n kde4-kitchensync
+%package -n kitchensync
 Summary: Dialog KDE base widgets
 Group: Graphical desktop/KDE
 Requires: %name-core = %epoch:%version
 Obsoletes: %name-kitchensync < 1:3.93.0-1
+Obsoletes: kde4-kitchensync < 2:4.0.68
+Provides: kde4-kitchensync = %epoch:%version
 
-%description -n kde4-kitchensync
+%description -n kitchensync
 Dialog KDE base widgets
 
-%files -n kde4-kitchensync
+%files -n kitchensync
 %defattr(-,root,root)
 %_kde_bindir/kitchensync
 %_kde_datadir/applications/kde4/kitchensync.desktop
@@ -712,16 +735,18 @@ KDE 4 library.
 
 #-----------------------------------------------------------------------------
 
-%package -n kde4-knode
+%package -n knode
 Summary: Dialog KDE base widgets
 Group: Graphical desktop/KDE
 Requires: %name-core = %epoch:%version
 Obsoletes: %name-knode < 1:3.93.0-1
+Obsoletes: kde4-knode < 2:4.0.68
+Provides: kde4-knode = %epoch:%version
 
-%description -n kde4-knode
+%description -n knode
 Dialog KDE base widgets
 
-%files -n kde4-knode
+%files -n knode
 %defattr(-,root,root)
 %_kde_bindir/knode
 %_kde_datadir/applications/kde4/KNode.desktop
@@ -760,36 +785,18 @@ KDE 4 library.
 
 #-----------------------------------------------------------------------------
 
-%define libkaddressbook %mklibname kaddressbook 4
-
-%package -n %libkaddressbook
-Summary: KDE 4 library
-Group: System/Libraries
-Obsoletes: %{_lib}kdepim42-common < 1:3.93.0-1
-Obsoletes: %{_lib}kdepim42-kaddressbook < 1:3.93.0-1
-
-%description -n %libkaddressbook
-KDE 4 library.
-
-%post -n %libkaddressbook -p /sbin/ldconfig
-%postun -n %libkaddressbook -p /sbin/ldconfig
-
-%files -n %libkaddressbook
-%defattr(-,root,root)
-%_kde_libdir/libkaddressbook.so.*
-
-#-----------------------------------------------------------------------------
-
-%package -n kde4-kaddressbook
+%package -n kaddressbook
 Summary: Dialog KDE base widgets
 Group: Graphical desktop/KDE
 Requires: %name-core = %epoch:%version
 Obsoletes: %name-kaddressbook < 1:3.93.0-1
+Obsoletes: kde4-kaddressbook < 2:4.0.68
+Provides: kde4-kaddressbook = %epoch:%version
 
-%description -n kde4-kaddressbook
+%description -n kaddressbook
 Dialog KDE base widgets
 
-%files -n kde4-kaddressbook
+%files -n kaddressbook
 %defattr(-,root,root)
 %_kde_bindir/kaddressbook
 %_kde_datadir/applications/kde4/kaddressbook.desktop
@@ -852,16 +859,18 @@ KDE 4 library.
 
 #-----------------------------------------------------------------------------
 
-%package -n kde4-kalarm
+%package -n kalarm
 Summary: Dialog KDE base widgets
 Group: Graphical desktop/KDE
 Requires: %name-core = %epoch:%version
 Obsoletes: %name-kalarm < 1:3.93.0-1
+Obsoletes: kde4-kalarm < 2:4.0.68
+Provides: kde4-kalarm = %epoch:%version
 
-%description -n kde4-kalarm
+%description -n kalarm
 Dialog KDE base widgets
 
-%files -n kde4-kalarm
+%files -n kalarm
 %defattr(-,root,root)
 %_kde_bindir/kalarm
 %_kde_bindir/kalarmd
@@ -889,16 +898,18 @@ Dialog KDE base widgets
 
 #-----------------------------------------------------------------------------
 
-%package -n kde4-ktimetracker
+%package -n ktimetracker
 Summary: Dialog KDE base widgets
 Group: Graphical desktop/KDE
 Requires: %name-core = %epoch:%version
 Obsoletes: %name-ktimetracker < 1:3.93.0-1
+Obsoletes: kde4-ktimetracker < 2:4.0.68
+Provides: kde4-ktimetracker = %epoch:%version
 
-%description -n kde4-ktimetracker
+%description -n ktimetracker
 Dialog KDE base widgets
 
-%files -n kde4-ktimetracker
+%files -n ktimetracker
 %defattr(-,root,root)
 %_kde_bindir/karm
 %_kde_bindir/ktimetracker
@@ -931,18 +942,20 @@ KDE 4 library.
 
 #-----------------------------------------------------------------------------
 
-%package -n kde4-kmail
+%package -n kmail
 Summary: Dialog KDE base widgets
 Group: Graphical desktop/KDE
 Requires: %name-core = %epoch:%version
 Obsoletes: %name-kmail < 1:3.93.0-1
 Requires: %name-plugins
 Requires: kdepimlibs4-core
+Obsoletes: kde4-kmail < 2:4.0.68
+Provides: kde4-kmail = %epoch:%version
 
-%description -n kde4-kmail
+%description -n kmail
 Dialog KDE base widgets
 
-%files -n kde4-kmail
+%files -n kmail
 %defattr(-,root,root)
 %_kde_bindir/kmail
 %_kde_bindir/kmail_antivir.sh
@@ -987,33 +1000,37 @@ Dialog KDE base widgets
 
 #-----------------------------------------------------------------------------
 
-%package -n kde4-kmailcvt
+%package -n kmailcvt
 Summary: Dialog KDE base widgets
 Group: Graphical desktop/KDE
 Requires: %name-core = %epoch:%version
 Obsoletes: %name-kmailcvt < 1:3.93.0-1
+Obsoletes: kde4-kmailcvt < 2:4.0.68
+Provides: kde4-kmailcvt = %epoch:%version
 
-%description -n kde4-kmailcvt
+%description -n kmailcvt
 Dialog KDE base widgets
 
-%files -n kde4-kmailcvt
+%files -n kmailcvt
 %defattr(-,root,root)
 %_kde_bindir/kmailcvt
 %_kde_appsdir/kmailcvt/pics/step1.png
 
 #-----------------------------------------------------------------------------
 
-%package -n kde4-knotes
+%package -n knotes
 Summary: Dialog KDE base widgets
 Group: Graphical desktop/KDE
 Requires: %name-core = %epoch:%version
 Obsoletes: %name-knotes < 1:3.93.0-1
 Requires: %name-kresources
+Obsoletes: kde4-knotes < 2:4.0.68
+Provides: kde4-knotes = %epoch:%version
 
-%description -n kde4-knotes
+%description -n knotes
 Dialog KDE base widgets
 
-%files -n kde4-knotes
+%files -n knotes
 %defattr(-,root,root)
 %_kde_bindir/knotes
 %_kde_datadir/applications/kde4/knotes.desktop
@@ -1028,26 +1045,6 @@ Dialog KDE base widgets
 %_kde_libdir/kde4/kcm_kontactknt.so
 %_kde_libdir/kde4/knotes_scalix.so
 %_kde_docdir/HTML/en/knotes
-
-#-----------------------------------------------------------------------------
-
-%define libkontact %mklibname kontact 4
-
-%package -n %libkontact
-Summary: KDE 4 library
-Group: System/Libraries
-Obsoletes: %{_lib}kdepim42-common < 1:3.93.0-1
-Obsoletes: %{_lib}kdepim42-kontact < 1:3.93.0-1
-
-%description -n %libkontact
-KDE 4 library.
-
-%post -n %libkontact -p /sbin/ldconfig
-%postun -n %libkontact -p /sbin/ldconfig
-
-%files -n %libkontact
-%defattr(-,root,root)
-%_kde_libdir/libkontact.so.*
 
 #-----------------------------------------------------------------------------
 
@@ -1070,16 +1067,18 @@ KDE 4 library.
 
 #-----------------------------------------------------------------------------
 
-%package -n kde4-kontact
+%package -n kontact
 Summary: Dialog KDE base widgets
 Group: Graphical desktop/KDE
 Requires: %name-core = %epoch:%version
 Obsoletes: %name-kontact < 1:3.93.0-1
+Obsoletes: kde4-kontact < 2:4.0.68
+Provides: kde4-kontact = %epoch:%version
 
-%description -n kde4-kontact
+%description -n kontact
 Dialog KDE base widgets
 
-%files -n kde4-kontact
+%files -n kontact
 %defattr(-,root,root)
 %_kde_bindir/kontact
 %_kde_datadir/applications/kde4/Kontact.desktop
@@ -1096,11 +1095,13 @@ Dialog KDE base widgets
 %_kde_datadir/kde4/services/kcmkmailsummary.desktop
 %_kde_datadir/kde4/services/kcmkontactsummary.desktop
 %_kde_datadir/kde4/services/kcmsdsummary.desktop
+%_kde_datadir/kde4/services/kcmplanner.desktop
 %_kde_datadir/kde4/services/kcmtodosummary.desktop
 %_kde_datadir/kde4/services/kontact
 %_kde_datadir/kde4/servicetypes/kontactplugin.desktop
 %_datadir/dbus-1/interfaces/org.kde.kontact.KNotes.xml
 %_kde_libdir/kde4/kcm_apptsummary.so
+%_kde_libdir/kde4/kcm_planner.so
 %_kde_libdir/kde4/kcm_kmailsummary.so
 %_kde_libdir/kde4/kcm_kontact.so
 %_kde_libdir/kde4/kcm_kontactsummary.so
@@ -1207,20 +1208,23 @@ KDE 4 library.
 
 #-----------------------------------------------------------------------------
 
-%package -n kde4-korganizer
+%package -n korganizer
 Summary: Dialog KDE base widgets
 Group: Graphical desktop/KDE
 Requires: %name-core = %epoch:%version
 Obsoletes: %name-korganizer < 1:3.93.0-1
 Requires: %name-kresources
+Obsoletes: kde4-korganizer < 2:4.0.68
+Provides: kde4-korganizer = %epoch:%version
 
-%description -n kde4-korganizer
+%description -n korganizer
 Dialog KDE base widgets
 
-%files -n kde4-korganizer
+%files -n korganizer
 %defattr(-,root,root)
 %_kde_bindir/ical2vcal
 %_kde_bindir/korgac
+%_kde_bindir/thememain
 %_kde_bindir/korganizer
 %_kde_datadir/applications/kde4/korganizer-import.desktop
 %_kde_datadir/applications/kde4/korganizer.desktop
@@ -1243,11 +1247,7 @@ Dialog KDE base widgets
 %_kde_libdir/kde4/kcm_korganizer.so
 %_kde_libdir/kde4/korg_*
 %_kde_libdir/kde4/korganizerpart.so
-
-%dir %_kde_docdir/HTML/en/korganizer
-%doc %_kde_docdir/HTML/en/korganizer/*.docbook
-%doc %_kde_docdir/HTML/en/korganizer/*.png
-%doc %_kde_docdir/HTML/en/korganizer/index.cache.bz2
+%doc %_kde_docdir/*/*/korganizer
 
 #-----------------------------------------------------------------------------
 
@@ -1290,16 +1290,18 @@ KDE 4 library.
 
 #-----------------------------------------------------------------------------
 
-%package -n kde4-kmobiletools
+%package -n kmobiletools
 Summary: Dialog KDE base widgets
 Group: Graphical desktop/KDE
 Requires: %name-core = %epoch:%version
 Obsoletes: %name-kmobiletools < 1:3.93.0-1
+Obsoletes: kde4-kmobiletools < 2:4.0.68
+Provides: kde4-kmobiletools = %epoch:%version
 
-%description -n kde4-kmobiletools
+%description -n kmobiletools
 Dialog KDE base widgets
 
-%files -n kde4-kmobiletools
+%files -n kmobiletools
 %defattr(-,root,root)
 %_kde_bindir/kmobiletools
 %_kde_datadir/applications/kde4/kmobiletools.desktop
@@ -1309,21 +1311,23 @@ Dialog KDE base widgets
 %_kde_datadir/kde4/services/kmobiletools_mainpart.desktop
 %_kde_datadir/kde4/services/fake_engine.desktop
 %_kde_datadir/kde4/servicetypes/kmobile*
-%_kde_libdir/kde4/kmobiletoolsmainpart.so
+%_kde_libdir/kde4/kmobiletools*
 %_kde_docdir/HTML/en/kmobiletools
 
 #-----------------------------------------------------------------------------
 
-%package -n kde4-korn
+%package -n korn
 Summary: Dialog KDE base widgets
 Group: Graphical desktop/KDE
 Requires: %name-core = %epoch:%version
 Obsoletes: %name-korn < 1:3.93.0-1
+Obsoletes: kde4-korn < 2:4.0.68
+Provides: kde4-korn = %epoch:%version
 
-%description -n kde4-korn
+%description -n korn
 Dialog KDE base widgets
 
-%files -n kde4-korn
+%files -n korn
 %defattr(-,root,root)
 %_kde_bindir/korn
 %_kde_datadir/applications/kde4/KOrn.desktop
@@ -1354,16 +1358,18 @@ KDE 4 library.
 
 #-----------------------------------------------------------------------------
 
-%package -n kde4-kpilot
+%package -n kpilot
 Summary: Dialog KDE base widgets
 Group: Graphical desktop/KDE
 Requires: %name-core = %epoch:%version
 Obsoletes: %name-kpilot < 1:3.93.0-1
+Obsoletes: kde4-kpilot < 2:4.0.68
+Provides: kde4-kpilot = %epoch:%version
 
-%description -n kde4-kpilot
+%description -n kpilot
 Dialog KDE base widgets
 
-%files -n kde4-kpilot
+%files -n kpilot
 %defattr(-,root,root)
 %_kde_bindir/kpilot
 %_kde_bindir/kpilotDaemon
@@ -1384,7 +1390,6 @@ Dialog KDE base widgets
 %_kde_datadir/kde4/servicetypes/kpilotconduit.desktop
 %_kde_libdir/kde4/kcm_kpilot.so
 %_kde_libdir/kde4/kpilot_*
-%_kde_libdir/libkpilot_conduit_base.so.*
 %_kde_docdir/HTML/en/kpilot
 
 #-----------------------------------------------------------------------------
@@ -1674,25 +1679,6 @@ KDE 4 library.
 
 #-----------------------------------------------------------------------------
 
-%define libakonadiprotocol %mklibname akonadiprotocol 4
-
-%package -n %libakonadiprotocol
-Summary: KDE 4 library
-Group: System/Libraries
-Obsoletes: %{_lib}kdepim42-common < 1:3.93.0-1
-
-%description -n %libakonadiprotocol
-KDE 4 library.
-
-%post -n %libakonadiprotocol -p /sbin/ldconfig
-%postun -n %libakonadiprotocol -p /sbin/ldconfig
-
-%files -n %libakonadiprotocol
-%defattr(-,root,root)
-%_kde_libdir/libakonadiprotocol.so.*
-
-#-----------------------------------------------------------------------------
-
 %define libkabcommon %mklibname kabcommon 4
 
 %package -n %libkabcommon
@@ -1791,25 +1777,6 @@ KDE 4 library.
 
 #-----------------------------------------------------------------------------
 
-%define libkmobiletools_fake %mklibname kmobiletools_fake 4
-
-%package -n %libkmobiletools_fake
-Summary: KDE 4 library
-Group: System/Libraries
-Obsoletes: %{_lib}kdepim42-common < 1:3.93.0-1
-
-%description -n %libkmobiletools_fake
-KDE 4 library.
-
-%post -n %libkmobiletools_fake -p /sbin/ldconfig
-%postun -n %libkmobiletools_fake -p /sbin/ldconfig
-
-%files -n %libkmobiletools_fake
-%defattr(-,root,root)
-%_kde_libdir/libkmobiletools_fake.so.*
-
-#-----------------------------------------------------------------------------
-
 %package kresources
 Summary: Dialog KDE base widgets
 Group: Graphical desktop/KDE
@@ -1842,6 +1809,8 @@ Dialog KDE base widgets
 %_kde_datadir/kde4/services/kresources/kabc/scalix.desktop
 %_kde_datadir/kde4/services/kresources/knotes/scalix.desktop
 %_kde_datadir/kde4/services/kresources/knotes/kolabresource.desktop
+%_kde_appsdir/kconf_update/kolab-resource.upd
+%_kde_appsdir/kconf_update/upgrade-resourcetype.pl
 %_kde_libdir/kde4/kabc_groupdav.so
 %_kde_libdir/kde4/kabc_kolab.so
 %_kde_libdir/kde4/kabc_slox.so
@@ -1853,19 +1822,21 @@ Dialog KDE base widgets
 
 #-----------------------------------------------------------------------------
 
-%package -n kde4-ktnef
+%package -n ktnef
 Summary: Dialog KDE base widgets
 Group: Graphical desktop/KDE
 Requires: %name-core = %epoch:%version
 Obsoletes: %name-ktnef < 1:3.93.0-1
 Obsoletes: %{_lib}kdepim42-ktnef < 1:3.93.0-1
+Obsoletes: kde4-ktnef < 2:4.0.68
+Provides: kde4-ktnef = %epoch:%version
 
-%description -n kde4-ktnef
+%description -n ktnef
 Dialog KDE base widgets
 
-%files -n kde4-ktnef
+%files -n ktnef
 %defattr(-,root,root)
-%_kde_bindir/ktnef
+%_kde_bindir/ktnefviewer
 %_kde_datadir/applications/kde4/ktnef.desktop
 %_kde_appsdir/ktnef
 
@@ -2008,11 +1979,7 @@ Requires: %libkxmlcommon = %epoch:%version
 Requires: %libschema = %epoch:%version
 Requires: %libwscl = %epoch:%version
 Requires: %libwsdl = %epoch:%version
-Requires: %libakonadi = %epoch:%version
-Requires: %libakonadicomponents = %epoch:%version
 Requires: %libakonadiprivate = %epoch:%version
-Requires: %libkabcakonadi = %epoch:%version
-Requires: %libkmimeakonadi = %epoch:%version
 Requires: %libkdepim = %epoch:%version
 Requires: %libkholidays = %epoch:%version
 Requires: %libkpgp = %epoch:%version
@@ -2027,10 +1994,8 @@ Requires: %libqopensync = %epoch:%version
 %endif
 Requires: %libknodecommon = %epoch:%version
 Requires: %libkabinterfaces = %epoch:%version
-Requires: %libkaddressbook = %epoch:%version
 Requires: %libkalarm_resources = %epoch:%version
 Requires: %libkmailprivate = %epoch:%version
-Requires: %libkontact = %epoch:%version
 Requires: %libkpinterfaces = %epoch:%version
 Requires: %libkocorehelper = %epoch:%version
 Requires: %libkorg_stdprinting = %epoch:%version
@@ -2054,13 +2019,12 @@ Requires: %libkgroupwaredav = %epoch:%version
 Requires: %libknotes_xmlrpc = %epoch:%version
 Requires: %libknoteskolab = %epoch:%version
 Requires: %libkslox = %epoch:%version
-Requires: %libakonadiprotocol = %epoch:%version
 Requires: %libkabcommon = %epoch:%version
 Requires: %libkcal_resourcefeatureplan = %epoch:%version
 Requires: %libkfeed = %epoch:%version
 Requires: %libkleo = %epoch:%version
-Requires: %libkmobiletools_fake = %epoch:%version
 Requires: %libmaildir = %epoch:%version
+Requires: %libimap = %epoch:%version
 Requires: %libknotesscalix = %epoch:%version
 Requires: %libkabcscalix  = %epoch:%version
 Requires: %libkcalscalix  = %epoch:%version
@@ -2079,7 +2043,6 @@ based on kdepim.
 
 %prep
 %setup -q -n kdepim-%version
-%patch0 -p1 -b .kpilot_conduit
 
 %build
 %cmake_kde4

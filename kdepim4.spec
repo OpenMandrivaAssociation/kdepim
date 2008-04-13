@@ -1,9 +1,3 @@
-%define use_enable_pie 1
-%{?_no_enable_pie: %{expand: %%global use_enable_pie 0}}
-
-%define use_enable_final 0
-%{?_no_enable_final: %{expand: %%global use_enable_final 0}}
-
 %define with_kitchensync 0
 %{?_with_kitchensync: %{expand: %%global with_kitchensync 1}}
 
@@ -14,6 +8,11 @@
 %define dont_strip 1
 %endif
 
+
+%define branch 1
+%{?_branch: %{expand: %%global branch 1}}
+%define revision 796092
+
 Name: kdepim4
 Summary: K Desktop Environment
 Version: 4.0.68
@@ -21,8 +20,13 @@ Epoch: 2
 Group: Graphical desktop/KDE
 License: GPL
 URL: http://www.kde.org
+%if %branch
+Release: %mkrel 0.%revision.1
+Source:        ftp://ftp.kde.org/pub/kde/stable/%version/src/kdepim-%version.%revision.tar.bz2
+%else
 Release: %mkrel 1
-Source:	ftp://ftp.kde.org/pub/kde/stable/%version/src/kdepim-%version.tar.bz2
+Source:        ftp://ftp.kde.org/pub/kde/stable/%version/src/kdepim-%version.tar.bz2
+%endif
 Buildroot:	%_tmppath/%name-%version-%release-root
 BuildRequires: kdelibs4-devel
 BuildRequires: kdepimlibs4-devel
@@ -444,6 +448,7 @@ Dialog KDE base widgets
 %_kde_datadir/config/akonadi
 %_kde_datadir/kde4/services/kresources/kcal/blog.desktop
 %_kde_datadir/applications/kde4/akonadiconsole.desktop
+%_kde_datadir/applications/kde4/akonaditray.desktop
 %_kde_datadir/dbus-1/services/org.kde.Akonadi.Control.service
 %_kde_datadir/applications/kde4/kcontactmanager.desktop
 %_kde_appsdir/kcontactmanager/kcontactmanagerui.rc

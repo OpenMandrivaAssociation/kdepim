@@ -8,25 +8,15 @@
 %define dont_strip 1
 %endif
 
-
-%define branch 1
-%{?_branch: %{expand: %%global branch 1}}
-%define revision 796092
-
 Name: kdepim4
 Summary: K Desktop Environment
-Version: 4.0.68
+Version: 4.0.70
 Epoch: 2
 Group: Graphical desktop/KDE
 License: GPL
 URL: http://www.kde.org
-%if %branch
-Release: %mkrel 0.%revision.1
-Source:        ftp://ftp.kde.org/pub/kde/stable/%version/src/kdepim-%version.%revision.tar.bz2
-%else
 Release: %mkrel 1
 Source:        ftp://ftp.kde.org/pub/kde/stable/%version/src/kdepim-%version.tar.bz2
-%endif
 Buildroot:	%_tmppath/%name-%version-%release-root
 BuildRequires: kdelibs4-devel
 BuildRequires: kdepimlibs4-devel
@@ -56,7 +46,7 @@ BuildRequires: glib2-devel
 BuildRequires: libassuan-devel
 BuildRequires: mysql-static-devel
 %if %{with_kitchensync}
-BuildRequires: libopensync-devel
+BuildRequires: libopensync-devel >= 0.30
 %endif
 Requires: %name-core
 Requires: kode
@@ -878,24 +868,20 @@ Dialog KDE base widgets
 %files -n kalarm
 %defattr(-,root,root)
 %_kde_bindir/kalarm
-%_kde_bindir/kalarmd
+%_kde_bindir/kalarmautostart
 %_kde_datadir/applications/kde4/kalarm.desktop
-%_kde_datadir/applications/kde4/kalarmd.desktop
 %_kde_appsdir/kalarm/kalarmui.rc
 %_kde_appsdir/kconf_update/kalarm-1.2.1-general.pl
 %_kde_appsdir/kconf_update/kalarm-1.9.5-defaults.pl
 %_kde_appsdir/kconf_update/kalarm-version.pl
 %_kde_appsdir/kconf_update/kalarm.upd
 %_kde_datadir/autostart/kalarm.tray.desktop
-%_kde_datadir/autostart/kalarmd.autostart.desktop
 %_kde_datadir/config.kcfg/kalarmconfig.kcfg
 %_kde_datadir/kde4/services/kresources/alarms/local.desktop
 %_kde_datadir/kde4/services/kresources/alarms/localdir.desktop
 %_kde_datadir/kde4/services/kresources/alarms/remote.desktop
 %_kde_datadir/kde4/services/kresources/kalarm_manager.desktop
 %_datadir/dbus-1/interfaces/org.kde.kalarm.kalarm.xml
-%_datadir/dbus-1/interfaces/org.kde.kalarm.kalarmd.Daemon.xml
-%_datadir/dbus-1/interfaces/org.kde.kalarm.notify.xml
 %_kde_libdir/kde4/kalarm_local.so
 %_kde_libdir/kde4/kalarm_localdir.so
 %_kde_libdir/kde4/kalarm_remote.so
@@ -1973,7 +1959,7 @@ KDE 4 library.
 #-----------------------------------------------------------------------------
 
 %package devel
-Summary: Devel stuff for kdegraphics
+Summary: Devel stuff for %name
 Group: Development/KDE and Qt
 Requires: kde4-macros
 Requires: kdelibs4-devel

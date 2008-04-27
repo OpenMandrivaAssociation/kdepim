@@ -17,6 +17,7 @@ License: GPL
 URL: http://www.kde.org
 Release: %mkrel 1
 Source:        ftp://ftp.kde.org/pub/kde/stable/%version/src/kdepim-%version.tar.bz2
+Patch0:        kdepim-4.0.71-fix-build.patch
 Buildroot:	%_tmppath/%name-%version-%release-root
 BuildRequires: kdelibs4-devel
 BuildRequires: kdepimlibs4-devel
@@ -113,7 +114,6 @@ Core files fro kdepim.
 %_kde_docdir/HTML/en/konsolekalendar
 %_kde_libdir/strigi/*
 %_kde_iconsdir/*/*/*/*
-%_kde_appsdir/kdepim/icons/*/*/*/*
 
 #-----------------------------------------------------------------------------
 
@@ -387,26 +387,7 @@ KDE 4 library.
 
 #-----------------------------------------------------------------------------
 
-%define libakonadiprivate %mklibname akonadiprivate 4
-
-%package -n %libakonadiprivate
-Summary: KDE 4 library
-Group: System/Libraries
-Obsoletes: %{_lib}kdepim42-common < 1:3.93.0-1
-
-%description -n %libakonadiprivate
-KDE 4 library.
-
-%post -n %libakonadiprivate -p /sbin/ldconfig
-%postun -n %libakonadiprivate -p /sbin/ldconfig
-
-%files -n %libakonadiprivate
-%defattr(-,root,root)
-%_kde_libdir/libakonadiprivate.so.*
-
-#-----------------------------------------------------------------------------
-
-%package -n akonadi
+%package akonadi
 Summary: Dialog KDE base widgets
 Group: Graphical desktop/KDE
 Requires: %name-core = %epoch:%version
@@ -414,17 +395,15 @@ Obsoletes: %name-akonadi < 1:3.93.0-1
 Obsoletes: kde4-akonadi < 2:4.0.68
 Provides: kde4-akonadi = %epoch:%version
 
-%description -n akonadi
+%description akonadi
 Dialog KDE base widgets
 
-%files -n akonadi
+%files akonadi
 %defattr(-,root,root)
 %_kde_bindir/akonamail
-%_kde_bindir/akonadictl 
 %_kde_bindir/kcontactmanager
 %_kde_bindir/akonadi_*
 %_kde_bindir/akonadiconsole
-%_kde_bindir/akonadiserver
 %_kde_bindir/akonaditray
 %_kde_bindir/akonalendar
 %_kde_bindir/kabceditor
@@ -435,11 +414,9 @@ Dialog KDE base widgets
 %_kde_appsdir/akonadi/plugins/serializer/akonadi_serializer_mail.desktop
 %_kde_datadir/akonadi
 %_kde_appsdir/akonadiconsole/akonadiconsoleui.rc
-%_kde_datadir/config/akonadi
 %_kde_datadir/kde4/services/kresources/kcal/blog.desktop
 %_kde_datadir/applications/kde4/akonadiconsole.desktop
 %_kde_datadir/applications/kde4/akonaditray.desktop
-%_kde_datadir/dbus-1/services/org.kde.Akonadi.Control.service
 %_kde_datadir/applications/kde4/kcontactmanager.desktop
 %_kde_appsdir/kcontactmanager/kcontactmanagerui.rc
 %_kde_datadir/kde4/services/akonadi.protocol
@@ -450,7 +427,6 @@ Dialog KDE base widgets
 %_kde_datadir/kde4/services/kcm_akonadi_resources.desktop
 %_kde_datadir/kde4/services/kresources/kabc/akonadi.desktop
 %_kde_datadir/kde4/services/kresources/kcal/akonadi.desktop
-%_kde_datadir/mime/packages/akonadi-mime.xml
 %_kde_appsdir/nepomuk/ontologies/*
 
 #-----------------------------------------------------------------------------
@@ -1076,7 +1052,7 @@ Dialog KDE base widgets
 %_kde_appsdir/knotes/knotes_part.rc
 %_kde_appsdir/kontact/about/kontact.css
 %_kde_appsdir/kontact/about/main.html
-%_kde_appsdir/kontact/about/top-right-kontact.png
+%_kde_appsdir/kontact/about/top-left-kontact.png
 %_kde_appsdir/kontact/kontact.setdlg
 %_kde_appsdir/kontact/kontactui.rc
 %_kde_appsdir/kontactsummary/kontactsummary_part.rc
@@ -1355,6 +1331,7 @@ Group: Graphical desktop/KDE
 Requires: %name-core = %epoch:%version
 Obsoletes: %name-kpilot < 1:3.93.0-1
 Obsoletes: kde4-kpilot < 2:4.0.68
+Conflicts: %name-devel < 2:4.0.71-1
 Provides: kde4-kpilot = %epoch:%version
 
 %description -n kpilot
@@ -1381,6 +1358,7 @@ Dialog KDE base widgets
 %_kde_datadir/kde4/servicetypes/kpilotconduit.desktop
 %_kde_libdir/kde4/kcm_kpilot.so
 %_kde_libdir/kde4/kpilot_*
+%_kde_libdir/libkpilot_conduit_base.so
 %_kde_docdir/HTML/en/kpilot
 
 #-----------------------------------------------------------------------------
@@ -1970,7 +1948,6 @@ Requires: %libkxmlcommon = %epoch:%version
 Requires: %libschema = %epoch:%version
 Requires: %libwscl = %epoch:%version
 Requires: %libwsdl = %epoch:%version
-Requires: %libakonadiprivate = %epoch:%version
 Requires: %libkdepim = %epoch:%version
 Requires: %libkholidays = %epoch:%version
 Requires: %libkpgp = %epoch:%version
@@ -2034,6 +2011,7 @@ based on kdepim.
 
 %prep
 %setup -q -n kdepim-%version
+%patch0 -p0
 
 %build
 %cmake_kde4

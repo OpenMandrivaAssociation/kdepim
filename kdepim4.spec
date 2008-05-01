@@ -513,10 +513,11 @@ Dialog KDE base widgets
 %defattr(-,root,root)
 %_kde_bindir/kleopatra
 %_kde_bindir/kgpgconf
+%_kde_bindir/kwatchgnupg
 %_kde_configdir/libkleopatrarc
 %_kde_datadir/applications/kde4/kleopatra_import.desktop
-%dir %_kde_appsdir/kleopatra
-%_kde_appsdir/kleopatra/*
+%_kde_appsdir/kleopatra
+%_kde_appsdir/kwatchgnupg
 %_kde_datadir/kde4/services/kleopatra_config_*
 %_kde_libdir/kde4/kcm_kleopatra.so
 %doc %_kde_docdir/*/*/kleopatra
@@ -846,12 +847,12 @@ Dialog KDE base widgets
 %_kde_bindir/kalarm
 %_kde_bindir/kalarmautostart
 %_kde_datadir/applications/kde4/kalarm.desktop
+%_kde_datadir/autostart/kalarm.autostart.desktop
 %_kde_appsdir/kalarm/kalarmui.rc
 %_kde_appsdir/kconf_update/kalarm-1.2.1-general.pl
 %_kde_appsdir/kconf_update/kalarm-1.9.5-defaults.pl
 %_kde_appsdir/kconf_update/kalarm-version.pl
 %_kde_appsdir/kconf_update/kalarm.upd
-%_kde_datadir/autostart/kalarm.tray.desktop
 %_kde_datadir/config.kcfg/kalarmconfig.kcfg
 %_kde_datadir/kde4/services/kresources/alarms/local.desktop
 %_kde_datadir/kde4/services/kresources/alarms/localdir.desktop

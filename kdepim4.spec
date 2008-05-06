@@ -49,6 +49,7 @@ BuildRequires: libmal-devel
 %if %{with_kitchensync}
 BuildRequires: libopensync-devel >= 0.30
 %endif
+BuildRequires: akonadi-devel
 Requires: %name-core
 Requires: kode
 Requires: akonadi

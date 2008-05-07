@@ -1335,7 +1335,7 @@ Group: Graphical desktop/KDE
 Requires: %name-core = %epoch:%version
 Obsoletes: %name-kpilot < 1:3.93.0-1
 Obsoletes: kde4-kpilot < 2:4.0.68
-Conflicts: %name-devel < 2:4.0.71-1
+Conflicts: %name-devel < 2:4.0.72-1
 Provides: kde4-kpilot = %epoch:%version
 
 %description -n kpilot
@@ -2008,6 +2008,7 @@ based on kdepim.
 %files devel
 %defattr(-,root,root)
 %_kde_libdir/*.so
+%exclude %_kde_libdir/libkpilot_conduit_base.so
 %_kde_prefix/include/*
 %_kde_appsdir/cmake/modules/*
 

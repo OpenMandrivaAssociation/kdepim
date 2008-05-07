@@ -15,7 +15,7 @@ Epoch: 2
 Group: Graphical desktop/KDE
 License: GPL
 URL: http://www.kde.org
-Release: %mkrel 1
+Release: %mkrel 2
 Source:        ftp://ftp.kde.org/pub/kde/stable/%version/src/kdepim-%version.tar.bz2
 Buildroot:	%_tmppath/%name-%version-%release-root
 BuildRequires: kdelibs4-devel
@@ -50,6 +50,8 @@ BuildRequires: libmal-devel
 BuildRequires: libopensync-devel >= 0.30
 %endif
 BuildRequires: akonadi-devel
+#FIXME: Remove later
+BuildRequires:kdepimlibs4-core
 Requires: %name-core
 Requires: kode
 Requires: akonadi

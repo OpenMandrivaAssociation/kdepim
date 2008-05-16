@@ -10,12 +10,12 @@
 
 Name: kdepim4
 Summary: K Desktop Environment
-Version: 4.0.73
+Version: 4.0.74
 Epoch: 2
 Group: Graphical desktop/KDE
 License: GPL
 URL: http://www.kde.org
-Release: %mkrel 3
+Release: %mkrel 1
 Source:        ftp://ftp.kde.org/pub/kde/stable/%version/src/kdepim-%version.tar.bz2
 Buildroot:	%_tmppath/%name-%version-%release-root
 BuildRequires: kdelibs4-devel
@@ -46,6 +46,7 @@ BuildRequires: glib2-devel
 BuildRequires: libassuan-devel
 BuildRequires: mysql-static-devel
 BuildRequires: libmal-devel
+BuildRequires: automoc
 %if %{with_kitchensync}
 BuildRequires: libopensync-devel >= 0.30
 %endif
@@ -933,19 +934,12 @@ Dialog KDE base widgets
 %_kde_bindir/kmail_clamav.sh
 %_kde_bindir/kmail_fprot.sh
 %_kde_bindir/kmail_sav.sh
+%_kde_appsdir/kmail
 %_kde_datadir/applications/kde4/KMail.desktop
 %_kde_datadir/applications/kde4/kmail_view.desktop
 %_kde_appsdir/kconf_update/kmail*
 %_kde_appsdir/kconf_update/upgrade-signature.pl
 %_kde_appsdir/kconf_update/upgrade-transport.pl
-%dir %_kde_appsdir/kmail
-%dir %_kde_appsdir/kmail/about
-%_kde_appsdir/kmail/about/*
-%_kde_appsdir/kmail/*rc
-%dir %_kde_appsdir/kmail/pics
-%_kde_appsdir/kmail/pics/*.png
-%_kde_appsdir/kmail/tips
-%_kde_appsdir/kmail/plugins/bodypartformatter/application_octetstream.desktop
 %_kde_datadir/config.kcfg/custommimeheader.kcfg
 %_kde_datadir/config.kcfg/customtemplates_kfg.kcfg
 %_kde_datadir/config.kcfg/kmail.kcfg
@@ -1690,25 +1684,6 @@ KDE 4 library.
 
 #-----------------------------------------------------------------------------
 
-%define libkfeed %mklibname kfeed 4
-
-%package -n %libkfeed
-Summary: KDE 4 library
-Group: System/Libraries
-Obsoletes: %{_lib}kdepim42-common < 1:3.93.0-1
-
-%description -n %libkfeed
-KDE 4 library.
-
-%post -n %libkfeed -p /sbin/ldconfig
-%postun -n %libkfeed -p /sbin/ldconfig
-
-%files -n %libkfeed
-%defattr(-,root,root)
-%_kde_libdir/libkfeed.so.*
-
-#-----------------------------------------------------------------------------
-
 %define libkleo %mklibname kleo 4
 
 %package -n %libkleo
@@ -1993,7 +1968,6 @@ Requires: %libknoteskolab = %epoch:%version
 Requires: %libkslox = %epoch:%version
 Requires: %libkabcommon = %epoch:%version
 Requires: %libkcal_resourcefeatureplan = %epoch:%version
-Requires: %libkfeed = %epoch:%version
 Requires: %libkleo = %epoch:%version
 Requires: %libmaildir = %epoch:%version
 Requires: %libimap = %epoch:%version

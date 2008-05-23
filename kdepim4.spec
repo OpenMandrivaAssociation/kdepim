@@ -884,10 +884,10 @@ Dialog KDE base widgets
 %_kde_bindir/ktimetracker
 %_kde_datadir/applications/kde4/karm.desktop
 %_kde_appsdir/karmpart
-%_kde_appsdir/ktimetracker/*
+%_kde_appsdir/ktimetracker
 %_kde_datadir/kde4/services/karm_part.desktop
 %_kde_libdir/kde4/karmpart.so
-%_kde_docdir/HTML/en/ktimetracker/
+%_kde_docdir/HTML/en/ktimetracker
 %_datadir/dbus-1/interfaces/org.kde.ktimetracker.ktimetracker.xml
 
 #-----------------------------------------------------------------------------

@@ -1339,7 +1339,7 @@ Dialog KDE base widgets
 %_kde_datadir/applications/kde4/kpilot.desktop
 %_kde_datadir/applications/kde4/kpilotdaemon.desktop
 %_kde_appsdir/kconf_update/kpilot.upd
-%_kde_appsdir/kpilot/kpilotui.rc
+%_kde_appsdir/kpilot
 %_kde_datadir/config.kcfg/kpilot.kcfg
 %_kde_datadir/config.kcfg/kpilotlib.kcfg
 %_kde_datadir/config.kcfg/memofileconduit.kcfg

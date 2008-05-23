@@ -291,7 +291,7 @@ Dialog KDE base widgets
 %_kde_bindir/kxml_compiler
 %_kde_bindir/schematest
 %_kde_datadir/applications/kde4/kwsdl_compiler.desktop
-%_kde_appsdir/kxforms/kxformsui.rc
+%_kde_appsdir/kxforms
 %_kde_datadir/config.kcfg/kxforms.kcfg
 
 #-----------------------------------------------------------------------------

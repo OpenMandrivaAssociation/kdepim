@@ -422,7 +422,7 @@ Dialog KDE base widgets
 %_kde_datadir/applications/kde4/akonadiconsole.desktop
 %_kde_datadir/applications/kde4/akonaditray.desktop
 %_kde_datadir/applications/kde4/kcontactmanager.desktop
-%_kde_appsdir/kcontactmanager/kcontactmanagerui.rc
+%_kde_appsdir/kcontactmanager
 %_kde_datadir/kde4/services/akonadi.protocol
 %_kde_libdir/kde4/kio_akonadi.so
 %_kde_libdir/kde4/kabc_akonadi.so

@@ -1697,7 +1697,8 @@ KDE 4 library.
 %files -n %libkleo
 %defattr(-,root,root)
 %_kde_libdir/libkleo.so.*
-%_kde_appsdir/libkleopatra/*
+# FIXME: move to kleopatra ??
+%_kde_appsdir/libkleopatra
 
 
 #-----------------------------------------------------------------------------

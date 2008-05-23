@@ -1045,12 +1045,8 @@ Dialog KDE base widgets
 %_kde_bindir/kontact
 %_kde_datadir/applications/kde4/Kontact.desktop
 %_kde_appsdir/knotes/knotes_part.rc
-%_kde_appsdir/kontact/about/kontact.css
-%_kde_appsdir/kontact/about/main.html
-%_kde_appsdir/kontact/about/top-left-kontact.png
-%_kde_appsdir/kontact/kontact.setdlg
-%_kde_appsdir/kontact/kontactui.rc
-%_kde_appsdir/kontactsummary/kontactsummary_part.rc
+%_kde_appsdir/kontact
+%_kde_appsdir/kontactsummary
 %_kde_datadir/config.kcfg/kontact.kcfg
 %_kde_datadir/kde4/services/kontactconfig.desktop
 %_kde_datadir/kde4/services/kcmapptsummary.desktop

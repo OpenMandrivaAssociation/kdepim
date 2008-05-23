@@ -412,12 +412,9 @@ Dialog KDE base widgets
 %_kde_bindir/akonalendar
 %_kde_bindir/kabceditor
 %_kde_bindir/kabcviewer
-%_kde_appsdir/akonadi/plugins/serializer/akonadi_serializer_addressee.desktop
-%_kde_appsdir/akonadi/plugins/serializer/akonadi_serializer_bookmark.desktop
-%_kde_appsdir/akonadi/plugins/serializer/akonadi_serializer_kcal.desktop
-%_kde_appsdir/akonadi/plugins/serializer/akonadi_serializer_mail.desktop
+%_kde_appsdir/akonadi
 %_kde_datadir/akonadi
-%_kde_appsdir/akonadiconsole/akonadiconsoleui.rc
+%_kde_appsdir/akonadiconsole
 %_kde_datadir/kde4/services/kresources/kcal/blog.desktop
 %_kde_datadir/applications/kde4/akonadiconsole.desktop
 %_kde_datadir/applications/kde4/akonaditray.desktop

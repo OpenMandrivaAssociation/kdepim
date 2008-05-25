@@ -1822,6 +1822,7 @@ Dialog KDE base widgets
 %_kde_bindir/scalixwizard
 %_kde_bindir/scalixadmin
 %_kde_libdir/kde4/kio_scalix.so
+%_kde_libdir/kde4/kio_groupwise.so
 %_kde_datadir/applications/kde4/groupwarewizard.desktop
 %_kde_datadir/config.kcfg/egroupware.kcfg
 %_kde_datadir/config.kcfg/groupwise.kcfg

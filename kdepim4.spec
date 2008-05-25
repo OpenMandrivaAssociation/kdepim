@@ -74,6 +74,7 @@ Requires: kmobiletools
 Requires: korn
 Requires: kpilot
 Requires: ktnef
+Requires: kjots
 
 %description
 Information Management applications for the K Desktop Environment.
@@ -194,6 +195,24 @@ KDE 4 library.
 %files -n %libkxmlcommon
 %defattr(-,root,root)
 %_kde_libdir/libkxmlcommon.so.*
+
+#-----------------------------------------------------------------------------
+
+%define libgwsoap %mklibname gwsoap 4
+
+%package -n %libgwsoap
+Summary: KDE 4 library
+Group: System/Libraries
+
+%description -n %libgwsoap
+KDE 4 library.
+
+%post -n %libgwsoap -p /sbin/ldconfig
+%postun -n %libgwsoap -p /sbin/ldconfig
+
+%files -n %libgwsoap
+%defattr(-,root,root)
+%_kde_libdir/libgwsoap.so.*
 
 #-----------------------------------------------------------------------------
 
@@ -569,6 +588,7 @@ KDE 4 library.
 Summary: KDE 4 library
 Group: System/Libraries
 Obsoletes: %{_lib}kdepim42-common < 1:3.93.0-1
+Obsoletes: %{_lib}kpinterfaces4 < 2:4.0.80-1
 
 %description -n %libakregatorinterfaces
 KDE 4 library.
@@ -1007,25 +1027,6 @@ Dialog KDE base widgets
 %_kde_libdir/kde4/kcm_kontactknt.so
 %_kde_libdir/kde4/knotes_scalix.so
 %_kde_docdir/HTML/en/knotes
-
-#-----------------------------------------------------------------------------
-
-%define libkpinterfaces %mklibname kpinterfaces 4
-
-%package -n %libkpinterfaces
-Summary: KDE 4 library
-Group: System/Libraries
-Obsoletes: %{_lib}kdepim42-common < 1:3.93.0-1
-
-%description -n %libkpinterfaces
-KDE 4 library.
-
-%post -n %libkpinterfaces -p /sbin/ldconfig
-%postun -n %libkpinterfaces -p /sbin/ldconfig
-
-%files -n %libkpinterfaces
-%defattr(-,root,root)
-%_kde_libdir/libkpinterfaces.so.*
 
 #-----------------------------------------------------------------------------
 
@@ -1829,6 +1830,10 @@ Dialog KDE base widgets
 %_kde_datadir/config.kcfg/scalix.kcfg
 %_kde_datadir/kde4/services/scalix.protocol
 %_kde_datadir/kde4/services/scalixs.protocol
+%_kde_datadir/kde4/services/groupwise.protocol
+%_kde_datadir/kde4/services/groupwises.protocol
+%_kde_datadir/kde4/services/kresources/kabc/kabc_groupwise.desktop
+%_kde_datadir/kde4/services/kresources/kcal/kcal_groupwise.desktop
 
 #-----------------------------------------------------------------------------
 
@@ -1909,6 +1914,83 @@ KDE 4 library.
 
 #-----------------------------------------------------------------------------
 
+%define libkabc_groupwise %mklibname kabc_groupwise 4
+
+%package -n %libkabc_groupwise
+Summary: KDE 4 library
+Group: System/Libraries
+
+%description -n %libkabc_groupwise
+KDE 4 library.
+
+%post -n %libkabc_groupwise -p /sbin/ldconfig
+%postun -n %libkabc_groupwise -p /sbin/ldconfig
+
+%files -n %libkabc_groupwise
+%defattr(-,root,root)
+%_kde_libdir/libkabc_groupwise.so.*
+
+#-----------------------------------------------------------------------------
+
+%define libkcal_groupwise %mklibname kcal_groupwise 4
+
+%package -n %libkcal_groupwise
+Summary: KDE 4 library
+Group: System/Libraries
+
+%description -n %libkcal_groupwise
+KDE 4 library.
+
+%post -n %libkcal_groupwise -p /sbin/ldconfig
+%postun -n %libkcal_groupwise -p /sbin/ldconfig
+
+%files -n %libkcal_groupwise
+%defattr(-,root,root)
+%_kde_libdir/libkcal_groupwise.so.*
+
+#-----------------------------------------------------------------------------
+
+%define libkontactinterfaces %mklibname kontactinterfaces 4
+
+%package -n %libkontactinterfaces
+Summary: KDE 4 library
+Group: System/Libraries
+
+%description -n %libkontactinterfaces
+KDE 4 library.
+
+%post -n %libkontactinterfaces -p /sbin/ldconfig
+%postun -n %libkontactinterfaces -p /sbin/ldconfig
+
+%files -n %libkontactinterfaces
+%defattr(-,root,root)
+%_kde_libdir/libkontactinterfaces.so.*
+
+#-----------------------------------------------------------------------------
+
+%package -n     kjots
+Summary:        %{name} kjots
+Group:          Graphical desktop/KDE
+Requires:       %name-core = %version
+Obsoletes:      %name-kjots < 3.93.0-0.714053.1
+Obsoletes:      kde4-kjots < 4.0.68
+Provides:       kde4-kjots = %version
+
+%description -n kjots
+%{name} kjots.
+
+%files -n kjots
+%defattr(-,root,root)
+%_kde_appsdir/kjots
+%_kde_bindir/kjots
+%_kde_libdir/kde4/kjotspart.so
+%_kde_datadir/applications/kde4/Kjots.desktop
+%_kde_datadir/applications/kde4/kjotspart.desktop
+%_kde_datadir/config.kcfg/kjots.kcfg
+%_kde_docdir/HTML/*/kjots
+
+#-----------------------------------------------------------------------------
+
 %package devel
 Summary: Devel stuff for %name
 Group: Development/KDE and Qt
@@ -1937,7 +2019,6 @@ Requires: %libknodecommon = %epoch:%version
 Requires: %libkabinterfaces = %epoch:%version
 Requires: %libkalarm_resources = %epoch:%version
 Requires: %libkmailprivate = %epoch:%version
-Requires: %libkpinterfaces = %epoch:%version
 Requires: %libkocorehelper = %epoch:%version
 Requires: %libkorg_stdprinting = %epoch:%version
 Requires: %libkorganizerprivate = %epoch:%version
@@ -1968,6 +2049,10 @@ Requires: %libimap = %epoch:%version
 Requires: %libknotesscalix = %epoch:%version
 Requires: %libkabcscalix  = %epoch:%version
 Requires: %libkcalscalix  = %epoch:%version
+Requires: %libgwsoap = %epoch:%version
+Requires: %libkabc_groupwise = %epoch:%version
+Requires: %libkcal_groupwise = %epoch:%version
+Requires: %libkontactinterfaces = %epoch:%version
 
 %description  devel
 This package contains header files needed if you wish to build applications

@@ -525,6 +525,7 @@ Requires: %name-core = %epoch:%version
 Obsoletes: %name-kleopatra < 1:3.93.0-1
 Obsoletes: kde4-kleopatra < 2:4.0.68
 Provides: kde4-kleopatra = %epoch:%version
+Conflicts:  %{_lib}kleo4 < 4.0.80-3
 
 %description -n kleopatra
 Dialog KDE base widgets
@@ -537,6 +538,7 @@ Dialog KDE base widgets
 %_kde_configdir/libkleopatrarc
 %_kde_datadir/applications/kde4/kleopatra_import.desktop
 %_kde_appsdir/kleopatra
+%_kde_appsdir/libkleopatra
 %_kde_appsdir/kwatchgnupg
 %_kde_datadir/kde4/services/kleopatra_config_*
 %_kde_libdir/kde4/kcm_kleopatra.so
@@ -1694,8 +1696,6 @@ KDE 4 library.
 %files -n %libkleo
 %defattr(-,root,root)
 %_kde_libdir/libkleo.so.*
-# FIXME: move to kleopatra ??
-%_kde_appsdir/libkleopatra
 
 
 #-----------------------------------------------------------------------------

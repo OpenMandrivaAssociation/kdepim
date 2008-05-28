@@ -15,7 +15,7 @@ Epoch: 2
 Group: Graphical desktop/KDE
 License: GPL
 URL: http://www.kde.org
-Release: %mkrel 1
+Release: %mkrel 2
 Source:        ftp://ftp.kde.org/pub/kde/stable/%version/src/kdepim-%version.tar.bz2
 Buildroot:	%_tmppath/%name-%version-%release-root
 BuildRequires: kdelibs4-devel
@@ -1972,7 +1972,7 @@ KDE 4 library.
 %package -n     kjots
 Summary:        %{name} kjots
 Group:          Graphical desktop/KDE
-Requires:       %name-core = %version
+Requires:       %name-core = %epoch:%version
 Obsoletes:      %name-kjots < 3.93.0-0.714053.1
 Obsoletes:      kde4-kjots < 4.0.68
 Provides:       kde4-kjots = %version

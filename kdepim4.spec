@@ -1,3 +1,9 @@
+%define with_kpilot 0
+%{?_with_kpilot: %{expand: %%global with_kpilot 1}}
+
+%define with_kmobiletools 0
+%{?_with_kmobiletools: %{expand: %%global with_kmobiletools 1}}
+
 %define with_kitchensync 0
 %{?_with_kitchensync: %{expand: %%global with_kitchensync 1}}
 
@@ -70,9 +76,13 @@ Requires: kmailcvt
 Requires: knotes
 Requires: kontact
 Requires: korganizer
+%if %{with_kmobiletools}
 Requires: kmobiletools
+%endif
 Requires: korn
+%if %{with_kpilot}
 Requires: kpilot
+%endif
 Requires: ktnef
 Requires: kjots
 
@@ -518,6 +528,44 @@ KDE 4 library.
 
 #-----------------------------------------------------------------------------
 
+%define libkleopatraclientgui %mklibname kleopatraclientgui 4
+
+%package -n %libkleopatraclientgui
+Summary: KDE 4 library
+Group: System/Libraries
+Obsoletes: %{_lib}kdepim42-common < 1:3.93.0-1
+
+%description -n %libkleopatraclientgui
+KDE 4 library.
+
+%post -n %libkleopatraclientgui -p /sbin/ldconfig
+%postun -n %libkleopatraclientgui -p /sbin/ldconfig
+
+%files -n %libkleopatraclientgui
+%defattr(-,root,root)
+%_kde_libdir/libkleopatraclientgui.so.*
+
+#-----------------------------------------------------------------------------
+
+%define libkleopatraclientcore %mklibname kleopatraclientcore 4
+
+%package -n %libkleopatraclientcore
+Summary: KDE 4 library
+Group: System/Libraries
+Obsoletes: %{_lib}kdepim42-common < 1:3.93.0-1
+
+%description -n %libkleopatraclientcore
+KDE 4 library.
+
+%post -n %libkleopatraclientcore -p /sbin/ldconfig
+%postun -n %libkleopatraclientcore -p /sbin/ldconfig
+
+%files -n %libkleopatraclientcore
+%defattr(-,root,root)
+%_kde_libdir/libkleopatraclientcore.so.*
+
+#-----------------------------------------------------------------------------
+
 %package -n kleopatra
 Summary: Dialog KDE base widgets
 Group: Graphical desktop/KDE
@@ -800,7 +848,6 @@ Dialog KDE base widgets
 %_kde_datadir/kde4/services/kabcustomfields.desktop
 %_kde_datadir/kde4/services/kabldapconfig.desktop
 %_kde_datadir/kde4/services/kaddressbook
-%_kde_datadir/kde4/services/addressbook_service.desktop
 %_kde_datadir/kde4/services/ldifvcardthumbnail.desktop
 %_kde_datadir/kde4/servicetypes/dbusaddressbook.desktop
 %_kde_datadir/kde4/servicetypes/kaddressbook*
@@ -831,26 +878,6 @@ KDE 4 library.
 %files -n %libkalarm_resources
 %defattr(-,root,root)
 %_kde_libdir/libkalarm_resources.so.*
-
-#-----------------------------------------------------------------------------
-
-%define libkmtaddressbook_service %mklibname kmtaddressbook_service 4
-
-%package -n %libkmtaddressbook_service
-Summary: KDE 4 library
-Group: System/Libraries
-Obsoletes: %{_lib}kdepim42-common < 1:3.93.0-1
-
-%description -n %libkmtaddressbook_service
-KDE 4 library.
-
-%post -n %libkmtaddressbook_service -p /sbin/ldconfig
-%postun -n %libkmtaddressbook_service -p /sbin/ldconfig
-
-%files -n %libkmtaddressbook_service
-%defattr(-,root,root)
-%_kde_libdir/libkmtaddressbook_service.so.*
-
 
 #-----------------------------------------------------------------------------
 
@@ -908,7 +935,9 @@ Dialog KDE base widgets
 %_kde_appsdir/karmpart
 %_kde_appsdir/ktimetracker
 %_kde_datadir/kde4/services/karm_part.desktop
+%_kde_datadir/kde4/services/ktimetrackerconfig.desktop
 %_kde_libdir/kde4/karmpart.so
+%_kde_libdir/kde4/kcm_ktimetrackerconfig.so
 %_kde_docdir/HTML/en/ktimetracker
 %_datadir/dbus-1/interfaces/org.kde.ktimetracker.ktimetracker.xml
 
@@ -1056,13 +1085,11 @@ Dialog KDE base widgets
 %_kde_datadir/kde4/services/kcmkmailsummary.desktop
 %_kde_datadir/kde4/services/kcmkontactsummary.desktop
 %_kde_datadir/kde4/services/kcmsdsummary.desktop
-%_kde_datadir/kde4/services/kcmplanner.desktop
 %_kde_datadir/kde4/services/kcmtodosummary.desktop
 %_kde_datadir/kde4/services/kontact
 %_kde_datadir/kde4/servicetypes/kontactplugin.desktop
 %_datadir/dbus-1/interfaces/org.kde.kontact.KNotes.xml
 %_kde_libdir/kde4/kcm_apptsummary.so
-%_kde_libdir/kde4/kcm_planner.so
 %_kde_libdir/kde4/kcm_kmailsummary.so
 %_kde_libdir/kde4/kcm_kontact.so
 %_kde_libdir/kde4/kcm_kontactsummary.so
@@ -1232,6 +1259,8 @@ KDE 4 library.
 
 #-----------------------------------------------------------------------------
 
+%if %{with_kmobiletools}
+
 %define libkmobiletoolsengineui %mklibname kmobiletoolsengineui 4
 
 %package -n %libkmobiletoolsengineui
@@ -1248,6 +1277,26 @@ KDE 4 library.
 %files -n %libkmobiletoolsengineui
 %defattr(-,root,root)
 %_kde_libdir/libkmobiletoolsengineui.so.*
+
+#-----------------------------------------------------------------------------
+
+%define libkmobiletoolslib %mklibname kmobiletoolslib 4
+
+%package -n %libkmobiletoolslib
+Summary: KDE 4 library
+Group: System/Libraries
+Obsoletes: %{_lib}kdepim42-common < 1:3.93.0-1
+Obsoletes: %{_lib}kmobiletools4 < 1:3.94.1-0.730680.1
+
+%description -n %libkmobiletoolslib
+KDE 4 library.
+
+%post -n %libkmobiletoolslib -p /sbin/ldconfig
+%postun -n %libkmobiletoolslib -p /sbin/ldconfig
+
+%files -n %libkmobiletoolslib
+%defattr(-,root,root)
+%_kde_libdir/libkmobiletoolslib.so.*
 
 #-----------------------------------------------------------------------------
 
@@ -1274,6 +1323,9 @@ Dialog KDE base widgets
 %_kde_datadir/kde4/servicetypes/kmobile*
 %_kde_libdir/kde4/kmobiletools*
 %_kde_docdir/HTML/en/kmobiletools
+%else #with_kmobiletools
+%exclude %_kde_docdir/HTML/en/kmobiletools
+%endif # with_kmobiletools
 
 #-----------------------------------------------------------------------------
 
@@ -1298,6 +1350,8 @@ Dialog KDE base widgets
 %_kde_docdir/HTML/en/korn
 
 #-----------------------------------------------------------------------------
+
+%if %{with_kpilot}
 
 %define libkpilot %mklibname kpilot 5
 
@@ -1354,6 +1408,9 @@ Dialog KDE base widgets
 %_kde_libdir/kde4/kpilot_*
 %_kde_libdir/libkpilot_conduit_base.so
 %_kde_docdir/HTML/en/kpilot
+%else @with_kpilot
+%exclude %_kde_docdir/HTML/en/kpilot
+%endif # with_kpilot
 
 #-----------------------------------------------------------------------------
 
@@ -1697,27 +1754,6 @@ KDE 4 library.
 %defattr(-,root,root)
 %_kde_libdir/libkleo.so.*
 
-
-#-----------------------------------------------------------------------------
-
-%define libkmobiletoolslib %mklibname kmobiletoolslib 4
-
-%package -n %libkmobiletoolslib
-Summary: KDE 4 library
-Group: System/Libraries
-Obsoletes: %{_lib}kdepim42-common < 1:3.93.0-1
-Obsoletes: %{_lib}kmobiletools4 < 1:3.94.1-0.730680.1
-
-%description -n %libkmobiletoolslib
-KDE 4 library.
-
-%post -n %libkmobiletoolslib -p /sbin/ldconfig
-%postun -n %libkmobiletoolslib -p /sbin/ldconfig
-
-%files -n %libkmobiletoolslib
-%defattr(-,root,root)
-%_kde_libdir/libkmobiletoolslib.so.*
-
 #-----------------------------------------------------------------------------
 
 %package kresources
@@ -2011,8 +2047,8 @@ Requires: %libksieve = %epoch:%version
 Requires: %libmimelib = %epoch:%version
 Requires: %libakregatorinterfaces = %epoch:%version
 Requires: %libakregatorprivate = %epoch:%version
-Requires: %libkmobiletoolslib = %epoch:%version
 %if %{with_kitchensync}
+Requires: %libkmobiletoolslib = %epoch:%version
 Requires: %libkitchensyncprivate = %epoch:%version
 Requires: %libqopensync = %epoch:%version
 %endif
@@ -2026,8 +2062,12 @@ Requires: %libkorganizerprivate = %epoch:%version
 Requires: %libkorganizer_calendar = %epoch:%version
 Requires: %libkorganizer_eventviewer = %epoch:%version
 Requires: %libkorganizer_interfaces = %epoch:%version
+%if %{with_kmobiletools}
 Requires: %libkmobiletoolsengineui = %epoch:%version
+%endif
+%if %{with_kpilot}
 Requires: %libkpilot = %epoch:%version
+%endif
 Requires: %libkabc_groupdav = %epoch:%version
 Requires: %libkabc_slox = %epoch:%version
 Requires: %libkabc_xmlrpc = %epoch:%version
@@ -2062,7 +2102,9 @@ based on kdepim.
 %files devel
 %defattr(-,root,root)
 %_kde_libdir/*.so
+%if %{with_kpilot}
 %exclude %_kde_libdir/libkpilot_conduit_base.so
+%endif
 %_kde_prefix/include/*
 %_kde_appsdir/cmake/modules/*
 

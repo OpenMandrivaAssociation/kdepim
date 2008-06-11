@@ -16,12 +16,12 @@
 
 Name: kdepim4
 Summary: K Desktop Environment
-Version: 4.0.81
+Version: 4.0.82
 Epoch: 2
 Group: Graphical desktop/KDE
 License: GPL
 URL: http://www.kde.org
-Release: %mkrel 3
+Release: %mkrel 1
 Source: ftp://ftp.kde.org/pub/kde/stable/%version/src/kdepim-%version.tar.bz2
 Buildroot:	%_tmppath/%name-%version-%release-root
 BuildRequires: kdelibs4-devel

@@ -1168,10 +1168,8 @@ Dialog KDE base widgets
 %_kde_appsdir/knotes
 %_kde_datadir/kde4/services/kresources/knotes/local.desktop
 %_kde_datadir/kde4/services/kresources/knotes_manager.desktop
-%_kde_datadir/kde4/services/kcmkontactknt.desktop
 %_datadir/dbus-1/interfaces/org.kde.KNotes.xml
 %_kde_libdir/kde4/knotes_local.so
-%_kde_libdir/kde4/kcm_kontactknt.so
 %_kde_libdir/kde4/knotes_scalix.so
 %_kde_docdir/HTML/en/knotes
 
@@ -1471,8 +1469,6 @@ Dialog KDE base widgets
 %_kde_datadir/kde4/servicetypes/kmobile*
 %_kde_libdir/kde4/kmobiletools*
 %_kde_docdir/HTML/en/kmobiletools
-%else #with_kmobiletools
-%exclude %_kde_docdir/HTML/en/kmobiletools
 %endif # with_kmobiletools
 
 #-----------------------------------------------------------------------------
@@ -1560,8 +1556,6 @@ Dialog KDE base widgets
 %_kde_libdir/kde4/kpilot_*
 %_kde_libdir/libkpilot_conduit_base.so
 %_kde_docdir/HTML/en/kpilot
-%else #with_kpilot
-%exclude %_kde_docdir/HTML/en/kpilot
 %endif # with_kpilot
 
 #-----------------------------------------------------------------------------

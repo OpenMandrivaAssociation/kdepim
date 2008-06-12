@@ -540,8 +540,6 @@ KDE 4 library.
 %_kde_libdir/libkdepim.so.*
 %_kde_appsdir/kdepimwidgets
 %_kde_appsdir/libkdepim
-%_datadir/dbus-1/interfaces/org.kde.addressbook.service.xml
-%_datadir/dbus-1/interfaces/org.kde.mailtransport.service.xml
 %_kde_libdir/kde4/kpartsdesignerplugin.so
 %_kde_libdir/kde4/plugins/designer/kdepimwidgets.so
 
@@ -783,7 +781,6 @@ Dialog KDE base widgets
 %_kde_datadir/kde4/services/akregator_*
 %_kde_datadir/kde4/services/feed.protocol
 %_kde_datadir/kde4/servicetypes/akregator_plugin.desktop
-%_datadir/dbus-1/interfaces/org.kde.akregator.part.xml
 %_kde_libdir/kde4/akregator*
 %doc %_kde_docdir/HTML/en/akregator
 
@@ -906,7 +903,6 @@ Dialog KDE base widgets
 %_kde_datadir/kde4/services/knode_config_post_news.desktop
 %_kde_datadir/kde4/services/knode_config_privacy.desktop
 %_kde_datadir/kde4/services/knode_config_read_news.desktop
-%_datadir/dbus-1/interfaces/org.kde.knode.xml
 %_kde_libdir/kde4/kcm_knode.so
 %_kde_libdir/kde4/knodepart.so
 %_kde_docdir/HTML/en/knode
@@ -959,7 +955,6 @@ Dialog KDE base widgets
 %_kde_datadir/kde4/services/ldifvcardthumbnail.desktop
 %_kde_datadir/kde4/servicetypes/dbusaddressbook.desktop
 %_kde_datadir/kde4/servicetypes/kaddressbook*
-%_datadir/dbus-1/interfaces/org.kde.KAddressbook.Core.xml
 %_kde_libdir/kde4/kcm_kabconfig.so
 %_kde_libdir/kde4/kcm_kabcustomfields.so
 %_kde_libdir/kde4/kcm_kabldapconfig.so
@@ -1020,7 +1015,6 @@ Dialog KDE base widgets
 %_kde_datadir/kde4/services/kresources/alarms/localdir.desktop
 %_kde_datadir/kde4/services/kresources/alarms/remote.desktop
 %_kde_datadir/kde4/services/kresources/kalarm_manager.desktop
-%_datadir/dbus-1/interfaces/org.kde.kalarm.kalarm.xml
 %_kde_libdir/kde4/kalarm_local.so
 %_kde_libdir/kde4/kalarm_localdir.so
 %_kde_libdir/kde4/kalarm_remote.so
@@ -1051,7 +1045,6 @@ Dialog KDE base widgets
 %_kde_libdir/kde4/karmpart.so
 %_kde_libdir/kde4/kcm_ktimetrackerconfig.so
 %_kde_docdir/HTML/en/ktimetracker
-%_datadir/dbus-1/interfaces/org.kde.ktimetracker.ktimetracker.xml
 
 #-----------------------------------------------------------------------------
 
@@ -1119,9 +1112,6 @@ Dialog KDE base widgets
 %_kde_datadir/kde4/services/kmail_config_security.desktop
 %_kde_datadir/kde4/servicetypes/dbusimap.desktop
 %_kde_datadir/kde4/servicetypes/dbusmail.desktop
-%_datadir/dbus-1/interfaces/org.kde.kmail.kmailpart.xml
-%_datadir/dbus-1/interfaces/org.kde.kmail.mailcomposer.xml
-%_datadir/dbus-1/interfaces/org.kde.kmail.kmail.xml
 %_kde_libdir/kde4/kcm_kmail.so
 %_kde_libdir/kde4/kmailpart.so
 %_kde_libdir/kde4/kmail_bodypartformatter_*
@@ -1168,7 +1158,6 @@ Dialog KDE base widgets
 %_kde_appsdir/knotes
 %_kde_datadir/kde4/services/kresources/knotes/local.desktop
 %_kde_datadir/kde4/services/kresources/knotes_manager.desktop
-%_datadir/dbus-1/interfaces/org.kde.KNotes.xml
 %_kde_libdir/kde4/knotes_local.so
 %_kde_libdir/kde4/knotes_scalix.so
 %_kde_docdir/HTML/en/knotes
@@ -1202,7 +1191,6 @@ Dialog KDE base widgets
 %_kde_datadir/kde4/services/kcmtodosummary.desktop
 %_kde_datadir/kde4/services/kontact
 %_kde_datadir/kde4/servicetypes/kontactplugin.desktop
-%_datadir/dbus-1/interfaces/org.kde.kontact.KNotes.xml
 %_kde_libdir/kde4/kcm_apptsummary.so
 %_kde_libdir/kde4/kcm_kmailsummary.so
 %_kde_libdir/kde4/kcm_kontact.so
@@ -1363,9 +1351,6 @@ Dialog KDE base widgets
 %_kde_datadir/kde4/servicetypes/dbuscalendar.desktop
 %_kde_datadir/kde4/servicetypes/korganizerpart.desktop
 %_kde_datadir/kde4/servicetypes/korgprintplugin.desktop
-%_datadir/dbus-1/interfaces/org.kde.Korganizer.Calendar.xml
-%_datadir/dbus-1/interfaces/org.kde.korganizer.KOrgac.xml
-%_datadir/dbus-1/interfaces/org.kde.korganizer.Korganizer.xml
 %_kde_libdir/kde4/kcm_korganizer.so
 %_kde_libdir/kde4/korg_*
 %_kde_libdir/kde4/korganizerpart.so
@@ -1489,8 +1474,6 @@ Dialog KDE base widgets
 %_kde_bindir/korn
 %_kde_datadir/applications/kde4/KOrn.desktop
 %_kde_appsdir/kconf_update/korn*
-%_datadir/dbus-1/interfaces/org.kde.korn.BoxContainerItem.xml
-%_datadir/dbus-1/interfaces/org.kde.korn.MailDrop.xml
 %_kde_docdir/HTML/en/korn
 
 #-----------------------------------------------------------------------------
@@ -2353,6 +2336,7 @@ based on kdepim.
 %endif
 %_kde_prefix/include/*
 %_kde_appsdir/cmake/modules/*
+%_kde_datadir/dbus-1/interfaces/*
 
 #----------------------------------------------------------------------
 

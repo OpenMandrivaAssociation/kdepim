@@ -337,7 +337,7 @@ Plasma engines and applets from %name
 #-----------------------------------------------------------------------------
 
 %package -n kode
-Summary: Dialog KDE base widgets
+Summary: A collection of code generation and XML helper tools
 Group: Graphical desktop/KDE
 Requires: %name-core = %epoch:%version
 Obsoletes: %name-kode < 1:3.93.0-1
@@ -345,7 +345,10 @@ Obsoletes: kde4-kode < 2:4.0.68
 Provides: kde4-kode = %epoch:%version
 
 %description -n kode
-Dialog KDE base widgets
+kode is a collection of code generation and XML helper tools. It contains
+libkode, a helper library for programmatic generation of C++ code, the program
+kode for generation of C++ template files and kxml_compiler for generation
+of C++ classes representing XML data described by RelaxNG schemes.
 
 %files -n kode
 %defattr(-,root,root)
@@ -477,7 +480,7 @@ KDE 4 library.
 #-----------------------------------------------------------------------------
 
 %package akonadi
-Summary: Dialog KDE base widgets
+Summary: KDE PIM storage framework
 Group: Graphical desktop/KDE
 Requires: %name-core = %epoch:%version
 Obsoletes: %name-akonadi < 1:3.93.0-1
@@ -485,7 +488,7 @@ Obsoletes: kde4-akonadi < 2:4.0.68
 Provides: kde4-akonadi = %epoch:%version
 
 %description akonadi
-Dialog KDE base widgets
+KDE PIM storage framework.
 
 %files akonadi
 %defattr(-,root,root)
@@ -641,7 +644,7 @@ KDE 4 library.
 #-----------------------------------------------------------------------------
 
 %package -n kleopatra
-Summary: Dialog KDE base widgets
+Summary: KDE Certificate Manager
 Group: Graphical desktop/KDE
 Requires: %name-core = %epoch:%version
 Obsoletes: %name-kleopatra < 1:3.93.0-1
@@ -650,7 +653,7 @@ Provides: kde4-kleopatra = %epoch:%version
 Conflicts:  %{_lib}kleo4 < 4.0.80-3
 
 %description -n kleopatra
-Dialog KDE base widgets
+KDE Certificate Manager
 
 %files -n kleopatra
 %defattr(-,root,root)
@@ -762,7 +765,7 @@ KDE 4 library.
 #-----------------------------------------------------------------------------
 
 %package -n akregator
-Summary: Dialog KDE base widgets
+Summary: A Feed Reader for KDE
 Group: Graphical desktop/KDE
 Requires: %name-core = %epoch:%version
 Obsoletes: %name-akregator < 1:3.93.0-1
@@ -770,7 +773,13 @@ Obsoletes: kde4-akregator < 2:4.0.68
 Provides: kde4-akregator = %epoch:%version
 
 %description -n akregator
-Dialog KDE base widgets
+Akregator is a news feed reader for the KDE desktop. It enables you to
+follow news sites, blogs and other RSS/Atom-enabled websites without
+the need to manually check for updates using a web browser. Akregator
+is designed to be both easy to use and to be powerful enough to read
+hundreds of news sources conveniently. It comes with Konqueror
+integration for adding news feeds and with an internal browser for
+easy news reading.
 
 %files -n akregator
 %defattr(-,root,root)
@@ -835,7 +844,7 @@ KDE 4 library.
 #-----------------------------------------------------------------------------
 
 %package -n kitchensync
-Summary: Dialog KDE base widgets
+Summary: KDE KitchenSync
 Group: Graphical desktop/KDE
 Requires: %name-core = %epoch:%version
 Obsoletes: %name-kitchensync < 1:3.93.0-1
@@ -843,7 +852,7 @@ Obsoletes: kde4-kitchensync < 2:4.0.68
 Provides: kde4-kitchensync = %epoch:%version
 
 %description -n kitchensync
-Dialog KDE base widgets
+The KDE Synchronization Tool
 
 %files -n kitchensync
 %defattr(-,root,root)
@@ -880,7 +889,7 @@ KDE 4 library.
 #-----------------------------------------------------------------------------
 
 %package -n knode
-Summary: Dialog KDE base widgets
+Summary: A newsreader for the K Desktop Environment
 Group: Graphical desktop/KDE
 Requires: %name-core = %epoch:%version
 Obsoletes: %name-knode < 1:3.93.0-1
@@ -888,7 +897,13 @@ Obsoletes: kde4-knode < 2:4.0.68
 Provides: kde4-knode = %epoch:%version
 
 %description -n knode
-Dialog KDE base widgets
+KNode is a newsreader for the K Desktop Environment.
+
+It is GNKSA compliant (unfortunally a review is still pending), and has
+support for MIME and multiple servers.
+
+It is a online-reader, but in combination with a local newsserver like
+leafnode also usable with dial-up connections.
 
 %files -n knode
 %defattr(-,root,root)
@@ -933,7 +948,7 @@ KDE 4 library.
 #-----------------------------------------------------------------------------
 
 %package -n kaddressbook
-Summary: Dialog KDE base widgets
+Summary: The KDE addressbook application
 Group: Graphical desktop/KDE
 Requires: %name-core = %epoch:%version
 Obsoletes: %name-kaddressbook < 1:3.93.0-1
@@ -941,7 +956,7 @@ Obsoletes: kde4-kaddressbook < 2:4.0.68
 Provides: kde4-kaddressbook = %epoch:%version
 
 %description -n kaddressbook
-Dialog KDE base widgets
+The KDE addressbook application.
 
 %files -n kaddressbook
 %defattr(-,root,root)
@@ -989,7 +1004,7 @@ KDE 4 library.
 #-----------------------------------------------------------------------------
 
 %package -n kalarm
-Summary: Dialog KDE base widgets
+Summary: A personal alarm message, command and email scheduler
 Group: Graphical desktop/KDE
 Requires: %name-core = %epoch:%version
 Obsoletes: %name-kalarm < 1:3.93.0-1
@@ -997,7 +1012,9 @@ Obsoletes: kde4-kalarm < 2:4.0.68
 Provides: kde4-kalarm = %epoch:%version
 
 %description -n kalarm
-Dialog KDE base widgets
+KAlarm is a personal alarm message, command and email scheduler. It lets you
+set up personal alarm messages which pop up on the screen at the chosen time,
+or you can schedule commands to be executed or emails to be sent.
 
 %files -n kalarm
 %defattr(-,root,root)
@@ -1023,7 +1040,7 @@ Dialog KDE base widgets
 #-----------------------------------------------------------------------------
 
 %package -n ktimetracker
-Summary: Dialog KDE base widgets
+Summary: Tracks time spent on various tasks
 Group: Graphical desktop/KDE
 Requires: %name-core = %epoch:%version
 Obsoletes: %name-ktimetracker < 1:3.93.0-1
@@ -1031,7 +1048,9 @@ Obsoletes: kde4-ktimetracker < 2:4.0.68
 Provides: kde4-ktimetracker = %epoch:%version
 
 %description -n ktimetracker
-Dialog KDE base widgets
+KTimeTracker tracks time spent on various tasks. It is useful for tracking
+hours to be billed to different clients or just to find out what percentage
+of your day is spent playing Doom or reading Slashdot.
 
 %files -n ktimetracker
 %defattr(-,root,root)
@@ -1072,7 +1091,7 @@ KDE 4 library.
 #-----------------------------------------------------------------------------
 
 %package -n kmail
-Summary: Dialog KDE base widgets
+Summary: KDE Email Client
 Group: Graphical desktop/KDE
 Requires: %name-core = %epoch:%version
 Obsoletes: %name-kmail < 1:3.93.0-1
@@ -1082,7 +1101,7 @@ Obsoletes: kde4-kmail < 2:4.0.68
 Provides: kde4-kmail = %epoch:%version
 
 %description -n kmail
-Dialog KDE base widgets
+KDE Email Client
 
 %files -n kmail
 %defattr(-,root,root)
@@ -1120,7 +1139,7 @@ Dialog KDE base widgets
 #-----------------------------------------------------------------------------
 
 %package -n kmailcvt
-Summary: Dialog KDE base widgets
+Summary: KDE Mail Import tool
 Group: Graphical desktop/KDE
 Requires: %name-core = %epoch:%version
 Obsoletes: %name-kmailcvt < 1:3.93.0-1
@@ -1128,7 +1147,7 @@ Obsoletes: kde4-kmailcvt < 2:4.0.68
 Provides: kde4-kmailcvt = %epoch:%version
 
 %description -n kmailcvt
-Dialog KDE base widgets
+KDE Mail Import tool
 
 %files -n kmailcvt
 %defattr(-,root,root)
@@ -1138,7 +1157,7 @@ Dialog KDE base widgets
 #-----------------------------------------------------------------------------
 
 %package -n knotes
-Summary: Dialog KDE base widgets
+Summary: Notes for the K Desktop Environment
 Group: Graphical desktop/KDE
 Requires: %name-core = %epoch:%version
 Obsoletes: %name-knotes < 1:3.93.0-1
@@ -1147,7 +1166,9 @@ Obsoletes: kde4-knotes < 2:4.0.68
 Provides: kde4-knotes = %epoch:%version
 
 %description -n knotes
-Dialog KDE base widgets
+KNotes aims to be a useful and full featured notes application for
+the KDE project. It tries to be as fast and lightweight as possible
+although including some advanced features.
 
 %files -n knotes
 %defattr(-,root,root)
@@ -1165,7 +1186,7 @@ Dialog KDE base widgets
 #-----------------------------------------------------------------------------
 
 %package -n kontact
-Summary: Dialog KDE base widgets
+Summary: Kontact Container
 Group: Graphical desktop/KDE
 Requires: %name-core = %epoch:%version
 Obsoletes: %name-kontact < 1:3.93.0-1
@@ -1173,12 +1194,13 @@ Obsoletes: kde4-kontact < 2:4.0.68
 Provides: kde4-kontact = %epoch:%version
 
 %description -n kontact
-Dialog KDE base widgets
+The KDE Kontact Personal Information Management suite unites mature and
+proven KDE applications under one roof. Thanks to the powerful KParts
+technology, existing applications are seamlessly integrated into one.
 
 %files -n kontact
 %defattr(-,root,root)
 %_kde_bindir/kontact
-%_kde_datadir/applications/kde4/Kontact.desktop
 %_kde_appsdir/knotes/knotes_part.rc
 %_kde_appsdir/kontact
 %_kde_appsdir/kontactsummary
@@ -1319,7 +1341,7 @@ KDE 4 library.
 #-----------------------------------------------------------------------------
 
 %package -n korganizer
-Summary: Dialog KDE base widgets
+Summary: Calendar and scheduling component
 Group: Graphical desktop/KDE
 Requires: %name-core = %epoch:%version
 Obsoletes: %name-korganizer < 1:3.93.0-1
@@ -1328,7 +1350,11 @@ Obsoletes: kde4-korganizer < 2:4.0.68
 Provides: kde4-korganizer = %epoch:%version
 
 %description -n korganizer
-Dialog KDE base widgets
+KOrganizer provides management of events and tasks, alarm notification,
+web export, network transparent handling of data, group scheduling,
+import and export of calendar files and more. It is able to work together
+with a wide variety of groupware servers, for example Kolab, Open-Xchange,
+Citadel or OpenGroupware.org.
 
 %files -n korganizer
 %defattr(-,root,root)
@@ -1432,7 +1458,7 @@ KDE 4 library.
 #-----------------------------------------------------------------------------
 
 %package -n kmobiletools
-Summary: Dialog KDE base widgets
+Summary: A KDE application that allows you to control your mobile phone
 Group: Graphical desktop/KDE
 Requires: %name-core = %epoch:%version
 Obsoletes: %name-kmobiletools < 1:3.93.0-1
@@ -1440,7 +1466,8 @@ Obsoletes: kde4-kmobiletools < 2:4.0.68
 Provides: kde4-kmobiletools = %epoch:%version
 
 %description -n kmobiletools
-Dialog KDE base widgets
+KMobileTools is a KDE application that allows you to control your mobile
+phone from your GNU/Linux workstation.
 
 %files -n kmobiletools
 %defattr(-,root,root)
@@ -1459,7 +1486,7 @@ Dialog KDE base widgets
 #-----------------------------------------------------------------------------
 
 %package -n korn
-Summary: Dialog KDE base widgets
+Summary: Mail Alert
 Group: Graphical desktop/KDE
 Requires: %name-core = %epoch:%version
 Obsoletes: %name-korn < 1:3.93.0-1
@@ -1467,7 +1494,7 @@ Obsoletes: kde4-korn < 2:4.0.68
 Provides: kde4-korn = %epoch:%version
 
 %description -n korn
-Dialog KDE base widgets
+Mail Alert program for KDE.
 
 %files -n korn
 %defattr(-,root,root)
@@ -1505,7 +1532,7 @@ KDE 4 library.
 #-----------------------------------------------------------------------------
 
 %package -n kpilot
-Summary: Dialog KDE base widgets
+Summary: Sync PalmOS based handhelds with a machine
 Group: Graphical desktop/KDE
 Requires: %name-core = %epoch:%version
 Obsoletes: %name-kpilot < 1:3.93.0-1
@@ -1514,7 +1541,8 @@ Conflicts: %name-devel < 2:4.0.72-1
 Provides: kde4-kpilot = %epoch:%version
 
 %description -n kpilot
-Dialog KDE base widgets
+KPilot is software for syncing PalmOS based handhelds such as the 3Com Palm
+Pilot with a machine running some flavor of UNIX.
 
 %files -n kpilot
 %defattr(-,root,root)
@@ -1958,14 +1986,16 @@ KDE 4 library.
 #-----------------------------------------------------------------------------
 
 %package kresources
-Summary: Dialog KDE base widgets
+Summary: KDE pim resource plugins
 Group: Graphical desktop/KDE
 Requires: %name-core = %epoch:%version
 Obsoletes: %name-kresources < 1:3.93.0-1
 Conflicts: %{_lib}kcal_resourcefeatureplan4 < 3.93.0-0.726734.2
 
 %description kresources
-Dialog KDE base widgets
+This package includes several plugins needed to interface with groupware
+servers. It also includes plugins for features such as blogging and
+tracking feature plans.
 
 %files kresources
 %defattr(-,root,root)
@@ -2003,7 +2033,7 @@ Dialog KDE base widgets
 #-----------------------------------------------------------------------------
 
 %package -n ktnef
-Summary: Dialog KDE base widgets
+Summary: TNEF File Viewer
 Group: Graphical desktop/KDE
 Requires: %name-core = %epoch:%version
 Obsoletes: %name-ktnef < 1:3.93.0-1
@@ -2012,7 +2042,7 @@ Obsoletes: kde4-ktnef < 2:4.0.68
 Provides: kde4-ktnef = %epoch:%version
 
 %description -n ktnef
-Dialog KDE base widgets
+TNEF File Viewer
 
 %files -n ktnef
 %defattr(-,root,root)
@@ -2023,14 +2053,14 @@ Dialog KDE base widgets
 #-----------------------------------------------------------------------------
 
 %package   plugins
-Summary:   Dialog KDE base widgets
+Summary:   KDE PIM plugins
 Group:     Graphical desktop/KDE
 Requires:  %name-core = %epoch:%version
 Obsoletes: %name-plugins < 1:3.93.0-1
 Conflicts: kde4-kmail <= 1:3.94.0-0.726734.2
 
 %description plugins
-Dialog KDE base widgets
+Plugins for KMail and ktexteditor.
 
 %files plugins
 %defattr(-,root,root)
@@ -2042,13 +2072,13 @@ Dialog KDE base widgets
 #-----------------------------------------------------------------------------
 
 %package wizards
-Summary: Dialog KDE base widgets
+Summary: KDE Groupware Wizard
 Group: Graphical desktop/KDE
 Requires: %name-core = %epoch:%version
 Obsoletes: %name-wizards < 1:3.93.0-1
 
 %description wizards
-Dialog KDE base widgets
+KDE Groupware Wizard
 
 %files wizards
 %defattr(-,root,root)

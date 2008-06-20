@@ -26,7 +26,6 @@ Source: ftp://ftp.kde.org/pub/kde/stable/%version/src/kdepim-%version.tar.bz2
 Buildroot:	%_tmppath/%name-%version-%release-root
 BuildRequires: kdelibs4-devel
 BuildRequires: kdepimlibs4-devel
-# rely on kdebase for the plasma applet
 BuildRequires: kdebase4-workspace-devel 
 BuildRequires: gpgme-devel 
 BuildRequires: X11-devel 
@@ -99,7 +98,7 @@ Information Management applications for the K Desktop Environment.
 	- kalarmd: personal alarm/reminder messages daemon, shared by korganizer and
            kalarm.
 	- kaplan: A shell for the PIM apps, still experimental.
-	- karm: Time tracker.
+	- ktimetracker: Time tracker.
 %if %{with_kitchensync}
 	- kitchensync: Synchronisation framework, still under heavy development.
 %endif
@@ -119,6 +118,7 @@ Group: Graphical desktop/KDE
 Requires: kdelibs4-core
 Obsoletes: libkdepim42-common < 1:3.93.0-1
 Obsoletes: kdepim4-common < 1:3.93.0-1
+Obsoletes: kdepim4-plasma-applets < 1:4.1 
 Obsoletes: %{_lib}akonadisearchprovider4 < 2:3.94.1-0.729215.1
 
 %description core
@@ -316,23 +316,6 @@ KDE 4 library.
 %files -n %libwsdl
 %defattr(-,root,root)
 %_kde_libdir/libwsdl.so.*
-
-#-----------------------------------------------------------------------------
-
-%package plasma-applets
-Summary: Plasma engines and applets from %name
-Group: Graphical desktop/KDE
-Requires: kde4-akonadi
-Requires: %name-core >= %epoch:%version 
-
-%description plasma-applets
-Plasma engines and applets from %name
-
-%files plasma-applets
-%defattr(-,root,root)
-%_kde_libdir/kde4/plasma_*
-%_kde_datadir/kde4/services/plasma-*
-%_kde_appsdir/desktoptheme/default/widgets/akonadi.svg
 
 #-----------------------------------------------------------------------------
 
@@ -770,6 +753,7 @@ Group: Graphical desktop/KDE
 Requires: %name-core = %epoch:%version
 Obsoletes: %name-akregator < 1:3.93.0-1
 Obsoletes: kde4-akregator < 2:4.0.68
+Conflicts: kontact < 2:4.0.83
 Provides: kde4-akregator = %epoch:%version
 
 %description -n akregator
@@ -791,6 +775,7 @@ easy news reading.
 %_kde_datadir/kde4/services/feed.protocol
 %_kde_datadir/kde4/servicetypes/akregator_plugin.desktop
 %_kde_libdir/kde4/akregator*
+%_kde_libdir/kde4/kontact_akregatorplugin.so
 %doc %_kde_docdir/HTML/en/akregator
 
 #-----------------------------------------------------------------------------
@@ -895,6 +880,7 @@ Requires: %name-core = %epoch:%version
 Obsoletes: %name-knode < 1:3.93.0-1
 Obsoletes: kde4-knode < 2:4.0.68
 Provides: kde4-knode = %epoch:%version
+Conflicts: kontact < 2:4.0.83
 
 %description -n knode
 KNode is a newsreader for the K Desktop Environment.
@@ -920,6 +906,7 @@ leafnode also usable with dial-up connections.
 %_kde_datadir/kde4/services/knode_config_read_news.desktop
 %_kde_libdir/kde4/kcm_knode.so
 %_kde_libdir/kde4/knodepart.so
+%_kde_libdir/kde4/kontact_knodeplugin.so
 %_kde_docdir/HTML/en/knode
 
 #-----------------------------------------------------------------------------
@@ -954,6 +941,7 @@ Requires: %name-core = %epoch:%version
 Obsoletes: %name-kaddressbook < 1:3.93.0-1
 Obsoletes: kde4-kaddressbook < 2:4.0.68
 Provides: kde4-kaddressbook = %epoch:%version
+Conflicts: kontact < 2:4.0.83
 
 %description -n kaddressbook
 The KDE addressbook application.
@@ -977,6 +965,7 @@ The KDE addressbook application.
 %_kde_libdir/kde4/kaddrbk_*
 %_kde_libdir/kde4/kaddressbookpart.so
 %_kde_docdir/HTML/en/kaddressbook
+%_kde_libdir/kde4/kontact_kaddressbookplugin.so
 
 #-----------------------------------------------------------------------------
 
@@ -1046,6 +1035,7 @@ Requires: %name-core = %epoch:%version
 Obsoletes: %name-ktimetracker < 1:3.93.0-1
 Obsoletes: kde4-ktimetracker < 2:4.0.68
 Provides: kde4-ktimetracker = %epoch:%version
+Conflicts: kontact < 2:4.0.83
 
 %description -n ktimetracker
 KTimeTracker tracks time spent on various tasks. It is useful for tracking
@@ -1063,6 +1053,7 @@ of your day is spent playing Doom or reading Slashdot.
 %_kde_datadir/kde4/services/ktimetrackerconfig.desktop
 %_kde_libdir/kde4/karmpart.so
 %_kde_libdir/kde4/kcm_ktimetrackerconfig.so
+%_kde_libdir/kde4/kontact_karmplugin.so
 %_kde_docdir/HTML/en/ktimetracker
 
 #-----------------------------------------------------------------------------
@@ -1095,9 +1086,10 @@ Summary: KDE Email Client
 Group: Graphical desktop/KDE
 Requires: %name-core = %epoch:%version
 Obsoletes: %name-kmail < 1:3.93.0-1
-Requires: %name-plugins
 Requires: kdepimlibs4-core
 Obsoletes: kde4-kmail < 2:4.0.68
+Obsoletes: kdepim4-plugins <= 4.0.83
+Conflicts: kontact < 2:4.0.83
 Provides: kde4-kmail = %epoch:%version
 
 %description -n kmail
@@ -1134,6 +1126,10 @@ KDE Email Client
 %_kde_libdir/kde4/kcm_kmail.so
 %_kde_libdir/kde4/kmailpart.so
 %_kde_libdir/kde4/kmail_bodypartformatter_*
+%_kde_libdir/kde4/kcm_kmailsummary.so
+%_kde_libdir/kde4/kontact_kmailplugin.so
+%_kde_libdir/kde4/ktexteditorkabcbridge.so
+%_kde_datadir/kde4/services/kcmkmailsummary.desktop
 %_kde_docdir/HTML/en/kmail
 
 #-----------------------------------------------------------------------------
@@ -1164,6 +1160,7 @@ Obsoletes: %name-knotes < 1:3.93.0-1
 Requires: %name-kresources
 Obsoletes: kde4-knotes < 2:4.0.68
 Provides: kde4-knotes = %epoch:%version
+Conflicts: kontact < 2:4.0.83
 
 %description -n knotes
 KNotes aims to be a useful and full featured notes application for
@@ -1182,6 +1179,7 @@ although including some advanced features.
 %_kde_libdir/kde4/knotes_local.so
 %_kde_libdir/kde4/knotes_scalix.so
 %_kde_docdir/HTML/en/knotes
+%_kde_libdir/kde4/kontact_knotesplugin.so
 
 #-----------------------------------------------------------------------------
 
@@ -1201,27 +1199,27 @@ technology, existing applications are seamlessly integrated into one.
 %files -n kontact
 %defattr(-,root,root)
 %_kde_bindir/kontact
-%_kde_appsdir/knotes/knotes_part.rc
 %_kde_appsdir/kontact
 %_kde_appsdir/kontactsummary
 %_kde_datadir/config.kcfg/kontact.kcfg
 %_kde_datadir/kde4/services/kontactconfig.desktop
 %_kde_datadir/kde4/services/kcmapptsummary.desktop
-%_kde_datadir/kde4/services/kcmkmailsummary.desktop
 %_kde_datadir/kde4/services/kcmkontactsummary.desktop
 %_kde_datadir/kde4/services/kcmsdsummary.desktop
 %_kde_datadir/kde4/services/kcmtodosummary.desktop
 %_kde_datadir/kde4/services/kontact
 %_kde_datadir/kde4/servicetypes/kontactplugin.desktop
 %_kde_libdir/kde4/kcm_apptsummary.so
-%_kde_libdir/kde4/kcm_kmailsummary.so
 %_kde_libdir/kde4/kcm_kontact.so
 %_kde_libdir/kde4/kcm_kontactsummary.so
+%_kde_libdir/kde4/kontact_journalplugin.so
 %_kde_libdir/kde4/kcm_sdsummary.so
+%_kde_libdir/kde4/kontact_specialdatesplugin.so
+%_kde_libdir/kde4/kontact_summaryplugin.so
 %_kde_libdir/kde4/kcm_todosummary.so
-#TODO: Move all Files on the main package ( ex kontact_akregator.so  in akregator )
-%_kde_libdir/kde4/kontact_*
+%_kde_libdir/kde4/kontact_todoplugin.so
 %_kde_docdir/HTML/en/kontact
+%_kde_datadir/applications/kde4/Kontact.desktop
 
 #-----------------------------------------------------------------------------
 
@@ -1348,6 +1346,7 @@ Obsoletes: %name-korganizer < 1:3.93.0-1
 Requires: %name-kresources
 Obsoletes: kde4-korganizer < 2:4.0.68
 Provides: kde4-korganizer = %epoch:%version
+Conflicts: kontact < 2:4.0.83
 
 %description -n korganizer
 KOrganizer provides management of events and tasks, alarm notification,
@@ -1380,6 +1379,7 @@ Citadel or OpenGroupware.org.
 %_kde_libdir/kde4/kcm_korganizer.so
 %_kde_libdir/kde4/korg_*
 %_kde_libdir/kde4/korganizerpart.so
+%_kde_libdir/kde4/kontact_korganizerplugin.so
 %doc %_kde_docdir/*/*/korganizer
 
 #-----------------------------------------------------------------------------
@@ -2052,25 +2052,6 @@ TNEF File Viewer
 
 #-----------------------------------------------------------------------------
 
-%package   plugins
-Summary:   KDE PIM plugins
-Group:     Graphical desktop/KDE
-Requires:  %name-core = %epoch:%version
-Obsoletes: %name-plugins < 1:3.93.0-1
-Conflicts: kde4-kmail <= 1:3.94.0-0.726734.2
-
-%description plugins
-Plugins for KMail and ktexteditor.
-
-%files plugins
-%defattr(-,root,root)
-%_kde_appsdir/kmail/plugins/bodypartformatter/text_calendar.desktop
-%_kde_appsdir/kmail/plugins/bodypartformatter/text_vcard.desktop
-%_kde_appsdir/kmail/plugins/bodypartformatter/text_xdiff.desktop
-%_kde_libdir/kde4/ktexteditorkabcbridge.so
-
-#-----------------------------------------------------------------------------
-
 %package wizards
 Summary: KDE Groupware Wizard
 Group: Graphical desktop/KDE
@@ -2264,13 +2245,14 @@ KDE 4 library.
 
 #-----------------------------------------------------------------------------
 
-%package -n     kjots
-Summary:        %{name} kjots
-Group:          Graphical desktop/KDE
-Requires:       %name-core = %epoch:%version
-Obsoletes:      %name-kjots < 3.93.0-0.714053.1
-Obsoletes:      kde4-kjots < 4.0.68
-Provides:       kde4-kjots = %version
+%package -n kjots
+Summary: %{name} kjots
+Group: Graphical desktop/KDE
+Requires: %name-core = %epoch:%version
+Obsoletes: %name-kjots < 3.93.0-0.714053.1
+Obsoletes: kde4-kjots < 4.0.68
+Provides: kde4-kjots = %version
+Conflicts: kontact < 2:4.0.83
 
 %description -n kjots
 %{name} kjots.
@@ -2284,6 +2266,7 @@ Provides:       kde4-kjots = %version
 %_kde_datadir/applications/kde4/kjotspart.desktop
 %_kde_datadir/config.kcfg/kjots.kcfg
 %_kde_docdir/HTML/*/kjots
+%_kde_libdir/kde4/kontact_kjotsplugin.so
 
 #-----------------------------------------------------------------------------
 

@@ -21,7 +21,7 @@ Epoch: 2
 Group: Graphical desktop/KDE
 License: GPL
 URL: http://www.kde.org
-Release: %mkrel 1
+Release: %mkrel 2
 Source: ftp://ftp.kde.org/pub/kde/stable/%version/src/kdepim-%version.tar.bz2
 Buildroot:	%_tmppath/%name-%version-%release-root
 BuildRequires: kdelibs4-devel
@@ -120,9 +120,10 @@ Obsoletes: libkdepim42-common < 1:3.93.0-1
 Obsoletes: kdepim4-common < 1:3.93.0-1
 Obsoletes: kdepim4-plasma-applets < 1:4.1 
 Obsoletes: %{_lib}akonadisearchprovider4 < 2:3.94.1-0.729215.1
+Conflicts: kontact < 2:4.0.83-2
 
 %description core
-Core files fro kdepim.
+Core files from kdepim.
 
 %files core
 %defattr(-,root,root,-)
@@ -133,6 +134,7 @@ Core files fro kdepim.
 %_kde_docdir/HTML/en/konsolekalendar
 %_kde_libdir/strigi/*
 %_kde_iconsdir/*/*/*/*
+%dir %_kde_datadir/kde4/services/kontact
 
 #-----------------------------------------------------------------------------
 
@@ -326,6 +328,7 @@ Requires: %name-core = %epoch:%version
 Obsoletes: %name-kode < 1:3.93.0-1
 Obsoletes: kde4-kode < 2:4.0.68
 Provides: kde4-kode = %epoch:%version
+Conflicts: kontact < 2:4.0.83-2
 
 %description -n kode
 kode is a collection of code generation and XML helper tools. It contains
@@ -755,6 +758,7 @@ Obsoletes: %name-akregator < 1:3.93.0-1
 Obsoletes: kde4-akregator < 2:4.0.68
 Conflicts: kontact < 2:4.0.83
 Provides: kde4-akregator = %epoch:%version
+Conflicts: kontact < 2:4.0.83-2
 
 %description -n akregator
 Akregator is a news feed reader for the KDE desktop. It enables you to
@@ -770,6 +774,7 @@ easy news reading.
 %_kde_bindir/akregator
 %_kde_datadir/applications/kde4/akregator.desktop
 %_kde_appsdir/akregator
+%_kde_datadir/kde4/services/kontact/akregatorplugin.desktop
 %_kde_datadir/config.kcfg/akregator.kcfg
 %_kde_datadir/kde4/services/akregator_*
 %_kde_datadir/kde4/services/feed.protocol
@@ -880,7 +885,7 @@ Requires: %name-core = %epoch:%version
 Obsoletes: %name-knode < 1:3.93.0-1
 Obsoletes: kde4-knode < 2:4.0.68
 Provides: kde4-knode = %epoch:%version
-Conflicts: kontact < 2:4.0.83
+Conflicts: kontact < 2:4.0.83-2
 
 %description -n knode
 KNode is a newsreader for the K Desktop Environment.
@@ -896,6 +901,7 @@ leafnode also usable with dial-up connections.
 %_kde_bindir/knode
 %_kde_datadir/applications/kde4/KNode.desktop
 %_kde_appsdir/knode
+%_kde_datadir/kde4/services/kontact/knodeplugin.desktop
 %_kde_datadir/kde4/services/knewsservice.protocol
 %_kde_datadir/kde4/services/knode_config_accounts.desktop
 %_kde_datadir/kde4/services/knode_config_appearance.desktop
@@ -941,7 +947,7 @@ Requires: %name-core = %epoch:%version
 Obsoletes: %name-kaddressbook < 1:3.93.0-1
 Obsoletes: kde4-kaddressbook < 2:4.0.68
 Provides: kde4-kaddressbook = %epoch:%version
-Conflicts: kontact < 2:4.0.83
+Conflicts: kontact < 2:4.0.83-2
 
 %description -n kaddressbook
 The KDE addressbook application.
@@ -951,6 +957,7 @@ The KDE addressbook application.
 %_kde_bindir/kaddressbook
 %_kde_datadir/applications/kde4/kaddressbook.desktop
 %_kde_appsdir/kaddressbook
+%_kde_datadir/kde4/services/kontact/kaddressbookplugin.desktop
 %_kde_datadir/kde4/services/kabconfig.desktop
 %_kde_datadir/kde4/services/kabcustomfields.desktop
 %_kde_datadir/kde4/services/kabldapconfig.desktop
@@ -999,6 +1006,7 @@ Requires: %name-core = %epoch:%version
 Obsoletes: %name-kalarm < 1:3.93.0-1
 Obsoletes: kde4-kalarm < 2:4.0.68
 Provides: kde4-kalarm = %epoch:%version
+Conflicts: kontact < 2:4.0.83-2
 
 %description -n kalarm
 KAlarm is a personal alarm message, command and email scheduler. It lets you
@@ -1035,7 +1043,7 @@ Requires: %name-core = %epoch:%version
 Obsoletes: %name-ktimetracker < 1:3.93.0-1
 Obsoletes: kde4-ktimetracker < 2:4.0.68
 Provides: kde4-ktimetracker = %epoch:%version
-Conflicts: kontact < 2:4.0.83
+Conflicts: kontact < 2:4.0.83-2
 
 %description -n ktimetracker
 KTimeTracker tracks time spent on various tasks. It is useful for tracking
@@ -1051,6 +1059,7 @@ of your day is spent playing Doom or reading Slashdot.
 %_kde_appsdir/ktimetracker
 %_kde_datadir/kde4/services/karm_part.desktop
 %_kde_datadir/kde4/services/ktimetrackerconfig.desktop
+%_kde_datadir/kde4/services/kontact/ktimetracker_plugin.desktop
 %_kde_libdir/kde4/karmpart.so
 %_kde_libdir/kde4/kcm_ktimetrackerconfig.so
 %_kde_libdir/kde4/kontact_karmplugin.so
@@ -1089,7 +1098,7 @@ Obsoletes: %name-kmail < 1:3.93.0-1
 Requires: kdepimlibs4-core
 Obsoletes: kde4-kmail < 2:4.0.68
 Obsoletes: kdepim4-plugins <= 4.0.83
-Conflicts: kontact < 2:4.0.83
+Conflicts: kontact < 2:4.0.83-2
 Provides: kde4-kmail = %epoch:%version
 
 %description -n kmail
@@ -1103,6 +1112,7 @@ KDE Email Client
 %_kde_bindir/kmail_fprot.sh
 %_kde_bindir/kmail_sav.sh
 %_kde_appsdir/kmail
+%_kde_datadir/kde4/services/kontact/kmailplugin.desktop
 %_kde_datadir/applications/kde4/KMail.desktop
 %_kde_datadir/applications/kde4/kmail_view.desktop
 %_kde_appsdir/kconf_update/kmail*
@@ -1160,7 +1170,7 @@ Obsoletes: %name-knotes < 1:3.93.0-1
 Requires: %name-kresources
 Obsoletes: kde4-knotes < 2:4.0.68
 Provides: kde4-knotes = %epoch:%version
-Conflicts: kontact < 2:4.0.83
+Conflicts: kontact < 2:4.0.83-2
 
 %description -n knotes
 KNotes aims to be a useful and full featured notes application for
@@ -1171,6 +1181,7 @@ although including some advanced features.
 %defattr(-,root,root)
 %_kde_bindir/knotes
 %_kde_datadir/applications/kde4/knotes.desktop
+%_kde_datadir/kde4/services/kontact/knotesplugin.desktop
 %_kde_datadir/config.kcfg/knoteconfig.kcfg
 %_kde_datadir/config.kcfg/knotesglobalconfig.kcfg
 %_kde_appsdir/knotes
@@ -1206,8 +1217,8 @@ technology, existing applications are seamlessly integrated into one.
 %_kde_datadir/kde4/services/kcmapptsummary.desktop
 %_kde_datadir/kde4/services/kcmkontactsummary.desktop
 %_kde_datadir/kde4/services/kcmsdsummary.desktop
-%_kde_datadir/kde4/services/kcmtodosummary.desktop
-%_kde_datadir/kde4/services/kontact
+%_kde_datadir/kde4/services/kontact/summaryplugin.desktop
+%_kde_datadir/kde4/services/kontact/specialdatesplugin.desktop
 %_kde_datadir/kde4/servicetypes/kontactplugin.desktop
 %_kde_libdir/kde4/kcm_apptsummary.so
 %_kde_libdir/kde4/kcm_kontact.so
@@ -1216,8 +1227,6 @@ technology, existing applications are seamlessly integrated into one.
 %_kde_libdir/kde4/kcm_sdsummary.so
 %_kde_libdir/kde4/kontact_specialdatesplugin.so
 %_kde_libdir/kde4/kontact_summaryplugin.so
-%_kde_libdir/kde4/kcm_todosummary.so
-%_kde_libdir/kde4/kontact_todoplugin.so
 %_kde_docdir/HTML/en/kontact
 %_kde_datadir/applications/kde4/Kontact.desktop
 
@@ -1346,7 +1355,7 @@ Obsoletes: %name-korganizer < 1:3.93.0-1
 Requires: %name-kresources
 Obsoletes: kde4-korganizer < 2:4.0.68
 Provides: kde4-korganizer = %epoch:%version
-Conflicts: kontact < 2:4.0.83
+Conflicts: kontact < 2:4.0.83-2
 
 %description -n korganizer
 KOrganizer provides management of events and tasks, alarm notification,
@@ -1361,11 +1370,17 @@ Citadel or OpenGroupware.org.
 %_kde_bindir/korgac
 %_kde_bindir/thememain
 %_kde_bindir/korganizer
+%_kde_datadir/kde4/services/kontact/korganizerplugin.desktop
 %_kde_datadir/applications/kde4/korganizer-import.desktop
 %_kde_datadir/applications/kde4/korganizer.desktop
 %_kde_appsdir/kconf_update/korganizer.upd
 %_kde_appsdir/korgac
 %_kde_appsdir/korganizer
+%_kde_datadir/kde4/services/kontact/todoplugin.desktop
+%_kde_datadir/kde4/services/kcmtodosummary.desktop
+%_kde_datadir/kde4/services/kontact/journalplugin.desktop
+%_kde_libdir/kde4/kcm_todosummary.so
+%_kde_libdir/kde4/kontact_todoplugin.so
 %_kde_datadir/autostart/korgac.desktop
 %_kde_datadir/config.kcfg/korganizer.kcfg
 %_kde_datadir/config/korganizer.knsrc
@@ -2252,15 +2267,16 @@ Requires: %name-core = %epoch:%version
 Obsoletes: %name-kjots < 3.93.0-0.714053.1
 Obsoletes: kde4-kjots < 4.0.68
 Provides: kde4-kjots = %version
-Conflicts: kontact < 2:4.0.83
+Conflicts: kontact < 2:4.0.83-2
 
 %description -n kjots
 %{name} kjots.
 
 %files -n kjots
 %defattr(-,root,root)
-%_kde_appsdir/kjots
 %_kde_bindir/kjots
+%_kde_appsdir/kjots
+%_kde_datadir/kde4/services/kontact/kjots_plugin.desktop
 %_kde_libdir/kde4/kjotspart.so
 %_kde_datadir/applications/kde4/Kjots.desktop
 %_kde_datadir/applications/kde4/kjotspart.desktop

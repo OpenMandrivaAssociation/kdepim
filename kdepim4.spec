@@ -14,16 +14,17 @@
 %define dont_strip 1
 %endif
 
-Name: kdepim4
-Summary: K Desktop Environment
-Version: 4.0.83
-Epoch: 2
-Group: Graphical desktop/KDE
-License: GPL
-URL: http://www.kde.org
-Release: %mkrel 3
-Source: ftp://ftp.kde.org/pub/kde/stable/%version/src/kdepim-%version.tar.bz2
-Buildroot:	%_tmppath/%name-%version-%release-root
+Name:          kdepim4
+Summary:       K Desktop Environment
+Version:       4.0.83
+Epoch:         2
+Group:         Graphical desktop/KDE
+License:       GPL
+URL:           http://www.kde.org
+Release:       %mkrel 4
+Source:        ftp://ftp.kde.org/pub/kde/stable/%version/src/kdepim-%version.tar.bz2
+Patch0:        kdepim-4.0.83-fix-desktop-files.patch
+Buildroot:     %_tmppath/%name-%version-%release-root
 BuildRequires: kdelibs4-devel
 BuildRequires: kdepimlibs4-devel
 BuildRequires: kdebase4-workspace-devel 
@@ -57,14 +58,14 @@ BuildRequires: libopensync-devel >= 0.30
 %endif
 BuildRequires: akonadi-devel
 #FIXME: Remove later
-BuildRequires:kdepimlibs4-core
-Requires: %name-core
-Requires: kode
-Requires: akonadi-common
-Requires: kleopatra
-Requires: akregator
+BuildRequires: kdepimlibs4-core
+Requires:      %name-core
+Requires:      kode
+Requires:      akonadi-common
+Requires:      kleopatra
+Requires:      akregator
 %if %{with_kitchensync}
-Requires: kitchensync
+Requires:      kitchensync
 %endif
 Requires: knode
 Requires: kaddressbook
@@ -2371,6 +2372,7 @@ based on kdepim.
 
 %prep
 %setup -q -n kdepim-%version
+%patch0 -p0
 
 %build
 %cmake_kde4

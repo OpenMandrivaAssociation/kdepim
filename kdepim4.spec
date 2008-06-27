@@ -479,22 +479,15 @@ KDE PIM storage framework.
 
 %files akonadi
 %defattr(-,root,root)
-%_kde_bindir/akonamail
-%_kde_bindir/kcontactmanager
 %_kde_bindir/akonadi_*
 %_kde_bindir/akonadiconsole
 %_kde_bindir/akonaditray
-%_kde_bindir/akonalendar
-%_kde_bindir/kabceditor
-%_kde_bindir/kabcviewer
 %_kde_appsdir/akonadi
 %_kde_datadir/akonadi
 %_kde_appsdir/akonadiconsole
 %_kde_datadir/kde4/services/kresources/kcal/blog.desktop
 %_kde_datadir/applications/kde4/akonadiconsole.desktop
 %_kde_datadir/applications/kde4/akonaditray.desktop
-%_kde_datadir/applications/kde4/kcontactmanager.desktop
-%_kde_appsdir/kcontactmanager
 %_kde_datadir/kde4/services/akonadi.protocol
 %_kde_libdir/kde4/kio_akonadi.so
 %_kde_libdir/kde4/kabc_akonadi.so

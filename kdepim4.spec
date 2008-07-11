@@ -16,14 +16,17 @@
 
 Name:          kdepim4
 Summary:       K Desktop Environment
-Version: 4.0.98
-Release: %mkrel 1
+Version:       4.0.98
+Release:       %mkrel 2
 Epoch:         2
 Group:         Graphical desktop/KDE
 License:       GPL
 URL:           http://www.kde.org
 Source:        ftp://ftp.kde.org/pub/kde/stable/%version/src/kdepim-%version.tar.bz2
+# Mandriva "customization" patches
 Patch0:        kdepim-4.0.83-fix-desktop-files.patch
+Patch1:        kdepim-4.0.98-fix-autostart.patch
+
 Buildroot:     %_tmppath/%name-%version-%release-root
 BuildRequires: kdelibs4-devel
 BuildRequires: kdepimlibs4-devel
@@ -2366,6 +2369,7 @@ based on kdepim.
 %prep
 %setup -q -n kdepim-%version
 %patch0 -p0
+%patch1 -p0
 
 %build
 %cmake_kde4

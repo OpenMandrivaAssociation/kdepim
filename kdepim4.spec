@@ -648,7 +648,7 @@ KDE Certificate Manager
 %_kde_appsdir/kleopatra
 %_kde_appsdir/libkleopatra
 %_kde_appsdir/kwatchgnupg
-%_kde_datadir/kde4/services/kleopatra_config_*
+%_kde_datadir/kde4/services/kleopatra_*
 %_kde_libdir/kde4/kcm_kleopatra.so
 %doc %_kde_docdir/*/*/kleopatra
 

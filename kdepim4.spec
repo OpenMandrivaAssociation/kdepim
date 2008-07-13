@@ -17,7 +17,7 @@
 Name:          kdepim4
 Summary:       K Desktop Environment
 Version:       4.0.98
-Release:       %mkrel 2
+Release:       %mkrel 3
 Epoch:         2
 Group:         Graphical desktop/KDE
 License:       GPL
@@ -2381,6 +2381,7 @@ rm -fr %buildroot
 cd build
 
 make DESTDIR=%buildroot install
+rm -rf %{buildroot}%{_kde_iconsdir}/oxygen/32x32/actions/appointment-new.png
 
 %clean
 rm -fr %buildroot

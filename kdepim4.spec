@@ -17,7 +17,7 @@
 Name:          kdepim4
 Summary:       K Desktop Environment
 Version:       4.0.98
-Release:       %mkrel 3
+Release:       %mkrel 4
 Epoch:         2
 Group:         Graphical desktop/KDE
 License:       GPL
@@ -138,6 +138,7 @@ Core files from kdepim.
 %_kde_docdir/HTML/en/konsolekalendar
 %_kde_libdir/strigi/*
 %_kde_iconsdir/*/*/*/*
+%exclude %{_kde_iconsdir}/oxygen/32x32/actions/appointment-new.png
 %dir %_kde_datadir/kde4/services/kontact
 
 #-----------------------------------------------------------------------------
@@ -2381,7 +2382,6 @@ rm -fr %buildroot
 cd build
 
 make DESTDIR=%buildroot install
-rm -rf %{buildroot}%{_kde_iconsdir}/oxygen/32x32/actions/appointment-new.png
 
 %clean
 rm -fr %buildroot

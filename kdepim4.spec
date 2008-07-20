@@ -26,7 +26,6 @@ Source:        ftp://ftp.kde.org/pub/kde/stable/%version/src/kdepim-%version.tar
 # Mandriva "customization" patches
 Patch0:        kdepim-4.0.83-fix-desktop-files.patch
 Patch1:        kdepim-4.0.98-fix-autostart.patch
-Patch2:        kdepim-4.0.98-add-debug.patch
 
 # Upstream patches from trunk
 Patch3:        kdepim-4.0.98-fix-akregator-crash.patch
@@ -2375,7 +2374,6 @@ based on kdepim.
 %setup -q -n kdepim-%version
 %patch0 -p0
 %patch1 -p0
-%patch2 -p0
 %patch3 -p0
 
 %build

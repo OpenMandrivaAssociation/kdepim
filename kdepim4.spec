@@ -86,7 +86,6 @@ Requires: kmobiletools
 %else
 Obsoletes: kmobiletools < %epoch:%version
 %endif
-Requires: korn
 %if %{with_kpilot}
 Requires: kpilot
 %else
@@ -140,7 +139,6 @@ Core files from kdepim.
 %_kde_docdir/HTML/en/konsolekalendar
 %_kde_libdir/strigi/*
 %_kde_iconsdir/*/*/*/*
-%exclude %{_kde_iconsdir}/oxygen/32x32/actions/appointment-new.png
 %dir %_kde_datadir/kde4/services/kontact
 
 #-----------------------------------------------------------------------------
@@ -1500,26 +1498,6 @@ phone from your GNU/Linux workstation.
 
 #-----------------------------------------------------------------------------
 
-%package -n korn
-Summary: Mail Alert
-Group: Graphical desktop/KDE
-Requires: %name-core = %epoch:%version
-Obsoletes: %name-korn < 1:3.93.0-1
-Obsoletes: kde4-korn < 2:4.0.68
-Provides: kde4-korn = %epoch:%version
-
-%description -n korn
-Mail Alert program for KDE.
-
-%files -n korn
-%defattr(-,root,root)
-%_kde_bindir/korn
-%_kde_datadir/applications/kde4/KOrn.desktop
-%_kde_appsdir/kconf_update/korn*
-%_kde_docdir/HTML/en/korn
-
-#-----------------------------------------------------------------------------
-
 %if %{with_kpilot}
 
 %define libkpilot %mklibname kpilot 5
@@ -2279,7 +2257,7 @@ Conflicts: kontact < 2:4.0.83-2
 %_kde_datadir/kde4/services/kontact/kjots_plugin.desktop
 %_kde_libdir/kde4/kjotspart.so
 %_kde_datadir/applications/kde4/Kjots.desktop
-%_kde_datadir/applications/kde4/kjotspart.desktop
+%_kde_datadir/kde4/services/kjotspart.desktop
 %_kde_datadir/config.kcfg/kjots.kcfg
 %_kde_docdir/HTML/*/kjots
 %_kde_libdir/kde4/kontact_kjotsplugin.so

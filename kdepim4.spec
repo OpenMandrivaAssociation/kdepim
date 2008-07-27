@@ -28,7 +28,6 @@ Patch0:        kdepim-4.0.83-fix-desktop-files.patch
 Patch1:        kdepim-4.0.98-fix-autostart.patch
 
 # Upstream patches from trunk
-Patch3:        kdepim-4.0.98-fix-akregator-crash.patch
 
 Buildroot:     %_tmppath/%name-%version-%release-root
 BuildRequires: kdelibs4-devel
@@ -2374,7 +2373,6 @@ based on kdepim.
 %setup -q -n kdepim-%version
 %patch0 -p0
 %patch1 -p0
-%patch3 -p0
 
 %build
 %cmake_kde4

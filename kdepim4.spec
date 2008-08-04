@@ -2129,8 +2129,10 @@ KDE Groupware Wizard
 %_kde_bindir/sloxwizard
 %_kde_bindir/scalixwizard
 %_kde_bindir/scalixadmin
+%_kde_bindir/groupwisewizard
 %_kde_libdir/kde4/kio_scalix.so
 %_kde_libdir/kde4/kio_groupwise.so
+%_kde_libdir/kde4/kabc_groupwise.so
 %_kde_datadir/applications/kde4/groupwarewizard.desktop
 %_kde_datadir/config.kcfg/egroupware.kcfg
 %_kde_datadir/config.kcfg/groupwise.kcfg
@@ -2239,47 +2241,47 @@ KDE 4 library.
 
 #-----------------------------------------------------------------------------
 
-%define libkabc_groupwise %mklibname kabc_groupwise 4
+%define libkabcgroupwise %mklibname kabc_groupwise 4
 
-%package -n %libkabc_groupwise
+%package -n %libkabcgroupwise
 Summary: KDE 4 library
 Group: System/Libraries
 
-%description -n %libkabc_groupwise
+%description -n %libkabcgroupwise
 KDE 4 library.
 
 %if %mdkversion < 200900
-%post -n %libkabc_groupwise -p /sbin/ldconfig
+%post -n %libkabcgroupwise -p /sbin/ldconfig
 %endif
 %if %mdkversion < 200900
-%postun -n %libkabc_groupwise -p /sbin/ldconfig
+%postun -n %libkabcgroupwise -p /sbin/ldconfig
 %endif
 
-%files -n %libkabc_groupwise
+%files -n %libkabcgroupwise
 %defattr(-,root,root)
-%_kde_libdir/libkabc_groupwise.so.*
+%_kde_libdir/libkabcgroupwise.so.*
 
 #-----------------------------------------------------------------------------
 
-%define libkcal_groupwise %mklibname kcal_groupwise 4
+%define libkcalgroupwise %mklibname kcal_groupwise 4
 
-%package -n %libkcal_groupwise
+%package -n %libkcalgroupwise
 Summary: KDE 4 library
 Group: System/Libraries
 
-%description -n %libkcal_groupwise
+%description -n %libkcalgroupwise
 KDE 4 library.
 
 %if %mdkversion < 200900
-%post -n %libkcal_groupwise -p /sbin/ldconfig
+%post -n %libkcalgroupwise -p /sbin/ldconfig
 %endif
 %if %mdkversion < 200900
-%postun -n %libkcal_groupwise -p /sbin/ldconfig
+%postun -n %libkcalgroupwise -p /sbin/ldconfig
 %endif
 
-%files -n %libkcal_groupwise
+%files -n %libkcalgroupwise
 %defattr(-,root,root)
-%_kde_libdir/libkcal_groupwise.so.*
+%_kde_libdir/libkcalgroupwise.so.*
 
 #-----------------------------------------------------------------------------
 
@@ -2394,8 +2396,8 @@ Requires: %libknotesscalix = %epoch:%version
 Requires: %libkabcscalix  = %epoch:%version
 Requires: %libkcalscalix  = %epoch:%version
 Requires: %libgwsoap = %epoch:%version
-Requires: %libkabc_groupwise = %epoch:%version
-Requires: %libkcal_groupwise = %epoch:%version
+Requires: %libkabcgroupwise = %epoch:%version
+Requires: %libkcalgroupwise = %epoch:%version
 Requires: %libkontactinterfaces = %epoch:%version
 
 %description  devel
@@ -2411,6 +2413,7 @@ based on kdepim.
 %_kde_prefix/include/*
 %_kde_appsdir/cmake/modules/*
 %_kde_datadir/dbus-1/interfaces/*
+%_kde_docdir/*/*/kwsdl_compiler
 
 #----------------------------------------------------------------------
 

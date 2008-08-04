@@ -14,21 +14,88 @@
 %define dont_strip 1
 %endif
 
-Name:          kdepim4
-Summary:       K Desktop Environment
-Version:       4.1.0
-Release:       %mkrel 2
-Epoch:         2
-Group:         Graphical desktop/KDE
-License:       GPL
-URL:           http://www.kde.org
-Source:        ftp://ftp.kde.org/pub/kde/stable/%version/src/kdepim-%version.tar.bz2
+Name: kdepim4
+Summary: K Desktop Environment
+Version: 4.1.0
+Release: %mkrel 3
+Epoch: 2
+Group: Graphical desktop/KDE
+License: GPL
+URL: http://www.kde.org
+Source: ftp://ftp.kde.org/pub/kde/stable/%version/src/kdepim-%version.tar.bz2
 # Mandriva "customization" patches
-Patch0:        kdepim-4.0.83-fix-desktop-files.patch
-Patch1:        kdepim-4.0.98-fix-autostart.patch
-
-# Upstream patches from trunk
-
+Patch0: kdepim-4.0.83-fix-desktop-files.patch
+Patch1: kdepim-4.0.98-fix-autostart.patch
+# Branch 4.1 patches
+Patch100: kdepim-post-4.1.0-rev837140.patch
+Patch101: kdepim-post-4.1.0-rev837308.patch
+Patch102: kdepim-post-4.1.0-rev837368.patch
+Patch103: kdepim-post-4.1.0-rev837901.patch
+Patch104: kdepim-post-4.1.0-rev837902.patch
+Patch105: kdepim-post-4.1.0-rev837904.patch
+Patch106: kdepim-post-4.1.0-rev837905.patch
+Patch107: kdepim-post-4.1.0-rev837908.patch
+Patch108: kdepim-post-4.1.0-rev838076.patch
+Patch109: kdepim-post-4.1.0-rev838632.patch
+Patch110: kdepim-post-4.1.0-rev838637.patch
+Patch111: kdepim-post-4.1.0-rev838639.patch
+Patch112: kdepim-post-4.1.0-rev838644.patch
+Patch113: kdepim-post-4.1.0-rev838790.patch
+Patch114: kdepim-post-4.1.0-rev838809.patch
+Patch115: kdepim-post-4.1.0-rev838811.patch
+Patch116: kdepim-post-4.1.0-rev838979.patch
+Patch117: kdepim-post-4.1.0-rev839014.patch
+Patch118: kdepim-post-4.1.0-rev839015.patch
+Patch119: kdepim-post-4.1.0-rev839021.patch
+Patch120: kdepim-post-4.1.0-rev839049.patch
+Patch121: kdepim-post-4.1.0-rev839094.patch
+Patch122: kdepim-post-4.1.0-rev839116.patch
+Patch123: kdepim-post-4.1.0-rev839128.patch
+Patch124: kdepim-post-4.1.0-rev839149.patch
+Patch125: kdepim-post-4.1.0-rev839462.patch
+Patch126: kdepim-post-4.1.0-rev839463.patch
+Patch127: kdepim-post-4.1.0-rev839464.patch
+Patch128: kdepim-post-4.1.0-rev839466.patch
+Patch129: kdepim-post-4.1.0-rev839487.patch
+Patch130: kdepim-post-4.1.0-rev839491.patch
+Patch131: kdepim-post-4.1.0-rev839493.patch
+Patch132: kdepim-post-4.1.0-rev839528.patch
+Patch133: kdepim-post-4.1.0-rev839555.patch
+Patch134: kdepim-post-4.1.0-rev839605.patch
+Patch135: kdepim-post-4.1.0-rev839607.patch
+Patch136: kdepim-post-4.1.0-rev839633.patch
+Patch137: kdepim-post-4.1.0-rev839634.patch
+Patch138: kdepim-post-4.1.0-rev839666.patch
+Patch139: kdepim-post-4.1.0-rev839683.patch
+Patch140: kdepim-post-4.1.0-rev839684.patch
+Patch141: kdepim-post-4.1.0-rev839697.patch
+Patch142: kdepim-post-4.1.0-rev840219.patch
+Patch143: kdepim-post-4.1.0-rev840356.patch
+Patch144: kdepim-post-4.1.0-rev840658.patch
+Patch145: kdepim-post-4.1.0-rev840659.patch
+Patch146: kdepim-post-4.1.0-rev840661.patch
+Patch147: kdepim-post-4.1.0-rev840845.patch
+Patch148: kdepim-post-4.1.0-rev840862.patch
+Patch149: kdepim-post-4.1.0-rev840864.patch
+Patch150: kdepim-post-4.1.0-rev840867.patch
+Patch151: kdepim-post-4.1.0-rev840995.patch
+Patch152: kdepim-post-4.1.0-rev841001.patch
+Patch153: kdepim-post-4.1.0-rev841006.patch
+Patch154: kdepim-post-4.1.0-rev841023.patch
+Patch155: kdepim-post-4.1.0-rev841024.patch
+Patch156: kdepim-post-4.1.0-rev841027.patch
+Patch157: kdepim-post-4.1.0-rev841028.patch
+Patch158: kdepim-post-4.1.0-rev841031.patch
+Patch159: kdepim-post-4.1.0-rev841077.patch
+Patch160: kdepim-post-4.1.0-rev841083.patch
+Patch161: kdepim-post-4.1.0-rev841235.patch
+Patch162: kdepim-post-4.1.0-rev841238.patch
+Patch163: kdepim-post-4.1.0-rev841240.patch
+Patch164: kdepim-post-4.1.0-rev841598.patch
+Patch165: kdepim-post-4.1.0-rev841609.patch
+Patch166: kdepim-post-4.1.0-rev841704.patch
+Patch167: kdepim-post-4.1.0-rev841811.patch
+Patch168: kdepim-post-4.1.0-rev841988.patch
 Buildroot:     %_tmppath/%name-%version-%release-root
 BuildRequires: kdelibs4-devel
 BuildRequires: kdepimlibs4-devel
@@ -2351,6 +2418,77 @@ based on kdepim.
 %setup -q -n kdepim-%version
 %patch0 -p0
 %patch1 -p0
+# Post 4.1 patches
+# Already applied - keep as reference
+#patch100 -p0 -b .post410
+#patch101 -p0 -b .post410
+%patch102 -p0 -b .post410
+%patch103 -p0 -b .post410
+%patch104 -p0 -b .post410
+%patch105 -p0 -b .post410
+%patch106 -p0 -b .post410
+%patch107 -p0 -b .post410
+%patch108 -p0 -b .post410
+%patch109 -p0 -b .post410
+%patch110 -p0 -b .post410
+%patch111 -p0 -b .post410
+%patch112 -p0 -b .post410
+%patch113 -p0 -b .post410
+%patch114 -p0 -b .post410
+%patch115 -p0 -b .post410
+%patch116 -p0 -b .post410
+%patch117 -p0 -b .post410
+%patch118 -p0 -b .post410
+%patch119 -p0 -b .post410
+%patch120 -p0 -b .post410
+%patch121 -p0 -b .post410
+%patch122 -p0 -b .post410
+%patch123 -p0 -b .post410
+%patch124 -p0 -b .post410
+%patch125 -p0 -b .post410
+%patch126 -p0 -b .post410
+%patch127 -p0 -b .post410
+%patch128 -p0 -b .post410
+%patch129 -p0 -b .post410
+%patch130 -p0 -b .post410
+%patch131 -p0 -b .post410
+%patch132 -p0 -b .post410
+%patch133 -p0 -b .post410
+%patch134 -p0 -b .post410
+%patch135 -p0 -b .post410
+%patch136 -p0 -b .post410
+%patch137 -p0 -b .post410
+%patch138 -p0 -b .post410
+%patch139 -p0 -b .post410
+%patch140 -p0 -b .post410
+%patch141 -p0 -b .post410
+%patch142 -p0 -b .post410
+%patch143 -p0 -b .post410
+%patch144 -p0 -b .post410
+%patch145 -p0 -b .post410
+%patch146 -p0 -b .post410
+%patch147 -p0 -b .post410
+%patch148 -p0 -b .post410
+%patch149 -p0 -b .post410
+%patch150 -p0 -b .post410
+%patch151 -p0 -b .post410
+%patch152 -p0 -b .post410
+%patch153 -p0 -b .post410
+%patch154 -p0 -b .post410
+%patch155 -p0 -b .post410
+%patch156 -p0 -b .post410
+%patch157 -p0 -b .post410
+%patch158 -p0 -b .post410
+%patch159 -p0 -b .post410
+%patch160 -p0 -b .post410
+%patch161 -p0 -b .post410
+%patch162 -p0 -b .post410
+%patch163 -p0 -b .post410
+%patch164 -p0 -b .post410
+%patch165 -p0 -b .post410
+%patch166 -p0 -b .post410
+%patch167 -p0 -b .post410
+%patch168 -p0 -b .post410
 
 %build
 %cmake_kde4

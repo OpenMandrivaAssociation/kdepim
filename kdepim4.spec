@@ -158,6 +158,7 @@ Requires: kpilot
 %else
 Obsoletes: kpilot < %epoch:%version
 %endif
+Obsoletes: korn < 2:4.1.0
 Requires: ktnef
 Requires: kjots
 

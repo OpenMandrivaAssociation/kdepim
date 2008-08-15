@@ -17,7 +17,7 @@
 Name: kdepim4
 Summary: K Desktop Environment
 Version: 4.1.0
-Release: %mkrel 3
+Release: %mkrel 4
 Epoch: 2
 Group: Graphical desktop/KDE
 License: GPL
@@ -26,6 +26,7 @@ Source: ftp://ftp.kde.org/pub/kde/stable/%version/src/kdepim-%version.tar.bz2
 # Mandriva "customization" patches
 Patch0: kdepim-4.0.83-fix-desktop-files.patch
 Patch1: kdepim-4.0.98-fix-autostart.patch
+Patch2: kdepim-4.1.0-disable-ktnef.patch
 # Branch 4.1 patches
 Patch100: kdepim-post-4.1.0-rev837140.patch
 Patch101: kdepim-post-4.1.0-rev837308.patch
@@ -159,7 +160,7 @@ Requires: kpilot
 Obsoletes: kpilot < %epoch:%version
 %endif
 Obsoletes: korn <= 2:4.1.0
-Requires: ktnef
+Obsoletes: ktnef <= 2:4.1.0
 Requires: kjots
 
 %description
@@ -2422,6 +2423,7 @@ based on kdepim.
 %setup -q -n kdepim-%version
 %patch0 -p0
 %patch1 -p0
+%patch2 -p1 -b .disable_ktnef
 # Post 4.1 patches
 # Already applied - keep as reference
 #patch100 -p0 -b .post410

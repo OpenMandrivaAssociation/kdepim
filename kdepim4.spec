@@ -2095,26 +2095,6 @@ tracking feature plans.
 
 #-----------------------------------------------------------------------------
 
-%package -n ktnef
-Summary: TNEF File Viewer
-Group: Graphical desktop/KDE
-Requires: %name-core = %epoch:%version
-Obsoletes: %name-ktnef < 1:3.93.0-1
-Obsoletes: %{_lib}kdepim42-ktnef < 1:3.93.0-1
-Obsoletes: kde4-ktnef < 2:4.0.68
-Provides: kde4-ktnef = %epoch:%version
-
-%description -n ktnef
-TNEF File Viewer
-
-%files -n ktnef
-%defattr(-,root,root)
-%_kde_bindir/ktnefviewer
-%_kde_datadir/applications/kde4/ktnef.desktop
-%_kde_appsdir/ktnef
-
-#-----------------------------------------------------------------------------
-
 %package wizards
 Summary: KDE Groupware Wizard
 Group: Graphical desktop/KDE

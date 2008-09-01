@@ -136,7 +136,6 @@ Core files from kdepim.
 %_kde_bindir/konsolekalendar
 %_kde_datadir/applications/kde4/konsolekalendar.desktop
 %_kde_docdir/HTML/en/konsolekalendar
-%_kde_libdir/strigi/*
 %_kde_iconsdir/*/*/*/*
 %dir %_kde_datadir/kde4/services/kontact
 
@@ -1029,6 +1028,7 @@ or you can schedule commands to be executed or emails to be sent.
 %_kde_libdir/kde4/kalarm_local.so
 %_kde_libdir/kde4/kalarm_localdir.so
 %_kde_libdir/kde4/kalarm_remote.so
+%_kde_appsdir/kconf_update/kalarm-2.0.2-general.pl
 %_kde_docdir/HTML/en/kalarm
 
 #-----------------------------------------------------------------------------

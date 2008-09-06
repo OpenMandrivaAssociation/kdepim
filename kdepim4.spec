@@ -17,7 +17,7 @@
 Name: kdepim4
 Summary: K Desktop Environment
 Version: 4.1.1
-Release: %mkrel 1
+Release: %mkrel 2
 Epoch: 2
 Group: Graphical desktop/KDE
 License: GPL
@@ -879,6 +879,7 @@ KDE 4 library.
 Summary: A newsreader for the K Desktop Environment
 Group: Graphical desktop/KDE
 Requires: %name-core = %epoch:%version
+Requires: kdepimlibs4-core
 Obsoletes: %name-knode < 1:3.93.0-1
 Obsoletes: kde4-knode < 2:4.0.68
 Provides: kde4-knode = %epoch:%version

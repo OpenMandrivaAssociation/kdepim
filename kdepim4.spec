@@ -56,6 +56,7 @@ BuildRequires: glib2-devel
 BuildRequires: libassuan-devel
 BuildRequires: mysql-static-devel
 BuildRequires: libmal-devel
+BuildRequires: soprano-devel
 BuildRequires: automoc
 %if %{with_kitchensync}
 BuildRequires: libopensync-devel >= 0.30

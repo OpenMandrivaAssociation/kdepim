@@ -27,7 +27,6 @@ Source: ftp://ftp.kde.org/pub/kde/stable/%version/src/kdepim-%version.tar.bz2
 Patch0: kdepim-4.0.83-fix-desktop-files.patch
 Patch1: kdepim-4.0.98-fix-autostart.patch
 Patch2: kdepim-4.1.0-disable-ktnef.patch
-Patch3: kdepim-4.1.1-disable-nie.patch
 Buildroot:     %_tmppath/%name-%version-%release-root
 BuildRequires: kdelibs4-devel
 BuildRequires: kdepimlibs4-devel
@@ -138,6 +137,7 @@ Core files from kdepim.
 %_kde_bindir/konsolekalendar
 %_kde_datadir/applications/kde4/konsolekalendar.desktop
 %_kde_docdir/HTML/en/konsolekalendar
+%_kde_libdir/strigi/*
 %_kde_iconsdir/*/*/*/*
 %dir %_kde_datadir/kde4/services/kontact
 
@@ -779,6 +779,7 @@ easy news reading.
 %_kde_datadir/kde4/servicetypes/akregator_plugin.desktop
 %_kde_libdir/kde4/akregator*
 %_kde_libdir/kde4/kontact_akregatorplugin.so
+%_kde_appsdir/akregator_onlinesync_plugin
 %doc %_kde_docdir/HTML/en/akregator
 
 #-----------------------------------------------------------------------------
@@ -2338,7 +2339,6 @@ based on kdepim.
 %patch0 -p0
 %patch1 -p0
 %patch2 -p1 -b .disable_ktnef
-%patch3 -p1 -b .nie
 
 %build
 %cmake_kde4

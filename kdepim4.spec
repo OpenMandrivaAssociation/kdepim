@@ -17,7 +17,7 @@
 Name: kdepim4
 Summary: K Desktop Environment
 Version: 4.1.2
-Release: %mkrel 1
+Release: %mkrel 2
 Epoch: 2
 Group: Graphical desktop/KDE
 License: GPL
@@ -126,6 +126,8 @@ Obsoletes: kdepim4-common < 1:3.93.0-1
 Obsoletes: kdepim4-plasma-applets < 1:4.1 
 Obsoletes: %{_lib}akonadisearchprovider4 < 2:3.94.1-0.729215.1
 Conflicts: kontact < 2:4.0.83-2
+Conflicts: kdepim-knotes < 1:3.5.9-10mdv
+Conflicts: kdepim-kaddressbook < 1:3.5.9-10mdv
 
 %description core
 Core files from kdepim.
@@ -511,6 +513,7 @@ Summary: KDE 4 library
 Group: System/Libraries
 Obsoletes: %{_lib}kdepim42-common < 1:3.93.0-1
 Obsoletes: %{_lib}kdepim42-index < 1:3.93.0-1
+Conflicts: kdepim-common < 1:3.5.9-10mdv
 
 %description -n %libkdepim
 KDE 4 library.
@@ -948,6 +951,7 @@ Obsoletes: %name-kaddressbook < 1:3.93.0-1
 Obsoletes: kde4-kaddressbook < 2:4.0.68
 Provides: kde4-kaddressbook = %epoch:%version
 Conflicts: kontact < 2:4.0.83-2
+Conflicts: kdeaddons-kaddressbook-plugins < 1:3.5.9-2mdv
 
 %description -n kaddressbook
 The KDE addressbook application.

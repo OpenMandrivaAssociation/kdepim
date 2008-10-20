@@ -1,13 +1,13 @@
-%define with_kpilot 0
+%define with_kpilot 1
 %{?_with_kpilot: %{expand: %%global with_kpilot 1}}
 
-%define with_kmobiletools 0
+%define with_kmobiletools 1
 %{?_with_kmobiletools: %{expand: %%global with_kmobiletools 1}}
 
 %define with_kitchensync 0
 %{?_with_kitchensync: %{expand: %%global with_kitchensync 1}}
 
-%define unstable 0
+%define unstable 1
 %{?_unstable: %{expand: %%global unstable 1}}
 
 %if %unstable
@@ -16,8 +16,8 @@
 
 Name: kdepim4
 Summary: K Desktop Environment
-Version: 4.1.2
-Release: %mkrel 2
+Version: 4.1.70
+Release: %mkrel 1
 Epoch: 2
 Group: Graphical desktop/KDE
 License: GPL
@@ -26,7 +26,6 @@ Source: ftp://ftp.kde.org/pub/kde/stable/%version/src/kdepim-%version.tar.bz2
 # Mandriva "customization" patches
 Patch0: kdepim-4.0.83-fix-desktop-files.patch
 Patch1: kdepim-4.0.98-fix-autostart.patch
-Patch2: kdepim-4.1.0-disable-ktnef.patch
 Buildroot:     %_tmppath/%name-%version-%release-root
 BuildRequires: kdelibs4-devel
 BuildRequires: kdepimlibs4-devel
@@ -380,26 +379,26 @@ KDE 4 library.
 
 #-----------------------------------------------------------------------------
 
-%define libakonadi_kabc %mklibname akonadi-kabc 4
+%define libakonadi_kabccommon %mklibname akonadi-kabccommon 4
 
-%package -n %libakonadi_kabc
+%package -n %libakonadi_kabccommon
 Summary: KDE 4 library
 Group: System/Libraries
 Obsoletes: %{_lib}kdepim42-common < 1:3.93.0-1
 
-%description -n %libakonadi_kabc
+%description -n %libakonadi_kabccommon
 KDE 4 library.
 
 %if %mdkversion < 200900
-%post -n %libakonadi_kabc -p /sbin/ldconfig
+%post -n %libakonadi_kabccommon -p /sbin/ldconfig
 %endif
 %if %mdkversion < 200900
-%postun -n %libakonadi_kabc -p /sbin/ldconfig
+%postun -n %libakonadi_kabccommon -p /sbin/ldconfig
 %endif
 
-%files -n %libakonadi_kabc
+%files -n %libakonadi_kabccommon
 %defattr(-,root,root)
-%_kde_libdir/libakonadi-kabc.so.*
+%_kde_libdir/libakonadi-kabccommon.so.*
 
 #-----------------------------------------------------------------------------
 
@@ -488,6 +487,7 @@ KDE PIM storage framework.
 %_kde_bindir/akonadi_*
 %_kde_bindir/akonadiconsole
 %_kde_bindir/akonaditray
+%_kde_bindir/kres-migrator
 %_kde_appsdir/akonadi
 %_kde_datadir/akonadi
 %_kde_appsdir/akonadiconsole
@@ -498,10 +498,13 @@ KDE PIM storage framework.
 %_kde_libdir/kde4/kio_akonadi.so
 %_kde_libdir/kde4/kabc_akonadi.so
 %_kde_libdir/kde4/akonadi_*
+%_kde_libdir/kde4/kcm_akonadi.so
 %_kde_libdir/kde4/kcm_akonadi_*
 %_kde_datadir/kde4/services/kcm_akonadi_resources.desktop
 %_kde_datadir/kde4/services/kresources/kabc/akonadi.desktop
 %_kde_datadir/kde4/services/kresources/kcal/akonadi.desktop
+%_kde_datadir/kde4/services/kcm_akonadi.desktop
+%_kde_datadir/kde4/services/kcm_akonadi_server.desktop
 %_kde_appsdir/nepomuk/ontologies/*
 
 #-----------------------------------------------------------------------------
@@ -959,6 +962,7 @@ The KDE addressbook application.
 %files -n kaddressbook
 %defattr(-,root,root)
 %_kde_bindir/kaddressbook
+%_kde_bindir/kabcdistlistupdater
 %_kde_datadir/applications/kde4/kaddressbook.desktop
 %_kde_appsdir/kaddressbook
 %_kde_datadir/kde4/services/kontact/kaddressbookplugin.desktop
@@ -966,9 +970,11 @@ The KDE addressbook application.
 %_kde_datadir/kde4/services/kabcustomfields.desktop
 %_kde_datadir/kde4/services/kabldapconfig.desktop
 %_kde_datadir/kde4/services/kaddressbook
+%_kde_datadir/kde4/services/kaddressbookpart.desktop
 %_kde_datadir/kde4/services/ldifvcardthumbnail.desktop
 %_kde_datadir/kde4/servicetypes/dbusaddressbook.desktop
 %_kde_datadir/kde4/servicetypes/kaddressbook*
+%_kde_datadir/config.kcfg/contactssettings.kcfg
 %_kde_libdir/kde4/kcm_kabconfig.so
 %_kde_libdir/kde4/kcm_kabcustomfields.so
 %_kde_libdir/kde4/kcm_kabldapconfig.so
@@ -977,7 +983,7 @@ The KDE addressbook application.
 %_kde_libdir/kde4/kaddressbookpart.so
 %_kde_docdir/HTML/en/kaddressbook
 %_kde_libdir/kde4/kontact_kaddressbookplugin.so
-
+%_kde_datadir/autostart/kabcdistlistupdater.desktop
 #-----------------------------------------------------------------------------
 
 %define libkalarm_resources %mklibname kalarm_resources 4
@@ -1059,15 +1065,20 @@ of your day is spent playing Doom or reading Slashdot.
 %defattr(-,root,root)
 %_kde_bindir/karm
 %_kde_bindir/ktimetracker
-%_kde_datadir/applications/kde4/karm.desktop
-%_kde_appsdir/karmpart
 %_kde_appsdir/ktimetracker
-%_kde_datadir/kde4/services/karm_part.desktop
+%_kde_datadir/applications/kde4/ktimetracker.desktop
+#%_kde_datadir/kde4/services/karm_part.desktop
 %_kde_datadir/kde4/services/ktimetrackerconfig.desktop
 %_kde_datadir/kde4/services/kontact/ktimetracker_plugin.desktop
-%_kde_libdir/kde4/karmpart.so
+%_kde_datadir/kde4/services/kcmplanner.desktop
+%_kde_datadir/kde4/services/kontact/plannerplugin.desktop
+%_kde_datadir/kde4/services/ktimetrackerpart.desktop
+%_kde_libdir/kde4/kontact_ktimetrackerplugin.so
+%_kde_libdir/kde4/ktimetrackerpart.so
 %_kde_libdir/kde4/kcm_ktimetrackerconfig.so
-%_kde_libdir/kde4/kontact_karmplugin.so
+%_kde_libdir/kde4/kcm_planner.so
+#%_kde_libdir/kde4/kontact_karmplugin.so
+%_kde_libdir/kde4/kontact_plannerplugin.so
 %_kde_docdir/HTML/en/ktimetracker
 
 #-----------------------------------------------------------------------------
@@ -1389,6 +1400,8 @@ Citadel or OpenGroupware.org.
 %_kde_libdir/kde4/kontact_todoplugin.so
 %_kde_datadir/autostart/korgac.desktop
 %_kde_datadir/config.kcfg/korganizer.kcfg
+%_kde_datadir/config.kcfg/todosettings.kcfg
+%_kde_datadir/config.kcfg/calendarsettings.kcfg
 %_kde_datadir/config/korganizer.knsrc
 %_kde_datadir/kde4/services/korganizer*
 %_kde_datadir/kde4/services/webcal.protocol
@@ -1450,7 +1463,7 @@ KDE 4 library.
 
 %files -n %libkmobiletoolsengineui
 %defattr(-,root,root)
-%_kde_libdir/libkmobiletoolsengineui.so.*
+#%_kde_libdir/libkmobiletoolsengineui.so.*
 
 #-----------------------------------------------------------------------------
 
@@ -1474,7 +1487,7 @@ KDE 4 library.
 
 %files -n %libkmobiletoolslib
 %defattr(-,root,root)
-%_kde_libdir/libkmobiletoolslib.so.*
+#%_kde_libdir/libkmobiletoolslib.so.*
 
 #-----------------------------------------------------------------------------
 
@@ -1492,16 +1505,16 @@ phone from your GNU/Linux workstation.
 
 %files -n kmobiletools
 %defattr(-,root,root)
-%_kde_bindir/kmobiletools
-%_kde_datadir/applications/kde4/kmobiletools.desktop
-%_kde_appsdir/akonadi/plugins/serializer/akonadi_serializer_sms.desktop
-%_kde_appsdir/kmobiletools
-%_kde_datadir/config.kcfg/kmobiletools_devices.kcfg
-%_kde_datadir/kde4/services/kmobiletools_mainpart.desktop
-%_kde_datadir/kde4/services/fake_engine.desktop
-%_kde_datadir/kde4/servicetypes/kmobile*
-%_kde_libdir/kde4/kmobiletools*
-%_kde_docdir/HTML/en/kmobiletools
+#%_kde_bindir/kmobiletools
+#%_kde_datadir/applications/kde4/kmobiletools.desktop
+#%_kde_appsdir/akonadi/plugins/serializer/akonadi_serializer_sms.desktop
+#%_kde_appsdir/kmobiletools
+#%_kde_datadir/config.kcfg/kmobiletools_devices.kcfg
+#%_kde_datadir/kde4/services/kmobiletools_mainpart.desktop
+#%_kde_datadir/kde4/services/fake_engine.desktop
+#%_kde_datadir/kde4/servicetypes/kmobile*
+#%_kde_libdir/kde4/kmobiletools*
+#%_kde_docdir/HTML/en/kmobiletools
 %endif # with_kmobiletools
 
 #-----------------------------------------------------------------------------
@@ -1556,10 +1569,10 @@ Pilot with a machine running some flavor of UNIX.
 %_kde_datadir/config.kcfg/kpilot.kcfg
 %_kde_datadir/config.kcfg/kpilotlib.kcfg
 %_kde_datadir/config.kcfg/memofileconduit.kcfg
-%_kde_datadir/config.kcfg/popmail.kcfg
+#%_kde_datadir/config.kcfg/popmail.kcfg
 %_kde_datadir/config.kcfg/timeconduit.kcfg
-%_kde_datadir/config.kcfg/vcalconduitbase.kcfg
-%_kde_datadir/config.kcfg/keyringconduit.kcfg
+#%_kde_datadir/config.kcfg/vcalconduitbase.kcfg
+#%_kde_datadir/config.kcfg/keyringconduit.kcfg
 %_kde_datadir/kde4/services/kpilot_config.desktop
 %_kde_datadir/kde4/services/*-conduit* 
 %_kde_datadir/kde4/services/time_conduit.desktop
@@ -1567,7 +1580,7 @@ Pilot with a machine running some flavor of UNIX.
 %_kde_libdir/kde4/kcm_kpilot.so
 %_kde_libdir/kde4/kpilot_*
 %_kde_libdir/libkpilot_conduit_base.so
-%_kde_docdir/HTML/en/kpilot
+#%_kde_docdir/HTML/en/kpilot
 %endif # with_kpilot
 
 #-----------------------------------------------------------------------------
@@ -2334,15 +2347,14 @@ based on kdepim.
 %_kde_prefix/include/*
 %_kde_appsdir/cmake/modules/*
 %_kde_datadir/dbus-1/interfaces/*
-%_kde_docdir/*/*/kwsdl_compiler
+#%_kde_docdir/*/*/kwsdl_compiler
 
 #----------------------------------------------------------------------
 
 %prep
 %setup -q -n kdepim-%version
-%patch0 -p0
+#%patch0 -p0
 %patch1 -p0
-%patch2 -p1 -b .disable_ktnef
 
 %build
 %cmake_kde4

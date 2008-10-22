@@ -62,35 +62,35 @@ BuildRequires: libopensync-devel >= 0.30
 BuildRequires: akonadi-devel
 #FIXME: Remove later
 BuildRequires: kdepimlibs4-core
-Requires:      kode
-Requires:      akonadi-common
-Requires:      kleopatra
-Requires:      akregator
+Suggests:      kode
+Suggests:      akonadi-common
+Suggests:      kleopatra
+Suggests:      akregator
 %if %{with_kitchensync}
-Requires:      kitchensync
+Suggests:      kitchensync
 %endif
-Requires: knode
-Requires: kaddressbook
-Requires: kalarm
-Requires: ktimetracker
-Requires: kmail
-Requires: kmailcvt
-Requires: knotes
-Requires: kontact
-Requires: korganizer
+Suggests: knode
+Suggests: kaddressbook
+Suggests: kalarm
+Suggests: ktimetracker
+Suggests: kmail
+Suggests: kmailcvt
+Suggests: knotes
+Suggests: kontact
+Suggests: korganizer
 %if %{with_kmobiletools}
-Requires: kmobiletools
+Suggests: kmobiletools
 %else
 Obsoletes: kmobiletools < %epoch:%version
 %endif
 %if %{with_kpilot}
-Requires: kpilot
+Suggests: kpilot
 %else
 Obsoletes: kpilot < %epoch:%version
 %endif
 Obsoletes: korn <= 2:4.1.0
 Obsoletes: ktnef <= 2:4.1.0
-Requires: kjots
+Suggests: kjots
 
 %description
 Information Management applications for the K Desktop Environment.

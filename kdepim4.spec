@@ -62,7 +62,6 @@ BuildRequires: libopensync-devel >= 0.30
 BuildRequires: akonadi-devel
 #FIXME: Remove later
 BuildRequires: kdepimlibs4-core
-Requires:      %name-core
 Requires:      kode
 Requires:      akonadi-common
 Requires:      kleopatra

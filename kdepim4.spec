@@ -17,7 +17,7 @@
 Name: kdepim4
 Summary: K Desktop Environment
 Version: 4.1.71
-Release: %mkrel 1
+Release: %mkrel 2
 Epoch: 2
 Group: Graphical desktop/KDE
 License: GPL
@@ -1550,7 +1550,7 @@ Group: Graphical desktop/KDE
 Requires: %name-core = %epoch:%version
 Obsoletes: %name-kpilot < 1:3.93.0-1
 Obsoletes: kde4-kpilot < 2:4.0.68
-Conflicts: %name-devel < 2:4.0.72-1
+Conflicts: %name-devel < 2:4.1.71-2
 Provides: kde4-kpilot = %epoch:%version
 
 %description -n kpilot
@@ -1579,6 +1579,7 @@ Pilot with a machine running some flavor of UNIX.
 %_kde_libdir/kde4/kcm_kpilot.so
 %_kde_libdir/kde4/kpilot_*
 %_kde_libdir/libkpilot_conduit_base.so
+%_kde_libdir/libkpilot_akonadibase.so
 #%_kde_docdir/HTML/en/kpilot
 %endif # with_kpilot
 
@@ -2342,6 +2343,7 @@ based on kdepim.
 %_kde_libdir/*.so
 %if %{with_kpilot}
 %exclude %_kde_libdir/libkpilot_conduit_base.so
+%exclude %_kde_libdir/libkpilot_akonadibase.so
 %endif
 %_kde_prefix/include/*
 %_kde_appsdir/cmake/modules/*

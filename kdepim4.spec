@@ -16,8 +16,8 @@
 
 Name: kdepim4
 Summary: K Desktop Environment
-Version: 4.1.71
-Release: %mkrel 3
+Version: 4.1.73
+Release: %mkrel 1
 Epoch: 2
 Group: Graphical desktop/KDE
 License: GPL
@@ -78,6 +78,7 @@ Suggests: kmailcvt
 Suggests: knotes
 Suggests: kontact
 Suggests: korganizer
+Suggests: ksendemail
 %if %{with_kmobiletools}
 Suggests: kmobiletools
 %else
@@ -504,6 +505,7 @@ KDE PIM storage framework.
 %_kde_datadir/kde4/services/kresources/kcal/akonadi.desktop
 %_kde_datadir/kde4/services/kcm_akonadi.desktop
 %_kde_datadir/kde4/services/kcm_akonadi_server.desktop
+%_kde_datadir/config/kres-migratorrc
 %_kde_appsdir/nepomuk/ontologies/*
 
 #-----------------------------------------------------------------------------
@@ -2264,6 +2266,21 @@ Conflicts: kontact < 2:4.0.83-2
 %_kde_datadir/config.kcfg/kjots.kcfg
 %_kde_docdir/HTML/*/kjots
 %_kde_libdir/kde4/kontact_kjotsplugin.so
+
+#-----------------------------------------------------------------------------
+
+%package -n ksendemail
+Summary: %{name} ksendemail
+Group: Graphical desktop/KDE
+Requires: %name-core = %epoch:%version
+Conflicts: kontact < 2:4.0.83-2
+
+%description -n ksendemail
+%{name} ksendemail.
+
+%files -n ksendemail
+%defattr(-,root,root)
+%_kde_bindir/ksendemail
 
 #-----------------------------------------------------------------------------
 

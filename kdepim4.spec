@@ -29,7 +29,6 @@ Patch1: kdepim-4.0.98-fix-autostart.patch
 Buildroot:     %_tmppath/%name-%version-%release-root
 BuildRequires: kdelibs4-devel
 BuildRequires: kdepimlibs4-devel
-BuildRequires: kdebase4-workspace-devel 
 BuildRequires: gpgme-devel 
 BuildRequires: X11-devel 
 BuildRequires: flex 

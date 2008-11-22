@@ -920,6 +920,7 @@ leafnode also usable with dial-up connections.
 %_kde_libdir/kde4/knodepart.so
 %_kde_libdir/kde4/kontact_knodeplugin.so
 %_kde_docdir/HTML/en/knode
+%_kde_docdir/HTML/en/kioslave/news
 
 #-----------------------------------------------------------------------------
 

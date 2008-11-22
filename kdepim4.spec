@@ -2376,7 +2376,7 @@ based on kdepim.
 %build
 %cmake_kde4
 
-make
+%make
 
 %install
 rm -fr %buildroot

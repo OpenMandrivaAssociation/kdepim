@@ -21,7 +21,7 @@ Release: %mkrel 1
 Epoch: 2
 Group: Graphical desktop/KDE
 License: GPL
-URL: http://www.kde.org
+URL: http://pim.kde.org
 Source: ftp://ftp.kde.org/pub/kde/stable/%version/src/kdepim-%version.tar.bz2
 # Mandriva "customization" patches
 Patch0: kdepim-4.0.83-fix-desktop-files.patch
@@ -473,6 +473,7 @@ KDE 4 library.
 %package akonadi
 Summary: KDE PIM storage framework
 Group: Graphical desktop/KDE
+URL: http://pim.kde.org/akonadi/
 Requires: %name-core = %epoch:%version
 Obsoletes: %name-akonadi < 1:3.93.0-1
 Obsoletes: kde4-akonadi < 2:4.0.68
@@ -841,6 +842,7 @@ KDE 4 library.
 %package -n kitchensync
 Summary: KDE KitchenSync
 Group: Graphical desktop/KDE
+URL: http://kontact.kde.org/kitchensync/index.php
 Requires: %name-core = %epoch:%version
 Obsoletes: %name-kitchensync < 1:3.93.0-1
 Obsoletes: kde4-kitchensync < 2:4.0.68
@@ -886,6 +888,7 @@ KDE 4 library.
 %package -n knode
 Summary: A newsreader for the K Desktop Environment
 Group: Graphical desktop/KDE
+URL: http://kontact.kde.org/knode/
 Requires: %name-core = %epoch:%version
 Requires: kdepimlibs4-core
 Obsoletes: %name-knode < 1:3.93.0-1
@@ -1110,6 +1113,7 @@ KDE 4 library.
 %package -n kmail
 Summary: KDE Email Client
 Group: Graphical desktop/KDE
+URL: http://kontact.kde.org/kmail/
 Requires: %name-core = %epoch:%version
 Obsoletes: %name-kmail < 1:3.93.0-1
 Requires: kdepimlibs4-core
@@ -1120,7 +1124,8 @@ Conflicts: kontact < 2:4.0.83-2
 Provides: kde4-kmail = %epoch:%version
 
 %description -n kmail
-KDE Email Client
+KMail is the email component of Kontact, the integrated personal
+information manager of KDE.
 
 %files -n kmail
 %defattr(-,root,root)
@@ -1215,6 +1220,7 @@ although including some advanced features.
 %package -n kontact
 Summary: Kontact Container
 Group: Graphical desktop/KDE
+URL: http://kontact.kde.org/
 Requires: %name-core = %epoch:%version
 Obsoletes: %name-kontact < 1:3.93.0-1
 Obsoletes: kde4-kontact < 2:4.0.68
@@ -1368,6 +1374,7 @@ KDE 4 library.
 %package -n korganizer
 Summary: Calendar and scheduling component
 Group: Graphical desktop/KDE
+URL: http://kontact.kde.org/korganizer/
 Requires: %name-core = %epoch:%version
 Obsoletes: %name-korganizer < 1:3.93.0-1
 Requires: %name-kresources

@@ -1142,8 +1142,8 @@ Requires:  sasl-plug-plain
 Obsoletes: kde4-kmail < 2:4.0.68
 Obsoletes: kdepim4-plugins <= 2:4.0.83
 Obsoletes: %name-kmail < 1:3.93.0-1
-Obsoletes: kdepim-kmail <1:3.5.10-2
-Obsoletes: %{_lib}kdepim2-index <1:3.5.10-2
+Obsoletes: kdepim-kmail < 1:3.5.10-2
+Obsoletes: %{_lib}kdepim2-index < 1:3.5.10-2
 
 Conflicts: kontact < 2:4.0.83-2
 Provides: kde4-kmail = %epoch:%version

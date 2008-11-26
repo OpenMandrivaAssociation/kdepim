@@ -17,7 +17,7 @@
 Name: kdepim4
 Summary: K Desktop Environment
 Version: 4.1.80
-Release: %mkrel 1
+Release: %mkrel 2
 Epoch: 2
 Group: Graphical desktop/KDE
 License: GPL
@@ -78,6 +78,7 @@ Suggests: knotes
 Suggests: kontact
 Suggests: korganizer
 Suggests: ksendemail
+Suggests: kjots
 %if %{with_kmobiletools}
 Suggests: kmobiletools
 %else
@@ -89,8 +90,12 @@ Suggests: kpilot
 Obsoletes: kpilot < %epoch:%version
 %endif
 Obsoletes: korn <= 2:4.1.0
+Obsoletes: kdepim-korn < 1:3.5.10-2
+Obsoletes: kdepim-kandy < 1:3.5.10-2
 Obsoletes: ktnef <= 2:4.1.0
-Suggests: kjots
+Obsoletes: kdepim-ktnef < 1:3.5.10-2
+Obsoletes: %{_lib}kdepim2-ktnef < 1:3.5.10-2
+Obsoletes: kdepim < 1:3.5.10-2
 
 %description
 Information Management applications for the K Desktop Environment.
@@ -126,6 +131,8 @@ Obsoletes: %{_lib}akonadisearchprovider4 < 2:3.94.1-0.729215.1
 Conflicts: kontact < 2:4.0.83-2
 Conflicts: kdepim-knotes < 1:3.5.9-10mdv
 Conflicts: kdepim-kaddressbook < 1:3.5.9-10mdv
+Obsoletes: kdepim-common < 1:3.5.10-2
+Obsoletes: %{_lib}kdepim2-common < 1:3.5.10-2
 
 %description core
 Core files from kdepim.
@@ -240,6 +247,7 @@ KDE 4 library.
 %package -n %libgwsoap
 Summary: KDE 4 library
 Group: System/Libraries
+Obsoletes: %{_lib}gwsoap0 < 1:3.5.10-2
 
 %description -n %libgwsoap
 KDE 4 library.
@@ -430,6 +438,7 @@ KDE 4 library.
 Summary: KDE 4 library
 Group: System/Libraries
 Obsoletes: %{_lib}kdepim42-common < 1:3.93.0-1
+Obsoletes: %{_lib}kdepim2-kaddressbook < 1:3.5.10-2
 
 %description -n %libkaddressbookprivate
 KDE 4 library.
@@ -453,6 +462,7 @@ KDE 4 library.
 Summary: KDE 4 library
 Group: System/Libraries
 Obsoletes: %{_lib}kdepim42-common < 1:3.93.0-1
+Obsoletes: %{_lib}kdepim2-kontact < 1:3.5.10-2
 
 %description -n %libkontactprivate
 KDE 4 library.
@@ -759,8 +769,11 @@ KDE 4 library.
 Summary: A Feed Reader for KDE
 Group: Graphical desktop/KDE
 Requires: %name-core = %epoch:%version
+
 Obsoletes: %name-akregator < 1:3.93.0-1
 Obsoletes: kde4-akregator < 2:4.0.68
+Obsoletes: kdepim-akregator < 1:3.5.10-2
+
 Conflicts: kontact < 2:4.0.83
 Provides: kde4-akregator = %epoch:%version
 Conflicts: kontact < 2:4.0.83-2
@@ -799,6 +812,7 @@ easy news reading.
 Summary: KDE 4 library
 Group: System/Libraries
 Obsoletes: %{_lib}kdepim42-common < 1:3.93.0-1
+Obsoletes: %{_lib}kdepim2-kitchensync < 1:3.5.10-2
 
 %description -n %libkitchensyncprivate
 KDE 4 library.
@@ -822,6 +836,7 @@ KDE 4 library.
 Summary: KDE 4 library
 Group: System/Libraries
 Obsoletes: %{_lib}kdepim42-common < 1:3.93.0-1
+Obsoletes: %{_lib}kdepim2-qopensync < 1:3.5.10-2
 
 %description -n %libqopensync
 KDE 4 library.
@@ -844,8 +859,11 @@ Summary: KDE KitchenSync
 Group: Graphical desktop/KDE
 URL: http://kontact.kde.org/kitchensync/index.php
 Requires: %name-core = %epoch:%version
+
 Obsoletes: %name-kitchensync < 1:3.93.0-1
 Obsoletes: kde4-kitchensync < 2:4.0.68
+Obsoletes: kdepim-kitchensync < 1:3.5.10-2
+
 Provides: kde4-kitchensync = %epoch:%version
 
 %description -n kitchensync
@@ -893,7 +911,8 @@ Requires: %name-core = %epoch:%version
 Requires: kdepimlibs4-core
 Obsoletes: %name-knode < 1:3.93.0-1
 Obsoletes: kde4-knode < 2:4.0.68
-Provides: kde4-knode = %epoch:%version
+Obsoletes: kdepim-knode < 1:3.5.10-2
+Provides:  kde4-knode = %epoch:%version
 Conflicts: kontact < 2:4.0.83-2
 
 %description -n knode
@@ -956,6 +975,7 @@ Group: Graphical desktop/KDE
 Requires: %name-core = %epoch:%version
 Obsoletes: %name-kaddressbook < 1:3.93.0-1
 Obsoletes: kde4-kaddressbook < 2:4.0.68
+Obsoletes: kdepim-kaddressbook < 1:3.5.10-2
 Provides: kde4-kaddressbook = %epoch:%version
 Conflicts: kontact < 2:4.0.83-2
 Conflicts: kdeaddons-kaddressbook-plugins < 1:3.5.9-2mdv
@@ -1057,6 +1077,7 @@ Group: Graphical desktop/KDE
 Requires: %name-core = %epoch:%version
 Obsoletes: %name-ktimetracker < 1:3.93.0-1
 Obsoletes: kde4-ktimetracker < 2:4.0.68
+Obsoletes: kdepim-karm < 1:3.5.10-2
 Provides: kde4-ktimetracker = %epoch:%version
 Conflicts: kontact < 2:4.0.83-2
 
@@ -1115,11 +1136,15 @@ Summary: KDE Email Client
 Group: Graphical desktop/KDE
 URL: http://kontact.kde.org/kmail/
 Requires: %name-core = %epoch:%version
-Obsoletes: %name-kmail < 1:3.93.0-1
 Requires: kdepimlibs4-core
 Requires:  sasl-plug-plain
+
 Obsoletes: kde4-kmail < 2:4.0.68
 Obsoletes: kdepim4-plugins <= 2:4.0.83
+Obsoletes: %name-kmail < 1:3.93.0-1
+Obsoletes: kdepim-kmail <1:3.5.10-2
+Obsoletes: %{_lib}kdepim2-index <1:3.5.10-2
+
 Conflicts: kontact < 2:4.0.83-2
 Provides: kde4-kmail = %epoch:%version
 
@@ -1189,9 +1214,12 @@ KDE Mail Import tool
 Summary: Notes for the K Desktop Environment
 Group: Graphical desktop/KDE
 Requires: %name-core = %epoch:%version
-Obsoletes: %name-knotes < 1:3.93.0-1
 Requires: %name-kresources
+
 Obsoletes: kde4-knotes < 2:4.0.68
+Obsoletes: %name-knotes < 1:3.93.0-1
+Obsoletes: kdepim-knotes < 1:3.5.10-2
+
 Provides: kde4-knotes = %epoch:%version
 Conflicts: kontact < 2:4.0.83-2
 
@@ -1224,6 +1252,7 @@ URL: http://kontact.kde.org/
 Requires: %name-core = %epoch:%version
 Obsoletes: %name-kontact < 1:3.93.0-1
 Obsoletes: kde4-kontact < 2:4.0.68
+Obsoletes: kdepim-kontact  kdepim-kpilot < 1:3.5.10-2
 Provides: kde4-kontact = %epoch:%version
 
 %description -n kontact
@@ -1354,7 +1383,7 @@ KDE 4 library.
 Summary: KDE 4 library
 Group: System/Libraries
 Obsoletes: %{_lib}kdepim42-common < 1:3.93.0-1
-
+Obsoletes: %{_lib}kdepim2-korganizer < 1:3.93.0-1
 %description -n %libkorganizer_interfaces
 KDE 4 library.
 
@@ -1376,9 +1405,10 @@ Summary: Calendar and scheduling component
 Group: Graphical desktop/KDE
 URL: http://kontact.kde.org/korganizer/
 Requires: %name-core = %epoch:%version
-Obsoletes: %name-korganizer < 1:3.93.0-1
 Requires: %name-kresources
 Obsoletes: kde4-korganizer < 2:4.0.68
+Obsoletes: %name-korganizer < 1:3.93.0-1
+Obsoletes: kdepim-korganizer < 1:3.5.10-2
 Provides: kde4-korganizer = %epoch:%version
 Conflicts: kontact < 2:4.0.83-2
 
@@ -1536,6 +1566,7 @@ Summary: KDE 4 library
 Group: System/Libraries
 Obsoletes: %{_lib}kdepim42-common < 1:3.93.0-1
 Obsoletes: %{_lib}kdepim42-kpilot < 1:3.93.0-1
+Obsoletes: %{_lib}kdepim2-kpilot < 1:3.93.0-1
 
 %description -n %libkpilot
 KDE 4 library.
@@ -1559,6 +1590,7 @@ Group: Graphical desktop/KDE
 Requires: %name-core = %epoch:%version
 Obsoletes: %name-kpilot < 1:3.93.0-1
 Obsoletes: kde4-kpilot < 2:4.0.68
+Obsoletes: kdepim-kpilot < 1:3.5.10-2
 Conflicts: %name-devel < 2:4.1.71-2
 Provides: kde4-kpilot = %epoch:%version
 
@@ -2060,6 +2092,7 @@ Summary: KDE Groupware Wizard
 Group: Graphical desktop/KDE
 Requires: %name-core = %epoch:%version
 Obsoletes: %name-wizards < 1:3.93.0-1
+Obsoletes: kdepim-wizards < 1:3.5.10-2
 
 %description wizards
 KDE Groupware Wizard
@@ -2357,6 +2390,9 @@ Requires: %libgwsoap = %epoch:%version
 Requires: %libkabcgroupwise = %epoch:%version
 Requires: %libkcalgroupwise = %epoch:%version
 Requires: %libkontactinterfaces = %epoch:%version
+
+Obsoletes: kdepim-devel < 1:3.5.10-2
+Obsoletes: kdepim-devel-doc < 1:3.5.10-2
 
 %description  devel
 This package contains header files needed if you wish to build applications

@@ -976,6 +976,7 @@ Requires: %name-core = %epoch:%version
 Obsoletes: %name-kaddressbook < 1:3.93.0-1
 Obsoletes: kde4-kaddressbook < 2:4.0.68
 Obsoletes: kdepim-kaddressbook < 1:3.5.10-2
+Obsoletes: kdeaddons-kaddressbook-plugins < 1:3.5.10-2
 Provides: kde4-kaddressbook = %epoch:%version
 Conflicts: kontact < 2:4.0.83-2
 Conflicts: kdeaddons-kaddressbook-plugins < 1:3.5.9-2mdv

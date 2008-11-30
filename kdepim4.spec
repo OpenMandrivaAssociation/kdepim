@@ -27,8 +27,8 @@ Source: ftp://ftp.kde.org/pub/kde/stable/%version/src/kdepim-%version.tar.bz2
 Patch0: kdepim-4.0.83-fix-desktop-files.patch
 Patch1: kdepim-4.0.98-fix-autostart.patch
 Buildroot:     %_tmppath/%name-%version-%release-root
-BuildRequires: kdelibs4-devel
-BuildRequires: kdepimlibs4-devel
+BuildRequires: kdelibs4-devel >= 2:4.1.81
+BuildRequires: kdepimlibs4-devel >= 2:4.1.81
 BuildRequires: gpgme-devel 
 BuildRequires: X11-devel 
 BuildRequires: flex 

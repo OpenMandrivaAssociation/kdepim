@@ -16,8 +16,8 @@
 
 Name: kdepim4
 Summary: K Desktop Environment
-Version: 4.1.80
-Release: %mkrel 2
+Version: 4.1.81
+Release: %mkrel 1
 Epoch: 2
 Group: Graphical desktop/KDE
 License: GPL
@@ -139,11 +139,6 @@ Core files from kdepim.
 
 %files core
 %defattr(-,root,root,-)
-%_kde_bindir/kabc2mutt
-%_kde_bindir/kabcclient
-%_kde_bindir/konsolekalendar
-%_kde_datadir/applications/kde4/konsolekalendar.desktop
-%_kde_docdir/HTML/en/konsolekalendar
 %_kde_libdir/strigi/*
 %_kde_iconsdir/*/*/*/*
 %dir %_kde_datadir/kde4/services/kontact
@@ -980,6 +975,7 @@ Obsoletes: kdeaddons-kaddressbook-plugins < 1:3.5.10-2
 Provides: kde4-kaddressbook = %epoch:%version
 Conflicts: kontact < 2:4.0.83-2
 Conflicts: kdeaddons-kaddressbook-plugins < 1:3.5.9-2mdv
+Conflicts: kdepim4-core < 2:4.1.81-1
 
 %description -n kaddressbook
 The KDE addressbook application.
@@ -1009,6 +1005,13 @@ The KDE addressbook application.
 %_kde_docdir/HTML/en/kaddressbook
 %_kde_libdir/kde4/kontact_kaddressbookplugin.so
 %_kde_datadir/autostart/kabcdistlistupdater.desktop
+
+# Does it make sense to split it on its own package ?
+%_kde_bindir/kabc2mutt
+%_kde_bindir/kabcclient
+%_kde_docdir/HTML/en/kabcclient
+%_kde_mandir//man1/kabcclient.1.lzma
+
 #-----------------------------------------------------------------------------
 
 %define libkalarm_resources %mklibname kalarm_resources 4
@@ -1405,13 +1408,14 @@ KDE 4 library.
 Summary: Calendar and scheduling component
 Group: Graphical desktop/KDE
 URL: http://kontact.kde.org/korganizer/
-Requires: %name-core = %epoch:%version
-Requires: %name-kresources
+Requires:  %name-core = %epoch:%version
+Requires:  %name-kresources
 Obsoletes: kde4-korganizer < 2:4.0.68
 Obsoletes: %name-korganizer < 1:3.93.0-1
 Obsoletes: kdepim-korganizer < 1:3.5.10-2
-Provides: kde4-korganizer = %epoch:%version
+Provides:  kde4-korganizer = %epoch:%version
 Conflicts: kontact < 2:4.0.83-2
+Conflicts: kdepim4-core < 2:4.1.81-1
 
 %description -n korganizer
 KOrganizer provides management of events and tasks, alarm notification,
@@ -1454,6 +1458,10 @@ Citadel or OpenGroupware.org.
 %_kde_libdir/kde4/korganizerpart.so
 %_kde_libdir/kde4/kontact_korganizerplugin.so
 %doc %_kde_docdir/*/*/korganizer
+
+%_kde_bindir/konsolekalendar
+%_kde_datadir/applications/kde4/konsolekalendar.desktop
+%_kde_docdir/HTML/en/konsolekalendar
 
 #-----------------------------------------------------------------------------
 

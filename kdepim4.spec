@@ -1628,7 +1628,7 @@ Pilot with a machine running some flavor of UNIX.
 %_kde_libdir/kde4/kpilot_*
 %_kde_libdir/libkpilot_conduit_base.so
 %_kde_libdir/libkpilot_akonadibase.so
-#%_kde_docdir/HTML/en/kpilot
+%_kde_docdir/HTML/en/kpilot
 %endif # with_kpilot
 
 #-----------------------------------------------------------------------------

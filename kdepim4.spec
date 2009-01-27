@@ -1426,7 +1426,6 @@ Citadel or OpenGroupware.org.
 %defattr(-,root,root)
 %_kde_bindir/ical2vcal
 %_kde_bindir/korgac
-%_kde_bindir/thememain
 %_kde_bindir/korganizer
 %_kde_datadir/kde4/services/kontact/korganizerplugin.desktop
 %_kde_datadir/applications/kde4/korganizer-import.desktop

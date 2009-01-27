@@ -16,7 +16,7 @@
 
 Name: kdepim4
 Summary: K Desktop Environment
-Version: 4.1.96
+Version: 4.2.0
 Release: %mkrel 1
 Epoch: 2
 Group: Graphical desktop/KDE

@@ -1054,6 +1054,7 @@ or you can schedule commands to be executed or emails to be sent.
 %defattr(-,root,root)
 %_kde_bindir/kalarm
 %_kde_bindir/kalarmautostart
+%_kde_appsdir/kconf_update/kalarm-2.1.5-general.pl
 %_kde_datadir/applications/kde4/kalarm.desktop
 %_kde_datadir/autostart/kalarm.autostart.desktop
 %_kde_appsdir/kalarm/kalarmui.rc

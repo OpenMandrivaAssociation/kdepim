@@ -27,8 +27,6 @@ Source: ftp://ftp.kde.org/pub/kde/stable/%version/src/kdepim-%version.tar.bz2
 Patch0: kdepim-4.0.83-fix-desktop-files.patch
 Patch1: kdepim-4.0.98-fix-autostart.patch
 Patch2: kdepim-4.2.1-kmail-first-message.patch 
-# Patches From branch
-Patch100: kdepim-4.2.1-branch-backport-rev933657.patch
 Buildroot:     %_tmppath/%name-%version-%release-root
 BuildRequires: kdelibs4-devel >= 2:4.1.81
 BuildRequires: kdepimlibs4-devel >= 2:4.1.81
@@ -2428,8 +2426,6 @@ based on kdepim.
 %patch0 -p0
 %patch1 -p0
 %patch2 -p1
-
-%patch100 -p0 -b .korganizer
 
 %build
 %cmake_kde4

@@ -17,16 +17,34 @@
 Name: kdepim4
 Summary: K Desktop Environment
 Version: 4.2.2
-Release: %mkrel 1
+Release: %mkrel 2
 Epoch: 2
 Group: Graphical desktop/KDE
 License: GPL
 URL: http://pim.kde.org
 Source: ftp://ftp.kde.org/pub/kde/stable/%version/src/kdepim-%version.tar.bz2
 # Mandriva "customization" patches
-Patch0: kdepim-4.0.83-fix-desktop-files.patch
-Patch1: kdepim-4.0.98-fix-autostart.patch
-Patch2: kdepim-4.2.1-kmail-first-message.patch 
+Patch0:   kdepim-4.0.83-fix-desktop-files.patch
+Patch1:   kdepim-4.0.98-fix-autostart.patch
+Patch2:   kdepim-4.2.1-kmail-first-message.patch 
+Patch100: kdepim4-4.2.3-rev946212.patch
+Patch101: kdepim4-4.2.3-rev947403.patch
+Patch102: kdepim4-4.2.3-rev948810.patch
+Patch103: kdepim4-4.2.3-rev945861.patch
+Patch104: kdepim4-4.2.3-rev946294.patch
+Patch105: kdepim4-4.2.3-rev949282.patch
+Patch106: kdepim4-4.2.3-rev947709.patch
+Patch107: kdepim4-4.2.3-rev949286.patch
+Patch108: kdepim4-4.2.3-rev946977.patch
+Patch109: kdepim4-4.2.3-rev948243.patch
+Patch110: kdepim4-4.2.3-rev947533.patch
+Patch111: kdepim4-4.2.3-rev946745.patch
+Patch112: kdepim4-4.2.3-rev949274.patch
+Patch113: kdepim4-4.2.3-rev948744.patch
+Patch114: kdepim4-4.2.3-rev947259.patch
+Patch115: kdepim4-4.2.3-rev948764.patch
+Patch116: kdepim4-4.2.3-rev946965.patch
+Patch117: kdepim4-4.2.3-rev948586.patch
 Buildroot:     %_tmppath/%name-%version-%release-root
 BuildRequires: kdelibs4-devel >= 2:4.1.81
 BuildRequires: kdepimlibs4-devel >= 2:4.1.81
@@ -2426,6 +2444,24 @@ based on kdepim.
 %patch0 -p0
 %patch1 -p0
 %patch2 -p1
+%patch100 -p0
+%patch101 -p0
+%patch102 -p0
+%patch103 -p0
+%patch104 -p0
+%patch105 -p0
+%patch106 -p0
+%patch107 -p0
+%patch108 -p0
+%patch109 -p0
+%patch110 -p0
+%patch111 -p0
+%patch112 -p0
+%patch113 -p0
+%patch114 -p0
+%patch115 -p0
+%patch116 -p0
+%patch117 -p0
 
 %build
 %cmake_kde4

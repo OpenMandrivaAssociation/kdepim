@@ -17,7 +17,7 @@
 Name: kdepim4
 Summary: K Desktop Environment
 Version: 4.2.2
-Release: %mkrel 4
+Release: %mkrel 5
 Epoch: 2
 Group: Graphical desktop/KDE
 License: GPL
@@ -52,6 +52,7 @@ Patch121: kdepim4-4.2.3-rev949918.patch
 Patch122: kdepim4-4.2.3-rev949920.patch
 Patch123: kdepim4-4.2.3-rev949905.patch
 Patch124: kdepim4-4.2.3-rev949934.patch
+Patch125: kdepim4-4.2.3-rev950053.patch
 Buildroot:     %_tmppath/%name-%version-%release-root
 BuildRequires: kdelibs4-devel >= 2:4.1.81
 BuildRequires: kdepimlibs4-devel >= 2:4.1.81
@@ -2476,6 +2477,7 @@ based on kdepim.
 %patch122 -p0
 %patch123 -p0
 %patch124 -p0
+%patch125 -p0
 %build
 %cmake_kde4
 

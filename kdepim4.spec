@@ -1,7 +1,7 @@
 %define with_kpilot 1
 %{?_with_kpilot: %{expand: %%global with_kpilot 1}}
 
-%define with_kmobiletools 1
+%define with_kmobiletools 0
 %{?_with_kmobiletools: %{expand: %%global with_kmobiletools 1}}
 
 %define with_kitchensync 0
@@ -68,7 +68,6 @@ Patch137: kdepim4-4.2.3-rev951424.patch
 Patch138: kdepim4-4.2.3-rev951460.patch
 Patch139: kdepim4-4.2.3-rev951803.patch
 Patch140: kdepim4-4.2.3-rev951880.patch  
-
 
 Buildroot:     %_tmppath/%name-%version-%release-root
 BuildRequires: kdelibs4-devel >= 2:4.1.81
@@ -1553,7 +1552,7 @@ KDE 4 library.
 
 %files -n %libkmobiletoolsengineui
 %defattr(-,root,root)
-#%_kde_libdir/libkmobiletoolsengineui.so.*
+%_kde_libdir/libkmobiletoolsengineui.so.*
 
 #-----------------------------------------------------------------------------
 
@@ -1577,7 +1576,7 @@ KDE 4 library.
 
 %files -n %libkmobiletoolslib
 %defattr(-,root,root)
-#%_kde_libdir/libkmobiletoolslib.so.*
+%_kde_libdir/libkmobiletoolslib.so.*
 
 #-----------------------------------------------------------------------------
 
@@ -1595,16 +1594,16 @@ phone from your GNU/Linux workstation.
 
 %files -n kmobiletools
 %defattr(-,root,root)
-#%_kde_bindir/kmobiletools
-#%_kde_datadir/applications/kde4/kmobiletools.desktop
-#%_kde_appsdir/akonadi/plugins/serializer/akonadi_serializer_sms.desktop
-#%_kde_appsdir/kmobiletools
-#%_kde_datadir/config.kcfg/kmobiletools_devices.kcfg
-#%_kde_datadir/kde4/services/kmobiletools_mainpart.desktop
-#%_kde_datadir/kde4/services/fake_engine.desktop
-#%_kde_datadir/kde4/servicetypes/kmobile*
-#%_kde_libdir/kde4/kmobiletools*
-#%_kde_docdir/HTML/en/kmobiletools
+%_kde_bindir/kmobiletools
+%_kde_datadir/applications/kde4/kmobiletools.desktop
+%_kde_appsdir/akonadi/plugins/serializer/akonadi_serializer_sms.desktop
+%_kde_appsdir/kmobiletools
+%_kde_datadir/config.kcfg/kmobiletools_devices.kcfg
+%_kde_datadir/kde4/services/kmobiletools_mainpart.desktop
+%_kde_datadir/kde4/services/fake_engine.desktop
+%_kde_datadir/kde4/servicetypes/kmobile*
+%_kde_libdir/kde4/kmobiletools*
+%_kde_docdir/HTML/en/kmobiletools
 %endif # with_kmobiletools
 
 #-----------------------------------------------------------------------------

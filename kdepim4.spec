@@ -14,62 +14,21 @@
 %define dont_strip 1
 %endif
 
+%define kderevision svn954171
+
 Name: kdepim4
 Summary: K Desktop Environment
-Version: 4.2.2
-Release: %mkrel 13
+Version: 4.2.70
+Release: %mkrel 0.%kderevision.1
 Epoch: 2
 Group: Graphical desktop/KDE
 License: GPL
 URL: http://pim.kde.org
-Source: ftp://ftp.kde.org/pub/kde/stable/%version/src/kdepim-%version.tar.bz2
+Source: ftp://ftp.kde.org/pub/kde/stable/%version/src/kdepim-%version.%kderevision.tar.bz2
 # Mandriva "customization" patches
 Patch0:   kdepim-4.0.83-fix-desktop-files.patch
 Patch1:   kdepim-4.0.98-fix-autostart.patch
 Patch2:   kdepim-4.2.1-kmail-first-message.patch 
-Patch100: kdepim4-4.2.3-rev946212.patch
-Patch101: kdepim4-4.2.3-rev947403.patch
-Patch102: kdepim4-4.2.3-rev948810.patch
-Patch103: kdepim4-4.2.3-rev945861.patch
-Patch104: kdepim4-4.2.3-rev946294.patch
-Patch105: kdepim4-4.2.3-rev949282.patch
-Patch106: kdepim4-4.2.3-rev947709.patch
-Patch107: kdepim4-4.2.3-rev949286.patch
-Patch108: kdepim4-4.2.3-rev946977.patch
-Patch109: kdepim4-4.2.3-rev948243.patch
-Patch110: kdepim4-4.2.3-rev947533.patch
-Patch111: kdepim4-4.2.3-rev946745.patch
-Patch112: kdepim4-4.2.3-rev949274.patch
-Patch113: kdepim4-4.2.3-rev948744.patch
-Patch114: kdepim4-4.2.3-rev947259.patch
-Patch115: kdepim4-4.2.3-rev948764.patch
-Patch116: kdepim4-4.2.3-rev946965.patch
-Patch117: kdepim4-4.2.3-rev948586.patch
-Patch118: kdepim-4.2.3-rev949428.patch
-patch119: kdepim4-4.2.3-rev949912.patch
-Patch120: kdepim4-4.2.3-rev949913.patch
-Patch121: kdepim4-4.2.3-rev949918.patch
-Patch122: kdepim4-4.2.3-rev949920.patch
-Patch123: kdepim4-4.2.3-rev949905.patch
-Patch124: kdepim4-4.2.3-rev949934.patch
-Patch125: kdepim4-4.2.3-rev950053.patch
-Patch126: kdepim4-4.2.3-rev950239.patch
-Patch127: kdepim4-4.2.3-rev950512.patch
-Patch128: kdepim4-4.2.3-rev950586.patch
-Patch129: kdepim4-4.2.3-rev950618.patch
-Patch130: kdepim4-4.2.3-rev950721.patch 
-Patch131: kdepim4-4.2.3-rev950856.patch
-Patch132: kdepim4-4.2.3-rev951032.patch
-Patch133: kdepim4-4.2.3-rev951248.patch
-Patch134: kdepim4-4.2.3-rev945846.patch
-Patch135: kdepim4-4.2.3-rev945848.patch
-Patch136: kdepim4-4.2.3-rev945853.patch 
-Patch137: kdepim4-4.2.3-rev951424.patch 
-Patch138: kdepim4-4.2.3-rev951460.patch
-Patch139: kdepim4-4.2.3-rev951803.patch
-Patch140: kdepim4-4.2.3-rev951880.patch  
-Patch141: kdepim4-4.2.3-rev955446.patch
-Patch142: kdepim4-4.2.3-rev955443.patch
 Buildroot:     %_tmppath/%name-%version-%release-root
 BuildRequires: kdelibs4-devel >= 2:4.1.81
 BuildRequires: kdepimlibs4-devel >= 2:4.1.81
@@ -103,7 +62,6 @@ BuildRequires: libopensync-devel >= 0.30
 BuildRequires: akonadi-devel
 #FIXME: Remove later
 BuildRequires: kdepimlibs4-core
-Suggests:      kode
 Suggests:      akonadi-common
 Suggests:      kleopatra
 Suggests:      akregator
@@ -188,98 +146,6 @@ Core files from kdepim.
 
 #-----------------------------------------------------------------------------
 
-%define libkode %mklibname kode 4
-
-%package -n %libkode
-Summary: KDE 4 library
-Group: System/Libraries
-Obsoletes: %{_lib}kdepim42-common < 1:3.93.0-1
-
-%description -n %libkode
-KDE 4 library.
-
-%if %mdkversion < 200900
-%post -n %libkode -p /sbin/ldconfig
-%endif
-%if %mdkversion < 200900
-%postun -n %libkode -p /sbin/ldconfig
-%endif
-
-%files -n %libkode
-%defattr(-,root,root)
-%_kde_libdir/libkode.so.*
-
-#-----------------------------------------------------------------------------
-
-%define libkschema %mklibname kschema 4
-
-%package -n %libkschema
-Summary: KDE 4 library
-Group: System/Libraries
-Obsoletes: %{_lib}kdepim42-common < 1:3.93.0-1
-
-%description -n %libkschema
-KDE 4 library.
-
-%if %mdkversion < 200900
-%post -n %libkschema -p /sbin/ldconfig
-%endif
-%if %mdkversion < 200900
-%postun -n %libkschema -p /sbin/ldconfig
-%endif
-
-%files -n %libkschema
-%defattr(-,root,root)
-%_kde_libdir/libkschema.so.*
-
-#-----------------------------------------------------------------------------
-
-%define libkschemawidgets %mklibname kschemawidgets 4
-
-%package -n %libkschemawidgets
-Summary: KDE 4 library
-Group: System/Libraries
-Obsoletes: %{_lib}kdepim42-common < 1:3.93.0-1
-
-%description -n %libkschemawidgets
-KDE 4 library.
-
-%if %mdkversion < 200900
-%post -n %libkschemawidgets -p /sbin/ldconfig
-%endif
-%if %mdkversion < 200900
-%postun -n %libkschemawidgets -p /sbin/ldconfig
-%endif
-
-%files -n %libkschemawidgets
-%defattr(-,root,root)
-%_kde_libdir/libkschemawidgets.so.*
-
-#-----------------------------------------------------------------------------
-
-%define libkxmlcommon %mklibname kxmlcommon 4
-
-%package -n %libkxmlcommon
-Summary: KDE 4 library
-Group: System/Libraries
-Obsoletes: %{_lib}kdepim42-common < 1:3.93.0-1
-
-%description -n %libkxmlcommon
-KDE 4 library.
-
-%if %mdkversion < 200900
-%post -n %libkxmlcommon -p /sbin/ldconfig
-%endif
-%if %mdkversion < 200900
-%postun -n %libkxmlcommon -p /sbin/ldconfig
-%endif
-
-%files -n %libkxmlcommon
-%defattr(-,root,root)
-%_kde_libdir/libkxmlcommon.so.*
-
-#-----------------------------------------------------------------------------
-
 %define libgwsoap %mklibname gwsoap 4
 
 %package -n %libgwsoap
@@ -300,104 +166,6 @@ KDE 4 library.
 %files -n %libgwsoap
 %defattr(-,root,root)
 %_kde_libdir/libgwsoap.so.*
-
-#-----------------------------------------------------------------------------
-
-%define libschema %mklibname schema 4
-
-%package -n %libschema
-Summary: KDE 4 library
-Group: System/Libraries
-Obsoletes: %{_lib}kdepim42-common < 1:3.93.0-1
-
-%description -n %libschema
-KDE 4 library.
-
-%if %mdkversion < 200900
-%post -n %libschema -p /sbin/ldconfig
-%endif
-%if %mdkversion < 200900
-%postun -n %libschema -p /sbin/ldconfig
-%endif
-
-%files -n %libschema
-%defattr(-,root,root)
-%_kde_libdir/libschema.so.*
-
-#-----------------------------------------------------------------------------
-
-%define libwscl %mklibname wscl 4
-
-%package -n %libwscl
-Summary: KDE 4 library
-Group: System/Libraries
-Obsoletes: %{_lib}kdepim42-common < 1:3.93.0-1
-
-%description -n %libwscl
-KDE 4 library.
-
-%if %mdkversion < 200900
-%post -n %libwscl -p /sbin/ldconfig
-%endif
-%if %mdkversion < 200900
-%postun -n %libwscl -p /sbin/ldconfig
-%endif
-
-%files -n %libwscl
-%defattr(-,root,root)
-%_kde_libdir/libwscl.so.*
-
-#-----------------------------------------------------------------------------
-
-%define libwsdl %mklibname wsdl 4
-
-%package -n %libwsdl
-Summary: KDE 4 library
-Group: System/Libraries
-Obsoletes: %{_lib}kdepim42-common < 1:3.93.0-1
-
-%description -n %libwsdl
-KDE 4 library.
-
-%if %mdkversion < 200900
-%post -n %libwsdl -p /sbin/ldconfig
-%endif
-%if %mdkversion < 200900
-%postun -n %libwsdl -p /sbin/ldconfig
-%endif
-
-%files -n %libwsdl
-%defattr(-,root,root)
-%_kde_libdir/libwsdl.so.*
-
-#-----------------------------------------------------------------------------
-
-%package -n kode
-Summary: A collection of code generation and XML helper tools
-Group: Graphical desktop/KDE
-Requires: %name-core = %epoch:%version
-Obsoletes: %name-kode < 1:3.93.0-1
-Obsoletes: kde4-kode < 2:4.0.68
-Provides: kde4-kode = %epoch:%version
-Conflicts: kontact < 2:4.0.83-2
-
-%description -n kode
-kode is a collection of code generation and XML helper tools. It contains
-libkode, a helper library for programmatic generation of C++ code, the program
-kode for generation of C++ template files and kxml_compiler for generation
-of C++ classes representing XML data described by RelaxNG schemes.
-
-%files -n kode
-%defattr(-,root,root)
-%_kde_bindir/kode
-%_kde_bindir/kung
-%_kde_bindir/kwsdl_compiler
-%_kde_bindir/kxforms
-%_kde_bindir/kxml_compiler
-%_kde_bindir/schematest
-%_kde_datadir/applications/kde4/kwsdl_compiler.desktop
-%_kde_appsdir/kxforms
-%_kde_datadir/config.kcfg/kxforms.kcfg
 
 #-----------------------------------------------------------------------------
 
@@ -505,16 +273,39 @@ Obsoletes: %{_lib}kdepim2-kontact < 1:3.5.10-2
 %description -n %libkontactprivate
 KDE 4 library.
 
-%if %mdkversion < 200900
-%post -n %libkontactprivate -p /sbin/ldconfig
-%endif
-%if %mdkversion < 200900
-%postun -n %libkontactprivate -p /sbin/ldconfig
-%endif
-
 %files -n %libkontactprivate
 %defattr(-,root,root)
 %_kde_libdir/libkontactprivate.so.*
+
+#-----------------------------------------------------------------------------
+
+%define libkorganizer_core %mklibname korganizer_core 4
+
+%package -n %libkorganizer_core
+Summary: KDE 4 library
+Group: System/Libraries
+
+%description -n %libkorganizer_core
+KDE 4 library.
+
+%files -n %libkorganizer_core
+%defattr(-,root,root)
+%_kde_libdir/libkorganizer_core.so.*
+
+#-----------------------------------------------------------------------------
+
+%define libmbox %mklibname mbox 4
+
+%package -n %libmbox
+Summary: KDE 4 library
+Group: System/Libraries
+
+%description -n %libmbox
+KDE 4 library.
+
+%files -n %libmbox
+%defattr(-,root,root)
+%_kde_libdir/libmbox.so.*
 
 #-----------------------------------------------------------------------------
 
@@ -535,6 +326,7 @@ KDE PIM storage framework.
 %_kde_bindir/akonadi_*
 %_kde_bindir/akonadiconsole
 %_kde_bindir/akonaditray
+%_kde_bindir/akonadi2xml
 %_kde_bindir/kres-migrator
 %_kde_appsdir/akonadi
 %_kde_datadir/akonadi
@@ -584,30 +376,6 @@ KDE 4 library.
 %_kde_appsdir/libkdepim
 %_kde_libdir/kde4/kpartsdesignerplugin.so
 %_kde_libdir/kde4/plugins/designer/kdepimwidgets.so
-
-#-----------------------------------------------------------------------------
-
-%define libkholidays %mklibname kholidays 4
-
-%package -n %libkholidays
-Summary: KDE 4 library
-Group: System/Libraries
-Obsoletes: %{_lib}kdepim42-common < 1:3.93.0-1
-
-%description -n %libkholidays
-KDE 4 library.
-
-%if %mdkversion < 200900
-%post -n %libkholidays -p /sbin/ldconfig
-%endif
-%if %mdkversion < 200900
-%postun -n %libkholidays -p /sbin/ldconfig
-%endif
-
-%files -n %libkholidays
-%defattr(-,root,root)
-%_kde_libdir/libkholidays.so.*
-%_kde_appsdir/libkholidays
 
 #-----------------------------------------------------------------------------
 
@@ -828,8 +596,10 @@ easy news reading.
 %files -n akregator
 %defattr(-,root,root)
 %_kde_bindir/akregator
+%_kde_bindir/akregatorstorageexporter
 %_kde_datadir/applications/kde4/akregator.desktop
 %_kde_appsdir/akregator
+%_kde_appsdir/akonadi_knut_resource
 %_kde_datadir/kde4/services/kontact/akregatorplugin.desktop
 %_kde_datadir/config.kcfg/akregator.kcfg
 %_kde_datadir/kde4/services/akregator_*
@@ -839,6 +609,21 @@ easy news reading.
 %_kde_libdir/kde4/kontact_akregatorplugin.so
 %_kde_appsdir/akregator_onlinesync_plugin
 %doc %_kde_docdir/HTML/en/akregator
+
+#-----------------------------------------------------------------------------
+
+%define libakonadi_xml %mklibname akonadi-xml 4
+
+%package -n %libakonadi_xml
+Summary: KDE 4 library
+Group: System/Libraries
+
+%description -n %libakonadi_xml
+KDE 4 library.
+
+%files -n %libakonadi_xml
+%defattr(-,root,root)
+%_kde_libdir/libakonadi-xml.so.*
 
 #-----------------------------------------------------------------------------
 
@@ -980,7 +765,6 @@ leafnode also usable with dial-up connections.
 %_kde_libdir/kde4/knodepart.so
 %_kde_libdir/kde4/kontact_knodeplugin.so
 %_kde_docdir/HTML/en/knode
-%_kde_docdir/HTML/en/kioslave/news
 
 #-----------------------------------------------------------------------------
 
@@ -1052,8 +836,6 @@ The KDE addressbook application.
 # Does it make sense to split it on its own package ?
 %_kde_bindir/kabc2mutt
 %_kde_bindir/kabcclient
-%_kde_docdir/HTML/en/kabcclient
-%_kde_mandir//man1/kabcclient.1.lzma
 
 #-----------------------------------------------------------------------------
 
@@ -1140,17 +922,15 @@ of your day is spent playing Doom or reading Slashdot.
 %_kde_bindir/ktimetracker
 %_kde_appsdir/ktimetracker
 %_kde_datadir/applications/kde4/ktimetracker.desktop
-#%_kde_datadir/kde4/services/karm_part.desktop
-%_kde_datadir/kde4/services/ktimetrackerconfig.desktop
-%_kde_datadir/kde4/services/kontact/ktimetracker_plugin.desktop
 %_kde_datadir/kde4/services/kcmplanner.desktop
 %_kde_datadir/kde4/services/kontact/plannerplugin.desktop
 %_kde_datadir/kde4/services/ktimetrackerpart.desktop
-%_kde_libdir/kde4/kontact_ktimetrackerplugin.so
+%_kde_datadir/kde4/services/ktimetracker_config_behavior.desktop
+%_kde_datadir/kde4/services/ktimetracker_config_display.desktop
+%_kde_datadir/kde4/services/ktimetracker_config_storage.desktop
 %_kde_libdir/kde4/ktimetrackerpart.so
-%_kde_libdir/kde4/kcm_ktimetrackerconfig.so
 %_kde_libdir/kde4/kcm_planner.so
-#%_kde_libdir/kde4/kontact_karmplugin.so
+%_kde_libdir/kde4/kcm_ktimetracker.so
 %_kde_libdir/kde4/kontact_plannerplugin.so
 %_kde_docdir/HTML/en/ktimetracker
 
@@ -1286,8 +1066,14 @@ although including some advanced features.
 %_kde_appsdir/knotes
 %_kde_datadir/kde4/services/kresources/knotes/local.desktop
 %_kde_datadir/kde4/services/kresources/knotes_manager.desktop
+%_kde_datadir/kde4/services/knote_config_action.desktop
+%_kde_datadir/kde4/services/knote_config_display.desktop
+%_kde_datadir/kde4/services/knote_config_editor.desktop
+%_kde_datadir/kde4/services/knote_config_network.desktop
+%_kde_datadir/kde4/services/knote_config_style.desktop
 %_kde_libdir/kde4/knotes_local.so
 %_kde_libdir/kde4/knotes_scalix.so
+%_kde_libdir/kde4/kcm_knote.so
 %_kde_docdir/HTML/en/knotes
 %_kde_libdir/kde4/kontact_knotesplugin.so
 
@@ -1330,29 +1116,6 @@ technology, existing applications are seamlessly integrated into one.
 %_kde_libdir/kde4/kontact_summaryplugin.so
 %_kde_docdir/HTML/en/kontact
 %_kde_datadir/applications/kde4/Kontact.desktop
-
-#-----------------------------------------------------------------------------
-
-%define libkocorehelper %mklibname kocorehelper 4
-
-%package -n %libkocorehelper
-Summary: KDE 4 library
-Group: System/Libraries
-Obsoletes: %{_lib}kdepim42-common < 1:3.93.0-1
-
-%description -n %libkocorehelper
-KDE 4 library.
-
-%if %mdkversion < 200900
-%post -n %libkocorehelper -p /sbin/ldconfig
-%endif
-%if %mdkversion < 200900
-%postun -n %libkocorehelper -p /sbin/ldconfig
-%endif
-
-%files -n %libkocorehelper
-%defattr(-,root,root)
-%_kde_libdir/libkocorehelper.so.*
 
 #-----------------------------------------------------------------------------
 
@@ -1504,7 +1267,6 @@ Citadel or OpenGroupware.org.
 
 %_kde_bindir/konsolekalendar
 %_kde_datadir/applications/kde4/konsolekalendar.desktop
-%_kde_docdir/HTML/en/konsolekalendar
 
 #-----------------------------------------------------------------------------
 
@@ -2046,29 +1808,6 @@ KDE 4 library.
 
 #-----------------------------------------------------------------------------
 
-%define libkcal_resourcefeatureplan %mklibname kcal_resourcefeatureplan 4
-
-%package -n %libkcal_resourcefeatureplan
-Summary: KDE 4 library
-Group: System/Libraries
-Obsoletes: %{_lib}kdepim42-common < 1:3.93.0-1
-
-%description -n %libkcal_resourcefeatureplan
-KDE 4 library.
-
-%if %mdkversion < 200900
-%post -n %libkcal_resourcefeatureplan -p /sbin/ldconfig
-%endif
-%if %mdkversion < 200900
-%postun -n %libkcal_resourcefeatureplan -p /sbin/ldconfig
-%endif
-
-%files -n %libkcal_resourcefeatureplan
-%defattr(-,root,root)
-%_kde_libdir/libkcal_resourcefeatureplan.so.*
-
-#-----------------------------------------------------------------------------
-
 %define libkleo %mklibname kleo 4
 
 %package -n %libkleo
@@ -2116,7 +1855,6 @@ tracking feature plans.
 %_kde_datadir/kde4/services/kresources/kcal/kcal_groupdav.desktop
 %_kde_datadir/kde4/services/kresources/kcal/kcal_opengroupware.desktop
 %_kde_datadir/kde4/services/kresources/kcal/kcal_ox.desktop
-%_kde_datadir/kde4/services/kresources/kcal/kcal_resourcefeatureplan.desktop
 %_kde_datadir/kde4/services/kresources/kcal/kcal_slox.desktop
 %_kde_datadir/kde4/services/kresources/kcal/kcal_xmlrpc.desktop
 %_kde_datadir/kde4/services/kresources/kcal/kolab.desktop
@@ -2353,8 +2091,10 @@ Conflicts: kontact < 2:4.0.83-2
 %_kde_appsdir/kjots
 %_kde_datadir/kde4/services/kontact/kjots_plugin.desktop
 %_kde_libdir/kde4/kjotspart.so
+%_kde_libdir/kde4/kcm_kjots.so
 %_kde_datadir/applications/kde4/Kjots.desktop
 %_kde_datadir/kde4/services/kjotspart.desktop
+%_kde_datadir/kde4/services/kjots_config_misc.desktop
 %_kde_datadir/config.kcfg/kjots.kcfg
 %_kde_docdir/HTML/*/kjots
 %_kde_libdir/kde4/kontact_kjotsplugin.so
@@ -2381,15 +2121,7 @@ Summary: Devel stuff for %name
 Group: Development/KDE and Qt
 Requires: kde4-macros
 Requires: kdelibs4-devel
-Requires: %libkode = %epoch:%version
-Requires: %libkschema = %epoch:%version
-Requires: %libkschemawidgets = %epoch:%version
-Requires: %libkxmlcommon = %epoch:%version
-Requires: %libschema = %epoch:%version
-Requires: %libwscl = %epoch:%version
-Requires: %libwsdl = %epoch:%version
 Requires: %libkdepim = %epoch:%version
-Requires: %libkholidays = %epoch:%version
 Requires: %libkpgp = %epoch:%version
 Requires: %libksieve = %epoch:%version
 Requires: %libmimelib = %epoch:%version
@@ -2404,7 +2136,6 @@ Requires: %libknodecommon = %epoch:%version
 Requires: %libkabinterfaces = %epoch:%version
 Requires: %libkalarm_resources = %epoch:%version
 Requires: %libkmailprivate = %epoch:%version
-Requires: %libkocorehelper = %epoch:%version
 Requires: %libkorg_stdprinting = %epoch:%version
 Requires: %libkorganizerprivate = %epoch:%version
 Requires: %libkorganizer_calendar = %epoch:%version
@@ -2431,7 +2162,6 @@ Requires: %libknotes_xmlrpc = %epoch:%version
 Requires: %libknoteskolab = %epoch:%version
 Requires: %libkslox = %epoch:%version
 Requires: %libkabcommon = %epoch:%version
-Requires: %libkcal_resourcefeatureplan = %epoch:%version
 Requires: %libkleo = %epoch:%version
 Requires: %libmaildir = %epoch:%version
 Requires: %libimap = %epoch:%version
@@ -2458,60 +2188,15 @@ based on kdepim.
 %exclude %_kde_libdir/libkpilot_akonadibase.so
 %endif
 %_kde_prefix/include/*
-%_kde_appsdir/cmake/modules/*
 %_kde_datadir/dbus-1/interfaces/*
-#%_kde_docdir/*/*/kwsdl_compiler
 
 #----------------------------------------------------------------------
 
 %prep
-%setup -q -n kdepim-%version
-%patch0 -p0
-%patch1 -p0
-%patch2 -p1
-%patch100 -p0
-%patch101 -p0
-#%patch102 -p0
-%patch103 -p0
-%patch104 -p0
-%patch105 -p0
-%patch106 -p0
-%patch107 -p0
-%patch108 -p0
-%patch109 -p0
-%patch110 -p0
-%patch111 -p0
-%patch112 -p0
-%patch113 -p0
-%patch114 -p0
-%patch115 -p0
-%patch116 -p0
-%patch117 -p0
-%patch118 -p0
-%patch119 -p0
-%patch120 -p0
-%patch121 -p0
-%patch122 -p0
-%patch123 -p0
-%patch124 -p0
-%patch125 -p0
-%patch126 -p0
-%patch127 -p0
-%patch128 -p0
-%patch129 -p0
-%patch130 -p0
-%patch131 -p0
-%patch132 -p0
-%patch133 -p0
-%patch134 -p0
-%patch135 -p0
-%patch136 -p0
-%patch137 -p0
-%patch138 -p0
-%patch139 -p0
-%patch140 -p0
-%patch141 -p0
-%patch142 -p0
+%setup -q -n kdepim-%version.%kderevision
+#%patch0 -p0
+#%patch1 -p0
+#%patch2 -p1
 
 %build
 %cmake_kde4

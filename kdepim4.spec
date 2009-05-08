@@ -956,6 +956,14 @@ Obsoletes: kde4-kontact < 2:4.0.68
 Obsoletes: kdepim-kontact  kdepim-kpilot < 1:3.5.10-2
 Provides: kde4-kontact = %epoch:%version
 
+Suggests: akregator
+Suggests: kmail
+Suggests: knotes
+Suggests: ktimetracker
+Suggests: knode
+Suggests: kalarm
+Suggests: kaddressbook
+
 %description -n kontact
 The KDE Kontact Personal Information Management suite unites mature and
 proven KDE applications under one roof. Thanks to the powerful KParts

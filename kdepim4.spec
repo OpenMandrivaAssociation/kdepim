@@ -156,13 +156,6 @@ Obsoletes: %{_lib}gwsoap0 < 1:3.5.10-2
 %description -n %libgwsoap
 KDE 4 library.
 
-%if %mdkversion < 200900
-%post -n %libgwsoap -p /sbin/ldconfig
-%endif
-%if %mdkversion < 200900
-%postun -n %libgwsoap -p /sbin/ldconfig
-%endif
-
 %files -n %libgwsoap
 %defattr(-,root,root)
 %_kde_libdir/libgwsoap.so.*
@@ -178,13 +171,6 @@ Obsoletes: %{_lib}kdepim42-common < 1:3.93.0-1
 
 %description -n %libimap
 KDE 4 library.
-
-%if %mdkversion < 200900
-%post -n %libimap -p /sbin/ldconfig
-%endif
-%if %mdkversion < 200900
-%postun -n %libimap -p /sbin/ldconfig
-%endif
 
 %files -n %libimap
 %defattr(-,root,root)
@@ -202,13 +188,6 @@ Obsoletes: %{_lib}kdepim42-common < 1:3.93.0-1
 %description -n %libakonadi_kabccommon
 KDE 4 library.
 
-%if %mdkversion < 200900
-%post -n %libakonadi_kabccommon -p /sbin/ldconfig
-%endif
-%if %mdkversion < 200900
-%postun -n %libakonadi_kabccommon -p /sbin/ldconfig
-%endif
-
 %files -n %libakonadi_kabccommon
 %defattr(-,root,root)
 %_kde_libdir/libakonadi-kabccommon.so.*
@@ -224,13 +203,6 @@ Obsoletes: %{_lib}kdepim42-common < 1:3.93.0-1
 
 %description -n %libakonadi_kcal
 KDE 4 library.
-
-%if %mdkversion < 200900
-%post -n %libakonadi_kcal -p /sbin/ldconfig
-%endif
-%if %mdkversion < 200900
-%postun -n %libakonadi_kcal -p /sbin/ldconfig
-%endif
 
 %files -n %libakonadi_kcal
 %defattr(-,root,root)
@@ -248,13 +220,6 @@ Obsoletes: %{_lib}kdepim2-kaddressbook < 1:3.5.10-2
 
 %description -n %libkaddressbookprivate
 KDE 4 library.
-
-%if %mdkversion < 200900
-%post -n %libkaddressbookprivate -p /sbin/ldconfig
-%endif
-%if %mdkversion < 200900
-%postun -n %libkaddressbookprivate -p /sbin/ldconfig
-%endif
 
 %files -n %libkaddressbookprivate
 %defattr(-,root,root)
@@ -362,13 +327,6 @@ Conflicts: kdepim-common < 1:3.5.9-10mdv
 %description -n %libkdepim
 KDE 4 library.
 
-%if %mdkversion < 200900
-%post -n %libkdepim -p /sbin/ldconfig
-%endif
-%if %mdkversion < 200900
-%postun -n %libkdepim -p /sbin/ldconfig
-%endif
-
 %files -n %libkdepim
 %defattr(-,root,root)
 %_kde_libdir/libkdepim.so.*
@@ -389,13 +347,6 @@ Obsoletes: %{_lib}kdepim42-common < 1:3.93.0-1
 %description -n %libkpgp
 KDE 4 library.
 
-%if %mdkversion < 200900
-%post -n %libkpgp -p /sbin/ldconfig
-%endif
-%if %mdkversion < 200900
-%postun -n %libkpgp -p /sbin/ldconfig
-%endif
-
 %files -n %libkpgp
 %defattr(-,root,root)
 %_kde_libdir/libkpgp.so.*
@@ -414,13 +365,6 @@ Obsoletes: %{_lib}kdepim42-common < 1:3.93.0-1
 %description -n %libkleopatraclientgui
 KDE 4 library.
 
-%if %mdkversion < 200900
-%post -n %libkleopatraclientgui -p /sbin/ldconfig
-%endif
-%if %mdkversion < 200900
-%postun -n %libkleopatraclientgui -p /sbin/ldconfig
-%endif
-
 %files -n %libkleopatraclientgui
 %defattr(-,root,root)
 %_kde_libdir/libkleopatraclientgui.so.*
@@ -436,13 +380,6 @@ Obsoletes: %{_lib}kdepim42-common < 1:3.93.0-1
 
 %description -n %libkleopatraclientcore
 KDE 4 library.
-
-%if %mdkversion < 200900
-%post -n %libkleopatraclientcore -p /sbin/ldconfig
-%endif
-%if %mdkversion < 200900
-%postun -n %libkleopatraclientcore -p /sbin/ldconfig
-%endif
 
 %files -n %libkleopatraclientcore
 %defattr(-,root,root)
@@ -511,13 +448,6 @@ Obsoletes: %{_lib}kdepim42-common < 1:3.93.0-1
 %description -n %libmimelib
 KDE 4 library.
 
-%if %mdkversion < 200900
-%post -n %libmimelib -p /sbin/ldconfig
-%endif
-%if %mdkversion < 200900
-%postun -n %libmimelib -p /sbin/ldconfig
-%endif
-
 %files -n %libmimelib
 %defattr(-,root,root)
 %_kde_libdir/libmimelib.so.*
@@ -535,13 +465,6 @@ Obsoletes: %{_lib}kpinterfaces4 < 2:4.0.80-1
 %description -n %libakregatorinterfaces
 KDE 4 library.
 
-%if %mdkversion < 200900
-%post -n %libakregatorinterfaces -p /sbin/ldconfig
-%endif
-%if %mdkversion < 200900
-%postun -n %libakregatorinterfaces -p /sbin/ldconfig
-%endif
-
 %files -n %libakregatorinterfaces
 %defattr(-,root,root)
 %_kde_libdir/libakregatorinterfaces.so.*
@@ -557,13 +480,6 @@ Obsoletes: %{_lib}kdepim42-common < 1:3.93.0-1
 
 %description -n %libakregatorprivate
 KDE 4 library.
-
-%if %mdkversion < 200900
-%post -n %libakregatorprivate -p /sbin/ldconfig
-%endif
-%if %mdkversion < 200900
-%postun -n %libakregatorprivate -p /sbin/ldconfig
-%endif
 
 %files -n %libakregatorprivate
 %defattr(-,root,root)
@@ -640,13 +556,6 @@ Obsoletes: %{_lib}kdepim2-kitchensync < 1:3.5.10-2
 %description -n %libkitchensyncprivate
 KDE 4 library.
 
-%if %mdkversion < 200900
-%post -n %libkitchensyncprivate -p /sbin/ldconfig
-%endif
-%if %mdkversion < 200900
-%postun -n %libkitchensyncprivate -p /sbin/ldconfig
-%endif
-
 %files -n %libkitchensyncprivate
 %defattr(-,root,root)
 %_kde_libdir/libkitchensyncprivate.so.*
@@ -663,13 +572,6 @@ Obsoletes: %{_lib}kdepim2-qopensync < 1:3.5.10-2
 
 %description -n %libqopensync
 KDE 4 library.
-
-%if %mdkversion < 200900
-%post -n %libqopensync -p /sbin/ldconfig
-%endif
-%if %mdkversion < 200900
-%postun -n %libqopensync -p /sbin/ldconfig
-%endif
 
 %files -n %libqopensync
 %defattr(-,root,root)
@@ -712,13 +614,6 @@ Obsoletes: %{_lib}kdepim42-knode < 1:3.93.0-1
 
 %description -n %libknodecommon
 KDE 4 library.
-
-%if %mdkversion < 200900
-%post -n %libknodecommon -p /sbin/ldconfig
-%endif
-%if %mdkversion < 200900
-%postun -n %libknodecommon -p /sbin/ldconfig
-%endif
 
 %files -n %libknodecommon
 %defattr(-,root,root)
@@ -777,13 +672,6 @@ Obsoletes: %{_lib}kdepim42-common < 1:3.93.0-1
 
 %description -n %libkabinterfaces
 KDE 4 library.
-
-%if %mdkversion < 200900
-%post -n %libkabinterfaces -p /sbin/ldconfig
-%endif
-%if %mdkversion < 200900
-%postun -n %libkabinterfaces -p /sbin/ldconfig
-%endif
 
 %files -n %libkabinterfaces
 %defattr(-,root,root)
@@ -848,13 +736,6 @@ Obsoletes: %{_lib}kdepim42-common < 1:3.93.0-1
 
 %description -n %libkalarm_resources
 KDE 4 library.
-
-%if %mdkversion < 200900
-%post -n %libkalarm_resources -p /sbin/ldconfig
-%endif
-%if %mdkversion < 200900
-%postun -n %libkalarm_resources -p /sbin/ldconfig
-%endif
 
 %files -n %libkalarm_resources
 %defattr(-,root,root)
@@ -945,13 +826,6 @@ Obsoletes: %{_lib}kdepim42-common < 1:3.93.0-1
 
 %description -n %libkmailprivate
 KDE 4 library.
-
-%if %mdkversion < 200900
-%post -n %libkmailprivate -p /sbin/ldconfig
-%endif
-%if %mdkversion < 200900
-%postun -n %libkmailprivate -p /sbin/ldconfig
-%endif
 
 %files -n %libkmailprivate
 %defattr(-,root,root)
@@ -1129,13 +1003,6 @@ Obsoletes: %{_lib}kdepim42-common < 1:3.93.0-1
 %description -n %libkorg_stdprinting
 KDE 4 library.
 
-%if %mdkversion < 200900
-%post -n %libkorg_stdprinting -p /sbin/ldconfig
-%endif
-%if %mdkversion < 200900
-%postun -n %libkorg_stdprinting -p /sbin/ldconfig
-%endif
-
 %files -n %libkorg_stdprinting
 %defattr(-,root,root)
 %_kde_libdir/libkorg_stdprinting.so.*
@@ -1151,13 +1018,6 @@ Obsoletes: %{_lib}kdepim42-common < 1:3.93.0-1
 
 %description -n %libkorganizer_calendar
 KDE 4 library.
-
-%if %mdkversion < 200900
-%post -n %libkorganizer_calendar -p /sbin/ldconfig
-%endif
-%if %mdkversion < 200900
-%postun -n %libkorganizer_calendar -p /sbin/ldconfig
-%endif
 
 %files -n %libkorganizer_calendar
 %defattr(-,root,root)
@@ -1175,13 +1035,6 @@ Obsoletes: %{_lib}kdepim42-common < 1:3.93.0-1
 %description -n %libkorganizer_eventviewer
 KDE 4 library.
 
-%if %mdkversion < 200900
-%post -n %libkorganizer_eventviewer -p /sbin/ldconfig
-%endif
-%if %mdkversion < 200900
-%postun -n %libkorganizer_eventviewer -p /sbin/ldconfig
-%endif
-
 %files -n %libkorganizer_eventviewer
 %defattr(-,root,root)
 %_kde_libdir/libkorganizer_eventviewer.so.*
@@ -1197,13 +1050,6 @@ Obsoletes: %{_lib}kdepim42-common < 1:3.93.0-1
 Obsoletes: %{_lib}kdepim2-korganizer < 1:3.93.0-1
 %description -n %libkorganizer_interfaces
 KDE 4 library.
-
-%if %mdkversion < 200900
-%post -n %libkorganizer_interfaces -p /sbin/ldconfig
-%endif
-%if %mdkversion < 200900
-%postun -n %libkorganizer_interfaces -p /sbin/ldconfig
-%endif
 
 %files -n %libkorganizer_interfaces
 %defattr(-,root,root)
@@ -1281,13 +1127,6 @@ Obsoletes: %{_lib}kdepim42-korganizer < 1:3.93.0-
 %description -n %libkorganizerprivate
 KDE 4 library.
 
-%if %mdkversion < 200900
-%post -n %libkorganizerprivate -p /sbin/ldconfig
-%endif
-%if %mdkversion < 200900
-%postun -n %libkorganizerprivate -p /sbin/ldconfig
-%endif
-
 %files -n %libkorganizerprivate
 %defattr(-,root,root)
 %_kde_libdir/libkorganizerprivate.so.*
@@ -1306,13 +1145,6 @@ Obsoletes: %{_lib}kdepim42-common < 1:3.93.0-1
 %description -n %libkmobiletoolsengineui
 KDE 4 library.
 
-%if %mdkversion < 200900
-%post -n %libkmobiletoolsengineui -p /sbin/ldconfig
-%endif
-%if %mdkversion < 200900
-%postun -n %libkmobiletoolsengineui -p /sbin/ldconfig
-%endif
-
 %files -n %libkmobiletoolsengineui
 %defattr(-,root,root)
 %_kde_libdir/libkmobiletoolsengineui.so.*
@@ -1329,13 +1161,6 @@ Obsoletes: %{_lib}kmobiletools4 < 1:3.94.1-0.730680.1
 
 %description -n %libkmobiletoolslib
 KDE 4 library.
-
-%if %mdkversion < 200900
-%post -n %libkmobiletoolslib -p /sbin/ldconfig
-%endif
-%if %mdkversion < 200900
-%postun -n %libkmobiletoolslib -p /sbin/ldconfig
-%endif
 
 %files -n %libkmobiletoolslib
 %defattr(-,root,root)
@@ -1384,13 +1209,6 @@ Obsoletes: %{_lib}kdepim2-kpilot < 1:3.93.0-1
 
 %description -n %libkpilot
 KDE 4 library.
-
-%if %mdkversion < 200900
-%post -n %libkpilot -p /sbin/ldconfig
-%endif
-%if %mdkversion < 200900
-%postun -n %libkpilot -p /sbin/ldconfig
-%endif
 
 %files -n %libkpilot
 %defattr(-,root,root)
@@ -1450,13 +1268,6 @@ Obsoletes: %{_lib}kdepim42-common < 1:3.93.0-1
 %description -n %libkabc_groupdav
 KDE 4 library.
 
-%if %mdkversion < 200900
-%post -n %libkabc_groupdav -p /sbin/ldconfig
-%endif
-%if %mdkversion < 200900
-%postun -n %libkabc_groupdav -p /sbin/ldconfig
-%endif
-
 %files -n %libkabc_groupdav
 %defattr(-,root,root)
 %_kde_libdir/libkabc_groupdav.so.*
@@ -1473,13 +1284,6 @@ Obsoletes: %{_lib}kdepim42-common < 1:3.93.0-1
 %description -n %libkabc_slox
 KDE 4 library.
 
-%if %mdkversion < 200900
-%post -n %libkabc_slox -p /sbin/ldconfig
-%endif
-%if %mdkversion < 200900
-%postun -n %libkabc_slox -p /sbin/ldconfig
-%endif
-
 %files -n %libkabc_slox
 %defattr(-,root,root)
 %_kde_libdir/libkabc_slox.so.*
@@ -1495,13 +1299,6 @@ Obsoletes: %{_lib}kdepim42-common < 1:3.93.0-1
 
 %description -n %libkabc_xmlrpc
 KDE 4 library.
-
-%if %mdkversion < 200900
-%post -n %libkabc_xmlrpc -p /sbin/ldconfig
-%endif
-%if %mdkversion < 200900
-%postun -n %libkabc_xmlrpc -p /sbin/ldconfig
-%endif
 
 %files -n %libkabc_xmlrpc
 %defattr(-,root,root)
@@ -1542,13 +1339,6 @@ Obsoletes: %{_lib}kdepim42-common < 1:3.93.0-1
 %description -n %libkcal_groupdav
 KDE 4 library.
 
-%if %mdkversion < 200900
-%post -n %libkcal_groupdav -p /sbin/ldconfig
-%endif
-%if %mdkversion < 200900
-%postun -n %libkcal_groupdav -p /sbin/ldconfig
-%endif
-
 %files -n %libkcal_groupdav
 %defattr(-,root,root)
 %_kde_libdir/libkcal_groupdav.so.*
@@ -1564,13 +1354,6 @@ Obsoletes: %{_lib}kdepim42-common < 1:3.93.0-1
 
 %description -n %libkcal_resourceblog
 KDE 4 library.
-
-%if %mdkversion < 200900
-%post -n %libkcal_resourceblog -p /sbin/ldconfig
-%endif
-%if %mdkversion < 200900
-%postun -n %libkcal_resourceblog -p /sbin/ldconfig
-%endif
 
 %files -n %libkcal_resourceblog
 %defattr(-,root,root)
@@ -1588,13 +1371,6 @@ Obsoletes: %{_lib}kdepim42-common < 1:3.93.0-1
 %description -n %libkcal_resourceremote
 KDE 4 library.
 
-%if %mdkversion < 200900
-%post -n %libkcal_resourceremote -p /sbin/ldconfig
-%endif
-%if %mdkversion < 200900
-%postun -n %libkcal_resourceremote -p /sbin/ldconfig
-%endif
-
 %files -n %libkcal_resourceremote
 %defattr(-,root,root)
 %_kde_libdir/libkcal_resourceremote.so.*
@@ -1610,13 +1386,6 @@ Obsoletes: %{_lib}kdepim42-common < 1:3.93.0-1
 
 %description -n %libkcal_slox
 KDE 4 library.
-
-%if %mdkversion < 200900
-%post -n %libkcal_slox -p /sbin/ldconfig
-%endif
-%if %mdkversion < 200900
-%postun -n %libkcal_slox -p /sbin/ldconfig
-%endif
 
 %files -n %libkcal_slox
 %defattr(-,root,root)
@@ -1634,13 +1403,6 @@ Obsoletes: %{_lib}kdepim42-common < 1:3.93.0-1
 %description -n %libkcal_xmlrpc
 KDE 4 library.
 
-%if %mdkversion < 200900
-%post -n %libkcal_xmlrpc -p /sbin/ldconfig
-%endif
-%if %mdkversion < 200900
-%postun -n %libkcal_xmlrpc -p /sbin/ldconfig
-%endif
-
 %files -n %libkcal_xmlrpc
 %defattr(-,root,root)
 %_kde_libdir/libkcal_xmlrpc.so.*
@@ -1656,13 +1418,6 @@ Obsoletes: %{_lib}kdepim42-common < 1:3.93.0-1
 
 %description -n %libkcalkolab
 KDE 4 library.
-
-%if %mdkversion < 200900
-%post -n %libkcalkolab -p /sbin/ldconfig
-%endif
-%if %mdkversion < 200900
-%postun -n %libkcalkolab -p /sbin/ldconfig
-%endif
 
 %files -n %libkcalkolab
 %defattr(-,root,root)
@@ -1680,13 +1435,6 @@ Obsoletes: %{_lib}kdepim42-common < 1:3.93.0-1
 %description -n %libkgroupwarebase
 KDE 4 library.
 
-%if %mdkversion < 200900
-%post -n %libkgroupwarebase -p /sbin/ldconfig
-%endif
-%if %mdkversion < 200900
-%postun -n %libkgroupwarebase -p /sbin/ldconfig
-%endif
-
 %files -n %libkgroupwarebase
 %defattr(-,root,root)
 %_kde_libdir/libkgroupwarebase.so.*
@@ -1702,13 +1450,6 @@ Obsoletes: %{_lib}kdepim42-common < 1:3.93.0-1
 
 %description -n %libkgroupwaredav
 KDE 4 library.
-
-%if %mdkversion < 200900
-%post -n %libkgroupwaredav -p /sbin/ldconfig
-%endif
-%if %mdkversion < 200900
-%postun -n %libkgroupwaredav -p /sbin/ldconfig
-%endif
 
 %files -n %libkgroupwaredav
 %defattr(-,root,root)
@@ -1726,13 +1467,6 @@ Obsoletes: %{_lib}kdepim42-common < 1:3.93.0-1
 %description -n %libknotes_xmlrpc
 KDE 4 library.
 
-%if %mdkversion < 200900
-%post -n %libknotes_xmlrpc -p /sbin/ldconfig
-%endif
-%if %mdkversion < 200900
-%postun -n %libknotes_xmlrpc -p /sbin/ldconfig
-%endif
-
 %files -n %libknotes_xmlrpc
 %defattr(-,root,root)
 %_kde_libdir/libknotes_xmlrpc.so.*
@@ -1748,13 +1482,6 @@ Obsoletes: %{_lib}kdepim42-common < 1:3.93.0-1
 
 %description -n %libknoteskolab
 KDE 4 library.
-
-%if %mdkversion < 200900
-%post -n %libknoteskolab -p /sbin/ldconfig
-%endif
-%if %mdkversion < 200900
-%postun -n %libknoteskolab -p /sbin/ldconfig
-%endif
 
 %files -n %libknoteskolab
 %defattr(-,root,root)
@@ -1772,13 +1499,6 @@ Obsoletes: %{_lib}kdepim42-common < 1:3.93.0-1
 %description -n %libkslox
 KDE 4 library.
 
-%if %mdkversion < 200900
-%post -n %libkslox -p /sbin/ldconfig
-%endif
-%if %mdkversion < 200900
-%postun -n %libkslox -p /sbin/ldconfig
-%endif
-
 %files -n %libkslox
 %defattr(-,root,root)
 %_kde_libdir/libkslox.so.*
@@ -1795,13 +1515,6 @@ Obsoletes: %{_lib}kdepim42-common < 1:3.93.0-1
 %description -n %libkabcommon
 KDE 4 library.
 
-%if %mdkversion < 200900
-%post -n %libkabcommon -p /sbin/ldconfig
-%endif
-%if %mdkversion < 200900
-%postun -n %libkabcommon -p /sbin/ldconfig
-%endif
-
 %files -n %libkabcommon
 %defattr(-,root,root)
 %_kde_libdir/libkabcommon.so.*
@@ -1817,13 +1530,6 @@ Obsoletes: %{_lib}kdepim42-common < 1:3.93.0-1
 
 %description -n %libkleo
 KDE 4 library.
-
-%if %mdkversion < 200900
-%post -n %libkleo -p /sbin/ldconfig
-%endif
-%if %mdkversion < 200900
-%postun -n %libkleo -p /sbin/ldconfig
-%endif
 
 %files -n %libkleo
 %defattr(-,root,root)
@@ -1924,13 +1630,6 @@ Obsoletes: %{_lib}kdepim42-common < 1:3.93.0-1
 %description -n %libmaildir
 KDE 4 library.
 
-%if %mdkversion < 200900
-%post -n %libmaildir -p /sbin/ldconfig
-%endif
-%if %mdkversion < 200900
-%postun -n %libmaildir -p /sbin/ldconfig
-%endif
-
 %files -n %libmaildir
 %defattr(-,root,root)
 %_kde_libdir/libmaildir.so.*
@@ -1946,13 +1645,6 @@ Obsoletes: %{_lib}kdepim42-common < 1:3.93.0-1
 
 %description -n %libkabcscalix
 KDE 4 library.
-
-%if %mdkversion < 200900
-%post -n %libkabcscalix -p /sbin/ldconfig
-%endif
-%if %mdkversion < 200900
-%postun -n %libkabcscalix -p /sbin/ldconfig
-%endif
 
 %files -n %libkabcscalix
 %defattr(-,root,root)
@@ -1994,13 +1686,6 @@ Obsoletes: %{_lib}kdepim42-common < 1:3.93.0-1
 %description -n %libknotesscalix
 KDE 4 library.
 
-%if %mdkversion < 200900
-%post -n %libknotesscalix -p /sbin/ldconfig
-%endif
-%if %mdkversion < 200900
-%postun -n %libknotesscalix -p /sbin/ldconfig
-%endif
-
 %files -n %libknotesscalix
 %defattr(-,root,root)
 %_kde_libdir/libknotesscalix.so.*
@@ -2038,13 +1723,6 @@ Group: System/Libraries
 %description -n %libkcalgroupwise
 KDE 4 library.
 
-%if %mdkversion < 200900
-%post -n %libkcalgroupwise -p /sbin/ldconfig
-%endif
-%if %mdkversion < 200900
-%postun -n %libkcalgroupwise -p /sbin/ldconfig
-%endif
-
 %files -n %libkcalgroupwise
 %defattr(-,root,root)
 %_kde_libdir/libkcalgroupwise.so.*
@@ -2059,13 +1737,6 @@ Group: System/Libraries
 
 %description -n %libkontactinterfaces
 KDE 4 library.
-
-%if %mdkversion < 200900
-%post -n %libkontactinterfaces -p /sbin/ldconfig
-%endif
-%if %mdkversion < 200900
-%postun -n %libkontactinterfaces -p /sbin/ldconfig
-%endif
 
 %files -n %libkontactinterfaces
 %defattr(-,root,root)

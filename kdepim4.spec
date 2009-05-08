@@ -425,13 +425,6 @@ Obsoletes: %{_lib}kdepim42-common < 1:3.93.0-1
 %description -n %libksieve
 KDE 4 library.
 
-%if %mdkversion < 200900
-%post -n %libksieve -p /sbin/ldconfig
-%endif
-%if %mdkversion < 200900
-%postun -n %libksieve -p /sbin/ldconfig
-%endif
-
 %files -n %libksieve
 %defattr(-,root,root)
 %_kde_libdir/libksieve.so.*
@@ -1316,13 +1309,6 @@ Obsoletes: %{_lib}kdepim42-common < 1:3.93.0-1
 %description -n %libkabckolab
 KDE 4 library.
 
-%if %mdkversion < 200900
-%post -n %libkabckolab -p /sbin/ldconfig
-%endif
-%if %mdkversion < 200900
-%postun -n %libkabckolab -p /sbin/ldconfig
-%endif
-
 %files -n %libkabckolab
 %defattr(-,root,root)
 %_kde_libdir/libkabckolab.so.*
@@ -1663,13 +1649,6 @@ Obsoletes: %{_lib}kdepim42-common < 1:3.93.0-1
 %description -n %libkcalscalix
 KDE 4 library.
 
-%if %mdkversion < 200900
-%post -n %libkcalscalix -p /sbin/ldconfig
-%endif
-%if %mdkversion < 200900
-%postun -n %libkcalscalix -p /sbin/ldconfig
-%endif
-
 %files -n %libkcalscalix
 %defattr(-,root,root)
 %_kde_libdir/libkcalscalix.so.*
@@ -1700,13 +1679,6 @@ Group: System/Libraries
 
 %description -n %libkabcgroupwise
 KDE 4 library.
-
-%if %mdkversion < 200900
-%post -n %libkabcgroupwise -p /sbin/ldconfig
-%endif
-%if %mdkversion < 200900
-%postun -n %libkabcgroupwise -p /sbin/ldconfig
-%endif
 
 %files -n %libkabcgroupwise
 %defattr(-,root,root)

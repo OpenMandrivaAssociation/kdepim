@@ -18,13 +18,13 @@
 
 Name: kdepim4
 Summary: K Desktop Environment
-Version: 4.2.71
-Release: %mkrel 0.%kderevision.1
+Version: 4.2.85
+Release: %mkrel 1
 Epoch: 2
 Group: Graphical desktop/KDE
 License: GPL
 URL: http://pim.kde.org
-Source: ftp://ftp.kde.org/pub/kde/stable/%version/src/kdepim-%version.%kderevision.tar.bz2
+Source: ftp://ftp.kde.org/pub/kde/stable/%version/src/kdepim-%version.tar.bz2
 # Mandriva "customization" patches
 Patch0:   kdepim-4.0.83-fix-desktop-files.patch
 Patch1:   kdepim-4.0.98-fix-autostart.patch
@@ -159,22 +159,6 @@ KDE 4 library.
 %files -n %libgwsoap
 %defattr(-,root,root)
 %_kde_libdir/libgwsoap.so.*
-
-#-----------------------------------------------------------------------------
-
-%define libimap %mklibname imap 4
-
-%package -n %libimap
-Summary: KDE 4 library
-Group: System/Libraries
-Obsoletes: %{_lib}kdepim42-common < 1:3.93.0-1
-
-%description -n %libimap
-KDE 4 library.
-
-%files -n %libimap
-%defattr(-,root,root)
-%_kde_libdir/libimap.so.*
 
 #-----------------------------------------------------------------------------
 
@@ -1724,6 +1708,21 @@ KDE 4 library.
 
 #-----------------------------------------------------------------------------
 
+%define libakonadi_next %mklibname akonadi_next 4
+
+%package -n %libakonadi_next
+Summary: KDE 4 library
+Group: System/Libraries
+
+%description -n %libakonadi_next
+KDE 4 library.
+
+%files -n %libakonadi_next
+%defattr(-,root,root)
+%_kde_libdir/libakonadi_next.so.*
+
+#-----------------------------------------------------------------------------
+
 %package -n kjots
 Summary: %{name} kjots
 Group: Graphical desktop/KDE
@@ -1815,7 +1814,6 @@ Requires: %libkslox = %epoch:%version
 Requires: %libkabcommon = %epoch:%version
 Requires: %libkleo = %epoch:%version
 Requires: %libmaildir = %epoch:%version
-Requires: %libimap = %epoch:%version
 Requires: %libknotesscalix = %epoch:%version
 Requires: %libkabcscalix  = %epoch:%version
 Requires: %libkcalscalix  = %epoch:%version
@@ -1823,6 +1821,7 @@ Requires: %libgwsoap = %epoch:%version
 Requires: %libkabcgroupwise = %epoch:%version
 Requires: %libkcalgroupwise = %epoch:%version
 Requires: %libkontactinterfaces = %epoch:%version
+Requires: %libakonadi_next = %epoch:%version
 
 Obsoletes: kdepim-devel < 1:3.5.10-2
 Obsoletes: kdepim-devel-doc < 1:3.5.10-2
@@ -1844,7 +1843,7 @@ based on kdepim.
 #----------------------------------------------------------------------
 
 %prep
-%setup -q -n kdepim-%version.%kderevision
+%setup -q -n kdepim-%version
 #%patch0 -p0
 #%patch1 -p0
 #%patch2 -p1

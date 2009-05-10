@@ -19,7 +19,7 @@
 Name: kdepim4
 Summary: K Desktop Environment
 Version: 4.2.85
-Release: %mkrel 1
+Release: %mkrel 2
 Epoch: 2
 Group: Graphical desktop/KDE
 License: GPL
@@ -143,6 +143,8 @@ Core files from kdepim.
 %_kde_libdir/strigi/*
 %_kde_iconsdir/*/*/*/*
 %dir %_kde_datadir/kde4/services/kontact
+
+%exclude %_kde_iconsdir/oxygen/16x16/status/meeting-organizer.png
 
 #-----------------------------------------------------------------------------
 

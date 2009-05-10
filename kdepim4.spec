@@ -1772,7 +1772,7 @@ Conflicts: kontact < 2:4.0.83-2
 Summary: Devel stuff for %name
 Group: Development/KDE and Qt
 Requires: kde4-macros
-Requires: kdelibs4-devel
+Requires: kdepimlibs4-devel
 Requires: %libkdepim = %epoch:%version
 Requires: %libkpgp = %epoch:%version
 Requires: %libksieve = %epoch:%version

@@ -19,7 +19,7 @@
 Name: kdepim4
 Summary: K Desktop Environment
 Version: 4.2.85
-Release: %mkrel 4
+Release: %mkrel 5
 Epoch: 2
 Group: Graphical desktop/KDE
 License: GPL
@@ -265,6 +265,7 @@ Summary: KDE PIM storage framework
 Group: Graphical desktop/KDE
 URL: http://pim.kde.org/akonadi/
 Requires: %name-core = %epoch:%version
+Requires: mysql
 Obsoletes: %name-akonadi < 1:3.93.0-1
 Obsoletes: kde4-akonadi < 2:4.0.68
 Provides: kde4-akonadi = %epoch:%version

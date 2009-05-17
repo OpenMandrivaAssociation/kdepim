@@ -19,7 +19,7 @@
 Name: kdepim4
 Summary: K Desktop Environment
 Version: 4.2.85
-Release: %mkrel 6
+Release: %mkrel 7
 Epoch: 2
 Group: Graphical desktop/KDE
 License: GPL
@@ -826,7 +826,7 @@ Requires: %name-core = %epoch:%version
 Requires: kdepimlibs4-core
 Requires: sasl-plug-plain
 Requires: sasl-plug-ntlm
-Requires: sasl2-plug-login
+Requires: sasl-plug-login
 
 Obsoletes: kde4-kmail < 2:4.0.68
 Obsoletes: kdepim4-plugins <= 2:4.0.83

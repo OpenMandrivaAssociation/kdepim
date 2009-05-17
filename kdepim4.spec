@@ -19,7 +19,7 @@
 Name: kdepim4
 Summary: K Desktop Environment
 Version: 4.2.85
-Release: %mkrel 3
+Release: %mkrel 4
 Epoch: 2
 Group: Graphical desktop/KDE
 License: GPL
@@ -297,7 +297,6 @@ KDE PIM storage framework.
 %_kde_datadir/kde4/services/kcm_akonadi.desktop
 %_kde_datadir/kde4/services/kcm_akonadi_server.desktop
 %_kde_datadir/config/kres-migratorrc
-%_kde_appsdir/nepomuk/ontologies/*
 
 #(nl) already in kdebase4-runtime
 %exclude  %_kde_appsdir/nepomuk/ontologies/nmo.trig

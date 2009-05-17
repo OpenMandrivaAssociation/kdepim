@@ -302,6 +302,8 @@ KDE PIM storage framework.
 #(nl) already in kdebase4-runtime
 %exclude  %_kde_appsdir/nepomuk/ontologies/nmo.trig
 %exclude  %_kde_appsdir/nepomuk/ontologies/nmo.desktop
+%exclude  %_kde_appsdir/nepomuk/ontologies/nco.desktop
+%exclude  %_kde_appsdir/nepomuk/ontologies/nco.trig
 
 #-----------------------------------------------------------------------------
 

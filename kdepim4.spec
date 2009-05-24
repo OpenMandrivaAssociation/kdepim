@@ -14,17 +14,26 @@
 %define dont_strip 1
 %endif
 
-%define kderevision svn961800
+%define branch 1
+%{?_branch: %{expand: %%global branch 1}}
+
+%if %branch
+%define kde_snapshot svn969966
+%endif
 
 Name: kdepim4
 Summary: K Desktop Environment
-Version: 4.2.85
-Release: %mkrel 7
+Version: 4.2.87
+Release: %mkrel 1
 Epoch: 2
 Group: Graphical desktop/KDE
 License: GPL
 URL: http://pim.kde.org
+%if %branch
+Source: ftp://ftp.kde.org/pub/kde/stable/%version/src/kdepim-%version%kde_snapshot.tar.bz2
+%else
 Source: ftp://ftp.kde.org/pub/kde/stable/%version/src/kdepim-%version.tar.bz2
+%endif
 # Mandriva "customization" patches
 Patch0:   kdepim-4.0.83-fix-desktop-files.patch
 Patch1:   kdepim-4.0.98-fix-autostart.patch
@@ -298,12 +307,6 @@ KDE PIM storage framework.
 %_kde_datadir/kde4/services/kcm_akonadi.desktop
 %_kde_datadir/kde4/services/kcm_akonadi_server.desktop
 %_kde_datadir/config/kres-migratorrc
-
-#(nl) already in kdebase4-runtime
-%exclude  %_kde_appsdir/nepomuk/ontologies/nmo.trig
-%exclude  %_kde_appsdir/nepomuk/ontologies/nmo.desktop
-%exclude  %_kde_appsdir/nepomuk/ontologies/nco.desktop
-%exclude  %_kde_appsdir/nepomuk/ontologies/nco.trig
 
 #-----------------------------------------------------------------------------
 
@@ -794,10 +797,12 @@ of your day is spent playing Doom or reading Slashdot.
 %_kde_datadir/kde4/services/ktimetracker_config_behavior.desktop
 %_kde_datadir/kde4/services/ktimetracker_config_display.desktop
 %_kde_datadir/kde4/services/ktimetracker_config_storage.desktop
+%_kde_datadir/kde4/services/kontact/ktimetracker_plugin.desktop
 %_kde_libdir/kde4/ktimetrackerpart.so
 %_kde_libdir/kde4/kcm_planner.so
 %_kde_libdir/kde4/kcm_ktimetracker.so
 %_kde_libdir/kde4/kontact_plannerplugin.so
+%_kde_libdir/kde4/kontact_ktimetrackerplugin.so
 %_kde_docdir/HTML/en/ktimetracker
 
 #-----------------------------------------------------------------------------
@@ -1853,7 +1858,11 @@ based on kdepim.
 #----------------------------------------------------------------------
 
 %prep
+%if %branch
+%setup -q -n kdepim-%version%kde_snapshot
+%else
 %setup -q -n kdepim-%version
+%endif
 #%patch0 -p0
 #%patch1 -p0
 #%patch2 -p1

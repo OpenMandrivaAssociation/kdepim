@@ -511,7 +511,6 @@ easy news reading.
 %_kde_datadir/kde4/servicetypes/akregator_plugin.desktop
 %_kde_libdir/kde4/akregator*
 %_kde_libdir/kde4/kontact_akregatorplugin.so
-%_kde_appsdir/akregator_onlinesync_plugin
 %doc %_kde_docdir/HTML/en/akregator
 
 #-----------------------------------------------------------------------------

@@ -18,12 +18,12 @@
 %{?_branch: %{expand: %%global branch 1}}
 
 %if %branch
-%define kde_snapshot svn969966
+%define kde_snapshot svn973768
 %endif
 
 Name: kdepim4
 Summary: K Desktop Environment
-Version: 4.2.87
+Version: 4.2.88
 Release: %mkrel 1
 Epoch: 2
 Group: Graphical desktop/KDE

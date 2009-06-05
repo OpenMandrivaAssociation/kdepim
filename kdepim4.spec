@@ -14,7 +14,7 @@
 %define dont_strip 1
 %endif
 
-%define branch 1
+%define branch 0
 %{?_branch: %{expand: %%global branch 1}}
 
 %if %branch
@@ -23,7 +23,7 @@
 
 Name: kdepim4
 Summary: K Desktop Environment
-Version: 4.2.88
+Version: 4.2.90
 Release: %mkrel 1
 Epoch: 2
 Group: Graphical desktop/KDE
@@ -48,7 +48,6 @@ BuildRequires: byacc
 BuildRequires: pam
 BuildRequires: libncurses-devel
 BuildRequires: readline-devel
-BuildRequires: pilot-link-devel
 BuildRequires: libgpg-error-devel
 BuildRequires: gnokii-devel >= 0.6.18
 BuildRequires: libxml2-utils

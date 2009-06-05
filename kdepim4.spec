@@ -152,8 +152,6 @@ Core files from kdepim.
 %_kde_iconsdir/*/*/*/*
 %dir %_kde_datadir/kde4/services/kontact
 
-%exclude %_kde_iconsdir/oxygen/16x16/status/meeting-organizer.png
-
 #-----------------------------------------------------------------------------
 
 %define libgwsoap %mklibname gwsoap 4

@@ -1109,6 +1109,7 @@ Citadel or OpenGroupware.org.
 
 %_kde_bindir/konsolekalendar
 %_kde_datadir/applications/kde4/konsolekalendar.desktop
+%_kde_appsdir/konsolekalendar
 
 #-----------------------------------------------------------------------------
 

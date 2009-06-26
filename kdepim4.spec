@@ -23,7 +23,7 @@
 
 Name: kdepim4
 Summary: K Desktop Environment
-Version: 4.2.90
+Version: 4.2.95
 Release: %mkrel 1
 Epoch: 2
 Group: Graphical desktop/KDE
@@ -170,38 +170,6 @@ KDE 4 library.
 
 #-----------------------------------------------------------------------------
 
-%define libakonadi_kabccommon %mklibname akonadi-kabccommon 4
-
-%package -n %libakonadi_kabccommon
-Summary: KDE 4 library
-Group: System/Libraries
-Obsoletes: %{_lib}kdepim42-common < 1:3.93.0-1
-
-%description -n %libakonadi_kabccommon
-KDE 4 library.
-
-%files -n %libakonadi_kabccommon
-%defattr(-,root,root)
-%_kde_libdir/libakonadi-kabccommon.so.*
-
-#-----------------------------------------------------------------------------
-
-%define libakonadi_kcal %mklibname akonadi-kcal 4
-
-%package -n %libakonadi_kcal
-Summary: KDE 4 library
-Group: System/Libraries
-Obsoletes: %{_lib}kdepim42-common < 1:3.93.0-1
-
-%description -n %libakonadi_kcal
-KDE 4 library.
-
-%files -n %libakonadi_kcal
-%defattr(-,root,root)
-%_kde_libdir/libakonadi-kcal.so.*
-
-#-----------------------------------------------------------------------------
-
 %define libkaddressbookprivate %mklibname kaddressbookprivate 4
 
 %package -n %libkaddressbookprivate
@@ -248,62 +216,6 @@ KDE 4 library.
 %files -n %libkorganizer_core
 %defattr(-,root,root)
 %_kde_libdir/libkorganizer_core.so.*
-
-#-----------------------------------------------------------------------------
-
-%define libmbox %mklibname mbox 4
-
-%package -n %libmbox
-Summary: KDE 4 library
-Group: System/Libraries
-
-%description -n %libmbox
-KDE 4 library.
-
-%files -n %libmbox
-%defattr(-,root,root)
-%_kde_libdir/libmbox.so.*
-
-#-----------------------------------------------------------------------------
-
-%package akonadi
-Summary: KDE PIM storage framework
-Group: Graphical desktop/KDE
-URL: http://pim.kde.org/akonadi/
-Requires: %name-core = %epoch:%version
-Requires: mysql
-Obsoletes: %name-akonadi < 1:3.93.0-1
-Obsoletes: kde4-akonadi < 2:4.0.68
-Provides: kde4-akonadi = %epoch:%version
-
-%description akonadi
-KDE PIM storage framework.
-
-%files akonadi
-%defattr(-,root,root)
-%_kde_bindir/akonadi_*
-%_kde_bindir/akonadiconsole
-%_kde_bindir/akonaditray
-%_kde_bindir/akonadi2xml
-%_kde_bindir/kres-migrator
-%_kde_appsdir/akonadi
-%_kde_datadir/akonadi
-%_kde_appsdir/akonadiconsole
-%_kde_datadir/kde4/services/kresources/kcal/blog.desktop
-%_kde_datadir/applications/kde4/akonadiconsole.desktop
-%_kde_datadir/applications/kde4/akonaditray.desktop
-%_kde_datadir/kde4/services/akonadi.protocol
-%_kde_libdir/kde4/kio_akonadi.so
-%_kde_libdir/kde4/kabc_akonadi.so
-%_kde_libdir/kde4/akonadi_*
-%_kde_libdir/kde4/kcm_akonadi.so
-%_kde_libdir/kde4/kcm_akonadi_*
-%_kde_datadir/kde4/services/kcm_akonadi_resources.desktop
-%_kde_datadir/kde4/services/kresources/kabc/akonadi.desktop
-%_kde_datadir/kde4/services/kresources/kcal/akonadi.desktop
-%_kde_datadir/kde4/services/kcm_akonadi.desktop
-%_kde_datadir/kde4/services/kcm_akonadi_server.desktop
-%_kde_datadir/config/kres-migratorrc
 
 #-----------------------------------------------------------------------------
 
@@ -500,7 +412,6 @@ easy news reading.
 %_kde_bindir/akregatorstorageexporter
 %_kde_datadir/applications/kde4/akregator.desktop
 %_kde_appsdir/akregator
-%_kde_appsdir/akonadi_knut_resource
 %_kde_datadir/kde4/services/kontact/akregatorplugin.desktop
 %_kde_datadir/config.kcfg/akregator.kcfg
 %_kde_datadir/kde4/services/akregator_*
@@ -509,21 +420,6 @@ easy news reading.
 %_kde_libdir/kde4/akregator*
 %_kde_libdir/kde4/kontact_akregatorplugin.so
 %doc %_kde_docdir/HTML/en/akregator
-
-#-----------------------------------------------------------------------------
-
-%define libakonadi_xml %mklibname akonadi-xml 4
-
-%package -n %libakonadi_xml
-Summary: KDE 4 library
-Group: System/Libraries
-
-%description -n %libakonadi_xml
-KDE 4 library.
-
-%files -n %libakonadi_xml
-%defattr(-,root,root)
-%_kde_libdir/libakonadi-xml.so.*
 
 #-----------------------------------------------------------------------------
 
@@ -1533,6 +1429,7 @@ Group: Graphical desktop/KDE
 Requires: %name-core = %epoch:%version
 Obsoletes: %name-kresources < 1:3.93.0-1
 Conflicts: %{_lib}kcal_resourcefeatureplan4 < 3.93.0-0.726734.2
+Conflicts: kdepim4-akonadi < 2:4.2.95-1
 
 %description kresources
 This package includes several plugins needed to interface with groupware
@@ -1556,6 +1453,7 @@ tracking feature plans.
 %_kde_datadir/kde4/services/kresources/kcal/kolab.desktop
 %_kde_datadir/kde4/services/kresources/kcal/remote.desktop
 %_kde_datadir/kde4/services/kresources/kcal/scalix.desktop
+%_kde_datadir/kde4/services/kresources/kcal/blog.desktop
 %_kde_datadir/kde4/services/kresources/knotes/knotes_xmlrpc.desktop
 %_kde_datadir/kde4/services/kresources/kabc/scalix.desktop
 %_kde_datadir/kde4/services/kresources/knotes/scalix.desktop
@@ -1607,22 +1505,6 @@ KDE Groupware Wizard
 %_kde_datadir/kde4/services/groupwises.protocol
 %_kde_datadir/kde4/services/kresources/kabc/kabc_groupwise.desktop
 %_kde_datadir/kde4/services/kresources/kcal/kcal_groupwise.desktop
-
-#-----------------------------------------------------------------------------
-
-%define libmaildir %mklibname maildir 4
-
-%package -n %libmaildir
-Summary: KDE 4 library
-Group: System/Libraries
-Obsoletes: %{_lib}kdepim42-common < 1:3.93.0-1
-
-%description -n %libmaildir
-KDE 4 library.
-
-%files -n %libmaildir
-%defattr(-,root,root)
-%_kde_libdir/libmaildir.so.*
 
 #-----------------------------------------------------------------------------
 
@@ -1720,21 +1602,6 @@ KDE 4 library.
 
 #-----------------------------------------------------------------------------
 
-%define libakonadi_next %mklibname akonadi_next 4
-
-%package -n %libakonadi_next
-Summary: KDE 4 library
-Group: System/Libraries
-
-%description -n %libakonadi_next
-KDE 4 library.
-
-%files -n %libakonadi_next
-%defattr(-,root,root)
-%_kde_libdir/libakonadi_next.so.*
-
-#-----------------------------------------------------------------------------
-
 %package -n kjots
 Summary: %{name} kjots
 Group: Graphical desktop/KDE
@@ -1825,7 +1692,6 @@ Requires: %libknoteskolab = %epoch:%version
 Requires: %libkslox = %epoch:%version
 Requires: %libkabcommon = %epoch:%version
 Requires: %libkleo = %epoch:%version
-Requires: %libmaildir = %epoch:%version
 Requires: %libknotesscalix = %epoch:%version
 Requires: %libkabcscalix  = %epoch:%version
 Requires: %libkcalscalix  = %epoch:%version
@@ -1833,7 +1699,6 @@ Requires: %libgwsoap = %epoch:%version
 Requires: %libkabcgroupwise = %epoch:%version
 Requires: %libkcalgroupwise = %epoch:%version
 Requires: %libkontactinterfaces = %epoch:%version
-Requires: %libakonadi_next = %epoch:%version
 
 Obsoletes: kdepim-devel < 1:3.5.10-2
 Obsoletes: kdepim-devel-doc < 1:3.5.10-2

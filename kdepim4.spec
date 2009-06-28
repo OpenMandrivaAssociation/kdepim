@@ -854,6 +854,7 @@ Suggests: ktimetracker
 Suggests: knode
 Suggests: kalarm
 Suggests: kaddressbook
+Suggests: korganizer
 
 %description -n kontact
 The KDE Kontact Personal Information Management suite unites mature and

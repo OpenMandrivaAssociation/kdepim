@@ -41,7 +41,7 @@ Patch2:   kdepim-4.2.95-kmail-first-message.patch
 Buildroot:     %_tmppath/%name-%version-%release-root
 BuildRequires: kdelibs4-devel >= 2:4.1.81
 BuildRequires: kdepimlibs4-devel >= 2:4.1.81
-BuildRequires: gpgme-devel 
+BuildRequires: gpgme-devel >= 1.2.0
 BuildRequires: X11-devel 
 BuildRequires: flex 
 BuildRequires: byacc 

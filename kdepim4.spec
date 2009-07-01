@@ -24,7 +24,7 @@
 Name: kdepim4
 Summary: K Desktop Environment
 Version: 4.2.95
-Release: %mkrel 2
+Release: %mkrel 3
 Epoch: 2
 Group: Graphical desktop/KDE
 License: GPL
@@ -142,6 +142,7 @@ Conflicts: kdepim-knotes < 1:3.5.9-10mdv
 Conflicts: kdepim-kaddressbook < 1:3.5.9-10mdv
 Obsoletes: kdepim-common < 1:3.5.10-2
 Obsoletes: %{_lib}kdepim2-common < 1:3.5.10-2
+Obsoletes: kode < 2:4.3
 
 %description core
 Core files from kdepim.

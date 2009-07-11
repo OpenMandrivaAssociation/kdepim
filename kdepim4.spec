@@ -23,8 +23,8 @@
 
 Name: kdepim4
 Summary: K Desktop Environment
-Version: 4.2.95
-Release: %mkrel 4
+Version: 4.2.96
+Release: %mkrel 1
 Epoch: 2
 Group: Graphical desktop/KDE
 License: GPL
@@ -690,12 +690,12 @@ of your day is spent playing Doom or reading Slashdot.
 %_kde_datadir/kde4/services/ktimetracker_config_behavior.desktop
 %_kde_datadir/kde4/services/ktimetracker_config_display.desktop
 %_kde_datadir/kde4/services/ktimetracker_config_storage.desktop
-#%_kde_datadir/kde4/services/kontact/ktimetracker_plugin.desktop
+%_kde_datadir/kde4/services/kontact/ktimetracker_plugin.desktop
 %_kde_libdir/kde4/ktimetrackerpart.so
 %_kde_libdir/kde4/kcm_planner.so
 %_kde_libdir/kde4/kcm_ktimetracker.so
 %_kde_libdir/kde4/kontact_plannerplugin.so
-#%_kde_libdir/kde4/kontact_ktimetrackerplugin.so
+%_kde_libdir/kde4/kontact_ktimetrackerplugin.so
 %_kde_docdir/HTML/en/ktimetracker
 
 #-----------------------------------------------------------------------------

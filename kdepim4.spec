@@ -1,46 +1,25 @@
 %define with_kpilot 1
 %{?_with_kpilot: %{expand: %%global with_kpilot 1}}
 
-%define with_kmobiletools 0
-%{?_with_kmobiletools: %{expand: %%global with_kmobiletools 1}}
-
 %define with_kitchensync 0
 %{?_with_kitchensync: %{expand: %%global with_kitchensync 1}}
 
-%define unstable 1
-%{?_unstable: %{expand: %%global unstable 1}}
-
-%if %unstable
-%define dont_strip 1
-%endif
-
-%define branch 0
-%{?_branch: %{expand: %%global branch 1}}
-
-%if %branch
-%define kde_snapshot svn973768
-%endif
-
 Name: kdepim4
 Summary: K Desktop Environment
-Version: 4.2.96
+Version: 4.2.98
 Release: %mkrel 1
 Epoch: 2
 Group: Graphical desktop/KDE
 License: GPL
 URL: http://pim.kde.org
-%if %branch
-Source: ftp://ftp.kde.org/pub/kde/stable/%version/src/kdepim-%version%kde_snapshot.tar.bz2
-%else
 Source: ftp://ftp.kde.org/pub/kde/stable/%version/src/kdepim-%version.tar.bz2
-%endif
 # Mandriva "customization" patches
-Patch0:   kdepim-4.0.83-fix-desktop-files.patch
-Patch1:   kdepim-4.0.98-fix-autostart.patch
-Patch2:   kdepim-4.2.95-kmail-first-message.patch 
+Patch0:   kdepim-4.2.95-kmail-first-message.patch 
 Buildroot:     %_tmppath/%name-%version-%release-root
-BuildRequires: kdelibs4-devel >= 2:4.1.81
-BuildRequires: kdepimlibs4-devel >= 2:4.1.81
+BuildRequires: kdelibs4-devel >= 2:4.2.98
+BuildRequires: kdelibs4-experimental-devel >= 2:4.2.98
+BuildRequires: kdepimlibs4-devel >= 2:4.2.98
+BuildRequires: kdepim4-runtime-devel >= 4.2.98
 BuildRequires: gpgme-devel
 BuildRequires: X11-devel 
 BuildRequires: flex 
@@ -87,11 +66,6 @@ Suggests: kontact
 Suggests: korganizer
 Suggests: ksendemail
 Suggests: kjots
-%if %{with_kmobiletools}
-Suggests: kmobiletools
-%else
-Obsoletes: kmobiletools < %epoch:%version
-%endif
 %if %{with_kpilot}
 Suggests: kpilot
 %else
@@ -1040,69 +1014,6 @@ KDE 4 library.
 
 #-----------------------------------------------------------------------------
 
-%if %{with_kmobiletools}
-
-%define libkmobiletoolsengineui %mklibname kmobiletoolsengineui 4
-
-%package -n %libkmobiletoolsengineui
-Summary: KDE 4 library
-Group: System/Libraries
-Obsoletes: %{_lib}kdepim42-common < 1:3.93.0-1
-
-%description -n %libkmobiletoolsengineui
-KDE 4 library.
-
-%files -n %libkmobiletoolsengineui
-%defattr(-,root,root)
-%_kde_libdir/libkmobiletoolsengineui.so.*
-
-#-----------------------------------------------------------------------------
-
-%define libkmobiletoolslib %mklibname kmobiletoolslib 4
-
-%package -n %libkmobiletoolslib
-Summary: KDE 4 library
-Group: System/Libraries
-Obsoletes: %{_lib}kdepim42-common < 1:3.93.0-1
-Obsoletes: %{_lib}kmobiletools4 < 1:3.94.1-0.730680.1
-
-%description -n %libkmobiletoolslib
-KDE 4 library.
-
-%files -n %libkmobiletoolslib
-%defattr(-,root,root)
-%_kde_libdir/libkmobiletoolslib.so.*
-
-#-----------------------------------------------------------------------------
-
-%package -n kmobiletools
-Summary: A KDE application that allows you to control your mobile phone
-Group: Graphical desktop/KDE
-Requires: %name-core = %epoch:%version
-Obsoletes: %name-kmobiletools < 1:3.93.0-1
-Obsoletes: kde4-kmobiletools < 2:4.0.68
-Provides: kde4-kmobiletools = %epoch:%version
-
-%description -n kmobiletools
-KMobileTools is a KDE application that allows you to control your mobile
-phone from your GNU/Linux workstation.
-
-%files -n kmobiletools
-%defattr(-,root,root)
-%_kde_bindir/kmobiletools
-%_kde_datadir/applications/kde4/kmobiletools.desktop
-%_kde_appsdir/akonadi/plugins/serializer/akonadi_serializer_sms.desktop
-%_kde_appsdir/kmobiletools
-%_kde_datadir/config.kcfg/kmobiletools_devices.kcfg
-%_kde_datadir/kde4/services/kmobiletools_mainpart.desktop
-%_kde_datadir/kde4/services/fake_engine.desktop
-%_kde_datadir/kde4/servicetypes/kmobile*
-%_kde_libdir/kde4/kmobiletools*
-%_kde_docdir/HTML/en/kmobiletools
-%endif # with_kmobiletools
-
-#-----------------------------------------------------------------------------
-
 %if %{with_kpilot}
 
 %define libkpilot %mklibname kpilot 5
@@ -1666,7 +1577,10 @@ Conflicts: kontact < 2:4.0.83-2
 Summary: Devel stuff for %name
 Group: Development/KDE and Qt
 Requires: kde4-macros
-Requires: kdepimlibs4-devel
+Requires: kdelibs4-devel >= 2:4.2.98
+Requires: kdelibs4-experimental-devel >= 4.2.98
+Requires: kdepimlibs4-devel >= 2:4.2.98
+Requires: kdepim4-runtime-devel >= 4.2.98
 Requires: %libkdepim = %epoch:%version
 Requires: %libkpgp = %epoch:%version
 Requires: %libksieve = %epoch:%version
@@ -1674,7 +1588,6 @@ Requires: %libmimelib = %epoch:%version
 Requires: %libakregatorinterfaces = %epoch:%version
 Requires: %libakregatorprivate = %epoch:%version
 %if %{with_kitchensync}
-Requires: %libkmobiletoolslib = %epoch:%version
 Requires: %libkitchensyncprivate = %epoch:%version
 Requires: %libqopensync = %epoch:%version
 %endif
@@ -1687,9 +1600,6 @@ Requires: %libkorganizerprivate = %epoch:%version
 Requires: %libkorganizer_calendar = %epoch:%version
 Requires: %libkorganizer_eventviewer = %epoch:%version
 Requires: %libkorganizer_interfaces = %epoch:%version
-%if %{with_kmobiletools}
-Requires: %libkmobiletoolsengineui = %epoch:%version
-%endif
 %if %{with_kpilot}
 Requires: %libkpilot = %epoch:%version
 %endif
@@ -1738,14 +1648,8 @@ based on kdepim.
 #----------------------------------------------------------------------
 
 %prep
-%if %branch
-%setup -q -n kdepim-%version%kde_snapshot
-%else
 %setup -q -n kdepim-%version
-%endif
-#%patch0 -p0
-#%patch1 -p0
-%patch2 -p0
+%patch0 -p0
 
 %build
 %cmake_kde4
@@ -1754,9 +1658,8 @@ based on kdepim.
 
 %install
 rm -fr %buildroot
-cd build
 
-make DESTDIR=%buildroot install
+%makeinstall_std -C build
 
 %clean
 rm -fr %buildroot

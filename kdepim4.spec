@@ -6,7 +6,7 @@
 
 Name: kdepim4
 Summary: K Desktop Environment
-Version: 4.2.98
+Version: 4.3.0
 Release: %mkrel 1
 Epoch: 2
 Group: Graphical desktop/KDE
@@ -1355,7 +1355,7 @@ Group: Graphical desktop/KDE
 Requires: %name-core = %epoch:%version
 Obsoletes: %name-kresources < 1:3.93.0-1
 Conflicts: %{_lib}kcal_resourcefeatureplan4 < 3.93.0-0.726734.2
-Conflicts: kdepim4-akonadi < 2:4.2.95-1
+Conflicts: kdepim4-akonadi < 2:4.3.0
 
 %description kresources
 This package includes several plugins needed to interface with groupware

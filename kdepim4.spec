@@ -6,7 +6,7 @@
 
 Name: kdepim4
 Summary: K Desktop Environment
-Version: 4.3.0
+Version: 4.3.1
 Release: %mkrel 1
 Epoch: 2
 Group: Graphical desktop/KDE
@@ -621,7 +621,7 @@ or you can schedule commands to be executed or emails to be sent.
 %_kde_appsdir/kconf_update/kalarm-2.1.5-general.pl
 %_kde_datadir/applications/kde4/kalarm.desktop
 %_kde_datadir/autostart/kalarm.autostart.desktop
-%_kde_appsdir/kalarm/kalarmui.rc
+%_kde_appsdir/kalarm
 %_kde_appsdir/kconf_update/kalarm-1.2.1-general.pl
 %_kde_appsdir/kconf_update/kalarm-1.9.5-defaults.pl
 %_kde_appsdir/kconf_update/kalarm-version.pl

@@ -705,6 +705,7 @@ Requires: sasl-plug-plain
 Requires: sasl-plug-ntlm
 Requires: sasl-plug-login
 Requires: sasl-plug-digestmd5
+Requires: pinentry-qt4
 
 Requires: kmailcvt
 Obsoletes: kde4-kmail < 2:4.0.68

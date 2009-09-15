@@ -7,7 +7,7 @@
 Name: kdepim4
 Summary: K Desktop Environment
 Version: 4.3.1
-Release: %mkrel 3
+Release: %mkrel 5
 Epoch: 2
 Group: Graphical desktop/KDE
 License: GPL
@@ -438,7 +438,6 @@ KDE 4 library.
 %package -n kitchensync
 Summary: KDE KitchenSync
 Group: Graphical desktop/KDE
-URL: http://kontact.kde.org/kitchensync/index.php
 Requires: %name-core = %epoch:%version
 
 Obsoletes: %name-kitchensync < 1:3.93.0-1
@@ -479,7 +478,6 @@ KDE 4 library.
 %package -n knode
 Summary: A newsreader for the K Desktop Environment
 Group: Graphical desktop/KDE
-URL: http://kontact.kde.org/knode/
 Requires: %name-core = %epoch:%version
 Requires: kdepimlibs4-core
 Obsoletes: %name-knode < 1:3.93.0-1
@@ -699,17 +697,15 @@ KDE 4 library.
 %package -n kmail
 Summary: KDE Email Client
 Group: Graphical desktop/KDE
-URL: http://kontact.kde.org/kmail/
 Requires: %name-core = %epoch:%version
 Requires: kdepimlibs4-core
-
 Requires: sasl-plug-plain
 Requires: sasl-plug-ntlm
 Requires: sasl-plug-login
 Requires: sasl-plug-digestmd5
-Requires: pinentry-qt4
-
-Requires: kmailcvt
+Suggests: kmailcvt
+Suggests: pinentry-qt4
+Suggests: openssh-askpass-qt4
 Obsoletes: kde4-kmail < 2:4.0.68
 Obsoletes: kdepim4-plugins <= 2:4.0.83
 Obsoletes: %name-kmail < 1:3.93.0-1
@@ -826,7 +822,6 @@ although including some advanced features.
 %package -n kontact
 Summary: Kontact Container
 Group: Graphical desktop/KDE
-URL: http://kontact.kde.org/
 Requires: %name-core = %epoch:%version
 Obsoletes: %name-kontact < 1:3.93.0-1
 Obsoletes: kde4-kontact < 2:4.0.68
@@ -941,7 +936,6 @@ KDE 4 library.
 %package -n korganizer
 Summary: Calendar and scheduling component
 Group: Graphical desktop/KDE
-URL: http://kontact.kde.org/korganizer/
 Requires:  %name-core = %epoch:%version
 Requires:  %name-kresources
 Obsoletes: kde4-korganizer < 2:4.0.68

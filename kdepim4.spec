@@ -7,7 +7,7 @@
 Name: kdepim4
 Summary: K Desktop Environment
 Version: 4.3.1
-Release: %mkrel 6
+Release: %mkrel 8
 Epoch: 2
 Group: Graphical desktop/KDE
 License: GPL
@@ -112,7 +112,7 @@ Requires: kdebase4-runtime
 Obsoletes: libkdepim42-common < 1:3.93.0-1
 Obsoletes: kdepim4-common < 1:3.93.0-1
 Obsoletes: kdepim4-plasma-applets < 1:4.1 
-Obsoletes: %{_lib}akonadisearchprovider4 < 2:3.94.1-0.729215.1
+Obsoletes: %{mklibname akonadisearchprovider 4} < 2:3.94.1-0.729215.1
 %if %mdkversion >= 200910
 Conflicts: kontact < 2:4.0.83-2
 Conflicts: kdepim-knotes < 1:3.5.9-10mdv
@@ -152,7 +152,7 @@ KDE 4 library.
 %package -n %libkaddressbookprivate
 Summary: KDE 4 library
 Group: System/Libraries
-Obsoletes: %{_lib}kdepim42-common < 1:3.93.0-1
+Obsoletes: %{mklibname kdepim42-common} < 1:3.93.0-1
 
 %description -n %libkaddressbookprivate
 KDE 4 library.
@@ -168,7 +168,7 @@ KDE 4 library.
 %package -n %libkontactprivate
 Summary: KDE 4 library
 Group: System/Libraries
-Obsoletes: %{_lib}kdepim42-common < 1:3.93.0-1
+Obsoletes: %{mklibname kdepim42-common} < 1:3.93.0-1
 
 %description -n %libkontactprivate
 KDE 4 library.
@@ -199,7 +199,7 @@ KDE 4 library.
 %package -n %libkdepim
 Summary: KDE 4 library
 Group: System/Libraries
-Obsoletes: %{_lib}kdepim42-common < 1:3.93.0-1
+Obsoletes: %{mklibname kdepim42-common} < 1:3.93.0-1
 Obsoletes: %{_lib}kdepim42-index < 1:3.93.0-1
 %if %mdkversion >= 200910
 Conflicts: kdepim-common < 1:3.5.9-10mdv
@@ -223,7 +223,7 @@ KDE 4 library.
 %package -n %libkpgp
 Summary: KDE 4 library
 Group: System/Libraries
-Obsoletes: %{_lib}kdepim42-common < 1:3.93.0-1
+Obsoletes: %{mklibname kdepim42-common} < 1:3.93.0-1
 
 %description -n %libkpgp
 KDE 4 library.
@@ -241,7 +241,7 @@ KDE 4 library.
 %package -n %libkleopatraclientgui
 Summary: KDE 4 library
 Group: System/Libraries
-Obsoletes: %{_lib}kdepim42-common < 1:3.93.0-1
+Obsoletes: %{mklibname kdepim42-common} < 1:3.93.0-1
 
 %description -n %libkleopatraclientgui
 KDE 4 library.
@@ -257,7 +257,7 @@ KDE 4 library.
 %package -n %libkleopatraclientcore
 Summary: KDE 4 library
 Group: System/Libraries
-Obsoletes: %{_lib}kdepim42-common < 1:3.93.0-1
+Obsoletes: %{mklibname kdepim42-common} < 1:3.93.0-1
 
 %description -n %libkleopatraclientcore
 KDE 4 library.
@@ -301,7 +301,7 @@ KDE Certificate Manager
 %package -n %libksieve
 Summary: KDE 4 library
 Group: System/Libraries
-Obsoletes: %{_lib}kdepim42-common < 1:3.93.0-1
+Obsoletes: %{mklibname kdepim42-common} < 1:3.93.0-1
 
 %description -n %libksieve
 KDE 4 library.
@@ -317,7 +317,7 @@ KDE 4 library.
 %package -n %libmimelib
 Summary: KDE 4 library
 Group: System/Libraries
-Obsoletes: %{_lib}kdepim42-common < 1:3.93.0-1
+Obsoletes: %{mklibname kdepim42-common} < 1:3.93.0-1
 
 %description -n %libmimelib
 KDE 4 library.
@@ -333,7 +333,7 @@ KDE 4 library.
 %package -n %libakregatorinterfaces
 Summary: KDE 4 library
 Group: System/Libraries
-Obsoletes: %{_lib}kdepim42-common < 1:3.93.0-1
+Obsoletes: %{mklibname kdepim42-common} < 1:3.93.0-1
 Obsoletes: %{_lib}kpinterfaces4 < 2:4.0.80-1
 
 %description -n %libakregatorinterfaces
@@ -350,7 +350,7 @@ KDE 4 library.
 %package -n %libakregatorprivate
 Summary: KDE 4 library
 Group: System/Libraries
-Obsoletes: %{_lib}kdepim42-common < 1:3.93.0-1
+Obsoletes: %{mklibname kdepim42-common} < 1:3.93.0-1
 
 %description -n %libakregatorprivate
 KDE 4 library.
@@ -407,7 +407,7 @@ easy news reading.
 %package -n %libkitchensyncprivate
 Summary: KDE 4 library
 Group: System/Libraries
-Obsoletes: %{_lib}kdepim42-common < 1:3.93.0-1
+Obsoletes: %{mklibname kdepim42-common} < 1:3.93.0-1
 
 %description -n %libkitchensyncprivate
 KDE 4 library.
@@ -423,7 +423,7 @@ KDE 4 library.
 %package -n %libqopensync
 Summary: KDE 4 library
 Group: System/Libraries
-Obsoletes: %{_lib}kdepim42-common < 1:3.93.0-1
+Obsoletes: %{mklibname kdepim42-common} < 1:3.93.0-1
 
 %description -n %libqopensync
 KDE 4 library.
@@ -462,7 +462,7 @@ The KDE Synchronization Tool
 %package -n %libknodecommon
 Summary: KDE 4 library
 Group: System/Libraries
-Obsoletes: %{_lib}kdepim42-common < 1:3.93.0-1
+Obsoletes: %{mklibname kdepim42-common} < 1:3.93.0-1
 Obsoletes: %{_lib}kdepim42-knode < 1:3.93.0-1
 
 %description -n %libknodecommon
@@ -486,6 +486,7 @@ Obsoletes: kdepim-knode < 1:3.5.10-2
 %endif
 Provides:  kde4-knode = %epoch:%version
 Conflicts: kontact < 2:4.0.83-2
+Requires: kio4-nntp
 
 %description -n knode
 KNode is a newsreader for the K Desktop Environment.
@@ -522,7 +523,7 @@ leafnode also usable with dial-up connections.
 %package -n %libkabinterfaces
 Summary: KDE 4 library
 Group: System/Libraries
-Obsoletes: %{_lib}kdepim42-common < 1:3.93.0-1
+Obsoletes: %{mklibname kdepim42-common} < 1:3.93.0-1
 
 %description -n %libkabinterfaces
 KDE 4 library.
@@ -588,7 +589,7 @@ The KDE addressbook application.
 %package -n %libkalarm_resources
 Summary: KDE 4 library
 Group: System/Libraries
-Obsoletes: %{_lib}kdepim42-common < 1:3.93.0-1
+Obsoletes: %{mklibname kdepim42-common} < 1:3.93.0-1
 
 %description -n %libkalarm_resources
 KDE 4 library.
@@ -682,7 +683,7 @@ of your day is spent playing Doom or reading Slashdot.
 %package -n %libkmailprivate
 Summary: KDE 4 library
 Group: System/Libraries
-Obsoletes: %{_lib}kdepim42-common < 1:3.93.0-1
+Obsoletes: %{mklibname kdepim42-common} < 1:3.93.0-1
 
 %description -n %libkmailprivate
 KDE 4 library.
@@ -702,6 +703,11 @@ Requires: sasl-plug-plain
 Requires: sasl-plug-ntlm
 Requires: sasl-plug-login
 Requires: sasl-plug-digestmd5
+Requires: kio4-pop3
+Requires: kio4-smtp
+Requires: kio4-mbox
+Suggests: kio4-imap
+Suggests: kio4-sieve
 Suggests: kmailcvt
 Suggests: pinentry-qt4
 Suggests: openssh-askpass-qt4
@@ -781,7 +787,7 @@ Summary: Notes for the K Desktop Environment
 Group: Graphical desktop/KDE
 Requires: %name-core = %epoch:%version
 Requires: %name-kresources
-
+Requires: kio4-nntp
 Obsoletes: kde4-knotes < 2:4.0.68
 Obsoletes: %name-knotes < 1:3.93.0-1
 %if %mdkversion >= 200910
@@ -824,6 +830,7 @@ Group: Graphical desktop/KDE
 Requires: %name-core = %epoch:%version
 Obsoletes: %name-kontact < 1:3.93.0-1
 Obsoletes: kde4-kontact < 2:4.0.68
+Suggests: kio4-ldap
 %if %mdkversion >= 200910
 Obsoletes: kdepim-kontact  kdepim-kpilot < 1:3.5.10-2
 %endif
@@ -873,7 +880,7 @@ technology, existing applications are seamlessly integrated into one.
 %package -n %libkorg_stdprinting
 Summary: KDE 4 library
 Group: System/Libraries
-Obsoletes: %{_lib}kdepim42-common < 1:3.93.0-1
+Obsoletes: %{mklibname kdepim42-common} < 1:3.93.0-1
 
 %description -n %libkorg_stdprinting
 KDE 4 library.
@@ -889,7 +896,7 @@ KDE 4 library.
 %package -n %libkorganizer_calendar
 Summary: KDE 4 library
 Group: System/Libraries
-Obsoletes: %{_lib}kdepim42-common < 1:3.93.0-1
+Obsoletes: %{mklibname kdepim42-common} < 1:3.93.0-1
 
 %description -n %libkorganizer_calendar
 KDE 4 library.
@@ -905,7 +912,7 @@ KDE 4 library.
 %package -n %libkorganizer_eventviewer
 Summary: KDE 4 library
 Group: System/Libraries
-Obsoletes: %{_lib}kdepim42-common < 1:3.93.0-1
+Obsoletes: %{mklibname kdepim42-common} < 1:3.93.0-1
 
 %description -n %libkorganizer_eventviewer
 KDE 4 library.
@@ -921,7 +928,7 @@ KDE 4 library.
 %package -n %libkorganizer_interfaces
 Summary: KDE 4 library
 Group: System/Libraries
-Obsoletes: %{_lib}kdepim42-common < 1:3.93.0-1
+Obsoletes: %{mklibname kdepim42-common} < 1:3.93.0-1
 
 %description -n %libkorganizer_interfaces
 KDE 4 library.
@@ -939,6 +946,7 @@ Requires:  %name-core = %epoch:%version
 Requires:  %name-kresources
 Obsoletes: kde4-korganizer < 2:4.0.68
 Obsoletes: %name-korganizer < 1:3.93.0-1
+Requires: kio4-ldap
 %if %mdkversion >= 200910
 Obsoletes: kdepim-korganizer < 1:3.5.10-2
 %endif
@@ -1017,7 +1025,7 @@ KDE 4 library.
 %package -n %libkpilot
 Summary: KDE 4 library
 Group: System/Libraries
-Obsoletes: %{_lib}kdepim42-common < 1:3.93.0-1
+Obsoletes: %{mklibname kdepim42-common} < 1:3.93.0-1
 Obsoletes: %{_lib}kdepim42-kpilot < 1:3.93.0-1
 
 %description -n %libkpilot
@@ -1078,7 +1086,7 @@ Pilot with a machine running some flavor of UNIX.
 %package -n %libkabc_groupdav
 Summary: KDE 4 library
 Group: System/Libraries
-Obsoletes: %{_lib}kdepim42-common < 1:3.93.0-1
+Obsoletes: %{mklibname kdepim42-common} < 1:3.93.0-1
 
 %description -n %libkabc_groupdav
 KDE 4 library.
@@ -1094,7 +1102,7 @@ KDE 4 library.
 %package -n %libkabc_slox
 Summary: KDE 4 library
 Group: System/Libraries
-Obsoletes: %{_lib}kdepim42-common < 1:3.93.0-1
+Obsoletes: %{mklibname kdepim42-common} < 1:3.93.0-1
 
 %description -n %libkabc_slox
 KDE 4 library.
@@ -1110,7 +1118,7 @@ KDE 4 library.
 %package -n %libkabc_xmlrpc
 Summary: KDE 4 library
 Group: System/Libraries
-Obsoletes: %{_lib}kdepim42-common < 1:3.93.0-1
+Obsoletes: %{mklibname kdepim42-common} < 1:3.93.0-1
 
 %description -n %libkabc_xmlrpc
 KDE 4 library.
@@ -1126,7 +1134,7 @@ KDE 4 library.
 %package -n %libkabckolab
 Summary: KDE 4 library
 Group: System/Libraries
-Obsoletes: %{_lib}kdepim42-common < 1:3.93.0-1
+Obsoletes: %{mklibname kdepim42-common} < 1:3.93.0-1
 
 %description -n %libkabckolab
 KDE 4 library.
@@ -1142,7 +1150,7 @@ KDE 4 library.
 %package -n %libkcal_groupdav
 Summary: KDE 4 library
 Group: System/Libraries
-Obsoletes: %{_lib}kdepim42-common < 1:3.93.0-1
+Obsoletes: %{mklibname kdepim42-common} < 1:3.93.0-1
 
 %description -n %libkcal_groupdav
 KDE 4 library.
@@ -1158,7 +1166,7 @@ KDE 4 library.
 %package -n %libkcal_resourceblog
 Summary: KDE 4 library
 Group: System/Libraries
-Obsoletes: %{_lib}kdepim42-common < 1:3.93.0-1
+Obsoletes: %{mklibname kdepim42-common} < 1:3.93.0-1
 
 %description -n %libkcal_resourceblog
 KDE 4 library.
@@ -1174,7 +1182,7 @@ KDE 4 library.
 %package -n %libkcal_resourceremote
 Summary: KDE 4 library
 Group: System/Libraries
-Obsoletes: %{_lib}kdepim42-common < 1:3.93.0-1
+Obsoletes: %{mklibname kdepim42-common} < 1:3.93.0-1
 
 %description -n %libkcal_resourceremote
 KDE 4 library.
@@ -1190,7 +1198,7 @@ KDE 4 library.
 %package -n %libkcal_slox
 Summary: KDE 4 library
 Group: System/Libraries
-Obsoletes: %{_lib}kdepim42-common < 1:3.93.0-1
+Obsoletes: %{mklibname kdepim42-common} < 1:3.93.0-1
 
 %description -n %libkcal_slox
 KDE 4 library.
@@ -1206,7 +1214,7 @@ KDE 4 library.
 %package -n %libkcal_xmlrpc
 Summary: KDE 4 library
 Group: System/Libraries
-Obsoletes: %{_lib}kdepim42-common < 1:3.93.0-1
+Obsoletes: %{mklibname kdepim42-common} < 1:3.93.0-1
 
 %description -n %libkcal_xmlrpc
 KDE 4 library.
@@ -1222,7 +1230,7 @@ KDE 4 library.
 %package -n %libkcalkolab
 Summary: KDE 4 library
 Group: System/Libraries
-Obsoletes: %{_lib}kdepim42-common < 1:3.93.0-1
+Obsoletes: %{mklibname kdepim42-common} < 1:3.93.0-1
 
 %description -n %libkcalkolab
 KDE 4 library.
@@ -1238,7 +1246,7 @@ KDE 4 library.
 %package -n %libkgroupwarebase
 Summary: KDE 4 library
 Group: System/Libraries
-Obsoletes: %{_lib}kdepim42-common < 1:3.93.0-1
+Obsoletes: %{mklibname kdepim42-common} < 1:3.93.0-1
 
 %description -n %libkgroupwarebase
 KDE 4 library.
@@ -1254,7 +1262,7 @@ KDE 4 library.
 %package -n %libkgroupwaredav
 Summary: KDE 4 library
 Group: System/Libraries
-Obsoletes: %{_lib}kdepim42-common < 1:3.93.0-1
+Obsoletes: %{mklibname kdepim42-common} < 1:3.93.0-1
 
 %description -n %libkgroupwaredav
 KDE 4 library.
@@ -1270,7 +1278,7 @@ KDE 4 library.
 %package -n %libknotes_xmlrpc
 Summary: KDE 4 library
 Group: System/Libraries
-Obsoletes: %{_lib}kdepim42-common < 1:3.93.0-1
+Obsoletes: %{mklibname kdepim42-common} < 1:3.93.0-1
 
 %description -n %libknotes_xmlrpc
 KDE 4 library.
@@ -1286,7 +1294,7 @@ KDE 4 library.
 %package -n %libknoteskolab
 Summary: KDE 4 library
 Group: System/Libraries
-Obsoletes: %{_lib}kdepim42-common < 1:3.93.0-1
+Obsoletes: %{mklibname kdepim42-common} < 1:3.93.0-1
 
 %description -n %libknoteskolab
 KDE 4 library.
@@ -1302,7 +1310,7 @@ KDE 4 library.
 %package -n %libkslox
 Summary: KDE 4 library
 Group: System/Libraries
-Obsoletes: %{_lib}kdepim42-common < 1:3.93.0-1
+Obsoletes: %{mklibname kdepim42-common} < 1:3.93.0-1
 
 %description -n %libkslox
 KDE 4 library.
@@ -1318,7 +1326,7 @@ KDE 4 library.
 %package -n %libkabcommon
 Summary: KDE 4 library
 Group: System/Libraries
-Obsoletes: %{_lib}kdepim42-common < 1:3.93.0-1
+Obsoletes: %{mklibname kdepim42-common} < 1:3.93.0-1
 
 %description -n %libkabcommon
 KDE 4 library.
@@ -1334,7 +1342,7 @@ KDE 4 library.
 %package -n %libkleo
 Summary: KDE 4 library
 Group: System/Libraries
-Obsoletes: %{_lib}kdepim42-common < 1:3.93.0-1
+Obsoletes: %{mklibname kdepim42-common} < 1:3.93.0-1
 
 %description -n %libkleo
 KDE 4 library.
@@ -1437,7 +1445,7 @@ KDE Groupware Wizard
 %package -n %libkabcscalix
 Summary: KDE 4 library
 Group: System/Libraries
-Obsoletes: %{_lib}kdepim42-common < 1:3.93.0-1
+Obsoletes: %{mklibname kdepim42-common} < 1:3.93.0-1
 
 %description -n %libkabcscalix
 KDE 4 library.
@@ -1454,7 +1462,7 @@ KDE 4 library.
 %package -n %libkcalscalix
 Summary: KDE 4 library
 Group: System/Libraries
-Obsoletes: %{_lib}kdepim42-common < 1:3.93.0-1
+Obsoletes: %{mklibname kdepim42-common} < 1:3.93.0-1
 
 %description -n %libkcalscalix
 KDE 4 library.
@@ -1470,7 +1478,7 @@ KDE 4 library.
 %package -n %libknotesscalix
 Summary: KDE 4 library
 Group: System/Libraries
-Obsoletes: %{_lib}kdepim42-common < 1:3.93.0-1
+Obsoletes: %{mklibname kdepim42-common} < 1:3.93.0-1
 
 %description -n %libknotesscalix
 KDE 4 library.

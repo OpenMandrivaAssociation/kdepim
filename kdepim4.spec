@@ -7,7 +7,7 @@
 Name: kdepim4
 Summary: K Desktop Environment
 Version: 4.3.1
-Release: %mkrel 9
+Release: %mkrel 10
 Epoch: 2
 Group: Graphical desktop/KDE
 License: GPL
@@ -707,8 +707,8 @@ Requires: sasl-plug-digestmd5
 Requires: kio4-pop3
 Requires: kio4-smtp
 Requires: kio4-mbox
-Suggests: kio4-imap
-Suggests: kio4-sieve
+Requires: kio4-imap
+Requires: kio4-sieve
 Suggests: kmailcvt
 Suggests: pinentry-qt4
 Suggests: openssh-askpass-qt4
@@ -831,12 +831,11 @@ Group: Graphical desktop/KDE
 Requires: %name-core = %epoch:%version
 Obsoletes: %name-kontact < 1:3.93.0-1
 Obsoletes: kde4-kontact < 2:4.0.68
-Suggests: kio4-ldap
+Requires: kio4-ldap
 %if %mdkversion >= 200910
 Obsoletes: kdepim-kontact  kdepim-kpilot < 1:3.5.10-2
 %endif
 Provides: kde4-kontact = %epoch:%version
-
 Suggests: akregator
 Suggests: kmail
 Suggests: knotes

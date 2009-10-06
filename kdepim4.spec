@@ -6,8 +6,8 @@
 
 Name: kdepim4
 Summary: K Desktop Environment
-Version: 4.3.1
-Release: %mkrel 10
+Version: 4.3.2
+Release: %mkrel 1
 Epoch: 2
 Group: Graphical desktop/KDE
 License: GPL
@@ -16,7 +16,6 @@ Source: ftp://ftp.kde.org/pub/kde/stable/%version/src/kdepim-%version.tar.bz2
 # Mandriva "customization" patches
 Patch0:   kdepim-4.2.95-kmail-first-message.patch 
 Patch1:   kdepim-4.3.1-fix-desktop-files.patch
-Patch100: kdepim-4.3.1-imap-rename-fix.patch
 Buildroot: %_tmppath/%name-%version-%release-root
 BuildRequires: kdelibs4-devel >= 2:4.2.98
 BuildRequires: kdelibs4-experimental-devel >= 2:4.2.98
@@ -1655,7 +1654,10 @@ based on kdepim.
 %setup -q -n kdepim-%version
 %patch0 -p0
 %patch1 -p0
-%patch100 -p0 -b .imap-crash
+
+# Remove extra icons already in oxygen
+rm -f kmail/icons/ox*
+rm -f kmail/icons/small/ox*
 
 %build
 %cmake_kde4

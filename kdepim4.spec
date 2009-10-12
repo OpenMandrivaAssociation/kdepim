@@ -7,7 +7,7 @@
 Name: kdepim4
 Summary: K Desktop Environment
 Version: 4.3.2
-Release: %mkrel 1
+Release: %mkrel 2
 Epoch: 2
 Group: Graphical desktop/KDE
 License: GPL
@@ -16,6 +16,40 @@ Source: ftp://ftp.kde.org/pub/kde/stable/%version/src/kdepim-%version.tar.bz2
 # Mandriva "customization" patches
 Patch0:   kdepim-4.2.95-kmail-first-message.patch 
 Patch1:   kdepim-4.3.1-fix-desktop-files.patch
+# Patches from branch
+Patch100: kdepim-4.3.2-b1031050-fix-cmake-macro.patch
+Patch101: kdepim-4.3.2-b1031051-fix-data-corruption.patch
+Patch102: kdepim-4.3.2-b1031052-fix-show-old-event.patch
+Patch103: kdepim-4.3.2-b1031053-fix-recursive-event.patch
+Patch104: kdepim-4.3.2-b1031056-fix-data-corruption.patch
+Patch105: kdepim-4.3.2-b1031560-fix-compile-commit1031056.patch
+Patch106: kdepim-4.3.2-b1031368-load-catalogs.patch
+Patch107: kdepim-4.3.2-b1031532-fix-cmake-macro.patch
+Patch108: kdepim-4.3.2-b1031533-fix-cmake-macro.patch
+Patch109: kdepim-4.3.2-b1031538-load-catalogs.patch
+Patch110: kdepim-4.3.2-b1031716-load-catalogs.patch
+Patch111: kdepim-4.3.2-b1032446-fix-template-export.patch
+Patch112: kdepim-4.3.2-b1032449-use-grp2-grp3.patch
+Patch113: kdepim-4.3.2-b1032418-fix-CPU-eating.patch
+Patch114: kdepim-4.3.2-b1032499-fix-crash-with-shared-calendar.patch
+Patch115: kdepim-4.3.2-b1032802-fix-missing-rename.patch
+Patch116: kdepim-4.3.2-b1032874-fix-kolab-imap.patch
+Patch117: kdepim-4.3.2-b1033121-fix-crash-with-empty-selecteddates.patch
+Patch118: kdepim-4.3.2-b1033122-fix-identity-in-invitation.patch
+Patch119: kdepim-4.3.2-b1033302-fix-ldap-crash.patch
+Patch120: kdepim-4.3.2-b1033303-fix-setAttrs.patch
+Patch121: kdepim-4.3.2-b1033304-fix-crash-in-setHolidayMasks.patch
+Patch122: kdepim-4.3.2-b1033308-workaround-buildObjectTree-issue.patch
+Patch123: kdepim-4.3.2-b1033311-fix-corruption.patch
+Patch124: kdepim-4.3.2-b1033312-fix-pgp-mime.patch
+Patch125: kdepim-4.3.2-b1033313-fix-signature-in-encryption.patch
+Patch126: kdepim-4.3.2-b1033320-fix-trigger-conditions-for-store-unencrypted-feature.patch
+Patch127: kdepim-4.3.2-b1033327-fix-recurrences.patch
+Patch128: kdepim-4.3.2-b1033333-fix-namespace.patch
+Patch129: kdepim-4.3.2-b1033377-fix-processing-time-calculating-for-archived-alarms.patch
+Patch130: kdepim-4.3.2-b1033731-fix-whatsthis.patch
+Patch131: kdepim-4.3.2-b1034078-use-ReplyAll-only-for-ML.patch
+
 Buildroot: %_tmppath/%name-%version-%release-root
 BuildRequires: kdelibs4-devel >= 2:4.2.98
 BuildRequires: kdelibs4-experimental-devel >= 2:4.2.98
@@ -1654,6 +1688,39 @@ based on kdepim.
 %setup -q -n kdepim-%version
 %patch0 -p0
 %patch1 -p0
+
+%patch100 -p0
+%patch101 -p0
+%patch102 -p0
+%patch103 -p0
+%patch104 -p0
+%patch105 -p0
+%patch106 -p0
+%patch107 -p0
+%patch108 -p0
+%patch109 -p0
+%patch110 -p0
+%patch111 -p0
+%patch112 -p0
+%patch113 -p0
+%patch114 -p0
+%patch115 -p0
+%patch116 -p0
+%patch117 -p0
+%patch118 -p0
+%patch119 -p0
+%patch120 -p0
+%patch121 -p0
+%patch122 -p0
+%patch123 -p0
+%patch124 -p0
+%patch125 -p0
+%patch126 -p0
+%patch127 -p0
+%patch128 -p0
+%patch129 -p0
+%patch130 -p0
+%patch131 -p0
 
 # Remove extra icons already in oxygen
 rm -f kmail/icons/ox*

@@ -4,51 +4,21 @@
 %define with_kitchensync 0
 %{?_with_kitchensync: %{expand: %%global with_kitchensync 1}}
 
+%define kde_snapshot svn1040395
+
 Name: kdepim4
 Summary: K Desktop Environment
-Version: 4.3.2
-Release: %mkrel 2
+Version: 4.3.73
+Release: %mkrel 1
 Epoch: 2
 Group: Graphical desktop/KDE
 License: GPL
 URL: http://pim.kde.org
-Source: ftp://ftp.kde.org/pub/kde/stable/%version/src/kdepim-%version.tar.bz2
+Source: ftp://ftp.kde.org/pub/kde/stable/%version/src/kdepim-%version%kde_snapshot.tar.bz2
 # Mandriva "customization" patches
 Patch0:   kdepim-4.2.95-kmail-first-message.patch 
 Patch1:   kdepim-4.3.1-fix-desktop-files.patch
 # Patches from branch
-Patch100: kdepim-4.3.2-b1031050-fix-cmake-macro.patch
-Patch101: kdepim-4.3.2-b1031051-fix-data-corruption.patch
-Patch102: kdepim-4.3.2-b1031052-fix-show-old-event.patch
-Patch103: kdepim-4.3.2-b1031053-fix-recursive-event.patch
-Patch104: kdepim-4.3.2-b1031056-fix-data-corruption.patch
-Patch105: kdepim-4.3.2-b1031560-fix-compile-commit1031056.patch
-Patch106: kdepim-4.3.2-b1031368-load-catalogs.patch
-Patch107: kdepim-4.3.2-b1031532-fix-cmake-macro.patch
-Patch108: kdepim-4.3.2-b1031533-fix-cmake-macro.patch
-Patch109: kdepim-4.3.2-b1031538-load-catalogs.patch
-Patch110: kdepim-4.3.2-b1031716-load-catalogs.patch
-Patch111: kdepim-4.3.2-b1032446-fix-template-export.patch
-Patch112: kdepim-4.3.2-b1032449-use-grp2-grp3.patch
-Patch113: kdepim-4.3.2-b1032418-fix-CPU-eating.patch
-Patch114: kdepim-4.3.2-b1032499-fix-crash-with-shared-calendar.patch
-Patch115: kdepim-4.3.2-b1032802-fix-missing-rename.patch
-Patch116: kdepim-4.3.2-b1032874-fix-kolab-imap.patch
-Patch117: kdepim-4.3.2-b1033121-fix-crash-with-empty-selecteddates.patch
-Patch118: kdepim-4.3.2-b1033122-fix-identity-in-invitation.patch
-Patch119: kdepim-4.3.2-b1033302-fix-ldap-crash.patch
-Patch120: kdepim-4.3.2-b1033303-fix-setAttrs.patch
-Patch121: kdepim-4.3.2-b1033304-fix-crash-in-setHolidayMasks.patch
-Patch122: kdepim-4.3.2-b1033308-workaround-buildObjectTree-issue.patch
-Patch123: kdepim-4.3.2-b1033311-fix-corruption.patch
-Patch124: kdepim-4.3.2-b1033312-fix-pgp-mime.patch
-Patch125: kdepim-4.3.2-b1033313-fix-signature-in-encryption.patch
-Patch126: kdepim-4.3.2-b1033320-fix-trigger-conditions-for-store-unencrypted-feature.patch
-Patch127: kdepim-4.3.2-b1033327-fix-recurrences.patch
-Patch128: kdepim-4.3.2-b1033333-fix-namespace.patch
-Patch129: kdepim-4.3.2-b1033377-fix-processing-time-calculating-for-archived-alarms.patch
-Patch130: kdepim-4.3.2-b1033731-fix-whatsthis.patch
-Patch131: kdepim-4.3.2-b1034078-use-ReplyAll-only-for-ML.patch
 
 Buildroot: %_tmppath/%name-%version-%release-root
 BuildRequires: kdelibs4-devel >= 2:4.2.98
@@ -319,6 +289,7 @@ KDE Certificate Manager
 %_kde_bindir/kleopatra
 %_kde_bindir/kgpgconf
 %_kde_bindir/kwatchgnupg
+%_kde_datadir/applications/kde4/kleopatra.desktop
 %_kde_configdir/libkleopatrarc
 %_kde_datadir/applications/kde4/kleopatra_import.desktop
 %_kde_appsdir/kleopatra
@@ -564,7 +535,7 @@ KDE 4 library.
 
 %files -n %libkabinterfaces
 %defattr(-,root,root)
-%_kde_libdir/libkabinterfaces.so.*
+#%_kde_libdir/libkabinterfaces.so.*
 
 #-----------------------------------------------------------------------------
 
@@ -589,48 +560,79 @@ The KDE addressbook application.
 %files -n kaddressbook
 %defattr(-,root,root)
 %_kde_bindir/kaddressbook
-%_kde_bindir/kabcdistlistupdater
+%_kde_bindir/kabc2mutt                        
+%_kde_bindir/kabcclient
 %_kde_datadir/applications/kde4/kaddressbook.desktop
 %_kde_appsdir/kaddressbook
-%_kde_datadir/kde4/services/kontact/kaddressbookplugin.desktop
-%_kde_datadir/kde4/services/kabconfig.desktop
-%_kde_datadir/kde4/services/kabcustomfields.desktop
-%_kde_datadir/kde4/services/kabldapconfig.desktop
-%_kde_datadir/kde4/services/kaddressbook
-%_kde_datadir/kde4/services/kaddressbookpart.desktop
-%_kde_datadir/kde4/services/ldifvcardthumbnail.desktop
-%_kde_datadir/kde4/servicetypes/dbusaddressbook.desktop
-%_kde_datadir/kde4/servicetypes/kaddressbook*
-%_kde_datadir/config.kcfg/contactssettings.kcfg
-%_kde_libdir/kde4/kcm_kabconfig.so
-%_kde_libdir/kde4/kcm_kabcustomfields.so
-%_kde_libdir/kde4/kcm_kabldapconfig.so
-%_kde_libdir/kde4/ldifvcardthumbnail.so
-%_kde_libdir/kde4/kaddrbk_*
+%_kde_libdir/kde4/kcm_ldap.so
 %_kde_libdir/kde4/kaddressbookpart.so
-%_kde_docdir/HTML/en/kaddressbook
 %_kde_libdir/kde4/kontact_kaddressbookplugin.so
-%_kde_datadir/autostart/kabcdistlistupdater.desktop
-
-# Does it make sense to split it on its own package ?
-%_kde_bindir/kabc2mutt
-%_kde_bindir/kabcclient
+%_kde_datadir/kde4/services/kaddressbookpart.desktop
+%_kde_datadir/kde4/services/kontact/kaddressbookplugin.desktop
+%_kde_datadir/kde4/services/kcmldap.desktop
+%_kde_mandir/man1/kabcclient.1.lzma
+%doc %_kde_docdir/HTML/en/kabcclient
 
 #-----------------------------------------------------------------------------
 
-%define libkalarm_resources %mklibname kalarm_resources 4
+%package -n blogilo
+Summary: Blogging client for kde
+Group: Graphical desktop/KDE
+Requires: %name-core = %epoch:%version
 
-%package -n %libkalarm_resources
+%description -n blogilo
+Blogilo is a blogging client for KDE, which supports famous blogging
+APIs.
+
+It was known as Bilbo blogger before, But because of a trademark
+issue, We (Blogilo developers) decided to choose a new name for it.
+More information about the decision can be found at
+http://blogilo.gnufolks.org/news/.
+
+Its current features:
+
+* A full featured WYSIWYG editor.
+* An HTML editor with syntax highlighting.
+* Previewing your post with your blog style! like when you are
+visiting it at your blog.
+* Support for Blogger1.0, MetaWeblog, MovableType (Wordpress supports
+All of these!) and Google GData (used on Blogspot.com blogs) APIs!
+* Support for Creating/Modifying/Deleting posts.
+* Support for creating drafts and scheduled posts!
+* Support for uploading media files to your blog (Just on supported
+APIs e.g. MetaWeblog and MovableType)
+* Support for uploading to FTP server.
+* Support for Fetching your recent blog entries.
+* Support for adding Images to post from your system. It will upload
+them on Submitting post to blog (Just on supported APIs e.g.
+MetaWeblog and MovableType)
+* Support for saving local entries before publishing.
+* Saving your writing copy to prevent data loss, at configurable
+intervals.
+* and ...
+
+%files -n blogilo
+%defattr(-,root,root)
+%{_kde_bindir}/blogilo
+%_kde_datadir/applications/kde4/blogilo.desktop
+%_kde_datadir/config.kcfg/blogilo.kcfg
+%doc %_kde_docdir/HTML/en/blogilo
+%_kde_appsdir/blogilo/blogiloui.rc
+
+#-----------------------------------------------------------------------------
+
+%define libmessagecore %mklibname messagecore 4
+
+%package -n %libmessagecore
 Summary: KDE 4 library
 Group: System/Libraries
-Obsoletes: %{mklibname kdepim42-common} < 1:3.93.0-1
 
-%description -n %libkalarm_resources
+%description -n %libmessagecore
 KDE 4 library.
 
-%files -n %libkalarm_resources
+%files -n %libmessagecore
 %defattr(-,root,root)
-%_kde_libdir/libkalarm_resources.so.*
+%_kde_libdir/libmessagecore.so.*
 
 #-----------------------------------------------------------------------------
 
@@ -650,26 +652,6 @@ or you can schedule commands to be executed or emails to be sent.
 
 %files -n kalarm
 %defattr(-,root,root)
-%_kde_bindir/kalarm
-%_kde_bindir/kalarmautostart
-%_kde_appsdir/kconf_update/kalarm-2.1.5-general.pl
-%_kde_datadir/applications/kde4/kalarm.desktop
-%_kde_datadir/autostart/kalarm.autostart.desktop
-%_kde_appsdir/kalarm
-%_kde_appsdir/kconf_update/kalarm-1.2.1-general.pl
-%_kde_appsdir/kconf_update/kalarm-1.9.5-defaults.pl
-%_kde_appsdir/kconf_update/kalarm-version.pl
-%_kde_appsdir/kconf_update/kalarm.upd
-%_kde_datadir/config.kcfg/kalarmconfig.kcfg
-%_kde_datadir/kde4/services/kresources/alarms/local.desktop
-%_kde_datadir/kde4/services/kresources/alarms/localdir.desktop
-%_kde_datadir/kde4/services/kresources/alarms/remote.desktop
-%_kde_datadir/kde4/services/kresources/kalarm_manager.desktop
-%_kde_libdir/kde4/kalarm_local.so
-%_kde_libdir/kde4/kalarm_localdir.so
-%_kde_libdir/kde4/kalarm_remote.so
-%_kde_appsdir/kconf_update/kalarm-2.0.2-general.pl
-%_kde_docdir/HTML/en/kalarm
 
 #-----------------------------------------------------------------------------
 
@@ -775,7 +757,6 @@ information manager of KDE.
 %_kde_datadir/config.kcfg/custommimeheader.kcfg
 %_kde_datadir/config.kcfg/customtemplates_kfg.kcfg
 %_kde_datadir/config.kcfg/kmail.kcfg
-%_kde_datadir/config.kcfg/replyphrases.kcfg
 %_kde_datadir/config.kcfg/templatesconfiguration_kfg.kcfg
 %_kde_datadir/config/kmail.antispamrc
 %_kde_datadir/config/kmail.antivirusrc
@@ -851,7 +832,6 @@ although including some advanced features.
 %_kde_datadir/kde4/services/knote_config_network.desktop
 %_kde_datadir/kde4/services/knote_config_style.desktop
 %_kde_libdir/kde4/knotes_local.so
-%_kde_libdir/kde4/knotes_scalix.so
 %_kde_libdir/kde4/kcm_knote.so
 %_kde_docdir/HTML/en/knotes
 %_kde_libdir/kde4/kontact_knotesplugin.so
@@ -895,7 +875,6 @@ technology, existing applications are seamlessly integrated into one.
 %_kde_datadir/kde4/services/kcmsdsummary.desktop
 %_kde_datadir/kde4/services/kontact/summaryplugin.desktop
 %_kde_datadir/kde4/services/kontact/specialdatesplugin.desktop
-%_kde_datadir/kde4/servicetypes/kontactplugin.desktop
 %_kde_libdir/kde4/kcm_apptsummary.so
 %_kde_libdir/kde4/kcm_kontact.so
 %_kde_libdir/kde4/kcm_kontactsummary.so
@@ -903,8 +882,11 @@ technology, existing applications are seamlessly integrated into one.
 %_kde_libdir/kde4/kcm_sdsummary.so
 %_kde_libdir/kde4/kontact_specialdatesplugin.so
 %_kde_libdir/kde4/kontact_summaryplugin.so
-%_kde_docdir/HTML/en/kontact
 %_kde_datadir/applications/kde4/Kontact.desktop
+%_kde_datadir/applications/kde4/kontact-admin.desktop
+
+%_kde_docdir/HTML/en/kontact
+%_kde_docdir/HTML/en/kontact-admin
 
 #-----------------------------------------------------------------------------
 
@@ -1031,6 +1013,7 @@ Citadel or OpenGroupware.org.
 %_kde_bindir/konsolekalendar
 %_kde_datadir/applications/kde4/konsolekalendar.desktop
 %_kde_appsdir/konsolekalendar
+%doc %_kde_docdir/HTML/en/konsolekalendar
 
 #-----------------------------------------------------------------------------
 
@@ -1094,13 +1077,12 @@ Pilot with a machine running some flavor of UNIX.
 %_kde_datadir/applications/kde4/kpilotdaemon.desktop
 %_kde_appsdir/kconf_update/kpilot.upd
 %_kde_appsdir/kpilot
+%_kde_appsdir/akonadi/contact/editorpageplugins/cryptopageplugin.so
 %_kde_datadir/config.kcfg/kpilot.kcfg
 %_kde_datadir/config.kcfg/kpilotlib.kcfg
 %_kde_datadir/config.kcfg/memofileconduit.kcfg
-#%_kde_datadir/config.kcfg/popmail.kcfg
 %_kde_datadir/config.kcfg/timeconduit.kcfg
-#%_kde_datadir/config.kcfg/vcalconduitbase.kcfg
-#%_kde_datadir/config.kcfg/keyringconduit.kcfg
+%_kde_datadir/config.kcfg/contactssettings.kcfg
 %_kde_datadir/kde4/services/kpilot_config.desktop
 %_kde_datadir/kde4/services/*-conduit* 
 %_kde_datadir/kde4/services/time_conduit.desktop
@@ -1146,19 +1128,18 @@ KDE 4 library.
 
 #-----------------------------------------------------------------------------
 
-%define libkabc_xmlrpc %mklibname kabc_xmlrpc 4
+%define libmessagelist %mklibname messagelist 4
 
-%package -n %libkabc_xmlrpc
+%package -n %libmessagelist
 Summary: KDE 4 library
 Group: System/Libraries
-Obsoletes: %{mklibname kdepim42-common} < 1:3.93.0-1
 
-%description -n %libkabc_xmlrpc
+%description -n %libmessagelist
 KDE 4 library.
 
-%files -n %libkabc_xmlrpc
+%files -n %libmessagelist
 %defattr(-,root,root)
-%_kde_libdir/libkabc_xmlrpc.so.*
+%_kde_libdir/libmessagelist.so.*
 
 #-----------------------------------------------------------------------------
 
@@ -1242,22 +1223,6 @@ KDE 4 library.
 
 #-----------------------------------------------------------------------------
 
-%define libkcal_xmlrpc %mklibname kcal_xmlrpc 4
-
-%package -n %libkcal_xmlrpc
-Summary: KDE 4 library
-Group: System/Libraries
-Obsoletes: %{mklibname kdepim42-common} < 1:3.93.0-1
-
-%description -n %libkcal_xmlrpc
-KDE 4 library.
-
-%files -n %libkcal_xmlrpc
-%defattr(-,root,root)
-%_kde_libdir/libkcal_xmlrpc.so.*
-
-#-----------------------------------------------------------------------------
-
 %define libkcalkolab %mklibname kcalkolab 4
 
 %package -n %libkcalkolab
@@ -1306,22 +1271,6 @@ KDE 4 library.
 
 #-----------------------------------------------------------------------------
 
-%define libknotes_xmlrpc %mklibname knotes_xmlrpc 4
-
-%package -n %libknotes_xmlrpc
-Summary: KDE 4 library
-Group: System/Libraries
-Obsoletes: %{mklibname kdepim42-common} < 1:3.93.0-1
-
-%description -n %libknotes_xmlrpc
-KDE 4 library.
-
-%files -n %libknotes_xmlrpc
-%defattr(-,root,root)
-%_kde_libdir/libknotes_xmlrpc.so.*
-
-#-----------------------------------------------------------------------------
-
 %define libknoteskolab %mklibname knoteskolab 4
 
 %package -n %libknoteskolab
@@ -1351,22 +1300,6 @@ KDE 4 library.
 %files -n %libkslox
 %defattr(-,root,root)
 %_kde_libdir/libkslox.so.*
-
-#-----------------------------------------------------------------------------
-
-%define libkabcommon %mklibname kabcommon 4
-
-%package -n %libkabcommon
-Summary: KDE 4 library
-Group: System/Libraries
-Obsoletes: %{mklibname kdepim42-common} < 1:3.93.0-1
-
-%description -n %libkabcommon
-KDE 4 library.
-
-%files -n %libkabcommon
-%defattr(-,root,root)
-%_kde_libdir/libkabcommon.so.*
 
 #-----------------------------------------------------------------------------
 
@@ -1405,32 +1338,23 @@ tracking feature plans.
 %_kde_datadir/kde4/services/kresources/kabc/kabc_opengroupware.desktop
 %_kde_datadir/kde4/services/kresources/kabc/kabc_ox.desktop
 %_kde_datadir/kde4/services/kresources/kabc/kabc_slox.desktop
-%_kde_datadir/kde4/services/kresources/kabc/kabc_xmlrpc.desktop
 %_kde_datadir/kde4/services/kresources/kabc/kolab.desktop
 %_kde_datadir/kde4/services/kresources/kcal/kabc.desktop
 %_kde_datadir/kde4/services/kresources/kcal/kcal_groupdav.desktop
 %_kde_datadir/kde4/services/kresources/kcal/kcal_opengroupware.desktop
 %_kde_datadir/kde4/services/kresources/kcal/kcal_ox.desktop
 %_kde_datadir/kde4/services/kresources/kcal/kcal_slox.desktop
-%_kde_datadir/kde4/services/kresources/kcal/kcal_xmlrpc.desktop
 %_kde_datadir/kde4/services/kresources/kcal/kolab.desktop
 %_kde_datadir/kde4/services/kresources/kcal/remote.desktop
-%_kde_datadir/kde4/services/kresources/kcal/scalix.desktop
 %_kde_datadir/kde4/services/kresources/kcal/blog.desktop
-%_kde_datadir/kde4/services/kresources/knotes/knotes_xmlrpc.desktop
-%_kde_datadir/kde4/services/kresources/kabc/scalix.desktop
-%_kde_datadir/kde4/services/kresources/knotes/scalix.desktop
 %_kde_datadir/kde4/services/kresources/knotes/kolabresource.desktop
 %_kde_appsdir/kconf_update/kolab-resource.upd
 %_kde_appsdir/kconf_update/upgrade-resourcetype.pl
 %_kde_libdir/kde4/kabc_groupdav.so
 %_kde_libdir/kde4/kabc_kolab.so
 %_kde_libdir/kde4/kabc_slox.so
-%_kde_libdir/kde4/kabc_xmlrpc.so
-%_kde_libdir/kde4/kabc_scalix.so
 %_kde_libdir/kde4/kcal_*
 %_kde_libdir/kde4/knotes_kolab.so
-%_kde_libdir/kde4/knotes_xmlrpc.so
 
 #-----------------------------------------------------------------------------
 
@@ -1448,45 +1372,20 @@ KDE Groupware Wizard
 
 %files wizards
 %defattr(-,root,root)
-%_kde_bindir/egroupwarewizard
 %_kde_bindir/groupwarewizard
 %_kde_bindir/kolabwizard
 %_kde_bindir/sloxwizard
-%_kde_bindir/scalixwizard
-%_kde_bindir/scalixadmin
 %_kde_bindir/groupwisewizard
-%_kde_libdir/kde4/kio_scalix.so
 %_kde_libdir/kde4/kio_groupwise.so
 %_kde_libdir/kde4/kabc_groupwise.so
 %_kde_datadir/applications/kde4/groupwarewizard.desktop
-%_kde_datadir/config.kcfg/egroupware.kcfg
 %_kde_datadir/config.kcfg/groupwise.kcfg
 %_kde_datadir/config.kcfg/kolab.kcfg
 %_kde_datadir/config.kcfg/slox.kcfg
-%_kde_datadir/config.kcfg/scalix.kcfg
-%_kde_datadir/kde4/services/scalix.protocol
-%_kde_datadir/kde4/services/scalixs.protocol
 %_kde_datadir/kde4/services/groupwise.protocol
 %_kde_datadir/kde4/services/groupwises.protocol
 %_kde_datadir/kde4/services/kresources/kabc/kabc_groupwise.desktop
 %_kde_datadir/kde4/services/kresources/kcal/kcal_groupwise.desktop
-
-#-----------------------------------------------------------------------------
-
-%define libkabcscalix %mklibname kabcscalix 4
-
-%package -n %libkabcscalix
-Summary: KDE 4 library
-Group: System/Libraries
-Obsoletes: %{mklibname kdepim42-common} < 1:3.93.0-1
-
-%description -n %libkabcscalix
-KDE 4 library.
-
-%files -n %libkabcscalix
-%defattr(-,root,root)
-%_kde_libdir/libkabcscalix.so.*
-
 
 #-----------------------------------------------------------------------------
 
@@ -1502,23 +1401,7 @@ KDE 4 library.
 
 %files -n %libkcalscalix
 %defattr(-,root,root)
-%_kde_libdir/libkcalscalix.so.*
-
-#-----------------------------------------------------------------------------
-
-%define libknotesscalix %mklibname knotesscalix 4
-
-%package -n %libknotesscalix
-Summary: KDE 4 library
-Group: System/Libraries
-Obsoletes: %{mklibname kdepim42-common} < 1:3.93.0-1
-
-%description -n %libknotesscalix
-KDE 4 library.
-
-%files -n %libknotesscalix
-%defattr(-,root,root)
-%_kde_libdir/libknotesscalix.so.*
+#%_kde_libdir/libkcalscalix.so.*
 
 #-----------------------------------------------------------------------------
 
@@ -1549,21 +1432,6 @@ KDE 4 library.
 %files -n %libkcalgroupwise
 %defattr(-,root,root)
 %_kde_libdir/libkcalgroupwise.so.*
-
-#-----------------------------------------------------------------------------
-
-%define libkontactinterfaces %mklibname kontactinterfaces 4
-
-%package -n %libkontactinterfaces
-Summary: KDE 4 library
-Group: System/Libraries
-
-%description -n %libkontactinterfaces
-KDE 4 library.
-
-%files -n %libkontactinterfaces
-%defattr(-,root,root)
-%_kde_libdir/libkontactinterfaces.so.*
 
 #-----------------------------------------------------------------------------
 
@@ -1629,8 +1497,6 @@ Requires: %libkitchensyncprivate = %epoch:%version
 Requires: %libqopensync = %epoch:%version
 %endif
 Requires: %libknodecommon = %epoch:%version
-Requires: %libkabinterfaces = %epoch:%version
-Requires: %libkalarm_resources = %epoch:%version
 Requires: %libkmailprivate = %epoch:%version
 Requires: %libkorg_stdprinting = %epoch:%version
 Requires: %libkorganizerprivate = %epoch:%version
@@ -1642,27 +1508,21 @@ Requires: %libkpilot = %epoch:%version
 %endif
 Requires: %libkabc_groupdav = %epoch:%version
 Requires: %libkabc_slox = %epoch:%version
-Requires: %libkabc_xmlrpc = %epoch:%version
 Requires: %libkabckolab = %epoch:%version
 Requires: %libkcal_groupdav = %epoch:%version
 Requires: %libkcal_resourceremote = %epoch:%version
 Requires: %libkcal_slox = %epoch:%version
-Requires: %libkcal_xmlrpc = %epoch:%version
 Requires: %libkcalkolab = %epoch:%version
 Requires: %libkgroupwarebase = %epoch:%version
 Requires: %libkgroupwaredav = %epoch:%version
-Requires: %libknotes_xmlrpc = %epoch:%version
 Requires: %libknoteskolab = %epoch:%version
 Requires: %libkslox = %epoch:%version
-Requires: %libkabcommon = %epoch:%version
 Requires: %libkleo = %epoch:%version
-Requires: %libknotesscalix = %epoch:%version
-Requires: %libkabcscalix  = %epoch:%version
-Requires: %libkcalscalix  = %epoch:%version
 Requires: %libgwsoap = %epoch:%version
 Requires: %libkabcgroupwise = %epoch:%version
 Requires: %libkcalgroupwise = %epoch:%version
-Requires: %libkontactinterfaces = %epoch:%version
+Requires: %libmessagelist = %epoch:%version
+Requires: %libmessagecore = %epoch:%version
 %if %mdkversion >= 200910
 Obsoletes: kdepim-devel < 1:3.5.10-2
 Obsoletes: kdepim-devel-doc < 1:3.5.10-2
@@ -1685,46 +1545,9 @@ based on kdepim.
 #----------------------------------------------------------------------
 
 %prep
-%setup -q -n kdepim-%version
-%patch0 -p0
-%patch1 -p0
-
-%patch100 -p0
-%patch101 -p0
-%patch102 -p0
-%patch103 -p0
-%patch104 -p0
-%patch105 -p0
-%patch106 -p0
-%patch107 -p0
-%patch108 -p0
-%patch109 -p0
-%patch110 -p0
-%patch111 -p0
-%patch112 -p0
-%patch113 -p0
-%patch114 -p0
-%patch115 -p0
-%patch116 -p0
-%patch117 -p0
-%patch118 -p0
-%patch119 -p0
-%patch120 -p0
-%patch121 -p0
-%patch122 -p0
-%patch123 -p0
-%patch124 -p0
-%patch125 -p0
-%patch126 -p0
-%patch127 -p0
-%patch128 -p0
-%patch129 -p0
-%patch130 -p0
-%patch131 -p0
-
-# Remove extra icons already in oxygen
-rm -f kmail/icons/ox*
-rm -f kmail/icons/small/ox*
+%setup -q -n kdepim-%version%kde_snapshot
+#%patch0 -p0
+#%patch1 -p0
 
 %build
 %cmake_kde4

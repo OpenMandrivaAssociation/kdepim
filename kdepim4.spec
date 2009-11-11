@@ -9,7 +9,7 @@
 Name: kdepim4
 Summary: K Desktop Environment
 Version: 4.3.73
-Release: %mkrel 1
+Release: %mkrel 2
 Epoch: 2
 Group: Graphical desktop/KDE
 License: GPL
@@ -18,6 +18,7 @@ Source: ftp://ftp.kde.org/pub/kde/stable/%version/src/kdepim-%version%kde_snapsh
 # Mandriva "customization" patches
 Patch0:   kdepim-4.2.95-kmail-first-message.patch 
 Patch1:   kdepim-4.3.1-fix-desktop-files.patch
+Patch2:   kdepim-4.3.73-enable-kalarm.patch
 # Patches from branch
 
 Buildroot: %_tmppath/%name-%version-%release-root
@@ -54,6 +55,7 @@ BuildRequires: libopensync-devel >= 0.30
 BuildRequires: akonadi-devel
 #FIXME: Remove later
 BuildRequires: kdepimlibs4-core
+BuildRequires: akonadi-devel
 Suggests:      akonadi-common
 Suggests:      kleopatra
 Suggests:      akregator
@@ -1548,7 +1550,7 @@ based on kdepim.
 %setup -q -n kdepim-%version%kde_snapshot
 #%patch0 -p0
 #%patch1 -p0
-
+%patch2 -p1
 %build
 %cmake_kde4
 

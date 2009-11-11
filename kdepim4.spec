@@ -18,7 +18,6 @@ Source: ftp://ftp.kde.org/pub/kde/stable/%version/src/kdepim-%version%kde_snapsh
 # Mandriva "customization" patches
 Patch0:   kdepim-4.2.95-kmail-first-message.patch 
 Patch1:   kdepim-4.3.1-fix-desktop-files.patch
-Patch2:   kdepim-4.3.73-enable-kalarm.patch
 # Patches from branch
 
 Buildroot: %_tmppath/%name-%version-%release-root
@@ -1550,7 +1549,7 @@ based on kdepim.
 %setup -q -n kdepim-%version%kde_snapshot
 #%patch0 -p0
 #%patch1 -p0
-%patch2 -p1
+
 %build
 %cmake_kde4
 

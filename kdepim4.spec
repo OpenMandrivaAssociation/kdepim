@@ -4,12 +4,12 @@
 %define with_kitchensync 0
 %{?_with_kitchensync: %{expand: %%global with_kitchensync 1}}
 
-%define kde_snapshot svn1040395
+%define kde_snapshot svn1048496
 
 Name: kdepim4
 Summary: K Desktop Environment
-Version: 4.3.73
-Release: %mkrel 2
+Version: 4.3.75
+Release: %mkrel 1
 Epoch: 2
 Group: Graphical desktop/KDE
 License: GPL
@@ -72,6 +72,7 @@ Suggests: kontact
 Suggests: korganizer
 Suggests: ksendemail
 Suggests: kjots
+Suggests: nepomuk-email-feeder
 %if %{with_kpilot}
 Suggests: kpilot
 %else
@@ -1476,6 +1477,22 @@ Conflicts: kontact < 2:4.0.83-2
 %files -n ksendemail
 %defattr(-,root,root)
 %_kde_bindir/ksendemail
+
+#-----------------------------------------------------------------------------
+
+%package -n nepomuk-email-feeder
+Summary: %{name} nepomuk-email-feeder
+Group: Graphical desktop/KDE
+Requires: %name-core = %epoch:%version
+Conflicts: kontact < 2:4.0.83-2
+
+%description -n nepomuk-email-feeder
+%{name} nepomuk-email-feeder.
+
+%files -n nepomuk-email-feeder 
+%defattr(-,root,root)
+%_kde_bindir/akonadi_nepomuk_email_feeder
+%_kde_datadir/akonadi/agents/nepomukemailfeeder.desktop
 
 #-----------------------------------------------------------------------------
 

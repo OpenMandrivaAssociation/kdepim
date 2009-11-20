@@ -9,7 +9,7 @@
 Name: kdepim4
 Summary: K Desktop Environment
 Version: 4.3.75
-Release: %mkrel 1
+Release: %mkrel 2
 Epoch: 2
 Group: Graphical desktop/KDE
 License: GPL
@@ -19,7 +19,7 @@ Source: ftp://ftp.kde.org/pub/kde/stable/%version/src/kdepim-%version%kde_snapsh
 Patch0:   kdepim-4.2.95-kmail-first-message.patch 
 Patch1:   kdepim-4.3.1-fix-desktop-files.patch
 # Patches from branch
-
+Patch100:      kdepim-4.3.75-fix-libmessageviewer-major.patch
 Buildroot: %_tmppath/%name-%version-%release-root
 BuildRequires: kdelibs4-devel >= 2:4.2.98
 BuildRequires: kdelibs4-experimental-devel >= 2:4.2.98
@@ -1496,6 +1496,21 @@ Conflicts: kontact < 2:4.0.83-2
 
 #-----------------------------------------------------------------------------
 
+%define libmessageviewer %mklibname messageviewer 0
+
+%package -n %libmessageviewer
+Summary: KDE 4 library
+Group: System/Libraries
+
+%description -n %libmessageviewer
+KDE 4 library.
+
+%files -n %libmessageviewer
+%defattr(-,root,root)
+%_kde_libdir/libmessageviewer.so.*
+
+#-----------------------------------------------------------------------------
+
 %package devel
 Summary: Devel stuff for %name
 Group: Development/KDE and Qt
@@ -1541,6 +1556,7 @@ Requires: %libkabcgroupwise = %epoch:%version
 Requires: %libkcalgroupwise = %epoch:%version
 Requires: %libmessagelist = %epoch:%version
 Requires: %libmessagecore = %epoch:%version
+Requires: %libmessageviewer = %epoch:%version
 %if %mdkversion >= 200910
 Obsoletes: kdepim-devel < 1:3.5.10-2
 Obsoletes: kdepim-devel-doc < 1:3.5.10-2
@@ -1566,7 +1582,7 @@ based on kdepim.
 %setup -q -n kdepim-%version%kde_snapshot
 #%patch0 -p0
 #%patch1 -p0
-
+%patch100 -p0
 %build
 %cmake_kde4
 

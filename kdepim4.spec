@@ -4,22 +4,31 @@
 %define with_kitchensync 0
 %{?_with_kitchensync: %{expand: %%global with_kitchensync 1}}
 
-%define kde_snapshot svn1048496
+%define branch 1
+%{?_branch: %{expand: %%global branch 1}}
+
+
+%if %branch
+%define kde_snapshot svn1053190
+%endif
 
 Name: kdepim4
 Summary: K Desktop Environment
-Version: 4.3.75
-Release: %mkrel 2
+Version: 4.3.77
+Release: %mkrel 1
 Epoch: 2
 Group: Graphical desktop/KDE
 License: GPL
 URL: http://pim.kde.org
+%if %branch
 Source: ftp://ftp.kde.org/pub/kde/stable/%version/src/kdepim-%version%kde_snapshot.tar.bz2
+%else
+Source: ftp://ftp.kde.org/pub/kde/stable/%version/src/kdepim-%version.tar.bz2
+%endif
 # Mandriva "customization" patches
 Patch0:   kdepim-4.2.95-kmail-first-message.patch 
 Patch1:   kdepim-4.3.1-fix-desktop-files.patch
 # Patches from branch
-Patch100:      kdepim-4.3.75-fix-libmessageviewer-major.patch
 Buildroot: %_tmppath/%name-%version-%release-root
 BuildRequires: kdelibs4-devel >= 2:4.2.98
 BuildRequires: kdelibs4-experimental-devel >= 2:4.2.98
@@ -1579,10 +1588,16 @@ based on kdepim.
 #----------------------------------------------------------------------
 
 %prep
+
+%if %branch
 %setup -q -n kdepim-%version%kde_snapshot
+%else
+%setup -q -n kdepim-%version
+%endif
+
 #%patch0 -p0
 #%patch1 -p0
-%patch100 -p0
+
 %build
 %cmake_kde4
 

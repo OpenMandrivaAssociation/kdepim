@@ -663,6 +663,56 @@ or you can schedule commands to be executed or emails to be sent.
 
 %files -n kalarm
 %defattr(-,root,root)
+%_kde_bindir/kalarm
+%_kde_bindir/kalarmautostart
+%_kde_libdir/kde4/kalarm_local.so
+%_kde_libdir/kde4/kalarm_localdir.so
+%_kde_libdir/kde4/kalarm_remote.so
+%_kde_datadir/applications/kde4/kalarm.desktop
+%_kde_appsdir/kalarm
+%_kde_appsdir/kconf_update/kalarm-1.2.1-general.pl
+%_kde_appsdir/kconf_update/kalarm-1.9.5-defaults.pl
+%_kde_appsdir/kconf_update/kalarm-2.0.2-general.pl
+%_kde_appsdir/kconf_update/kalarm-2.1.5-general.pl
+%_kde_appsdir/kconf_update/kalarm-version.pl
+%_kde_appsdir/kconf_update/kalarm.upd
+%_kde_datadir/autostart/kalarm.autostart.desktop
+%_kde_datadir/config.kcfg/kalarmconfig.kcfg
+%_kde_docdir/HTML/en/kalarm/alarmmessage.png
+%_kde_datadir/kde4/services/kresources/alarms/local.desktop
+%_kde_datadir/kde4/services/kresources/alarms/localdir.desktop
+%_kde_datadir/kde4/services/kresources/alarms/remote.desktop
+%_kde_datadir/kde4/services/kresources/kalarm_manager.desktop
+
+#-----------------------------------------------------------------------------
+
+%define libkalarm_calendar %mklibname kalarm_calendar 4
+
+%package -n %libkalarm_calendar
+Summary: KDE 4 library
+Group: System/Libraries
+
+%description -n %libkalarm_calendar
+KDE 4 library.
+
+%files -n %libkalarm_calendar
+%defattr(-,root,root)
+%_kde_libdir/libkalarm_calendar.so.*
+
+#-----------------------------------------------------------------------------
+
+%define libkalarm_resources %mklibname kalarm_resources 4
+
+%package -n %libkalarm_resources
+Summary: KDE 4 library
+Group: System/Libraries
+
+%description -n %libkalarm_resources
+KDE 4 library.
+
+%files -n %libkalarm_resources
+%defattr(-,root,root)
+%_kde_libdir/libkmailprivate.so.*
 
 #-----------------------------------------------------------------------------
 
@@ -1566,6 +1616,8 @@ Requires: %libkcalgroupwise = %epoch:%version
 Requires: %libmessagelist = %epoch:%version
 Requires: %libmessagecore = %epoch:%version
 Requires: %libmessageviewer = %epoch:%version
+Requires: %libkalarm_calendar = %epoch:%version
+Requires: %libkalarm_resources = %epoch:%version
 %if %mdkversion >= 200910
 Obsoletes: kdepim-devel < 1:3.5.10-2
 Obsoletes: kdepim-devel-doc < 1:3.5.10-2

@@ -678,7 +678,7 @@ or you can schedule commands to be executed or emails to be sent.
 %_kde_appsdir/kconf_update/kalarm.upd
 %_kde_datadir/autostart/kalarm.autostart.desktop
 %_kde_datadir/config.kcfg/kalarmconfig.kcfg
-%_kde_docdir/HTML/en/kalarm/alarmmessage.png
+%doc %_kde_docdir/HTML/en/kalarm
 %_kde_datadir/kde4/services/kresources/alarms/local.desktop
 %_kde_datadir/kde4/services/kresources/alarms/localdir.desktop
 %_kde_datadir/kde4/services/kresources/alarms/remote.desktop
@@ -712,7 +712,7 @@ KDE 4 library.
 
 %files -n %libkalarm_resources
 %defattr(-,root,root)
-%_kde_libdir/libkmailprivate.so.*
+%_kde_libdir/libkalarm_resources.so.*
 
 #-----------------------------------------------------------------------------
 

@@ -1,4 +1,4 @@
-%define with_kpilot 1
+%define with_kpilot 0
 %{?_with_kpilot: %{expand: %%global with_kpilot 1}}
 
 %define with_kitchensync 0
@@ -64,6 +64,7 @@ BuildRequires: akonadi-devel
 #FIXME: Remove later
 BuildRequires: kdepimlibs4-core
 BuildRequires: akonadi-devel
+BuildRequires: shared-desktop-ontologies-devel
 Suggests:      akonadi-common
 Suggests:      kleopatra
 Suggests:      akregator
@@ -578,6 +579,7 @@ The KDE addressbook application.
 %_kde_libdir/kde4/kcm_ldap.so
 %_kde_libdir/kde4/kaddressbookpart.so
 %_kde_libdir/kde4/kontact_kaddressbookplugin.so
+%_kde_appsdir/akonadi/contact/editorpageplugins/cryptopageplugin.so
 %_kde_datadir/kde4/services/kaddressbookpart.desktop
 %_kde_datadir/kde4/services/kontact/kaddressbookplugin.desktop
 %_kde_datadir/kde4/services/kcmldap.desktop
@@ -1055,8 +1057,8 @@ Citadel or OpenGroupware.org.
 %_kde_libdir/kde4/kontact_todoplugin.so
 %_kde_datadir/autostart/korgac.desktop
 %_kde_datadir/config.kcfg/korganizer.kcfg
-%_kde_datadir/config.kcfg/todosettings.kcfg
-%_kde_datadir/config.kcfg/calendarsettings.kcfg
+#%_kde_datadir/config.kcfg/todosettings.kcfg
+#%_kde_datadir/config.kcfg/calendarsettings.kcfg
 %_kde_datadir/config/korganizer.knsrc
 %_kde_datadir/kde4/services/korganizer*
 %_kde_datadir/kde4/services/webcal.protocol

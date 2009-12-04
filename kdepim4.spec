@@ -4,7 +4,7 @@
 %define with_kitchensync 0
 %{?_with_kitchensync: %{expand: %%global with_kitchensync 1}}
 
-%define branch 1
+%define branch 0
 %{?_branch: %{expand: %%global branch 1}}
 
 
@@ -14,7 +14,7 @@
 
 Name: kdepim4
 Summary: K Desktop Environment
-Version: 4.3.77
+Version: 4.3.80
 Release: %mkrel 1
 Epoch: 2
 Group: Graphical desktop/KDE

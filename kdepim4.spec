@@ -65,6 +65,7 @@ BuildRequires: akonadi-devel
 BuildRequires: kdepimlibs4-core
 BuildRequires: akonadi-devel
 BuildRequires: shared-desktop-ontologies-devel
+BuildRequires: libindicate-qt-devel
 Suggests:      akonadi-common
 Suggests:      kleopatra
 Suggests:      akregator

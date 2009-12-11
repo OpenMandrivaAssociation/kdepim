@@ -12,7 +12,7 @@
 Name: kdepim4
 Summary: K Desktop Environment
 Version: 4.3.80
-Release: %mkrel 1
+Release: %mkrel 2
 Epoch: 2
 Group: Graphical desktop/KDE
 License: GPL
@@ -1528,9 +1528,6 @@ Requires: %libkorganizerprivate = %epoch:%version
 Requires: %libkorganizer_calendar = %epoch:%version
 Requires: %libkorganizer_eventviewer = %epoch:%version
 Requires: %libkorganizer_interfaces = %epoch:%version
-%if %{with_kpilot}
-Requires: %libkpilot = %epoch:%version
-%endif
 Requires: %libkabc_groupdav = %epoch:%version
 Requires: %libkabc_slox = %epoch:%version
 Requires: %libkabckolab = %epoch:%version
@@ -1563,10 +1560,6 @@ based on kdepim.
 %files devel
 %defattr(-,root,root)
 %_kde_libdir/*.so
-%if %{with_kpilot}
-%exclude %_kde_libdir/libkpilot_conduit_base.so
-%exclude %_kde_libdir/libkpilot_akonadibase.so
-%endif
 %_kde_prefix/include/*
 %_kde_datadir/dbus-1/interfaces/*
 

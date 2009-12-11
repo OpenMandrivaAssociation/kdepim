@@ -1,6 +1,3 @@
-%define with_kpilot 0
-%{?_with_kpilot: %{expand: %%global with_kpilot 1}}
-
 %define with_kitchensync 0
 %{?_with_kitchensync: %{expand: %%global with_kitchensync 1}}
 
@@ -84,11 +81,7 @@ Suggests: korganizer
 Suggests: ksendemail
 Suggests: kjots
 Suggests: nepomuk-email-feeder
-%if %{with_kpilot}
-Suggests: kpilot
-%else
 Obsoletes: kpilot < %epoch:%version
-%endif
 Obsoletes: korn <= 2:4.1.0
 %if %mdkversion >= 200910
 Obsoletes: kdepim-korn < 1:3.5.10-2
@@ -108,14 +101,14 @@ Information Management applications for the K Desktop Environment.
            kalarm.
 	- kaplan: A shell for the PIM apps, still experimental.
 	- ktimetracker: Time tracker.
-%if %{with_kitchensync}
-	- kitchensync: Synchronisation framework, still under heavy development.
-%endif
 	- kfile-plugins: vCard KFIleItem plugin.
 	- knotes: yellow notes application
 	- konsolecalendar: Command line tool for accessing calendar files.
 	- kmail: universal mail client
 	- kmailcvt: converst addressbooks to kmail format
+%if %{with_kitchensync}
+    - kitchensync: Synchronisation framework, still under heavy development.
+%endif
 
 %files
 
@@ -1095,68 +1088,6 @@ KDE 4 library.
 %files -n %libkorganizerprivate
 %defattr(-,root,root)
 %_kde_libdir/libkorganizerprivate.so.*
-
-#-----------------------------------------------------------------------------
-
-%if %{with_kpilot}
-
-%define libkpilot %mklibname kpilot 5
-
-%package -n %libkpilot
-Summary: KDE 4 library
-Group: System/Libraries
-Obsoletes: %{mklibname kdepim42-common} < 1:3.93.0-1
-Obsoletes: %{_lib}kdepim42-kpilot < 1:3.93.0-1
-
-%description -n %libkpilot
-KDE 4 library.
-
-%files -n %libkpilot
-%defattr(-,root,root)
-%_kde_libdir/libkpilot.so.*
-
-#-----------------------------------------------------------------------------
-
-%package -n kpilot
-Summary: Sync PalmOS based handhelds with a machine
-Group: Graphical desktop/KDE
-Requires: %name-core = %epoch:%version
-Obsoletes: %name-kpilot < 1:3.93.0-1
-Obsoletes: kde4-kpilot < 2:4.0.68
-%if %mdkversion >= 200910
-Obsoletes: kdepim-kpilot < 1:3.5.10-2
-%endif
-Conflicts: %name-devel < 2:4.1.71-2
-Provides: kde4-kpilot = %epoch:%version
-
-%description -n kpilot
-KPilot is software for syncing PalmOS based handhelds such as the 3Com Palm
-Pilot with a machine running some flavor of UNIX.
-
-%files -n kpilot
-%defattr(-,root,root)
-%_kde_bindir/kpilot
-%_kde_bindir/kpilotDaemon
-%_kde_datadir/applications/kde4/kpilot.desktop
-%_kde_datadir/applications/kde4/kpilotdaemon.desktop
-%_kde_appsdir/kconf_update/kpilot.upd
-%_kde_appsdir/kpilot
-%_kde_appsdir/akonadi/contact/editorpageplugins/cryptopageplugin.so
-%_kde_datadir/config.kcfg/kpilot.kcfg
-%_kde_datadir/config.kcfg/kpilotlib.kcfg
-%_kde_datadir/config.kcfg/memofileconduit.kcfg
-%_kde_datadir/config.kcfg/timeconduit.kcfg
-%_kde_datadir/config.kcfg/contactssettings.kcfg
-%_kde_datadir/kde4/services/kpilot_config.desktop
-%_kde_datadir/kde4/services/*-conduit* 
-%_kde_datadir/kde4/services/time_conduit.desktop
-%_kde_datadir/kde4/servicetypes/kpilotconduit.desktop
-%_kde_libdir/kde4/kcm_kpilot.so
-%_kde_libdir/kde4/kpilot_*
-%_kde_libdir/libkpilot_conduit_base.so
-%_kde_libdir/libkpilot_akonadibase.so
-%_kde_docdir/HTML/en/kpilot
-%endif # with_kpilot
 
 #-----------------------------------------------------------------------------
 

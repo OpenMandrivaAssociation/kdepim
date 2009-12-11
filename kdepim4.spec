@@ -95,7 +95,6 @@ Obsoletes: ktnef
 Information Management applications for the K Desktop Environment.
 	- kaddressbook: The KDE addressbook application.
 	- korganizer: a calendar-of-events and todo-list manager
-	- kpilot: to sync with your PalmPilot
 	- kalarm: gui for setting up personal alarm/reminder messages
 	- kalarmd: personal alarm/reminder messages daemon, shared by korganizer and
            kalarm.

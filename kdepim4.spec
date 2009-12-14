@@ -12,7 +12,7 @@
 Name: kdepim4
 Summary: K Desktop Environment
 Version: 4.3.80
-Release: %mkrel 2
+Release: %mkrel 3
 Epoch: 2
 Group: Graphical desktop/KDE
 License: GPL
@@ -62,7 +62,8 @@ BuildRequires: akonadi-devel
 BuildRequires: kdepimlibs4-core
 BuildRequires: akonadi-devel
 BuildRequires: shared-desktop-ontologies-devel
-BuildRequires: libindicate-qt-devel
+#(nl) Do not enable back w/o kdepim agreement
+#BuildRequires: libindicate-qt-devel
 Suggests:      akonadi-common
 Suggests:      kleopatra
 Suggests:      akregator

@@ -11,8 +11,8 @@
 
 Name: kdepim4
 Summary: K Desktop Environment
-Version: 4.3.80
-Release: %mkrel 3
+Version: 4.3.85
+Release: %mkrel 1
 Epoch: 2
 Group: Graphical desktop/KDE
 License: GPL
@@ -25,6 +25,7 @@ Source: ftp://ftp.kde.org/pub/kde/stable/%version/src/kdepim-%version.tar.bz2
 # Mandriva "customization" patches
 Patch0:   kdepim-4.2.95-kmail-first-message.patch 
 Patch1:   kdepim-4.3.1-fix-desktop-files.patch
+Patch2:   kdepim-4.3.85-disable-nepomuk-feeder.patch
 # Patches from branch
 Buildroot: %_tmppath/%name-%version-%release-root
 BuildRequires: kdelibs4-devel >= 2:4.2.98
@@ -130,19 +131,24 @@ Conflicts: kdepim-kaddressbook < 1:3.5.9-10mdv
 Obsoletes: kdepim-common < 1:3.5.10-2
 %endif
 Obsoletes: kode < 2:4.3
+Conflicts: akonadi-kde < 2:4.3.85
 
 %description core
 Core files from kdepim.
 
 %files core
 %defattr(-,root,root,-)
+%_kde_bindir/akonadiconsole
+%_kde_datadir/applications/kde4/akonadiconsole.desktop
+%_kde_appsdir/akonadiconsole/akonadiconsoleui.rc
 %_kde_libdir/strigi/*
 %_kde_iconsdir/*/*/*/*
 %dir %_kde_datadir/kde4/services/kontact
 
 #-----------------------------------------------------------------------------
 
-%define libgwsoap %mklibname gwsoap 4
+%define gwsoap_major 4
+%define libgwsoap %mklibname gwsoap %{gwsoap_major}
 
 %package -n %libgwsoap
 Summary: KDE 4 library
@@ -153,11 +159,12 @@ KDE 4 library.
 
 %files -n %libgwsoap
 %defattr(-,root,root)
-%_kde_libdir/libgwsoap.so.*
+%_kde_libdir/libgwsoap.so.%{gwsoap_major}*
 
 #-----------------------------------------------------------------------------
 
-%define libkaddressbookprivate %mklibname kaddressbookprivate 4
+%define kaddressbookprivate_major 4
+%define libkaddressbookprivate %mklibname kaddressbookprivate %{kaddressbookprivate_major}
 
 %package -n %libkaddressbookprivate
 Summary: KDE 4 library
@@ -169,11 +176,12 @@ KDE 4 library.
 
 %files -n %libkaddressbookprivate
 %defattr(-,root,root)
-%_kde_libdir/libkaddressbookprivate.so.*
+%_kde_libdir/libkaddressbookprivate.so.%{kaddressbookprivate_major}*
 
 #-----------------------------------------------------------------------------
 
-%define libkontactprivate %mklibname kontactprivate 4
+%define kontactprivate_major 4
+%define libkontactprivate %mklibname kontactprivate %{kontactprivate_major}
 
 %package -n %libkontactprivate
 Summary: KDE 4 library
@@ -185,11 +193,12 @@ KDE 4 library.
 
 %files -n %libkontactprivate
 %defattr(-,root,root)
-%_kde_libdir/libkontactprivate.so.*
+%_kde_libdir/libkontactprivate.so.%{kontactprivate_major}*
 
 #-----------------------------------------------------------------------------
 
-%define libkorganizer_core %mklibname korganizer_core 4
+%define korganizer_core_major 4
+%define libkorganizer_core %mklibname korganizer_core %{korganizer_core_major}
 
 %package -n %libkorganizer_core
 Summary: KDE 4 library
@@ -200,7 +209,7 @@ KDE 4 library.
 
 %files -n %libkorganizer_core
 %defattr(-,root,root)
-%_kde_libdir/libkorganizer_core.so.*
+%_kde_libdir/libkorganizer_core.so.%{korganizer_core_major}*
 
 #-----------------------------------------------------------------------------
 
@@ -228,7 +237,8 @@ KDE 4 library.
 
 #-----------------------------------------------------------------------------
 
-%define libkpgp %mklibname kpgp 4
+%define kpgp_major 4
+%define libkpgp %mklibname kpgp %{kpgp_major}
 
 %package -n %libkpgp
 Summary: KDE 4 library
@@ -240,13 +250,15 @@ KDE 4 library.
 
 %files -n %libkpgp
 %defattr(-,root,root)
-%_kde_libdir/libkpgp.so.*
+%_kde_libdir/libkpgp.so.%{kpgp_major}*
+#TODO: move away from here
 %_kde_appsdir/kconf_update/kpgp-3.1-upgrade-address-data.pl
 %_kde_appsdir/kconf_update/kpgp.upd
 
 #-----------------------------------------------------------------------------
 
-%define libkleopatraclientgui %mklibname kleopatraclientgui 4
+%define kleopatraclientgui_major 0 
+%define libkleopatraclientgui %mklibname kleopatraclientgui %{kleopatraclientgui_major}
 
 %package -n %libkleopatraclientgui
 Summary: KDE 4 library
@@ -258,11 +270,12 @@ KDE 4 library.
 
 %files -n %libkleopatraclientgui
 %defattr(-,root,root)
-%_kde_libdir/libkleopatraclientgui.so.*
+%_kde_libdir/libkleopatraclientgui.so.%{kleopatraclientgui_major}*
 
 #-----------------------------------------------------------------------------
 
-%define libkleopatraclientcore %mklibname kleopatraclientcore 4
+%define kleopatraclientcore_major 0
+%define libkleopatraclientcore %mklibname kleopatraclientcore %{kleopatraclientcore_major}
 
 %package -n %libkleopatraclientcore
 Summary: KDE 4 library
@@ -274,7 +287,7 @@ KDE 4 library.
 
 %files -n %libkleopatraclientcore
 %defattr(-,root,root)
-%_kde_libdir/libkleopatraclientcore.so.*
+%_kde_libdir/libkleopatraclientcore.so.%{kleopatraclientcore_major}*
 
 #-----------------------------------------------------------------------------
 
@@ -307,7 +320,8 @@ KDE Certificate Manager
 
 #-----------------------------------------------------------------------------
 
-%define libksieve %mklibname ksieve 4
+%define ksieve_major 4
+%define libksieve %mklibname ksieve %{ksieve_major}
 
 %package -n %libksieve
 Summary: KDE 4 library
@@ -319,11 +333,12 @@ KDE 4 library.
 
 %files -n %libksieve
 %defattr(-,root,root)
-%_kde_libdir/libksieve.so.*
+%_kde_libdir/libksieve.so.%{ksieve_major}*
 
 #-----------------------------------------------------------------------------
 
-%define libmimelib %mklibname mimelib 4
+%define mimelib_major 4
+%define libmimelib %mklibname mimelib %{mimelib_major}
 
 %package -n %libmimelib
 Summary: KDE 4 library
@@ -335,11 +350,12 @@ KDE 4 library.
 
 %files -n %libmimelib
 %defattr(-,root,root)
-%_kde_libdir/libmimelib.so.*
+%_kde_libdir/libmimelib.so.%{mimelib_major}*
 
 #-----------------------------------------------------------------------------
 
-%define libakregatorinterfaces %mklibname akregatorinterfaces 4
+%define akregatorinterfaces_major 4
+%define libakregatorinterfaces %mklibname akregatorinterfaces %{akregatorinterfaces_major}
 
 %package -n %libakregatorinterfaces
 Summary: KDE 4 library
@@ -352,11 +368,12 @@ KDE 4 library.
 
 %files -n %libakregatorinterfaces
 %defattr(-,root,root)
-%_kde_libdir/libakregatorinterfaces.so.*
+%_kde_libdir/libakregatorinterfaces.so.%{akregatorinterfaces_major}*
 
 #-----------------------------------------------------------------------------
 
-%define libakregatorprivate %mklibname akregatorprivate 4
+%define akregatorprivate_major 4
+%define libakregatorprivate %mklibname akregatorprivate %{akregatorprivate_major}
 
 %package -n %libakregatorprivate
 Summary: KDE 4 library
@@ -413,7 +430,8 @@ easy news reading.
 
 %if %{with_kitchensync}
 
-%define libkitchensyncprivate %mklibname kitchensyncprivate 4.2.0
+%define kitchensyncprivate_major 4
+%define libkitchensyncprivate %mklibname kitchensyncprivate %{kitchensyncprivate_major}
 
 %package -n %libkitchensyncprivate
 Summary: KDE 4 library
@@ -425,11 +443,12 @@ KDE 4 library.
 
 %files -n %libkitchensyncprivate
 %defattr(-,root,root)
-%_kde_libdir/libkitchensyncprivate.so.*
+%_kde_libdir/libkitchensyncprivate.so.%{kitchensyncprivate_major}*
 
 #-----------------------------------------------------------------------------
 
-%define libqopensync %mklibname qopensync 4.2.0
+%define qopensync_major 4
+%define libqopensync %mklibname qopensync %{qopensync_major}
 
 %package -n %libqopensync
 Summary: KDE 4 library
@@ -441,7 +460,7 @@ KDE 4 library.
 
 %files -n %libqopensync
 %defattr(-,root,root)
-%_kde_libdir/libqopensync.so.*
+%_kde_libdir/libqopensync.so.%{qopensync_major}*
 
 #-----------------------------------------------------------------------------
 
@@ -468,7 +487,8 @@ The KDE Synchronization Tool
 
 #-----------------------------------------------------------------------------
 
-%define libknodecommon %mklibname knodecommon 4
+%define knodecommon_major 4
+%define libknodecommon %mklibname knodecommon %{knodecommon_major}
 
 %package -n %libknodecommon
 Summary: KDE 4 library
@@ -481,7 +501,7 @@ KDE 4 library.
 
 %files -n %libknodecommon
 %defattr(-,root,root)
-%_kde_libdir/libknodecommon.so.*
+%_kde_libdir/libknodecommon.so.%{knodecommon_major}*
 
 #-----------------------------------------------------------------------------
 
@@ -526,22 +546,6 @@ leafnode also usable with dial-up connections.
 %_kde_libdir/kde4/knodepart.so
 %_kde_libdir/kde4/kontact_knodeplugin.so
 %_kde_docdir/HTML/en/knode
-
-#-----------------------------------------------------------------------------
-
-%define libkabinterfaces %mklibname kabinterfaces 4
-
-%package -n %libkabinterfaces
-Summary: KDE 4 library
-Group: System/Libraries
-Obsoletes: %{mklibname kdepim42-common} < 1:3.93.0-1
-
-%description -n %libkabinterfaces
-KDE 4 library.
-
-%files -n %libkabinterfaces
-%defattr(-,root,root)
-#%_kde_libdir/libkabinterfaces.so.*
 
 #-----------------------------------------------------------------------------
 
@@ -628,7 +632,8 @@ intervals.
 
 #-----------------------------------------------------------------------------
 
-%define libmessagecore %mklibname messagecore 4
+%define messagecore_major 4
+%define libmessagecore %mklibname messagecore %{messagecore_major}
 
 %package -n %libmessagecore
 Summary: KDE 4 library
@@ -639,7 +644,7 @@ KDE 4 library.
 
 %files -n %libmessagecore
 %defattr(-,root,root)
-%_kde_libdir/libmessagecore.so.*
+%_kde_libdir/libmessagecore.so.%{messagecore_major}*
 
 #-----------------------------------------------------------------------------
 
@@ -682,7 +687,8 @@ or you can schedule commands to be executed or emails to be sent.
 
 #-----------------------------------------------------------------------------
 
-%define libkalarm_calendar %mklibname kalarm_calendar 4
+%define kalarm_calendar_major 4 
+%define libkalarm_calendar %mklibname kalarm_calendar %{kalarm_calendar_major} 
 
 %package -n %libkalarm_calendar
 Summary: KDE 4 library
@@ -693,11 +699,12 @@ KDE 4 library.
 
 %files -n %libkalarm_calendar
 %defattr(-,root,root)
-%_kde_libdir/libkalarm_calendar.so.*
+%_kde_libdir/libkalarm_calendar.so.%{kalarm_calendar_major}*
 
 #-----------------------------------------------------------------------------
 
-%define libkalarm_resources %mklibname kalarm_resources 4
+%define kalarm_resources_major 4
+%define libkalarm_resources %mklibname kalarm_resources %{kalarm_resources_major}
 
 %package -n %libkalarm_resources
 Summary: KDE 4 library
@@ -708,7 +715,7 @@ KDE 4 library.
 
 %files -n %libkalarm_resources
 %defattr(-,root,root)
-%_kde_libdir/libkalarm_resources.so.*
+%_kde_libdir/libkalarm_resources.so.%{kalarm_resources_major}*
 
 #-----------------------------------------------------------------------------
 
@@ -751,7 +758,8 @@ of your day is spent playing Doom or reading Slashdot.
 
 #-----------------------------------------------------------------------------
 
-%define libkmailprivate %mklibname kmailprivate 4
+%define kmailprivate_major 4
+%define libkmailprivate %mklibname kmailprivate %{kmailprivate_major}
 
 %package -n %libkmailprivate
 Summary: KDE 4 library
@@ -763,7 +771,7 @@ KDE 4 library.
 
 %files -n %libkmailprivate
 %defattr(-,root,root)
-%_kde_libdir/libkmailprivate.so.*
+%_kde_libdir/libkmailprivate.so.%{kmailprivate_major}*
 
 #-----------------------------------------------------------------------------
 
@@ -947,7 +955,8 @@ technology, existing applications are seamlessly integrated into one.
 
 #-----------------------------------------------------------------------------
 
-%define libkorg_stdprinting %mklibname korg_stdprinting 4
+%define korg_stdprinting_major 4
+%define libkorg_stdprinting %mklibname korg_stdprinting %{korg_stdprinting_major}
 
 %package -n %libkorg_stdprinting
 Summary: KDE 4 library
@@ -959,11 +968,12 @@ KDE 4 library.
 
 %files -n %libkorg_stdprinting
 %defattr(-,root,root)
-%_kde_libdir/libkorg_stdprinting.so.*
+%_kde_libdir/libkorg_stdprinting.so.%{korg_stdprinting_major}*
 
 #-----------------------------------------------------------------------------
 
-%define libkorganizer_calendar %mklibname korganizer_calendar 4
+%define korganizer_calendar_major 4
+%define libkorganizer_calendar %mklibname korganizer_calendar %{korganizer_calendar_major}
 
 %package -n %libkorganizer_calendar
 Summary: KDE 4 library
@@ -975,11 +985,12 @@ KDE 4 library.
 
 %files -n %libkorganizer_calendar
 %defattr(-,root,root)
-%_kde_libdir/libkorganizer_calendar.so.*
+%_kde_libdir/libkorganizer_calendar.so.%{korganizer_calendar_major}*
 
 #-----------------------------------------------------------------------------
 
-%define libkorganizer_eventviewer %mklibname korganizer_eventviewer 4
+%define korganizer_eventviewer_major 4
+%define libkorganizer_eventviewer %mklibname korganizer_eventviewer %{korganizer_eventviewer_major}
 
 %package -n %libkorganizer_eventviewer
 Summary: KDE 4 library
@@ -991,11 +1002,12 @@ KDE 4 library.
 
 %files -n %libkorganizer_eventviewer
 %defattr(-,root,root)
-%_kde_libdir/libkorganizer_eventviewer.so.*
+%_kde_libdir/libkorganizer_eventviewer.so.%{korganizer_eventviewer_major}*
 
 #-----------------------------------------------------------------------------
 
-%define libkorganizer_interfaces %mklibname korganizer_interfaces 4
+%define korganizer_interfaces_major 4
+%define libkorganizer_interfaces %mklibname korganizer_interfaces %{korganizer_interfaces_major}
 
 %package -n %libkorganizer_interfaces
 Summary: KDE 4 library
@@ -1007,7 +1019,7 @@ KDE 4 library.
 
 %files -n %libkorganizer_interfaces
 %defattr(-,root,root)
-%_kde_libdir/libkorganizer_interfaces.so.*
+%_kde_libdir/libkorganizer_interfaces.so.%{korganizer_interfaces_major}*
 
 #-----------------------------------------------------------------------------
 
@@ -1051,8 +1063,6 @@ Citadel or OpenGroupware.org.
 %_kde_libdir/kde4/kontact_todoplugin.so
 %_kde_datadir/autostart/korgac.desktop
 %_kde_datadir/config.kcfg/korganizer.kcfg
-#%_kde_datadir/config.kcfg/todosettings.kcfg
-#%_kde_datadir/config.kcfg/calendarsettings.kcfg
 %_kde_datadir/config/korganizer.knsrc
 %_kde_datadir/kde4/services/korganizer*
 %_kde_datadir/kde4/services/webcal.protocol
@@ -1074,7 +1084,8 @@ Citadel or OpenGroupware.org.
 
 #-----------------------------------------------------------------------------
 
-%define libkorganizerprivate %mklibname korganizerprivate 4
+%define korganizerprivate_major 4
+%define libkorganizerprivate %mklibname korganizerprivate %{korganizerprivate_major}
 
 %package -n %libkorganizerprivate
 Summary: KDE 4 library
@@ -1087,11 +1098,12 @@ KDE 4 library.
 
 %files -n %libkorganizerprivate
 %defattr(-,root,root)
-%_kde_libdir/libkorganizerprivate.so.*
+%_kde_libdir/libkorganizerprivate.so.%{korganizerprivate_major}*
 
 #-----------------------------------------------------------------------------
 
-%define libkabc_groupdav %mklibname kabc_groupdav 4
+%define kabc_groupdav_major 4
+%define libkabc_groupdav %mklibname kabc_groupdav %{kabc_groupdav_major}
 
 %package -n %libkabc_groupdav
 Summary: KDE 4 library
@@ -1103,11 +1115,12 @@ KDE 4 library.
 
 %files -n %libkabc_groupdav
 %defattr(-,root,root)
-%_kde_libdir/libkabc_groupdav.so.*
+%_kde_libdir/libkabc_groupdav.so.%{kabc_groupdav_major}*
 
 #-----------------------------------------------------------------------------
 
-%define libkabc_slox %mklibname kabc_slox 4
+%define kabc_slox_major 4
+%define libkabc_slox %mklibname kabc_slox %{kabc_slox_major}
 
 %package -n %libkabc_slox
 Summary: KDE 4 library
@@ -1119,11 +1132,12 @@ KDE 4 library.
 
 %files -n %libkabc_slox
 %defattr(-,root,root)
-%_kde_libdir/libkabc_slox.so.*
+%_kde_libdir/libkabc_slox.so.%{kabc_slox_major}*
 
 #-----------------------------------------------------------------------------
 
-%define libmessagelist %mklibname messagelist 4
+%define messagelist_major 4
+%define libmessagelist %mklibname messagelist %{messagelist_major}
 
 %package -n %libmessagelist
 Summary: KDE 4 library
@@ -1134,11 +1148,12 @@ KDE 4 library.
 
 %files -n %libmessagelist
 %defattr(-,root,root)
-%_kde_libdir/libmessagelist.so.*
+%_kde_libdir/libmessagelist.so.%{messagelist_major}*
 
 #-----------------------------------------------------------------------------
 
-%define libkabckolab %mklibname kabckolab 4
+%define kabckolab_major 4
+%define libkabckolab %mklibname kabckolab %{kabckolab_major}
 
 %package -n %libkabckolab
 Summary: KDE 4 library
@@ -1150,11 +1165,12 @@ KDE 4 library.
 
 %files -n %libkabckolab
 %defattr(-,root,root)
-%_kde_libdir/libkabckolab.so.*
+%_kde_libdir/libkabckolab.so.%{kabckolab_major}*
 
 #-----------------------------------------------------------------------------
 
-%define libkcal_groupdav %mklibname kcal_groupdav 4
+%define kcal_groupdav_major 4
+%define libkcal_groupdav %mklibname kcal_groupdav %{kcal_groupdav_major}
 
 %package -n %libkcal_groupdav
 Summary: KDE 4 library
@@ -1166,11 +1182,12 @@ KDE 4 library.
 
 %files -n %libkcal_groupdav
 %defattr(-,root,root)
-%_kde_libdir/libkcal_groupdav.so.*
+%_kde_libdir/libkcal_groupdav.so.%{kcal_groupdav_major}*
 
 #-----------------------------------------------------------------------------
 
-%define libkcal_resourceblog %mklibname kcal_resourceblog 4
+%define kcal_resourceblog 4
+%define libkcal_resourceblog %mklibname kcal_resourceblog %{kcal_resourceblog}
 
 %package -n %libkcal_resourceblog
 Summary: KDE 4 library
@@ -1182,11 +1199,12 @@ KDE 4 library.
 
 %files -n %libkcal_resourceblog
 %defattr(-,root,root)
-%_kde_libdir/libkcal_resourceblog.so.*
+%_kde_libdir/libkcal_resourceblog.so.%{kcal_resourceblog}*
 
 #-----------------------------------------------------------------------------
 
-%define libkcal_resourceremote %mklibname kcal_resourceremote 4
+%define kcal_resourceremote_major 4
+%define libkcal_resourceremote %mklibname kcal_resourceremote %{kcal_resourceremote_major}
 
 %package -n %libkcal_resourceremote
 Summary: KDE 4 library
@@ -1198,11 +1216,12 @@ KDE 4 library.
 
 %files -n %libkcal_resourceremote
 %defattr(-,root,root)
-%_kde_libdir/libkcal_resourceremote.so.*
+%_kde_libdir/libkcal_resourceremote.so.%{kcal_resourceremote_major}*
 
 #-----------------------------------------------------------------------------
 
-%define libkcal_slox %mklibname kcal_slox 4
+%define kcal_slox_major 4
+%define libkcal_slox %mklibname kcal_slox %{kcal_slox_major}
 
 %package -n %libkcal_slox
 Summary: KDE 4 library
@@ -1214,11 +1233,12 @@ KDE 4 library.
 
 %files -n %libkcal_slox
 %defattr(-,root,root)
-%_kde_libdir/libkcal_slox.so.*
+%_kde_libdir/libkcal_slox.so.%{kcal_slox_major}*
 
 #-----------------------------------------------------------------------------
 
-%define libkcalkolab %mklibname kcalkolab 4
+%define kcalkolab_major 4
+%define libkcalkolab %mklibname kcalkolab %{kcalkolab_major}
 
 %package -n %libkcalkolab
 Summary: KDE 4 library
@@ -1230,11 +1250,12 @@ KDE 4 library.
 
 %files -n %libkcalkolab
 %defattr(-,root,root)
-%_kde_libdir/libkcalkolab.so.*
+%_kde_libdir/libkcalkolab.so.%{kcalkolab_major}*
 
 #-----------------------------------------------------------------------------
 
-%define libkgroupwarebase %mklibname kgroupwarebase 4
+%define kgroupwarebase_major 4
+%define libkgroupwarebase %mklibname kgroupwarebase %{kgroupwarebase_major}
 
 %package -n %libkgroupwarebase
 Summary: KDE 4 library
@@ -1246,11 +1267,12 @@ KDE 4 library.
 
 %files -n %libkgroupwarebase
 %defattr(-,root,root)
-%_kde_libdir/libkgroupwarebase.so.*
+%_kde_libdir/libkgroupwarebase.so.%{kgroupwarebase_major}*
 
 #-----------------------------------------------------------------------------
 
-%define libkgroupwaredav %mklibname kgroupwaredav 4
+%define kgroupwaredav_major 4
+%define libkgroupwaredav %mklibname kgroupwaredav %{kgroupwaredav_major}
 
 %package -n %libkgroupwaredav
 Summary: KDE 4 library
@@ -1262,11 +1284,12 @@ KDE 4 library.
 
 %files -n %libkgroupwaredav
 %defattr(-,root,root)
-%_kde_libdir/libkgroupwaredav.so.*
+%_kde_libdir/libkgroupwaredav.so.%{kgroupwaredav_major}*
 
 #-----------------------------------------------------------------------------
 
-%define libknoteskolab %mklibname knoteskolab 4
+%define knoteskolab_major 4
+%define libknoteskolab %mklibname knoteskolab %{knoteskolab_major}
 
 %package -n %libknoteskolab
 Summary: KDE 4 library
@@ -1278,11 +1301,11 @@ KDE 4 library.
 
 %files -n %libknoteskolab
 %defattr(-,root,root)
-%_kde_libdir/libknoteskolab.so.*
-
+%_kde_libdir/libknoteskolab.so.%{knoteskolab_major}*
 #-----------------------------------------------------------------------------
 
-%define libkslox %mklibname kslox 4
+%define kslox_major 4
+%define libkslox %mklibname kslox %{kslox_major}
 
 %package -n %libkslox
 Summary: KDE 4 library
@@ -1294,11 +1317,12 @@ KDE 4 library.
 
 %files -n %libkslox
 %defattr(-,root,root)
-%_kde_libdir/libkslox.so.*
+%_kde_libdir/libkslox.so.%{kslox_major}*
 
 #-----------------------------------------------------------------------------
 
-%define libkleo %mklibname kleo 4
+%define kleo_major 4
+%define libkleo %mklibname kleo %{kleo_major}
 
 %package -n %libkleo
 Summary: KDE 4 library
@@ -1310,7 +1334,7 @@ KDE 4 library.
 
 %files -n %libkleo
 %defattr(-,root,root)
-%_kde_libdir/libkleo.so.*
+%_kde_libdir/libkleo.so.%{kleo_major}*
 
 #-----------------------------------------------------------------------------
 
@@ -1384,23 +1408,8 @@ KDE Groupware Wizard
 
 #-----------------------------------------------------------------------------
 
-%define libkcalscalix %mklibname kcalscalix 4
-
-%package -n %libkcalscalix
-Summary: KDE 4 library
-Group: System/Libraries
-Obsoletes: %{mklibname kdepim42-common} < 1:3.93.0-1
-
-%description -n %libkcalscalix
-KDE 4 library.
-
-%files -n %libkcalscalix
-%defattr(-,root,root)
-#%_kde_libdir/libkcalscalix.so.*
-
-#-----------------------------------------------------------------------------
-
-%define libkabcgroupwise %mklibname kabc_groupwise 4
+%define kabc_groupwise_major 4
+%define libkabcgroupwise %mklibname kabc_groupwise %{kabc_groupwise_major}
 
 %package -n %libkabcgroupwise
 Summary: KDE 4 library
@@ -1411,11 +1420,12 @@ KDE 4 library.
 
 %files -n %libkabcgroupwise
 %defattr(-,root,root)
-%_kde_libdir/libkabcgroupwise.so.*
+%_kde_libdir/libkabcgroupwise.so.%{kabc_groupwise_major}*
 
 #-----------------------------------------------------------------------------
 
-%define libkcalgroupwise %mklibname kcal_groupwise 4
+%define kcal_groupwise_major 4
+%define libkcalgroupwise %mklibname kcal_groupwise %{kcal_groupwise_major}
 
 %package -n %libkcalgroupwise
 Summary: KDE 4 library
@@ -1426,7 +1436,7 @@ KDE 4 library.
 
 %files -n %libkcalgroupwise
 %defattr(-,root,root)
-%_kde_libdir/libkcalgroupwise.so.*
+%_kde_libdir/libkcalgroupwise.so.%{kcal_groupwise_major}*
 
 #-----------------------------------------------------------------------------
 
@@ -1472,24 +1482,25 @@ Conflicts: kontact < 2:4.0.83-2
 %_kde_bindir/ksendemail
 
 #-----------------------------------------------------------------------------
-
-%package -n nepomuk-email-feeder
-Summary: %{name} nepomuk-email-feeder
-Group: Graphical desktop/KDE
-Requires: %name-core = %epoch:%version
-Conflicts: kontact < 2:4.0.83-2
-
-%description -n nepomuk-email-feeder
-%{name} nepomuk-email-feeder.
-
-%files -n nepomuk-email-feeder 
-%defattr(-,root,root)
-%_kde_bindir/akonadi_nepomuk_email_feeder
-%_kde_datadir/akonadi/agents/nepomukemailfeeder.desktop
-
+# 
+# %package -n nepomuk-email-feeder
+# Summary: %{name} nepomuk-email-feeder
+# Group: Graphical desktop/KDE
+# Requires: %name-core = %epoch:%version
+# Conflicts: kontact < 2:4.0.83-2
+# 
+# %description -n nepomuk-email-feeder
+# %{name} nepomuk-email-feeder.
+# 
+# %files -n nepomuk-email-feeder 
+# defattr(-,root,root)
+# %_kde_bindir/akonadi_nepomuk_email_feeder
+# %_kde_datadir/akonadi/agents/nepomukemailfeeder.desktop
+# 
 #-----------------------------------------------------------------------------
 
-%define libmessageviewer %mklibname messageviewer 0
+%define messageviewer_major 0
+%define libmessageviewer %mklibname messageviewer %{messageviewer_major}
 
 %package -n %libmessageviewer
 Summary: KDE 4 library
@@ -1500,9 +1511,43 @@ KDE 4 library.
 
 %files -n %libmessageviewer
 %defattr(-,root,root)
-%_kde_libdir/libmessageviewer.so.*
+%_kde_libdir/libmessageviewer.so.%{messageviewer_major}*
 
 #-----------------------------------------------------------------------------
+
+%define akonadi_kcal_major 4
+%define libakonadi_kcal %mklibname akonadi-kcal %{akonadi_kcal_major}
+
+%package -n %libakonadi_kcal
+Summary: KDE 4 library
+Group: System/Libraries
+
+%description -n %libakonadi_kcal
+KDE 4 library.
+
+%files -n %libakonadi_kcal
+%defattr(-,root,root)
+%_kde_libdir/libakonadi-kcal.so.%{akonadi_kcal_major}*
+
+#-----------------------------------------------------------------------------
+
+%define akonadi_next_major 4
+%define libakonadi_next %mklibname akonadi-next %{akonadi_next_major}
+
+%package -n %libakonadi_next
+Summary: KDE 4 library
+Group: System/Libraries
+Obsoletes: %{mklibname akonadi_next 4}
+
+%description -n %libakonadi_next
+KDE 4 library.
+
+%files -n %libakonadi_next
+%defattr(-,root,root)
+%_kde_libdir/libakonadi_next.so.%{akonadi_next_major}*
+
+#-----------------------------------------------------------------------------
+
 
 %package devel
 Summary: Devel stuff for %name
@@ -1549,6 +1594,8 @@ Requires: %libmessagecore = %epoch:%version
 Requires: %libmessageviewer = %epoch:%version
 Requires: %libkalarm_calendar = %epoch:%version
 Requires: %libkalarm_resources = %epoch:%version
+Requires: %libakonadi_kcal = %epoch:%version
+Requires: %libakonadi_next = %epoch:%version
 %if %mdkversion >= 200910
 Obsoletes: kdepim-devel < 1:3.5.10-2
 Obsoletes: kdepim-devel-doc < 1:3.5.10-2
@@ -1576,6 +1623,7 @@ based on kdepim.
 
 #%patch0 -p0
 #%patch1 -p0
+%patch2 -p0
 
 %build
 %cmake_kde4

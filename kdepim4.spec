@@ -12,7 +12,7 @@
 Name: kdepim4
 Summary: K Desktop Environment
 Version: 4.3.85
-Release: %mkrel 1
+Release: %mkrel 2
 Epoch: 2
 Group: Graphical desktop/KDE
 License: GPL
@@ -82,7 +82,7 @@ Suggests: kontact
 Suggests: korganizer
 Suggests: ksendemail
 Suggests: kjots
-Suggests: nepomuk-email-feeder
+#Suggests: nepomuk-email-feeder
 Obsoletes: kpilot < %epoch:%version
 Obsoletes: korn <= 2:4.1.0
 %if %mdkversion >= 200910

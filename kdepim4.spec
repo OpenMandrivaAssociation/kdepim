@@ -11,8 +11,8 @@
 
 Name: kdepim4
 Summary: K Desktop Environment
-Version: 4.3.85
-Release: %mkrel 2
+Version: 4.3.90
+Release: %mkrel 1
 Epoch: 2
 Group: Graphical desktop/KDE
 License: GPL
@@ -1515,22 +1515,6 @@ KDE 4 library.
 
 #-----------------------------------------------------------------------------
 
-%define akonadi_kcal_major 4
-%define libakonadi_kcal %mklibname akonadi-kcal %{akonadi_kcal_major}
-
-%package -n %libakonadi_kcal
-Summary: KDE 4 library
-Group: System/Libraries
-
-%description -n %libakonadi_kcal
-KDE 4 library.
-
-%files -n %libakonadi_kcal
-%defattr(-,root,root)
-%_kde_libdir/libakonadi-kcal.so.%{akonadi_kcal_major}*
-
-#-----------------------------------------------------------------------------
-
 %define akonadi_next_major 4
 %define libakonadi_next %mklibname akonadi-next %{akonadi_next_major}
 
@@ -1594,7 +1578,6 @@ Requires: %libmessagecore = %epoch:%version
 Requires: %libmessageviewer = %epoch:%version
 Requires: %libkalarm_calendar = %epoch:%version
 Requires: %libkalarm_resources = %epoch:%version
-Requires: %libakonadi_kcal = %epoch:%version
 Requires: %libakonadi_next = %epoch:%version
 %if %mdkversion >= 200910
 Obsoletes: kdepim-devel < 1:3.5.10-2

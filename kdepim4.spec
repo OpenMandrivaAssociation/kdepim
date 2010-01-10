@@ -1493,7 +1493,7 @@ Conflicts: kontact < 2:4.0.83-2
 %{name} nepomuk-email-feeder.
  
 %files -n nepomuk-email-feeder 
-defattr(-,root,root)
+%defattr(-,root,root)
 %_kde_bindir/akonadi_nepomuk_email_feeder
 %_kde_datadir/akonadi/agents/nepomukemailfeeder.desktop
  

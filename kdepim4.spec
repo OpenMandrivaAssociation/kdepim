@@ -1482,21 +1482,21 @@ Conflicts: kontact < 2:4.0.83-2
 %_kde_bindir/ksendemail
 
 #-----------------------------------------------------------------------------
-# 
-# %package -n nepomuk-email-feeder
-# Summary: %{name} nepomuk-email-feeder
-# Group: Graphical desktop/KDE
-# Requires: %name-core = %epoch:%version
-# Conflicts: kontact < 2:4.0.83-2
-# 
-# %description -n nepomuk-email-feeder
-# %{name} nepomuk-email-feeder.
-# 
-# %files -n nepomuk-email-feeder 
-# defattr(-,root,root)
-# %_kde_bindir/akonadi_nepomuk_email_feeder
-# %_kde_datadir/akonadi/agents/nepomukemailfeeder.desktop
-# 
+ 
+%package -n nepomuk-email-feeder
+Summary: %{name} nepomuk-email-feeder
+Group: Graphical desktop/KDE
+Requires: %name-core = %epoch:%version
+Conflicts: kontact < 2:4.0.83-2
+
+%description -n nepomuk-email-feeder
+%{name} nepomuk-email-feeder.
+ 
+%files -n nepomuk-email-feeder 
+defattr(-,root,root)
+%_kde_bindir/akonadi_nepomuk_email_feeder
+%_kde_datadir/akonadi/agents/nepomukemailfeeder.desktop
+ 
 #-----------------------------------------------------------------------------
 
 %define messageviewer_major 0
@@ -1529,6 +1529,22 @@ KDE 4 library.
 %files -n %libakonadi_next
 %defattr(-,root,root)
 %_kde_libdir/libakonadi_next.so.%{akonadi_next_major}*
+
+#-----------------------------------------------------------------------------
+
+%define akonadi_kcal_next_major 4
+%define libakonadi_kcal_next %mklibname akonadi-kcal_next %{akonadi_kcal_next_major}
+
+%package -n %libakonadi_kcal_next
+Summary: KDE 4 library
+Group: System/Libraries
+
+%description -n %libakonadi_kcal_next
+KDE 4 library.
+
+%files -n %libakonadi_kcal_next
+%defattr(-,root,root)
+%_kde_libdir/libakonadi-kcal_next.so.%{akonadi_kcal_next_major}*
 
 #-----------------------------------------------------------------------------
 
@@ -1579,6 +1595,7 @@ Requires: %libmessageviewer = %epoch:%version
 Requires: %libkalarm_calendar = %epoch:%version
 Requires: %libkalarm_resources = %epoch:%version
 Requires: %libakonadi_next = %epoch:%version
+Requires: %libakonadi_kcal_next = %epoch:%version
 %if %mdkversion >= 200910
 Obsoletes: kdepim-devel < 1:3.5.10-2
 Obsoletes: kdepim-devel-doc < 1:3.5.10-2

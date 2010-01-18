@@ -12,7 +12,7 @@
 Name: kdepim4
 Summary: K Desktop Environment
 Version: 4.3.90
-Release: %mkrel 2
+Release: %mkrel 3
 Epoch: 2
 Group: Graphical desktop/KDE
 License: GPL
@@ -1637,7 +1637,7 @@ rm -fr %buildroot
 # We copy some missing icons from oxygen to hicolor
 for size in 16 32 48 64 128; do
     mkdir -p %buildroot/%_datadir/icons/hicolor/${size}x${size}/apps
-    %cp %buildroot%_kde_iconsdir/oxygen/${size}x${size}/apps/office-address-book.png %buildroot/%_datadir/icons/hicolor/${size}x${size}/apps
+    %__cp %buildroot%_kde_iconsdir/oxygen/${size}x${size}/apps/office-address-book.png %buildroot/%_datadir/icons/hicolor/${size}x${size}/apps
 done
 
 %clean

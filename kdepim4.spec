@@ -24,8 +24,7 @@ Source: ftp://ftp.kde.org/pub/kde/stable/%version/src/kdepim-%version.tar.bz2
 %endif
 # Mandriva "customization" patches
 Patch0:   kdepim-4.2.95-kmail-first-message.patch 
-Patch1:   kdepim-4.3.1-fix-desktop-files.patch
-Patch2:   kdepim-4.3.85-disable-nepomuk-feeder.patch
+Patch1:   kdepim-4.3.90-fix-desktop-files.patch
 # Patches from branch
 Buildroot: %_tmppath/%name-%version-%release-root
 BuildRequires: kdelibs4-devel >= 2:4.2.98
@@ -1622,7 +1621,7 @@ based on kdepim.
 %endif
 
 #%patch0 -p0
-#%patch1 -p0
+%patch1 -p0
 
 %build
 %cmake_kde4

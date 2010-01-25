@@ -11,8 +11,8 @@
 
 Name: kdepim4
 Summary: K Desktop Environment
-Version: 4.3.90
-Release: %mkrel 3
+Version: 4.3.95
+Release: %mkrel 1
 Epoch: 2
 Group: Graphical desktop/KDE
 License: GPL
@@ -24,7 +24,7 @@ Source: ftp://ftp.kde.org/pub/kde/stable/%version/src/kdepim-%version.tar.bz2
 %endif
 # Mandriva "customization" patches
 Patch0:   kdepim-4.2.95-kmail-first-message.patch 
-Patch1:   kdepim-4.3.90-fix-desktop-files.patch
+Patch1:   kdepim-4.3.95-fix-desktop-files.patch
 # Patches from branch
 Buildroot: %_tmppath/%name-%version-%release-root
 BuildRequires: kdelibs4-devel >= 2:4.2.98

@@ -256,40 +256,6 @@ KDE 4 library.
 
 #-----------------------------------------------------------------------------
 
-%define kleopatraclientgui_major 0 
-%define libkleopatraclientgui %mklibname kleopatraclientgui %{kleopatraclientgui_major}
-
-%package -n %libkleopatraclientgui
-Summary: KDE 4 library
-Group: System/Libraries
-Obsoletes: %{mklibname kdepim42-common} < 1:3.93.0-1
-
-%description -n %libkleopatraclientgui
-KDE 4 library.
-
-%files -n %libkleopatraclientgui
-%defattr(-,root,root)
-%_kde_libdir/libkleopatraclientgui.so.%{kleopatraclientgui_major}*
-
-#-----------------------------------------------------------------------------
-
-%define kleopatraclientcore_major 0
-%define libkleopatraclientcore %mklibname kleopatraclientcore %{kleopatraclientcore_major}
-
-%package -n %libkleopatraclientcore
-Summary: KDE 4 library
-Group: System/Libraries
-Obsoletes: %{mklibname kdepim42-common} < 1:3.93.0-1
-
-%description -n %libkleopatraclientcore
-KDE 4 library.
-
-%files -n %libkleopatraclientcore
-%defattr(-,root,root)
-%_kde_libdir/libkleopatraclientcore.so.%{kleopatraclientcore_major}*
-
-#-----------------------------------------------------------------------------
-
 %package -n kleopatra
 Summary: KDE Certificate Manager
 Group: Graphical desktop/KDE
@@ -544,7 +510,8 @@ leafnode also usable with dial-up connections.
 %_kde_libdir/kde4/kcm_knode.so
 %_kde_libdir/kde4/knodepart.so
 %_kde_libdir/kde4/kontact_knodeplugin.so
-%_kde_docdir/HTML/en/knode
+%doc %_kde_docdir/HTML/en/knode
+%doc %_kde_docdir/HTML/en/kioslave/news
 
 #-----------------------------------------------------------------------------
 
@@ -1607,7 +1574,6 @@ based on kdepim.
 %files devel
 %defattr(-,root,root)
 %_kde_libdir/*.so
-%_kde_prefix/include/*
 %_kde_datadir/dbus-1/interfaces/*
 
 #----------------------------------------------------------------------

@@ -530,6 +530,7 @@ Conflicts: kdeaddons-kaddressbook-plugins < 1:3.5.9-2mdv
 Provides: kde4-kaddressbook = %epoch:%version
 Conflicts: kontact < 2:4.0.83-2
 Conflicts: kdepim4-core < 2:4.1.81-1
+Requires:  akonadi-common 
 
 %description -n kaddressbook
 The KDE addressbook application.

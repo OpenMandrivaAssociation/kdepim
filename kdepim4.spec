@@ -545,7 +545,6 @@ The KDE addressbook application.
 %_kde_libdir/kde4/kcm_ldap.so
 %_kde_libdir/kde4/kaddressbookpart.so
 %_kde_libdir/kde4/kontact_kaddressbookplugin.so
-%_kde_appsdir/akonadi/contact/editorpageplugins/cryptopageplugin.so
 %_kde_datadir/kde4/services/kaddressbookpart.desktop
 %_kde_datadir/kde4/services/kontact/kaddressbookplugin.desktop
 %_kde_datadir/kde4/services/kcmldap.desktop

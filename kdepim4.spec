@@ -22,10 +22,15 @@ Source: ftp://ftp.kde.org/pub/kde/stable/%version/src/kdepim-%version%kde_snapsh
 %else
 Source: ftp://ftp.kde.org/pub/kde/stable/%version/src/kdepim-%version.tar.bz2
 %endif
-# Mandriva "customization" patches
+# Mandriva "customization" patches  0 - 99
 Patch0:   kdepim-4.2.95-kmail-first-message.patch 
 Patch1:   kdepim-4.3.90-fix-desktop-files.patch
-# Patches from branch
+# Patches from branch 100 - 199
+
+# Trunk Patches 200 - 299
+
+# Test patches : 300+
+Patch300:      kdepim-4.3.2-kmail-nepomuk.patch
 Buildroot: %_tmppath/%name-%version-%release-root
 BuildRequires: kdelibs4-devel >= 2:4.2.98
 BuildRequires: kdelibs4-experimental-devel >= 2:4.2.98
@@ -119,6 +124,7 @@ Summary: Core files for kdepim
 Group: Graphical desktop/KDE	
 Requires: kdelibs4-core
 Requires: kdebase4-runtime
+Requires: akonadi-kde
 Obsoletes: libkdepim42-common < 1:3.93.0-1
 Obsoletes: kdepim4-common < 1:3.93.0-1
 Obsoletes: kdepim4-plasma-applets < 1:4.1 
@@ -1590,6 +1596,7 @@ based on kdepim.
 
 #%patch0 -p0
 %patch1 -p0
+#%patch300 -p1
 
 %build
 %cmake_kde4

@@ -732,20 +732,20 @@ of your day is spent playing Doom or reading Slashdot.
 
 #-----------------------------------------------------------------------------
 
-%define kmailprivate_major 4
-%define libkmailprivate %mklibname kmailprivate %{kmailprivate_major}
+%define kmailnepomukprivate_major 4
+%define libkmailnepomukprivate %mklibname kmailprivate %{kmailprivate_major}
 
-%package -n %libkmailprivate
+%package -n %libkmailnepomukprivate
 Summary: KDE 4 library
 Group: System/Libraries
 Obsoletes: %{mklibname kdepim42-common} < 1:3.93.0-1
 
-%description -n %libkmailprivate
+%description -n %libkmailnepomukprivate
 KDE 4 library.
 
-%files -n %libkmailprivate
+%files -n %libkmailnepomukprivate
 %defattr(-,root,root)
-%_kde_libdir/libkmailprivate.so.%{kmailprivate_major}*
+%_kde_libdir/libkmailnepomukprivate.so.%{kmailprivate_major}*
 
 #-----------------------------------------------------------------------------
 
@@ -1542,7 +1542,7 @@ Requires: %libkitchensyncprivate = %epoch:%version
 Requires: %libqopensync = %epoch:%version
 %endif
 Requires: %libknodecommon = %epoch:%version
-Requires: %libkmailprivate = %epoch:%version
+Requires: %libkmailnepomukprivate = %epoch:%version
 Requires: %libkorg_stdprinting = %epoch:%version
 Requires: %libkorganizerprivate = %epoch:%version
 Requires: %libkorganizer_calendar = %epoch:%version

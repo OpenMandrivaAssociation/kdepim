@@ -734,7 +734,7 @@ of your day is spent playing Doom or reading Slashdot.
 #-----------------------------------------------------------------------------
 
 %define kmailnepomukprivate_major 4
-%define libkmailnepomukprivate %mklibname kmailnepomukprivate_major %{kmailnepomukprivate_major_major}
+%define libkmailnepomukprivate %mklibname kmailnepomukprivate_major %{kmailnepomukprivate_major}
 
 %package -n %libkmailnepomukprivate
 Summary: KDE 4 library
@@ -746,7 +746,7 @@ KDE 4 library.
 
 %files -n %libkmailnepomukprivate
 %defattr(-,root,root)
-%_kde_libdir/libkmailnepomukprivate.so.%{kmailnepomukprivate_major_major}*
+%_kde_libdir/libkmailnepomukprivate.so.%{kmailnepomukprivate_major}*
 
 #-----------------------------------------------------------------------------
 

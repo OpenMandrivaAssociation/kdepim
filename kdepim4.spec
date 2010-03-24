@@ -12,7 +12,7 @@
 Name: kdepim4
 Summary: K Desktop Environment
 Version: 4.4.1
-Release: %mkrel 3
+Release: %mkrel 4
 Epoch: 2
 Group: Graphical desktop/KDE
 License: GPL
@@ -735,7 +735,7 @@ of your day is spent playing Doom or reading Slashdot.
 #-----------------------------------------------------------------------------
 
 %define kmailnepomukprivate_major 4
-%define libkmailnepomukprivate %mklibname kmailnepomukprivate_major %{kmailnepomukprivate_major}
+%define libkmailnepomukprivate %mklibname kmailnepomukprivate %{kmailnepomukprivate_major}
 
 %package -n %libkmailnepomukprivate
 Summary: KDE 4 library

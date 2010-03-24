@@ -1600,6 +1600,8 @@ based on kdepim.
 %patch200 -p1
 %patch201 -p1
 
+%patch300 -p0
+ 
 %build
 %cmake_kde4
 

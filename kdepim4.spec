@@ -12,7 +12,7 @@
 Name: kdepim4
 Summary: K Desktop Environment
 Version: 4.4.1
-Release: %mkrel 4
+Release: %mkrel 5
 Epoch: 2
 Group: Graphical desktop/KDE
 License: GPL
@@ -30,6 +30,7 @@ Patch1:   kdepim-4.3.90-fix-desktop-files.patch
 # Trunk Patches 200 - 299
 Patch200:  kdepim-4.4.1-t1088322-kmail-do-not-start-akonadi.patch
 Patch201:  kdepim-4.4.1-t1088359-kontact-do-not-start-akonadi.patch
+Patch202:  kdepim-4.4.1-t1088354-kaddressbook-do-not-start-akonadi.patch
 # Test patches : 300+
 Patch300:      kdepim-4.3.2-kmail-nepomuk.patch
 Buildroot: %_tmppath/%name-%version-%release-root
@@ -1600,6 +1601,7 @@ based on kdepim.
 %patch1 -p0
 %patch200 -p1
 %patch201 -p1
+%patch202 -p1
 
 %patch300 -p0
  

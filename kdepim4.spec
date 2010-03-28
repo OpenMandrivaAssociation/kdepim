@@ -1601,8 +1601,7 @@ based on kdepim.
 %patch1 -p0
 %patch200 -p1
 %patch201 -p1
-%patch202 -p1
-
+%patch202 -p0
 %patch300 -p0
  
 %build

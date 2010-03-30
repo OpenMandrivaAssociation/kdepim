@@ -1459,7 +1459,7 @@ Conflicts: kontact < 2:4.0.83-2
 %_kde_bindir/ksendemail
 
 #-----------------------------------------------------------------------------
- 
+%if 0 
 %package -n nepomuk-email-feeder
 Summary: %{name} nepomuk-email-feeder
 Group: Graphical desktop/KDE
@@ -1473,7 +1473,7 @@ Conflicts: kontact < 2:4.0.83-2
 %defattr(-,root,root)
 %_kde_bindir/akonadi_nepomuk_email_feeder
 %_kde_datadir/akonadi/agents/nepomukemailfeeder.desktop
- 
+%endif
 #-----------------------------------------------------------------------------
 
 %define messageviewer_major 0

@@ -34,7 +34,6 @@ Patch202:  kdepim-4.4.1-t1088354-kaddressbook-do-not-start-akonadi.patch
 # Test patches : 300+
 Patch300:      kdepim-4.3.2-kmail-nepomuk.patch
 #(nl) : (301-302) Patch from Kubuntu
-Patch301:      kdepim-4.4.2-kmail-use-ksni.patch
 Buildroot: %_tmppath/%name-%version-%release-root
 BuildRequires: kdelibs4-devel >= 2:4.2.98
 BuildRequires: kdelibs4-experimental-devel >= 2:4.2.98
@@ -1605,7 +1604,6 @@ based on kdepim.
 %patch201 -p1
 %patch202 -p0
 %patch300 -p0
-%patch301 -p1 
 
 %build
 %cmake_kde4

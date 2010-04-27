@@ -12,7 +12,7 @@
 Name: kdepim4
 Summary: K Desktop Environment
 Version: 4.4.2
-Release: %mkrel 5
+Release: %mkrel 6
 Epoch: 2
 Group: Graphical desktop/KDE
 License: GPL
@@ -147,9 +147,6 @@ Core files from kdepim.
 
 %files core
 %defattr(-,root,root,-)
-%_kde_bindir/akonadiconsole
-%_kde_datadir/applications/kde4/akonadiconsole.desktop
-%_kde_appsdir/akonadiconsole/akonadiconsoleui.rc
 %_kde_libdir/strigi/*
 %_kde_iconsdir/*/*/*/*
 %dir %_kde_datadir/kde4/services/kontact
@@ -1475,6 +1472,25 @@ Conflicts: kontact < 2:4.0.83-2
 %_kde_bindir/akonadi_nepomuk_email_feeder
 %_kde_datadir/akonadi/agents/nepomukemailfeeder.desktop
 %endif
+
+#-----------------------------------------------------------------------------
+
+%package -n akonadiconsole
+Summary:Console that help to debug akonadi
+Group: Graphical desktop/KDE
+Requires: %name-core = %epoch:%version
+Conflicts: kontact < 2:4.0.83-2
+Conflicts: kdepim4-core < 2:4.4.2-5
+
+%description -n akonadiconsole
+Console that help to debug akonadi
+
+%files -n akonadiconsole
+%defattr(-,root,root)
+%_kde_bindir/akonadiconsole
+%_kde_datadir/applications/kde4/akonadiconsole.desktop
+%_kde_appsdir/akonadiconsole/akonadiconsoleui.rc
+
 #-----------------------------------------------------------------------------
 
 %define messageviewer_major 0

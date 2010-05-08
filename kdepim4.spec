@@ -12,7 +12,7 @@
 Name: kdepim4
 Summary: K Desktop Environment
 Version: 4.4.3
-Release: %mkrel 7
+Release: %mkrel 8
 Epoch: 2
 Group: Graphical desktop/KDE
 License: GPL
@@ -1573,6 +1573,7 @@ Requires: %libkabc_slox = %epoch:%version
 Requires: %libkabckolab = %epoch:%version
 Requires: %libkcal_groupdav = %epoch:%version
 Requires: %libkcal_resourceremote = %epoch:%version
+Requires: %libkcal_resourceblog = %epoch:%version
 Requires: %libkcal_slox = %epoch:%version
 Requires: %libkcalkolab = %epoch:%version
 Requires: %libkgroupwarebase = %epoch:%version

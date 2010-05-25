@@ -12,7 +12,7 @@
 Name: kdepim4
 Summary: K Desktop Environment
 Version: 4.4.3
-Release: %mkrel 8
+Release: %mkrel 9
 Epoch: 2
 Group: Graphical desktop/KDE
 License: GPL
@@ -733,20 +733,20 @@ of your day is spent playing Doom or reading Slashdot.
 
 #-----------------------------------------------------------------------------
 
-%define kmailnepomukprivate_major 4
-%define libkmailnepomukprivate %mklibname kmailnepomukprivate %{kmailnepomukprivate_major}
+%define kmailprivate_major 4
+%define libkmailprivate %mklibname kmailprivate %{kmailprivate_major}
 
-%package -n %libkmailnepomukprivate
+%package -n %libkmailprivate
 Summary: KDE 4 library
 Group: System/Libraries
 Obsoletes: %{mklibname kdepim42-common} < 1:3.93.0-1
 
-%description -n %libkmailnepomukprivate
+%description -n %libkmailprivate
 KDE 4 library.
 
-%files -n %libkmailnepomukprivate
+%files -n %libkmailprivate
 %defattr(-,root,root)
-%_kde_libdir/libkmailnepomukprivate.so.%{kmailnepomukprivate_major}*
+%_kde_libdir/libkmailprivate.so.%{kmailprivate_major}*
 
 #-----------------------------------------------------------------------------
 
@@ -1562,7 +1562,7 @@ Requires: %libkitchensyncprivate = %epoch:%version
 Requires: %libqopensync = %epoch:%version
 %endif
 Requires: %libknodecommon = %epoch:%version
-Requires: %libkmailnepomukprivate = %epoch:%version
+Requires: %libkmailprivate = %epoch:%version
 Requires: %libkorg_stdprinting = %epoch:%version
 Requires: %libkorganizerprivate = %epoch:%version
 Requires: %libkorganizer_calendar = %epoch:%version

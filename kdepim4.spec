@@ -12,7 +12,7 @@
 Name: kdepim4
 Summary: K Desktop Environment
 Version: 4.4.3
-Release: %mkrel 11
+Release: %mkrel 12
 Epoch: 2
 Group: Graphical desktop/KDE
 License: GPL
@@ -1641,6 +1641,7 @@ based on kdepim.
 rm -fr %buildroot
 
 %makeinstall_std -C build
+%__cp %buildroot%_kde_iconsdir/oxygen/${size}x${size}/apps/kleopatra.png  %buildroot/%_datadir/icons/hicolor/${size}x${size}/apps
 
 %clean
 rm -fr %buildroot

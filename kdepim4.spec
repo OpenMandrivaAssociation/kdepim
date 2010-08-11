@@ -11,8 +11,8 @@
 
 Name: kdepim4
 Summary: K Desktop Environment
-Version: 4.4.3
-Release: %mkrel 12
+Version: 4.4.5
+Release: %mkrel 1
 Epoch: 2
 Group: Graphical desktop/KDE
 License: GPL
@@ -26,12 +26,6 @@ Source: ftp://ftp.kde.org/pub/kde/stable/%version/src/kdepim-%version.tar.bz2
 Patch0:    kdepim-4.2.95-kmail-first-message.patch 
 Patch1:    kdepim-4.3.90-fix-desktop-files.patch
 # Patches from branch 100 - 199
-Patch100:  kdepim-4.4.1-b1132349-kaddressbook-fix-crash.patch
-Patch102:  kdepim-4.4.3-b1121669-korganizer-fix-todo-tasks.patch
-Patch103:  kdepim-4.4.3-b1122433-korganizer-fix-plugin-list.patch
-Patch104:  kdepim-4.4.3-b1122651-kmail-load-catalogs.patch
-Patch105:  kdepim-4.4.3-b1121877-korganizer-fix-crash.patch
-Patch106:  kdepim-4.4.3-b1122645-kmail-load-catalogs.patch
 # Trunk Patches 200 - 299
 Patch200:  kdepim-4.4.1-t1088322-kmail-do-not-start-akonadi.patch
 Patch201:  kdepim-4.4.1-t1088359-kontact-do-not-start-akonadi.patch
@@ -1622,11 +1616,6 @@ based on kdepim.
 
 #%patch0 -p0
 %patch1 -p0
-%patch100 -p0
-%patch102 -p1
-%patch103 -p1
-%patch105 -p1
-%patch106 -p1
 %patch200 -p1
 %patch201 -p1
 %patch202 -p0

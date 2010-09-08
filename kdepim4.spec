@@ -142,6 +142,8 @@ Information Management applications for the K Desktop Environment Mobile.
 	- kaddressbook-mobile: The KDE addressbook application for Mobile UI.
 	- korganizer-mobile: a calendar-of-events and todo-list manager for Mobile UI
 	- kmail-mobile: The mobile version of kmail
+	- knotes-mobile: The mobile version of notes
+	- ktasks-mobile: Mobile version to add tasks 
 
 %files mobile
 
@@ -149,6 +151,8 @@ Information Management applications for the K Desktop Environment Mobile.
 
 %package mobile-core
 Summary: Core files for kdepim-mobile
+Group: Graphical desktop/KDE
+
 %description mobile-core
 Core files from kdepim-mobile.
 
@@ -1039,6 +1043,7 @@ Requires:  %name-kresources
 Obsoletes: kde4-korganizer < 2:4.0.68
 Obsoletes: %name-korganizer < 1:3.93.0-1
 Requires: kio4-ldap
+Suggests: keventeditor
 Provides:  kde4-korganizer = %epoch:%version
 Conflicts: kontact < 2:4.0.83-2
 Conflicts: kdepim4-core < 2:4.1.81-1

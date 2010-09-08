@@ -1166,7 +1166,7 @@ Console that help to debug akonadi
 
 #-----------------------------------------------------------------------------
 
-%define messageviewer_major 0
+%define messageviewer_major 4
 %define libmessageviewer %mklibname messageviewer %{messageviewer_major}
 
 %package -n %libmessageviewer
@@ -1196,22 +1196,6 @@ KDE 4 library.
 %files -n %libakonadi_next
 %defattr(-,root,root)
 %_kde_libdir/libakonadi_next.so.%{akonadi_next_major}*
-
-#-----------------------------------------------------------------------------
-
-%define akonadi_kcal_next_major 4
-%define libakonadi_kcal_next %mklibname akonadi-kcal_next %{akonadi_kcal_next_major}
-
-%package -n %libakonadi_kcal_next
-Summary: KDE 4 library
-Group: System/Libraries
-
-%description -n %libakonadi_kcal_next
-KDE 4 library.
-
-%files -n %libakonadi_kcal_next
-%defattr(-,root,root)
-%_kde_libdir/libakonadi-kcal_next.so.%{akonadi_kcal_next_major}*
 
 #-----------------------------------------------------------------------------
 
@@ -1402,7 +1386,6 @@ Requires: %libmessageviewer = %epoch:%version
 Requires: %libkalarm_calendar = %epoch:%version
 Requires: %libkalarm_resources = %epoch:%version
 Requires: %libakonadi_next = %epoch:%version
-Requires: %libakonadi_kcal_next = %epoch:%version
 
 %description  devel
 This package contains header files needed if you wish to build applications

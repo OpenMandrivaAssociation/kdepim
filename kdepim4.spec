@@ -59,8 +59,8 @@ BuildRequires: akonadi-devel
 BuildRequires: kdepimlibs4-core
 BuildRequires: akonadi-devel
 BuildRequires: shared-desktop-ontologies-devel
-#(nl) Do not enable back w/o kde team agreement
-#BuildRequires: libindicate-qt-devel
+BuildRequires: libindicate-qt-devel
+BuildRequires: grantlee-devel
 Suggests:      akonadi-common
 Suggests:      kleopatra
 Suggests:      akregator

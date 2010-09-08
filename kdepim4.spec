@@ -22,6 +22,7 @@ Source: ftp://ftp.kde.org/pub/kde/stable/%version/src/kdepim-%version%kde_snapsh
 %else
 Source: ftp://ftp.kde.org/pub/kde/stable/%version/src/kdepim-%version.tar.bz2
 %endif
+Patch0:        kdepim-4.5.67-fix-include.patch
 Buildroot: %_tmppath/%name-%version-%release-root
 BuildRequires: kdelibs4-devel >= 2:4.2.98
 BuildRequires: kdelibs4-experimental-devel >= 2:4.2.98
@@ -1421,6 +1422,7 @@ based on kdepim.
 %else
 %setup -q -n kdepim-%version
 %endif
+%patch0 -p0
 
 %build
 %cmake_kde4

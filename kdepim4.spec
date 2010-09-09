@@ -267,7 +267,7 @@ KDE PIM Mobile library
 
 %package -n keventeditor
 Summary: keventeditor
-Group: Graphical description/KDE
+Group:  Graphical desktop/KDE 
 
 %description -n keventeditor
 New incidince editors 

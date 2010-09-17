@@ -1390,7 +1390,7 @@ KDE 4 library.
 #-----------------------------------------------------------------------------
 
 %define libincidenceeditorsng_major 4
-%define libincidenceeditorsng %mklibname incidenceeditorsng %{incidenceeditorsng_major}
+%define libincidenceeditorsng %mklibname incidenceeditorsng %{libincidenceeditorsng_major}
 
 %package -n %libincidenceeditorsng
 Summary: KDE 4 library

@@ -243,7 +243,7 @@ KDE PIM Mobile library
 
 %package -n kincidenceeditor
 Summary: kincidenceeditor
-Group: Graphical destop/KDE
+Group: Graphical desktop/KDE
 Obsoletes: keventeditor < 2:4.5.68
 
 %description -n kincidenceeditor

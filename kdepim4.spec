@@ -6,67 +6,43 @@
 
 
 %if %branch
-%define kde_snapshot svn1170578
+%define kde_snapshot svn1174542
 %endif
 
 Name: kdepim4
 Summary: K Desktop Environment
-Version: 4.5.67
+Version: 4.5.68
 Release: %mkrel 1
 Epoch: 2
 Group: Graphical desktop/KDE
 License: GPL
 URL: http://pim.kde.org
 %if %branch
-Source: ftp://ftp.kde.org/pub/kde/stable/%version/src/kdepim-%version%kde_snapshot.tar.bz2
+Source: ftp://ftp.kde.org/pub/kde/unstable/%version/src/kdepim-%version%kde_snapshot.tar.bz2
 %else
 Source: ftp://ftp.kde.org/pub/kde/stable/%version/src/kdepim-%version.tar.bz2
 %endif
-Patch0:        kdepim-4.5.67-fix-include.patch
-Patch1:        kdepim-4.5.67-mdv-fix-messagelist-icon-install-path.patch
 Buildroot: %_tmppath/%name-%version-%release-root
 BuildRequires: kdelibs4-devel >= 2:4.2.98
-BuildRequires: kdelibs4-experimental-devel >= 2:4.2.98
 BuildRequires: kdepimlibs4-devel >= 2:4.2.98
 BuildRequires: kdepim4-runtime-devel >= 4.2.98
-BuildRequires: gpgme-devel
-BuildRequires: X11-devel 
-BuildRequires: flex 
-BuildRequires: byacc 
-BuildRequires: pam
-BuildRequires: libncurses-devel
-BuildRequires: readline-devel
-BuildRequires: libgpg-error-devel
-BuildRequires: gnokii-devel >= 0.6.18
-BuildRequires: libxml2-utils
-BuildRequires: gnupg
-BuildRequires: bluez-devel 
-BuildRequires: libsasl-devel
-BuildRequires: pilot-link-devel
-BuildRequires: libxslt-proc
+BuildRequires: libx11-devel
 BuildRequires: boost-devel
-BuildRequires: qca2-devel
-BuildRequires: glib2-devel
+BuildRequires: zlib-devel
+BuildRequires: strigi-devel
+BuildRequires: gpgme-devel
+BuildRequires: grantlee-devel
+BuildRequires: xsltproc
 BuildRequires: libassuan-devel
-BuildRequires: mysql-static-devel
-BuildRequires: libmal-devel
-BuildRequires: soprano-devel
-BuildRequires: automoc
+BuildRequires: libxscrnsaver-devel
 %if %{with_kitchensync}
 BuildRequires: libopensync-devel >= 0.30
 %endif
-BuildRequires: akonadi-devel
-#FIXME: Remove later
-BuildRequires: akonadi-devel
-BuildRequires: shared-desktop-ontologies-devel
-# It does not seems a BR option anymore by upstream
-#BuildRequires: libindicate-qt-devel
-BuildRequires: grantlee-devel
-Suggests:      akonadi-common
-Suggests:      kleopatra
-Suggests:      akregator
+Suggests: akonadi-common
+Suggests: kleopatra
+Suggests: akregator
 %if %{with_kitchensync}
-Suggests:      kitchensync
+Suggests: kitchensync
 %endif
 Suggests: knode
 Suggests: kaddressbook
@@ -90,7 +66,7 @@ Information Management applications for the K Desktop Environment.
 	- korganizer: a calendar-of-events and todo-list manager
 	- kalarm: gui for setting up personal alarm/reminder messages
 	- kalarmd: personal alarm/reminder messages daemon, shared by korganizer and
-           kalarm.
+  kalarm.
 	- kaplan: A shell for the PIM apps, still experimental.
 	- ktimetracker: Time tracker.
 	- kfile-plugins: vCard KFIleItem plugin.
@@ -99,7 +75,7 @@ Information Management applications for the K Desktop Environment.
 	- kmail: universal mail client
 	- kmailcvt: converst addressbooks to kmail format
 %if %{with_kitchensync}
-    - kitchensync: Synchronisation framework, still under heavy development.
+ - kitchensync: Synchronisation framework, still under heavy development.
 %endif
 
 %files
@@ -261,20 +237,21 @@ KDE PIM Mobile library
 
 %files -n %libkdepimmobile
 %defattr(-,root,root)
-%_kde_libdir/libkdepimmobileui.so.%{libkdepim_mobile_major}*                                                                                                                                                  
+%_kde_libdir/libkdepimmobileui.so.%{libkdepim_mobile_major}*                                                                     
 
 #---------------------------------------------------------------------------
 
-%package -n keventeditor
-Summary: keventeditor
-Group:  Graphical desktop/KDE 
+%package -n kincidenceeditor
+Summary: kincidenceeditor
+Group: Graphical destop/KDE
+Obsoletes: keventeditor < 2:4.5.68
 
-%description -n keventeditor
+%description -n kincidenceeditor
 New incidince editors 
 
-%files -n keventeditor
+%files -n kincidenceeditor
 %defattr(-,root,root)
-%_kde_bindir/keventeditor
+%_kde_bindir/kincidenceeditor
 
 #----------------------------------------------------------------------------
 
@@ -323,7 +300,7 @@ Requires: %name-core = %epoch:%version
 Obsoletes: %name-kleopatra < 1:3.93.0-1
 Obsoletes: kde4-kleopatra < 2:4.0.68
 Provides: kde4-kleopatra = %epoch:%version
-Conflicts:  %{_lib}kleo4 < 4.0.80-3
+Conflicts: %{_lib}kleo4 < 4.0.80-3
 
 %description -n kleopatra
 KDE Certificate Manager
@@ -518,7 +495,7 @@ Requires: %name-core = %epoch:%version
 Requires: kdepimlibs4-core
 Obsoletes: %name-knode < 1:3.93.0-1
 Obsoletes: kde4-knode < 2:4.0.68
-Provides:  kde4-knode = %epoch:%version
+Provides: kde4-knode = %epoch:%version
 Conflicts: kontact < 2:4.0.83-2
 Requires: kio4-nntp
 
@@ -566,7 +543,7 @@ Obsoletes: kde4-kaddressbook < 2:4.0.68
 Provides: kde4-kaddressbook = %epoch:%version
 Conflicts: kontact < 2:4.0.83-2
 Conflicts: kdepim4-core < 2:4.1.81-1
-Requires:  akonadi-common 
+Requires: akonadi-common 
 
 %description -n kaddressbook
 The KDE addressbook application.
@@ -574,7 +551,7 @@ The KDE addressbook application.
 %files -n kaddressbook
 %defattr(-,root,root)
 %_kde_bindir/kaddressbook
-%_kde_bindir/kabc2mutt                        
+%_kde_bindir/kabc2mutt        
 %_kde_bindir/kabcclient
 %_kde_applicationsdir/kaddressbook.desktop
 %_kde_appsdir/kaddressbook
@@ -802,7 +779,7 @@ Requires: kio4-smtp
 Requires: kio4-mbox
 Requires: kio4-imap
 Requires: kio4-sieve
-Requires:  kmail-common
+Requires: kmail-common
 Suggests: kmailcvt
 Suggests: pinentry-qt4
 Suggests: openssh-askpass-qt4
@@ -866,7 +843,7 @@ KMail mobile is the email component of KDEPim Mobile UI
 
 %files -n kmail-mobile
 %defattr(-,root,root)
-%_kde_bindir/kmail-mobile                                                                                                                                                                
+%_kde_bindir/kmail-mobile                                                                            
 %_kde_bindir/kmail-mobile.sh
 %_kde_appsdir/kmail-mobile
 %_kde_applicationsdir/kmail-mobile.desktop
@@ -883,6 +860,7 @@ Common files needed by kmail and kmail-mobile used to view messages.
 
 %files -n kmail-common
 %defattr(-,root,root)
+%_kde_libdir/kde4/messageviewer_bodypartformatter_application_mstnef.so
 %_kde_libdir/kde4/messageviewer_bodypartformatter_text_calendar.so
 %_kde_libdir/kde4/messageviewer_bodypartformatter_text_vcard.so
 %_kde_libdir/kde4/messageviewer_bodypartformatter_text_xdiff.so
@@ -962,7 +940,7 @@ although including some advanced features in a Mobile UI.
 
 %files -n knotes-mobile
 %defattr(-,root,root)
-%_kde_bindir/notes-mobile                                                                                                                                                                
+%_kde_bindir/notes-mobile                                                                            
 %_kde_bindir/notes-mobile.sh 
 %_kde_appsdir/notes-mobile/
 %_kde_applicationsdir/notes-mobile.desktop 
@@ -1038,13 +1016,13 @@ KDE 4 library.
 %package -n korganizer
 Summary: Calendar and scheduling component
 Group: Graphical desktop/KDE
-Requires:  %name-core = %epoch:%version
-Requires:  %name-kresources
+Requires: %name-core = %epoch:%version
+Requires: %name-kresources
 Obsoletes: kde4-korganizer < 2:4.0.68
 Obsoletes: %name-korganizer < 1:3.93.0-1
 Requires: kio4-ldap
-Suggests: keventeditor
-Provides:  kde4-korganizer = %epoch:%version
+Suggests: kincidenceeditor
+Provides: kde4-korganizer = %epoch:%version
 Conflicts: kontact < 2:4.0.83-2
 Conflicts: kdepim4-core < 2:4.1.81-1
 
@@ -1411,20 +1389,19 @@ KDE 4 library.
 
 #-----------------------------------------------------------------------------
 
-%define incidenceeditors_major 4
 %define libincidenceeditorsng_major 4
-%define libincidenceeditors %mklibname incidenceeditors %{incidenceeditors_major}
+%define libincidenceeditorsng %mklibname incidenceeditorsng %{incidenceeditorsng_major}
 
-%package -n %libincidenceeditors
+%package -n %libincidenceeditorsng
 Summary: KDE 4 library
 Group: System/Libraries
+Obsoletes: %{_lib}incidenceeditors < 2:4.5.68
 
-%description -n %libincidenceeditors
+%description -n %libincidenceeditorsng
 KDE 4 library.
 
-%files -n %libincidenceeditors
+%files -n %libincidenceeditorsng
 %defattr(-,root,root)
-%_kde_libdir/libincidenceeditors.so.%{incidenceeditors_major}*
 %_kde_libdir/libincidenceeditorsng.so.%{libincidenceeditorsng_major}*
 
 #-----------------------------------------------------------------------------
@@ -1556,7 +1533,7 @@ Ktasks-mobile is the UI version of tasks
 
 %files -n ktasks-mobile
 %defattr(-,root,root)
-%_kde_bindir/tasks-mobile                                                                                                                                                                
+%_kde_bindir/tasks-mobile                                                                            
 %_kde_bindir/tasks-mobile.sh 
 %_kde_appsdir/tasks-mobile
 %_kde_applicationsdir/tasks-mobile.desktop 
@@ -1574,7 +1551,7 @@ Requires: kdepim4-runtime-devel >= 4.2.98
 Requires: %libkdepim = %epoch:%version
 Requires: %libeventviews = %epoch:%version
 Requires: %libkleopatraclientcore = %epoch:%version
-Requires: %libincidenceeditors = %epoch:%version
+Requires: %libincidenceeditorsng = %epoch:%version
 Requires: %libtemplateparser = %epoch:%version
 Requires: %libmessagecomposer = %epoch:%version
 Requires: %libkleopatraclientgui = %epoch:%version
@@ -1608,7 +1585,7 @@ Requires: %libincidenceeditorsngmobile = %epoch:%version
 Requires: %libkdepimmobile = %epoch:%version
 Requires: %libcalendarsupport = %epoch:%version
 
-%description  devel
+%description devel
 This package contains header files needed if you wish to build applications
 based on kdepim.
 
@@ -1626,12 +1603,9 @@ based on kdepim.
 %else
 %setup -q -n kdepim-%version
 %endif
-%patch0 -p0
-%patch1 -p0
 
 %build
 %cmake_kde4
-
 %make
 
 %install

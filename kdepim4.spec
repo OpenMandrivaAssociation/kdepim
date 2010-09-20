@@ -12,7 +12,7 @@
 Name: kdepim4
 Summary: K Desktop Environment
 Version: 4.5.68
-Release: %mkrel 1
+Release: %mkrel 2
 Epoch: 2
 Group: Graphical desktop/KDE
 License: GPL
@@ -75,7 +75,7 @@ Information Management applications for the K Desktop Environment.
 	- kmail: universal mail client
 	- kmailcvt: converst addressbooks to kmail format
 %if %{with_kitchensync}
- - kitchensync: Synchronisation framework, still under heavy development.
+	- kitchensync: Synchronisation framework, still under heavy development.
 %endif
 
 %files
@@ -1395,7 +1395,7 @@ KDE 4 library.
 %package -n %libincidenceeditorsng
 Summary: KDE 4 library
 Group: System/Libraries
-Obsoletes: %{_lib}incidenceeditors < 2:4.5.68
+Obsoletes: %{_lib}incidenceeditors4 < 2:4.5.68
 
 %description -n %libincidenceeditorsng
 KDE 4 library.

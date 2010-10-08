@@ -10,7 +10,7 @@
 %endif
 
 Name: kdepim4
-Summary: K Desktop Environment
+Summary: An application suite to manage personal information
 Version: 4.5.71
 %if %branch
 Release: %mkrel -c %kde_snapshot 1

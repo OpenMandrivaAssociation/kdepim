@@ -13,7 +13,7 @@ Name: kdepim4
 Summary: An application suite to manage personal information
 Version: 4.5.71
 %if %branch
-Release: %mkrel -c %kde_snapshot 1
+Release: %mkrel -c %kde_snapshot 2
 %else
 Release: %mkrel 1
 %endif
@@ -26,6 +26,7 @@ Source: ftp://ftp.kde.org/pub/kde/unstable/%version/src/kdepim-%version%kde_snap
 %else
 Source: ftp://ftp.kde.org/pub/kde/stable/%version/src/kdepim-%version.tar.bz2
 %endif
+Patch0:	kdepim-upstream-fix-broken-headers.patch
 Buildroot: %_tmppath/%name-%version-%release-root
 BuildRequires: kdelibs4-devel >= 2:4.5.61
 BuildRequires: kdepimlibs4-devel >= 2:4.5.61
@@ -1622,6 +1623,7 @@ based on kdepim.
 %else
 %setup -q -n kdepim-%version
 %endif
+%patch0
 
 %build
 %cmake_kde4

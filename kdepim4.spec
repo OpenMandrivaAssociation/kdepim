@@ -6,13 +6,17 @@
 
 
 %if %branch
-%define kde_snapshot svn1174542
+%define kde_snapshot svn1183615
 %endif
 
 Name: kdepim4
 Summary: K Desktop Environment
-Version: 4.5.68
-Release: %mkrel 2
+Version: 4.5.71
+%if %branch
+Release: %mkrel -c %kde_snapshot 1
+%else
+Release: %mkrel 1
+%endif
 Epoch: 2
 Group: Graphical desktop/KDE
 License: GPL
@@ -23,8 +27,8 @@ Source: ftp://ftp.kde.org/pub/kde/unstable/%version/src/kdepim-%version%kde_snap
 Source: ftp://ftp.kde.org/pub/kde/stable/%version/src/kdepim-%version.tar.bz2
 %endif
 Buildroot: %_tmppath/%name-%version-%release-root
-BuildRequires: kdelibs4-devel >= 2:4.2.98
-BuildRequires: kdepimlibs4-devel >= 2:4.2.98
+BuildRequires: kdelibs4-devel >= 2:4.5.61
+BuildRequires: kdepimlibs4-devel >= 2:4.5.61
 BuildRequires: kdepim4-runtime-devel >= 4.2.98
 BuildRequires: libx11-devel
 BuildRequires: boost-devel
@@ -113,6 +117,7 @@ Suggests: kmail-mobile
 Suggests: korganizer-mobile
 Suggests: knotes-mobile
 Suggests: ktasks-mobile
+
 %description mobile
 Information Management applications for the K Desktop Environment Mobile.
 	- kaddressbook-mobile: The KDE addressbook application for Mobile UI.
@@ -400,8 +405,9 @@ easy news reading.
 %_kde_bindir/akregatorstorageexporter
 %_kde_applicationsdir/akregator.desktop
 %_kde_appsdir/akregator
-%_kde_datadir/kde4/services/kontact/akregatorplugin.desktop
+%_kde_appsdir/akregator_sharemicroblog_plugin
 %_kde_datadir/config.kcfg/akregator.kcfg
+%_kde_services/kontact/akregatorplugin.desktop
 %_kde_services/akregator_*
 %_kde_services/feed.protocol
 %_kde_servicetypes/akregator_plugin.desktop
@@ -765,6 +771,22 @@ KDE 4 library.
 
 #-----------------------------------------------------------------------------
 
+%define mailcommon_major 4
+%define libmailcommon %mklibname mailcommon %{mailcommon_major}
+
+%package -n %libmailcommon
+Summary: KDE 4 library
+Group: System/Libraries
+
+%description -n %libmailcommon
+KDE 4 library.
+
+%files -n %libmailcommon
+%defattr(-,root,root)
+%_kde_libdir/libmailcommon.so.%{mailcommon_major}*
+
+#-----------------------------------------------------------------------------
+
 %package -n kmail
 Summary: KDE Email Client
 Group: Graphical desktop/KDE
@@ -804,7 +826,7 @@ information manager of KDE.
 %_kde_appsdir/kmail
 %_kde_appsdir/kmail2
 %_kde_datadir/kde4/services/kontact/kmailplugin.desktop
-%_kde_applicationsdir/KMail.desktop
+%_kde_applicationsdir/KMail2.desktop
 %_kde_applicationsdir/kmail_view.desktop
 %_kde_appsdir/kconf_update/kmail*
 %_kde_appsdir/kconf_update/upgrade-signature.pl
@@ -828,6 +850,7 @@ information manager of KDE.
 %_kde_libdir/kde4/kontact_kmailplugin.so
 %_kde_libdir/kde4/ktexteditorkabcbridge.so
 %_kde_services/kcmkmailsummary.desktop
+%_kde_services/ServiceMenus/kmail_addattachmentservicemenu.desktop
 %_kde_docdir/HTML/en/kmail
 
 #-----------------------------------------------------------------------
@@ -1067,7 +1090,6 @@ Citadel or OpenGroupware.org.
 
 %_kde_bindir/konsolekalendar
 %_kde_applicationsdir/konsolekalendar.desktop
-%_kde_appsdir/konsolekalendar
 %doc %_kde_docdir/HTML/en/konsolekalendar
 
 #-----------------------------------------------------------------------------
@@ -1543,11 +1565,9 @@ Ktasks-mobile is the UI version of tasks
 %package devel
 Summary: Devel stuff for %name
 Group: Development/KDE and Qt
-Requires: kde4-macros
-Requires: kdelibs4-devel >= 2:4.2.98
-Requires: kdelibs4-experimental-devel >= 4.2.98
-Requires: kdepimlibs4-devel >= 2:4.2.98
-Requires: kdepim4-runtime-devel >= 4.2.98
+Requires: kdelibs4-devel >= 2:4.5.61
+Requires: kdepimlibs4-devel >= 2:4.5.61
+Requires: kdepim4-runtime-devel >= 4.5.61
 Requires: %libkdepim = %epoch:%version
 Requires: %libeventviews = %epoch:%version
 Requires: %libkleopatraclientcore = %epoch:%version
@@ -1566,6 +1586,7 @@ Requires: %libqopensync = %epoch:%version
 %endif
 Requires: %libknodecommon = %epoch:%version
 Requires: %libkmailprivate = %epoch:%version
+Requires: %libmailcommon = %epoch:%version
 Requires: %libkorganizerprivate = %epoch:%version
 Requires: %libkorganizer_interfaces = %epoch:%version
 Requires: %libkcal_resourceremote = %epoch:%version
@@ -1595,9 +1616,7 @@ based on kdepim.
 %_kde_datadir/dbus-1/interfaces/*
 
 #----------------------------------------------------------------------
-
 %prep
-
 %if %branch
 %setup -q -n kdepim-%version%kde_snapshot
 %else
@@ -1615,4 +1634,3 @@ based on kdepim.
 
 %clean
 %__rm -fr %buildroot
-

@@ -6,14 +6,14 @@
 
 
 %if %branch
-%define kde_snapshot svn1183615
+%define kde_snapshot svn1190490
 %endif
 
 Name: kdepim4
 Summary: An application suite to manage personal information
-Version: 4.5.71
+Version: 4.5.74
 %if %branch
-Release: %mkrel -c %kde_snapshot 2
+Release: %mkrel -c %kde_snapshot 1
 %else
 Release: %mkrel 1
 %endif
@@ -26,11 +26,10 @@ Source: ftp://ftp.kde.org/pub/kde/unstable/%version/src/kdepim-%version%kde_snap
 %else
 Source: ftp://ftp.kde.org/pub/kde/stable/%version/src/kdepim-%version.tar.bz2
 %endif
-Patch0:	kdepim-upstream-fix-broken-headers.patch
 Buildroot: %_tmppath/%name-%version-%release-root
 BuildRequires: kdelibs4-devel >= 2:4.5.61
-BuildRequires: kdepimlibs4-devel >= 2:4.5.61
-BuildRequires: kdepim4-runtime-devel >= 4.2.98
+BuildRequires: kdepimlibs4-devel >= 2:4.5.74
+BuildRequires: kdepim4-runtime-devel >= 4.5.74
 BuildRequires: libx11-devel
 BuildRequires: boost-devel
 BuildRequires: zlib-devel
@@ -632,7 +631,7 @@ intervals.
 %_kde_applicationsdir/blogilo.desktop
 %_kde_datadir/config.kcfg/blogilo.kcfg
 %doc %_kde_docdir/HTML/en/blogilo
-%_kde_appsdir/blogilo/blogiloui.rc
+%_kde_appsdir/blogilo
 
 #-----------------------------------------------------------------------------
 
@@ -1623,7 +1622,6 @@ based on kdepim.
 %else
 %setup -q -n kdepim-%version
 %endif
-%patch0
 
 %build
 %cmake_kde4

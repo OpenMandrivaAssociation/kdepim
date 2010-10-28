@@ -568,7 +568,7 @@ The KDE addressbook application.
 %_kde_datadir/kde4/services/kaddressbookpart.desktop
 %_kde_datadir/kde4/services/kontact/kaddressbookplugin.desktop
 %_kde_datadir/kde4/services/kcmldap.desktop
-%_kde_mandir/man1/kabcclient.1.lzma
+%_kde_mandir/man1/kabcclient.1.*
 %doc %_kde_docdir/HTML/en/kabcclient
 
 #-----------------------------------------------------------------------------

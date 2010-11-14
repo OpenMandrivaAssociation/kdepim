@@ -698,22 +698,6 @@ KDE 4 library.
 
 #-----------------------------------------------------------------------------
 
-%define kalarm_resources_major 4
-%define libkalarm_resources %mklibname kalarm_resources %{kalarm_resources_major}
-
-%package -n %libkalarm_resources
-Summary: KDE 4 library
-Group: System/Libraries
-
-%description -n %libkalarm_resources
-KDE 4 library.
-
-%files -n %libkalarm_resources
-%defattr(-,root,root)
-%_kde_libdir/libkalarm_resources.so.%{kalarm_resources_major}*
-
-#-----------------------------------------------------------------------------
-
 %package -n ktimetracker
 Summary: Tracks time spent on various tasks
 Group: Graphical desktop/KDE
@@ -1591,7 +1575,6 @@ Requires: %libmessagelist = %epoch:%version
 Requires: %libmessagecore = %epoch:%version
 Requires: %libmessageviewer = %epoch:%version
 Requires: %libkalarm_calendar = %epoch:%version
-Requires: %libkalarm_resources = %epoch:%version
 Requires: %libakonadi_next = %epoch:%version
 Requires: %libkdgantt2 = %epoch:%version
 Requires: %libincidenceeditorsngmobile = %epoch:%version

@@ -668,9 +668,6 @@ or you can schedule commands to be executed or emails to be sent.
 %defattr(-,root,root)
 %_kde_bindir/kalarm
 %_kde_bindir/kalarmautostart
-%_kde_libdir/kde4/kalarm_local.so
-%_kde_libdir/kde4/kalarm_localdir.so
-%_kde_libdir/kde4/kalarm_remote.so
 %_kde_applicationsdir/kalarm.desktop
 %_kde_appsdir/kalarm
 %_kde_appsdir/kconf_update/kalarm-1.2.1-general.pl
@@ -682,10 +679,6 @@ or you can schedule commands to be executed or emails to be sent.
 %_kde_datadir/autostart/kalarm.autostart.desktop
 %_kde_datadir/config.kcfg/kalarmconfig.kcfg
 %doc %_kde_docdir/HTML/en/kalarm
-%_kde_services/kresources/alarms/local.desktop
-%_kde_services/kresources/alarms/localdir.desktop
-%_kde_services/kresources/alarms/remote.desktop
-%_kde_services/kresources/kalarm_manager.desktop
 
 #-----------------------------------------------------------------------------
 

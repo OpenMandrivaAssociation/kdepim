@@ -296,6 +296,38 @@ KDE 4 library.
 
 #-----------------------------------------------------------------------------
 
+%define kmanagesieve_major 4
+%define libkmanagesieve %mklibname kmanagesieve %{kmanagesieve_major}
+
+%package -n %libkmanagesieve
+Summary: KDE 4 library
+Group: System/Libraries
+
+%description -n %libkmanagesieve
+KDE 4 library.
+
+%files -n %libkmanagesieve
+%defattr(-,root,root)
+%_kde_libdir/libkmanagesieve.so.%{kmanagesieve_major}*
+
+#-----------------------------------------------------------------------------
+
+%define ksieveui_major 4
+%define libksieveui %mklibname ksieveui %{ksieveui_major}
+
+%package -n %libksieveui
+Summary: KDE 4 library
+Group: System/Libraries
+
+%description -n %libksieveui
+KDE 4 library.
+
+%files -n %libksieveui
+%defattr(-,root,root)
+%_kde_libdir/libksieveui.so.%{ksieveui_major}*
+
+#-----------------------------------------------------------------------------
+
 %package -n kleopatra
 Summary: KDE Certificate Manager
 Group: Graphical desktop/KDE
@@ -1647,6 +1679,8 @@ Requires: %libkdgantt2 = %epoch:%version
 Requires: %libincidenceeditorsngmobile = %epoch:%version
 Requires: %libkdepimmobile = %epoch:%version
 Requires: %libcalendarsupport = %epoch:%version
+Requires: %libkmanagesieve = %epoch:%version
+Requires: %libksieveui = %epoch:%version
 
 %description devel
 This package contains header files needed if you wish to build applications

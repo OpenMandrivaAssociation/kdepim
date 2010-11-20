@@ -5,12 +5,12 @@
 %{?_branch: %{expand: %%global branch 1}}
 
 %if %branch
-%define kde_snapshot svn1196728
+%define kde_snapshot svn1198704
 %endif
 
 Name: kdepim4
 Summary: An application suite to manage personal information
-Version: 4.5.76
+Version: 4.5.77
 %if %branch
 Release: %mkrel -c %kde_snapshot 1
 %else
@@ -104,7 +104,6 @@ Core files from kdepim.
 %files core
 %defattr(-,root,root,-)
 %_kde_libdir/strigi/*
-%_kde_iconsdir/*/*/*/*
 %dir %_kde_services/kontact
 
 #----------------------------------------------------------------------------
@@ -305,6 +304,7 @@ Obsoletes: %name-kleopatra < 1:3.93.0-1
 Obsoletes: kde4-kleopatra < 2:4.0.68
 Provides: kde4-kleopatra = %epoch:%version
 Conflicts: %{_lib}kleo4 < 4.0.80-3
+Conflicts: %name-core < 2:4.5.77
 
 %description -n kleopatra
 KDE Certificate Manager
@@ -319,6 +319,7 @@ KDE Certificate Manager
 %_kde_applicationsdir/kleopatra_import.desktop
 %_kde_appsdir/kleopatra
 %_kde_appsdir/libkleopatra
+%_kde_iconsdir/*/*/apps/kleopatra.*
 %_kde_appsdir/kwatchgnupg
 %_kde_services/kleopatra_*
 %_kde_libdir/kde4/kcm_kleopatra.so
@@ -388,6 +389,7 @@ Obsoletes: %name-akregator < 1:3.93.0-1
 Obsoletes: kde4-akregator < 2:4.0.68
 Provides: kde4-akregator = %epoch:%version
 Conflicts: kontact < 2:4.0.83-2
+Conflicts: %name-core < 2:4.5.77
 
 %description -n akregator
 Akregator is a news feed reader for the KDE desktop. It enables you to
@@ -406,6 +408,8 @@ easy news reading.
 %_kde_appsdir/akregator
 %_kde_appsdir/akregator_sharemicroblog_plugin
 %_kde_datadir/config.kcfg/akregator.kcfg
+%_kde_iconsdir/*/*/apps/akregator.*
+%_kde_iconsdir/*/*/apps/akregator_empty.*
 %_kde_services/kontact/akregatorplugin.desktop
 %_kde_services/akregator_*
 %_kde_services/feed.protocol
@@ -502,6 +506,7 @@ Obsoletes: %name-knode < 1:3.93.0-1
 Obsoletes: kde4-knode < 2:4.0.68
 Provides: kde4-knode = %epoch:%version
 Conflicts: kontact < 2:4.0.83-2
+Conflicts: %name-core < 2:4.5.77
 Requires: kio4-nntp
 
 %description -n knode
@@ -519,6 +524,8 @@ leafnode also usable with dial-up connections.
 %_kde_applicationsdir/KNode.desktop
 %_kde_appsdir/knode
 %_kde_appsdir/kconf_update/knode.upd
+%_kde_iconsdir/*/*/apps/knode.*
+%_kde_iconsdir/*/*/apps/knode2.*
 %_kde_services/kontact/knodeplugin.desktop
 %_kde_services/knewsservice.protocol
 %_kde_services/knode_config_accounts.desktop
@@ -547,7 +554,7 @@ Obsoletes: %name-kaddressbook < 1:3.93.0-1
 Obsoletes: kde4-kaddressbook < 2:4.0.68
 Provides: kde4-kaddressbook = %epoch:%version
 Conflicts: kontact < 2:4.0.83-2
-Conflicts: kdepim4-core < 2:4.1.81-1
+Conflicts: kdepim4-core < 2:4.5.77
 Requires: akonadi-common 
 
 %description -n kaddressbook
@@ -564,6 +571,7 @@ The KDE addressbook application.
 %_kde_libdir/akonadi/contact/editorpageplugins/cryptopageplugin.so
 %_kde_libdir/kde4/kaddressbookpart.so
 %_kde_libdir/kde4/kontact_kaddressbookplugin.so
+%_kde_iconsdir/*/*/apps/kaddressbook.*
 %_kde_datadir/kde4/services/kaddressbookpart.desktop
 %_kde_datadir/kde4/services/kontact/kaddressbookplugin.desktop
 %_kde_datadir/kde4/services/kcmldap.desktop
@@ -575,6 +583,7 @@ The KDE addressbook application.
 Summary: The KDE addressbook application for Mobile UI
 Group: Graphical desktop/KDE
 Requires: %name-mobile-core = %epoch:%version
+Conflicts: %name-core < 2:4.5.77
 
 %description -n kaddressbook-mobile
 The Mobile version of the KDE addressbook application.
@@ -583,6 +592,8 @@ The Mobile version of the KDE addressbook application.
 %defattr(-,root,root)
 %_kde_bindir/kaddressbook-mobile
 %_kde_bindir/kaddressbook-mobile.sh
+%_kde_iconsdir/*/*/apps/kaddressbook-mobile.*
+%_kde_iconsdir/*/*/mimetypes/x-mail-distribution-list.*
 %_kde_datadir/apps/kaddressbook-mobile/
 %_kde_applicationsdir/kaddressbook-mobile.desktop
 
@@ -592,6 +603,7 @@ The Mobile version of the KDE addressbook application.
 Summary: Blogging client for kde
 Group: Graphical desktop/KDE
 Requires: %name-core = %epoch:%version
+Conflicts: %name-core < 2:4.5.77
 
 %description -n blogilo
 Blogilo is a blogging client for KDE, which supports famous blogging
@@ -629,6 +641,12 @@ intervals.
 %{_kde_bindir}/blogilo
 %_kde_applicationsdir/blogilo.desktop
 %_kde_datadir/config.kcfg/blogilo.kcfg
+%_kde_iconsdir/*/*/apps/blogilo.*
+%_kde_iconsdir/*/*/actions/format-text-blockquote.*
+%_kde_iconsdir/*/*/actions/format-text-code.*
+%_kde_iconsdir/*/*/actions/insert-more-mark.*
+%_kde_iconsdir/*/*/actions/remove-link.*
+%_kde_iconsdir/*/*/actions/upload-media.*
 %doc %_kde_docdir/HTML/en/blogilo
 %_kde_appsdir/blogilo
 
@@ -658,6 +676,7 @@ Obsoletes: %name-kalarm < 1:3.93.0-1
 Obsoletes: kde4-kalarm < 2:4.0.68
 Provides: kde4-kalarm = %epoch:%version
 Conflicts: kontact < 2:4.0.83-2
+Conflicts: %name-core < 2:4.5.77
 
 %description -n kalarm
 KAlarm is a personal alarm message, command and email scheduler. It lets you
@@ -681,6 +700,7 @@ or you can schedule commands to be executed or emails to be sent.
 %_kde_appsdir/kconf_update/kalarm.upd
 %_kde_datadir/autostart/kalarm.autostart.desktop
 %_kde_datadir/config.kcfg/kalarmconfig.kcfg
+%_kde_iconsdir/*/*/apps/kalarm.*
 %doc %_kde_docdir/HTML/en/kalarm
 %_kde_services/kresources/alarms/local.desktop
 %_kde_services/kresources/alarms/localdir.desktop
@@ -729,6 +749,7 @@ Obsoletes: %name-ktimetracker < 1:3.93.0-1
 Obsoletes: kde4-ktimetracker < 2:4.0.68
 Provides: kde4-ktimetracker = %epoch:%version
 Conflicts: kontact < 2:4.0.83-2
+Conflicts: %name-core < 2:4.5.77
 
 %description -n ktimetracker
 KTimeTracker tracks time spent on various tasks. It is useful for tracking
@@ -741,6 +762,7 @@ of your day is spent playing Doom or reading Slashdot.
 %_kde_bindir/ktimetracker
 %_kde_appsdir/ktimetracker
 %_kde_applicationsdir/ktimetracker.desktop
+%_kde_iconsdir/*/*/apps/ktimetracker.*
 %_kde_services/ktimetrackerpart.desktop
 %_kde_services/ktimetracker_config_behavior.desktop
 %_kde_services/ktimetracker_config_display.desktop
@@ -810,6 +832,7 @@ Obsoletes: %name-kmail < 1:3.93.0-1
 Conflicts: kontact < 2:4.0.83-2
 Provides: kde4-kmail = %epoch:%version
 Provides: kmail2 = %epoch:%version
+Conflicts: %name-core < 2:4.5.77
 
 %description -n kmail
 KMail is the email component of Kontact, the integrated personal
@@ -836,6 +859,7 @@ information manager of KDE.
 %_kde_datadir/config.kcfg/templatesconfiguration_kfg.kcfg
 %_kde_datadir/config/kmail.antispamrc
 %_kde_datadir/config/kmail.antivirusrc
+%_kde_iconsdir/*/*/apps/kmail.*
 %_kde_services/kmail_config_accounts.desktop
 %_kde_services/kmail_config_appearance.desktop
 %_kde_services/kmail_config_composer.desktop
@@ -859,15 +883,17 @@ Summary: KDE Email Client
 Group: Graphical desktop/KDE
 Requires: %name-mobile-core = %epoch:%version
 Requires: kmail-common
+Conflicts: %name-core < 2:4.5.77
 
 %description -n kmail-mobile
 KMail mobile is the email component of KDEPim Mobile UI
 
 %files -n kmail-mobile
 %defattr(-,root,root)
-%_kde_bindir/kmail-mobile                                                                            
+%_kde_bindir/kmail-mobile
 %_kde_bindir/kmail-mobile.sh
 %_kde_appsdir/kmail-mobile
+%_kde_iconsdir/*/*/apps/kmail-mobile.*
 %_kde_applicationsdir/kmail-mobile.desktop
 
 #-----------------------------------------------------------------------------
@@ -901,6 +927,7 @@ Requires: %name-core = %epoch:%version
 Obsoletes: %name-kmailcvt < 1:3.93.0-1
 Obsoletes: kde4-kmailcvt < 2:4.0.68
 Provides: kde4-kmailcvt = %epoch:%version
+Conflicts: %name-core < 2:4.5.77
 
 %description -n kmailcvt
 KDE Mail Import tool
@@ -909,6 +936,7 @@ KDE Mail Import tool
 %defattr(-,root,root)
 %_kde_bindir/kmailcvt
 %_kde_appsdir/kmailcvt/pics/step1.png
+%_kde_iconsdir/*/*/apps/kmailcvt.*
 
 #-----------------------------------------------------------------------------
 
@@ -922,6 +950,7 @@ Obsoletes: kde4-knotes < 2:4.0.68
 Obsoletes: %name-knotes < 1:3.93.0-1
 Provides: kde4-knotes = %epoch:%version
 Conflicts: kontact < 2:4.0.83-2
+Conflicts: %name-core < 2:4.5.77
 
 %description -n knotes
 KNotes aims to be a useful and full featured notes application for
@@ -936,6 +965,7 @@ although including some advanced features.
 %_kde_datadir/config.kcfg/knoteconfig.kcfg
 %_kde_datadir/config.kcfg/knotesglobalconfig.kcfg
 %_kde_appsdir/knotes
+%_kde_iconsdir/*/*/apps/knotes.*
 %_kde_services/kresources/knotes/local.desktop
 %_kde_services/kresources/knotes_manager.desktop
 %_kde_services/knote_config_action.desktop
@@ -954,6 +984,7 @@ although including some advanced features.
 Summary: Notes for the K Desktop Environment for Mobile UI
 Group: Graphical desktop/KDE
 Requires: %name-mobile-core = %epoch:%version
+Conflicts: %name-core < 2:4.5.77
 
 %description -n knotes-mobile
 KNotes aims to be a useful and full featured notes application for
@@ -962,9 +993,10 @@ although including some advanced features in a Mobile UI.
 
 %files -n knotes-mobile
 %defattr(-,root,root)
-%_kde_bindir/notes-mobile                                                                            
+%_kde_bindir/notes-mobile
 %_kde_bindir/notes-mobile.sh 
 %_kde_appsdir/notes-mobile/
+%_kde_iconsdir/*/*/apps/notes-mobile.*
 %_kde_applicationsdir/notes-mobile.desktop 
 
 #-----------------------------------------------------------------------------
@@ -975,6 +1007,7 @@ Group: Graphical desktop/KDE
 Requires: %name-core = %epoch:%version
 Obsoletes: %name-kontact < 1:3.93.0-1
 Obsoletes: kde4-kontact < 2:4.0.68
+Conflicts: %name-core < 2:4.5.77
 Requires: kio4-ldap
 Provides: kde4-kontact = %epoch:%version
 Suggests: akregator
@@ -997,6 +1030,7 @@ technology, existing applications are seamlessly integrated into one.
 %_kde_appsdir/kontact
 %_kde_appsdir/kontactsummary
 %_kde_datadir/config.kcfg/kontact.kcfg
+%_kde_iconsdir/*/*/apps/kontact.*
 %_kde_services/kontactconfig.desktop
 %_kde_services/kcmapptsummary.desktop
 %_kde_services/kcmkontactsummary.desktop
@@ -1012,7 +1046,6 @@ technology, existing applications are seamlessly integrated into one.
 %_kde_libdir/kde4/kontact_summaryplugin.so
 %_kde_applicationsdir/Kontact.desktop
 %_kde_applicationsdir/kontact-admin.desktop
-
 %_kde_docdir/HTML/en/kontact
 %_kde_docdir/HTML/en/kontact-admin
 
@@ -1046,7 +1079,7 @@ Requires: kio4-ldap
 Suggests: kincidenceeditor
 Provides: kde4-korganizer = %epoch:%version
 Conflicts: kontact < 2:4.0.83-2
-Conflicts: kdepim4-core < 2:4.1.81-1
+Conflicts: kdepim4-core < 2:4.5.77
 
 %description -n korganizer
 KOrganizer provides management of events and tasks, alarm notification,
@@ -1066,6 +1099,10 @@ Citadel or OpenGroupware.org.
 %_kde_appsdir/kconf_update/korganizer.upd
 %_kde_appsdir/korgac
 %_kde_appsdir/korganizer
+%_kde_iconsdir/*/*/apps/korganizer.*
+%_kde_iconsdir/*/*/actions/checkmark.*
+%_kde_iconsdir/*/*/actions/smallclock.*
+%_kde_iconsdir/*/*/actions/upindicator.*
 %_kde_services/kontact/todoplugin.desktop
 %_kde_services/kcmtodosummary.desktop
 %_kde_services/kontact/journalplugin.desktop
@@ -1086,9 +1123,9 @@ Citadel or OpenGroupware.org.
 %_kde_libdir/kde4/korganizerpart.so
 %_kde_libdir/kde4/kontact_korganizerplugin.so
 %doc %_kde_docdir/*/*/korganizer
-
 %_kde_bindir/konsolekalendar
 %_kde_applicationsdir/konsolekalendar.desktop
+%_kde_iconsdir/*/*/apps/konsolekalendar.*
 %doc %_kde_docdir/HTML/en/konsolekalendar
 
 #-----------------------------------------------------------------------------
@@ -1115,6 +1152,7 @@ KDE 4 library.
 Summary: Calendar and scheduling component for Mobile UI
 Group: Graphical desktop/KDE
 Requires: %name-mobile-core = %epoch:%version
+Conflicts: %name-core < 2:4.5.77
 
 %description -n korganizer-mobile
 KOrganizer-Mobile provides management of events and tasks, alarm notification,
@@ -1128,6 +1166,7 @@ Citadel or OpenGroupware.org.
 %_kde_bindir/korganizer-mobile
 %_kde_bindir/korganizer-mobile.sh
 %_kde_appsdir/korganizer-mobile
+%_kde_iconsdir/*/*/apps/korganizer-mobile.*
 %_kde_applicationsdir/korganizer-mobile.desktop
 
 #------------------------------------------------------------------------------
@@ -1517,6 +1556,7 @@ Obsoletes: %name-kjots < 3.93.0-0.714053.1
 Obsoletes: kde4-kjots < 4.0.68
 Provides: kde4-kjots = %version
 Conflicts: kontact < 2:4.0.83-2
+Conflicts: %name-core < 2:4.5.77
 
 %description -n kjots
 A small program which is handy for keeping and organizing miscellaneous
@@ -1533,6 +1573,8 @@ notes.
 %_kde_applicationsdir/Kjots.desktop
 %_kde_appsdir/kjots
 %_kde_datadir/config.kcfg/kjots.kcfg
+%_kde_iconsdir/*/*/apps/kjots.*
+%_kde_iconsdir/*/*/actions/edit-delete-page.*
 %doc %_kde_docdir/HTML/en/kjots
 %_kde_services/akonotes_list.desktop
 %_kde_services/akonotes_note.desktop
@@ -1541,22 +1583,23 @@ notes.
 %_kde_services/kontact/kjots_plugin.desktop
 %_kde_appsdir/desktoptheme/default/widgets/stickynote.svgz
 
-
 #-----------------------------------------------------------------------------
 
 %package -n ktasks-mobile
 Summary: Mobile UI for tasks
 Group: Graphical desktop/KDE
 Requires: %name-mobile-core = %epoch:%version
+Conflicts: %name-core < 2:4.5.77
 
 %description -n ktasks-mobile
 Ktasks-mobile is the UI version of tasks
 
 %files -n ktasks-mobile
 %defattr(-,root,root)
-%_kde_bindir/tasks-mobile                                                                            
+%_kde_bindir/tasks-mobile
 %_kde_bindir/tasks-mobile.sh 
 %_kde_appsdir/tasks-mobile
+%_kde_iconsdir/*/*/apps/tasks-mobile.*
 %_kde_applicationsdir/tasks-mobile.desktop 
 
 #-----------------------------------------------------------------------------

@@ -1,6 +1,3 @@
-%define with_kitchensync 0
-%{?_with_kitchensync: %{expand: %%global with_kitchensync 1}}
-
 %define branch 1
 %{?_branch: %{expand: %%global branch 1}}
 
@@ -38,15 +35,9 @@ BuildRequires: grantlee-devel
 BuildRequires: xsltproc
 BuildRequires: libassuan-devel
 BuildRequires: libxscrnsaver-devel
-%if %{with_kitchensync}
-BuildRequires: libopensync-devel >= 0.30
-%endif
 Suggests: akonadi-common
 Suggests: kleopatra
 Suggests: akregator
-%if %{with_kitchensync}
-Suggests: kitchensync
-%endif
 Suggests: knode
 Suggests: kaddressbook
 Suggests: kalarm
@@ -77,9 +68,6 @@ Information Management applications for the K Desktop Environment.
 	- konsolecalendar: Command line tool for accessing calendar files.
 	- kmail: universal mail client
 	- kmailcvt: converst addressbooks to kmail format
-%if %{with_kitchensync}
-	- kitchensync: Synchronisation framework, still under heavy development.
-%endif
 
 %files
 
@@ -449,65 +437,6 @@ easy news reading.
 %_kde_libdir/kde4/akregator*
 %_kde_libdir/kde4/kontact_akregatorplugin.so
 %doc %_kde_docdir/HTML/en/akregator
-
-#-----------------------------------------------------------------------------
-
-%if %{with_kitchensync}
-
-%define kitchensyncprivate_major 4
-%define libkitchensyncprivate %mklibname kitchensyncprivate %{kitchensyncprivate_major}
-
-%package -n %libkitchensyncprivate
-Summary: KDE 4 library
-Group: System/Libraries
-Obsoletes: %{mklibname kdepim42-common} < 1:3.93.0-1
-
-%description -n %libkitchensyncprivate
-KDE 4 library.
-
-%files -n %libkitchensyncprivate
-%defattr(-,root,root)
-%_kde_libdir/libkitchensyncprivate.so.%{kitchensyncprivate_major}*
-
-#-----------------------------------------------------------------------------
-
-%define qopensync_major 4
-%define libqopensync %mklibname qopensync %{qopensync_major}
-
-%package -n %libqopensync
-Summary: KDE 4 library
-Group: System/Libraries
-Obsoletes: %{mklibname kdepim42-common} < 1:3.93.0-1
-
-%description -n %libqopensync
-KDE 4 library.
-
-%files -n %libqopensync
-%defattr(-,root,root)
-%_kde_libdir/libqopensync.so.%{qopensync_major}*
-
-#-----------------------------------------------------------------------------
-
-%package -n kitchensync
-Summary: KDE KitchenSync
-Group: Graphical desktop/KDE
-Requires: %name-core = %epoch:%version
-
-Obsoletes: %name-kitchensync < 1:3.93.0-1
-Obsoletes: kde4-kitchensync < 2:4.0.68
-
-Provides: kde4-kitchensync = %epoch:%version
-
-%description -n kitchensync
-The KDE Synchronization Tool
-
-%files -n kitchensync
-%defattr(-,root,root)
-%_kde_bindir/kitchensync
-%_kde_applicationsdir/kitchensync.desktop
-%_kde_appsdir/kitchensync
-%_kde_libdir/kde4/kitchensyncpart.so
-%endif
 
 #-----------------------------------------------------------------------------
 
@@ -1654,10 +1583,6 @@ Requires: %libkpgp = %epoch:%version
 Requires: %libksieve = %epoch:%version
 Requires: %libakregatorinterfaces = %epoch:%version
 Requires: %libakregatorprivate = %epoch:%version
-%if %{with_kitchensync}
-Requires: %libkitchensyncprivate = %epoch:%version
-Requires: %libqopensync = %epoch:%version
-%endif
 Requires: %libknodecommon = %epoch:%version
 Requires: %libkmailprivate = %epoch:%version
 Requires: %libmailcommon = %epoch:%version

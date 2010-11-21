@@ -78,7 +78,7 @@ Summary: Core files for kdepim
 Group: Graphical desktop/KDE	
 Requires: kdelibs4-core
 Requires: kdebase4-runtime
-Requires: akonadi-kde
+Requires: akonadi-kde >= 2:%{version}
 Obsoletes: libkdepim42-common < 1:3.93.0-1
 Obsoletes: kdepim4-common < 1:3.93.0-1
 Obsoletes: kdepim4-plasma-applets < 1:4.1 

@@ -1,4 +1,4 @@
-%define branch 1
+%define branch 0
 %{?_branch: %{expand: %%global branch 1}}
 
 %if %branch
@@ -7,7 +7,7 @@
 
 Name: kdepim4
 Summary: An application suite to manage personal information
-Version: 4.5.77
+Version: 4.5.80
 %if %branch
 Release: %mkrel -c %kde_snapshot 1
 %else

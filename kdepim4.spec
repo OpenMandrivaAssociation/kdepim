@@ -93,40 +93,7 @@ Core files from kdepim.
 %defattr(-,root,root,-)
 %_kde_libdir/strigi/*
 %dir %_kde_services/kontact
-
-#----------------------------------------------------------------------------
-%package mobile
-Summary: Kdepim Mobile
-Group: Graphical desktop/KDE
-Suggests: kaddressbook-mobile
-Suggests: kmail-mobile
-Suggests: korganizer-mobile
-Suggests: knotes-mobile
-Suggests: ktasks-mobile
-
-%description mobile
-Information Management applications for the K Desktop Environment Mobile.
-	- kaddressbook-mobile: The KDE addressbook application for Mobile UI.
-	- korganizer-mobile: a calendar-of-events and todo-list manager for Mobile UI
-	- kmail-mobile: The mobile version of kmail
-	- knotes-mobile: The mobile version of notes
-	- ktasks-mobile: Mobile version to add tasks 
-
-%files mobile
-
-#----------------------------------------------------------------------------
-
-%package mobile-core
-Summary: Core files for kdepim-mobile
-Group: Graphical desktop/KDE
-
-%description mobile-core
-Core files from kdepim-mobile.
-
-%files mobile-core
-%defattr(-,root,root,-)
-%_kde_libdir/kde4/imports/org/kde/pim/mobileui
-%_kde_appsdir/mobileui
+%_kde_iconsdir/oxygen/*/mimetypes/x-mail-distribution-list.*
 
 #-----------------------------------------------------------------------------
 
@@ -212,23 +179,6 @@ KDE 4 library.
 %_kde_libdir/libkdepim.so.*
 %_kde_appsdir/kdepimwidgets
 %_kde_libdir/kde4/plugins/designer/kdepimwidgets.so
-
-#-----------------------------------------------------------------------------
-
-%define libkdepim_mobile_major 4
-%define libkdepimmobile %mklibname kdepim-mobile %libkdepim_mobile_major
-
-%package -n %libkdepimmobile
-Summary: KDE 4 library
-Group: System/Libraries
-
-
-%description -n %libkdepimmobile
-KDE PIM Mobile library
-
-%files -n %libkdepimmobile
-%defattr(-,root,root)
-%_kde_libdir/libkdepimmobileui.so.%{libkdepim_mobile_major}*                                                                     
 
 #---------------------------------------------------------------------------
 
@@ -540,25 +490,6 @@ The KDE addressbook application.
 %doc %_kde_docdir/HTML/en/kabcclient
 
 #-----------------------------------------------------------------------------
-%package -n kaddressbook-mobile
-Summary: The KDE addressbook application for Mobile UI
-Group: Graphical desktop/KDE
-Requires: %name-mobile-core = %epoch:%version
-Conflicts: %name-core < 2:4.5.77
-
-%description -n kaddressbook-mobile
-The Mobile version of the KDE addressbook application.
-
-%files -n kaddressbook-mobile
-%defattr(-,root,root)
-%_kde_bindir/kaddressbook-mobile
-%_kde_bindir/kaddressbook-mobile.sh
-%_kde_iconsdir/*/*/apps/kaddressbook-mobile.*
-%_kde_iconsdir/*/*/mimetypes/x-mail-distribution-list.*
-%_kde_datadir/apps/kaddressbook-mobile/
-%_kde_applicationsdir/kaddressbook-mobile.desktop
-
-#-----------------------------------------------------------------------------
 
 %package -n blogilo
 Summary: Blogging client for kde
@@ -837,26 +768,6 @@ information manager of KDE.
 %_kde_services/ServiceMenus/kmail_addattachmentservicemenu.desktop
 %_kde_docdir/HTML/en/kmail
 
-#-----------------------------------------------------------------------
-
-%package -n kmail-mobile
-Summary: KDE Email Client
-Group: Graphical desktop/KDE
-Requires: %name-mobile-core = %epoch:%version
-Requires: kmail-common
-Conflicts: %name-core < 2:4.5.77
-
-%description -n kmail-mobile
-KMail mobile is the email component of KDEPim Mobile UI
-
-%files -n kmail-mobile
-%defattr(-,root,root)
-%_kde_bindir/kmail-mobile
-%_kde_bindir/kmail-mobile.sh
-%_kde_appsdir/kmail-mobile
-%_kde_iconsdir/*/*/apps/kmail-mobile.*
-%_kde_applicationsdir/kmail-mobile.desktop
-
 #-----------------------------------------------------------------------------
 
 %package -n kmail-common
@@ -938,27 +849,6 @@ although including some advanced features.
 %_kde_libdir/kde4/kcm_knote.so
 %_kde_docdir/HTML/en/knotes
 %_kde_libdir/kde4/kontact_knotesplugin.so
-
-#-----------------------------------------------------------------------------
-
-%package -n knotes-mobile
-Summary: Notes for the K Desktop Environment for Mobile UI
-Group: Graphical desktop/KDE
-Requires: %name-mobile-core = %epoch:%version
-Conflicts: %name-core < 2:4.5.77
-
-%description -n knotes-mobile
-KNotes aims to be a useful and full featured notes application for
-the KDE project. It tries to be as fast and lightweight as possible
-although including some advanced features in a Mobile UI.
-
-%files -n knotes-mobile
-%defattr(-,root,root)
-%_kde_bindir/notes-mobile
-%_kde_bindir/notes-mobile.sh 
-%_kde_appsdir/notes-mobile/
-%_kde_iconsdir/*/*/apps/notes-mobile.*
-%_kde_applicationsdir/notes-mobile.desktop 
 
 #-----------------------------------------------------------------------------
 
@@ -1106,29 +996,6 @@ KDE 4 library.
 %files -n %libkorganizerprivate
 %defattr(-,root,root)
 %_kde_libdir/libkorganizerprivate.so.%{korganizerprivate_major}*
-
-#-------------------------------------------------------------------------------
-
-%package -n korganizer-mobile
-Summary: Calendar and scheduling component for Mobile UI
-Group: Graphical desktop/KDE
-Requires: %name-mobile-core = %epoch:%version
-Conflicts: %name-core < 2:4.5.77
-
-%description -n korganizer-mobile
-KOrganizer-Mobile provides management of events and tasks, alarm notification,
-web export, network transparent handling of data, group scheduling,
-import and export of calendar files and more. It is able to work together
-with a wide variety of groupware servers, for example Kolab, Open-Xchange,
-Citadel or OpenGroupware.org.
-
-%files -n korganizer-mobile
-%defattr(-,root,root)
-%_kde_bindir/korganizer-mobile
-%_kde_bindir/korganizer-mobile.sh
-%_kde_appsdir/korganizer-mobile
-%_kde_iconsdir/*/*/apps/korganizer-mobile.*
-%_kde_applicationsdir/korganizer-mobile.desktop
 
 #------------------------------------------------------------------------------
 
@@ -1546,25 +1413,6 @@ notes.
 
 #-----------------------------------------------------------------------------
 
-%package -n ktasks-mobile
-Summary: Mobile UI for tasks
-Group: Graphical desktop/KDE
-Requires: %name-mobile-core = %epoch:%version
-Conflicts: %name-core < 2:4.5.77
-
-%description -n ktasks-mobile
-Ktasks-mobile is the UI version of tasks
-
-%files -n ktasks-mobile
-%defattr(-,root,root)
-%_kde_bindir/tasks-mobile
-%_kde_bindir/tasks-mobile.sh 
-%_kde_appsdir/tasks-mobile
-%_kde_iconsdir/*/*/apps/tasks-mobile.*
-%_kde_applicationsdir/tasks-mobile.desktop 
-
-#-----------------------------------------------------------------------------
-
 %package devel
 Summary: Devel stuff for %name
 Group: Development/KDE and Qt
@@ -1602,7 +1450,6 @@ Requires: %libkalarm_resources = %epoch:%version
 Requires: %libakonadi_next = %epoch:%version
 Requires: %libkdgantt2 = %epoch:%version
 Requires: %libincidenceeditorsngmobile = %epoch:%version
-Requires: %libkdepimmobile = %epoch:%version
 Requires: %libcalendarsupport = %epoch:%version
 Requires: %libkmanagesieve = %epoch:%version
 Requires: %libksieveui = %epoch:%version

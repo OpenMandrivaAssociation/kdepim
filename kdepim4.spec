@@ -1625,7 +1625,7 @@ based on kdepim.
 %endif
 
 %build
-%cmake_kde4
+%cmake_kde4 -DKDEPIM_BUILD_MOBILE=false
 %make
 
 %install

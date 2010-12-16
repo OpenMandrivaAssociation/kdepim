@@ -1110,7 +1110,7 @@ Conflicts: kdepim4-akonadi < 2:4.3.0
 %description kresources
 This package includes several plugins needed to interface with groupware
 servers. It also includes plugins for features such as blogging and
-tracking feature plans.libkdepimmobileui.so.4
+tracking feature plans.
 
 %files kresources
 %defattr(-,root,root)
@@ -1119,7 +1119,6 @@ tracking feature plans.libkdepimmobileui.so.4
 %_kde_libdir/kde4/kcal_remote.so
 %_kde_services/kresources/kcal/blog.desktop
 %_kde_services/kresources/kcal/remote.desktop
-
 
 #-----------------------------------------------------------------------------
 

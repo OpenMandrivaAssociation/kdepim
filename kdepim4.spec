@@ -7,7 +7,7 @@
 
 Name: kdepim4
 Summary: An application suite to manage personal information
-Version: 4.5.93
+Version: 4.5.94
 %if %branch
 Release: %mkrel -c %kde_snapshot 1
 %else
@@ -20,7 +20,7 @@ URL: http://pim.kde.org
 %if %branch
 Source: ftp://ftp.kde.org/pub/kde/unstable/%version/src/kdepim-%version%kde_snapshot.tar.bz2
 %else
-Source: ftp://ftp.kde.org/pub/kde/unstable/kdepim/%version/src/kdepim-4.6beta3.tar.bz2
+Source: ftp://ftp.kde.org/pub/kde/unstable/kdepim/%version/src/kdepim-%version.tar.bz2
 %endif
 Buildroot: %_tmppath/%name-%version-%release-root
 BuildRequires: kdelibs4-devel >= 2:4.5.61
@@ -1541,7 +1541,7 @@ based on kdepim.
 %if %branch
 %setup -q -n kdepim-%version%kde_snapshot
 %else
-%setup -q -n kdepim-4.6beta3
+%setup -q -n kdepim-%version
 %endif
 
 %build

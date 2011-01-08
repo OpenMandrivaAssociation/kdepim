@@ -23,10 +23,12 @@ Source: ftp://ftp.kde.org/pub/kde/unstable/%version/src/kdepim-%version%kde_snap
 Source: ftp://ftp.kde.org/pub/kde/unstable/kdepim/%version/src/kdepim-%version.tar.bz2
 %endif
 Patch0: kdepim-4.5.94-disable-doc-install.patch
+Patch301: kdepim-4.5.94-git3e8673b7.patch
 Buildroot: %_tmppath/%name-%version-%release-root
 BuildRequires: kdelibs4-devel >= 2:4.5.61
 BuildRequires: kdepimlibs4-devel >= 2:4.5.74
 BuildRequires: kdepim4-runtime-devel >= 4.5.74
+BuildRequires: akonadi-devel >= 1:1.4.95
 BuildRequires: libx11-devel
 BuildRequires: boost-devel
 BuildRequires: zlib-devel
@@ -1545,6 +1547,7 @@ based on kdepim.
 %setup -q -n kdepim-%version
 %endif
 %patch0 -p0
+%patch301 -p1
 
 %build
 %cmake_kde4 -DKDEPIM_BUILD_MOBILE=false

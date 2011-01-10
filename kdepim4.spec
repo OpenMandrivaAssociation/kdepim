@@ -16,7 +16,7 @@ Release: %mkrel 1
 Epoch: 2
 Group: Graphical desktop/KDE
 License: GPL
-URL: http://pim.kde.org
+URL: http://community.kde.org/KDE_PIM
 %if %branch
 Source: ftp://ftp.kde.org/pub/kde/unstable/%version/src/kdepim-%version%kde_snapshot.tar.bz2
 %else
@@ -430,8 +430,8 @@ KDE 4 library.
 %package -n akregator
 Summary: A Feed Reader for KDE
 Group: Graphical desktop/KDE
+URL: http://userbase.kde.org/Akregator
 Requires: %name-core = %epoch:%version
-
 Obsoletes: %name-akregator < 1:3.93.0-1
 Obsoletes: kde4-akregator < 2:4.0.68
 Provides: kde4-akregator = %epoch:%version
@@ -488,6 +488,7 @@ KDE 4 library.
 %package -n knode
 Summary: A newsreader for the K Desktop Environment
 Group: Graphical desktop/KDE
+URL: http://userbase.kde.org/KNode
 Requires: %name-core = %epoch:%version
 Requires: kdepimlibs4-core
 Obsoletes: %name-knode < 1:3.93.0-1
@@ -534,6 +535,7 @@ leafnode also usable with dial-up connections.
 %package -n kaddressbook
 Summary: The KDE addressbook application
 Group: Graphical desktop/KDE
+URL: http://userbase.kde.org/KAddressBook
 Requires: %name-core = %epoch:%version
 # Grantlee is needed for the simple view in kaddressbook
 Requires: grantlee
@@ -640,6 +642,7 @@ KDE 4 library.
 %package -n kalarm
 Summary: A personal alarm message, command and email scheduler
 Group: Graphical desktop/KDE
+URL: http://userbase.kde.org/KAlarm
 Requires: %name-core = %epoch:%version
 Obsoletes: %name-kalarm < 1:3.93.0-1
 Obsoletes: kde4-kalarm < 2:4.0.68
@@ -713,6 +716,7 @@ KDE 4 library.
 %package -n ktimetracker
 Summary: Tracks time spent on various tasks
 Group: Graphical desktop/KDE
+URL: http://community.kde.org/Ktimetracker
 Requires: %name-core = %epoch:%version
 Obsoletes: %name-ktimetracker < 1:3.93.0-1
 Obsoletes: kde4-ktimetracker < 2:4.0.68
@@ -780,6 +784,7 @@ KDE 4 library.
 %package -n kmail
 Summary: KDE Email Client
 Group: Graphical desktop/KDE
+URL: http://userbase.kde.org/KMail
 Requires: %name-core = %epoch:%version
 Requires: kdepimlibs4-core
 Requires: sasl-plug-plain
@@ -850,6 +855,7 @@ information manager of KDE.
 %package -n kmail-common
 Summary: KDE Email Client
 Group: Graphical desktop/KDE
+URL: http://userbase.kde.org/KMail
 Provides: kmail2-common = %epoch:%version-%release
 
 %description -n kmail-common
@@ -872,6 +878,7 @@ Common files needed by kmail and kmail-mobile used to view messages.
 %package -n kmailcvt
 Summary: KDE Mail Import tool
 Group: Graphical desktop/KDE
+URL: http://userbase.kde.org/KMail
 Requires: %name-core = %epoch:%version
 Obsoletes: %name-kmailcvt < 1:3.93.0-1
 Obsoletes: kde4-kmailcvt < 2:4.0.68
@@ -892,6 +899,7 @@ KDE Mail Import tool
 %package -n knotes
 Summary: Notes for the K Desktop Environment
 Group: Graphical desktop/KDE
+URL: http://userbase.kde.org/KNotes
 Requires: %name-core = %epoch:%version
 Requires: %name-kresources
 Requires: kio4-nntp
@@ -932,6 +940,7 @@ although including some advanced features.
 %package -n kontact
 Summary: Kontact Container
 Group: Graphical desktop/KDE
+URL: http://userbase.kde.org/Kontact
 Requires: %name-core = %epoch:%version
 Obsoletes: %name-kontact < 1:3.93.0-1
 Obsoletes: kde4-kontact < 2:4.0.68
@@ -999,6 +1008,7 @@ KDE 4 library.
 %package -n korganizer
 Summary: Calendar and scheduling component
 Group: Graphical desktop/KDE
+URL: http://userbase.kde.org/KOrganizer
 Requires: %name-core = %epoch:%version
 Requires: %name-kresources
 Obsoletes: kde4-korganizer < 2:4.0.68
@@ -1455,6 +1465,7 @@ KDE 4 library.
 %package -n kjots
 Summary: KDE note taking utility
 Group: Graphical desktop/KDE
+URL: http://userbase.kde.org/KJots
 Requires: %name-core = %epoch:%version
 Obsoletes: %name-kjots < 3.93.0-0.714053.1
 Obsoletes: kde4-kjots < 4.0.68

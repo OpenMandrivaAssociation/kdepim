@@ -22,8 +22,6 @@ Source: ftp://ftp.kde.org/pub/kde/unstable/%version/src/kdepim-%version%kde_snap
 %else
 Source: ftp://ftp.kde.org/pub/kde/unstable/kdepim/%version/src/kdepim-%version.tar.bz2
 %endif
-Patch0: kdepim-4.5.94-disable-doc-install.patch
-Patch301: kdepim-4.5.94-git3e8673b7.patch
 Buildroot: %_tmppath/%name-%version-%release-root
 BuildRequires: kdelibs4-devel >= 2:4.5.61
 BuildRequires: kdepimlibs4-devel >= 2:4.5.74

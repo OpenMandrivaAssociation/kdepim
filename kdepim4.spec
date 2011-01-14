@@ -7,7 +7,7 @@
 
 Name: kdepim4
 Summary: An application suite to manage personal information
-Version: 4.5.94
+Version: 4.5.94.1
 %if %branch
 Release: %mkrel -c %kde_snapshot 1
 %else
@@ -1557,8 +1557,6 @@ based on kdepim.
 %else
 %setup -q -n kdepim-%version
 %endif
-%patch0 -p0
-%patch301 -p1
 
 %build
 %cmake_kde4 -DKDEPIM_BUILD_MOBILE=false

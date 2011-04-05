@@ -9,9 +9,9 @@ Name: kdepim4
 Summary: An application suite to manage personal information
 Version: 4.5.94.1
 %if %branch
-Release: %mkrel -c %kde_snapshot 1
+Release: 0.%kde_snapshot.1
 %else
-Release: %mkrel 1
+Release: 1
 %endif
 Epoch: 2
 Group: Graphical desktop/KDE

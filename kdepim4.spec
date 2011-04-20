@@ -7,7 +7,7 @@
 
 Name: kdepim4
 Summary: An application suite to manage personal information
-Version: 4.5.94.1
+Version: 4.5.95
 %if %branch
 Release: 0.%kde_snapshot.1
 %else

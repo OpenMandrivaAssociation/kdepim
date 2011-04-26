@@ -1,44 +1,77 @@
+%define with_kitchensync 0
+%{?_with_kitchensync: %{expand: %%global with_kitchensync 1}}
+
 %define branch 0
 %{?_branch: %{expand: %%global branch 1}}
 
 %if %branch
-%define kde_snapshot svn1198704
+%define kde_snapshot svn1053190
 %endif
 
 Name: kdepim4
-Summary: An application suite to manage personal information
-Version: 4.5.95
-%if %branch
-Release: 0.%kde_snapshot.1
-%else
-Release: 1
-%endif
-Epoch: 2
+Summary: K Desktop Environment
+Version: 4.4.11.1
+Release: %mkrel 1
+Epoch: 3
 Group: Graphical desktop/KDE
 License: GPL
-URL: http://community.kde.org/KDE_PIM
+URL: http://pim.kde.org
 %if %branch
-Source: ftp://ftp.kde.org/pub/kde/unstable/%version/src/kdepim-%version%kde_snapshot.tar.bz2
+Source: ftp://ftp.kde.org/pub/kde/stable/%version/src/kdepim-%version%kde_snapshot.tar.bz2
 %else
-Source: ftp://ftp.kde.org/pub/kde/unstable/kdepim/%version/src/kdepim-%version.tar.bz2
+Source: ftp://ftp.kde.org/pub/kde/stable/kdepim-%version/src/kdepim-%version.tar.bz2
 %endif
-Buildroot: %_tmppath/%name-%version-%release-root
-BuildRequires: kdelibs4-devel >= 2:4.5.61
-BuildRequires: kdepimlibs4-devel >= 2:4.5.74
-BuildRequires: kdepim4-runtime-devel >= 4.5.74
-BuildRequires: akonadi-devel >= 1:1.4.95
-BuildRequires: libx11-devel
-BuildRequires: boost-devel
-BuildRequires: zlib-devel
-BuildRequires: strigi-devel
+# Mandriva "customization" patches  0 - 99
+Patch1:    kdepim-4.3.90-fix-desktop-files.patch
+# Patches from branch 100 - 199
+# Trunk Patches 200 - 299
+# Test patches : 300+
+Patch300:      kdepim-4.3.2-kmail-nepomuk.patch
+#(nl) : (301-302) Patch from Kubuntu
+BuildRequires: kdelibs4-devel >= 2:4.2.98
+BuildRequires: kdelibs4-experimental-devel >= 2:4.2.98
+BuildRequires: kdepimlibs4-devel >= 2:4.2.98
+BuildRequires: kdepim4-runtime-devel >= 4.2.98
 BuildRequires: gpgme-devel
-BuildRequires: grantlee-devel
-BuildRequires: xsltproc
+BuildRequires: X11-devel 
+BuildRequires: flex 
+BuildRequires: byacc 
+BuildRequires: pam
+BuildRequires: libncurses-devel
+BuildRequires: readline-devel
+BuildRequires: libgpg-error-devel
+BuildRequires: gnokii-devel >= 0.6.18
+BuildRequires: libxml2-utils
+BuildRequires: gnupg
+BuildRequires: bluez-devel 
+BuildRequires: libsasl-devel
+BuildRequires: pilot-link-devel
+BuildRequires: libxslt-proc
+BuildRequires: boost-devel
+BuildRequires: qca2-devel
+BuildRequires: glib2-devel
 BuildRequires: libassuan-devel
-BuildRequires: libxscrnsaver-devel
-Suggests: akonadi-common
-Suggests: kleopatra
-Suggests: akregator
+BuildRequires: mysql-static-devel
+BuildRequires: libmal-devel
+BuildRequires: soprano-devel
+BuildRequires: automoc
+%if %{with_kitchensync}
+BuildRequires: libopensync-devel >= 0.30
+%endif
+BuildRequires: akonadi-devel
+#FIXME: Remove later
+BuildRequires: kdepimlibs4-core
+BuildRequires: akonadi-devel
+BuildRequires: shared-desktop-ontologies-devel
+BuildRequires: nepomuk-scribo-devel
+#(nl) Do not enable back w/o kde team agreement
+#BuildRequires: libindicate-qt-devel
+Suggests:      akonadi-common
+Suggests:      kleopatra
+Suggests:      akregator
+%if %{with_kitchensync}
+Suggests:      kitchensync
+%endif
 Suggests: knode
 Suggests: kaddressbook
 Suggests: kalarm
@@ -50,9 +83,15 @@ Suggests: kontact
 Suggests: korganizer
 Suggests: ksendemail
 Suggests: kjots
-Suggests: nepomuk-email-feeder
+#Suggests: nepomuk-email-feeder
 Obsoletes: kpilot < %epoch:%version
 Obsoletes: korn <= 2:4.1.0
+%if %mdkversion >= 200910
+Obsoletes: kdepim-korn < 1:3.5.10-2
+Obsoletes: kdepim-kandy < 1:3.5.10-2
+Obsoletes: kdepim-ktnef < 1:3.5.10-2
+Obsoletes: kdepim < 1:3.5.10-2
+%endif
 Obsoletes: ktnef
 
 %description
@@ -61,7 +100,7 @@ Information Management applications for the K Desktop Environment.
 	- korganizer: a calendar-of-events and todo-list manager
 	- kalarm: gui for setting up personal alarm/reminder messages
 	- kalarmd: personal alarm/reminder messages daemon, shared by korganizer and
-  kalarm.
+           kalarm.
 	- kaplan: A shell for the PIM apps, still experimental.
 	- ktimetracker: Time tracker.
 	- kfile-plugins: vCard KFIleItem plugin.
@@ -69,6 +108,9 @@ Information Management applications for the K Desktop Environment.
 	- konsolecalendar: Command line tool for accessing calendar files.
 	- kmail: universal mail client
 	- kmailcvt: converst addressbooks to kmail format
+%if %{with_kitchensync}
+    - kitchensync: Synchronisation framework, still under heavy development.
+%endif
 
 %files
 
@@ -79,96 +121,28 @@ Summary: Core files for kdepim
 Group: Graphical desktop/KDE	
 Requires: kdelibs4-core
 Requires: kdebase4-runtime
-Requires: akonadi-kde >= 2:%{version}
+Requires: akonadi-kde
 Obsoletes: libkdepim42-common < 1:3.93.0-1
 Obsoletes: kdepim4-common < 1:3.93.0-1
 Obsoletes: kdepim4-plasma-applets < 1:4.1 
 Obsoletes: %{mklibname akonadisearchprovider 4} < 2:3.94.1-0.729215.1
+%if %mdkversion >= 200910
+Conflicts: kontact < 2:4.0.83-2
+Conflicts: kdepim-knotes < 1:3.5.9-10mdv
+Conflicts: kdepim-kaddressbook < 1:3.5.9-10mdv
+Obsoletes: kdepim-common < 1:3.5.10-2
+%endif
 Obsoletes: kode < 2:4.3
 Conflicts: akonadi-kde < 2:4.3.85
-Conflicts: kde-l10n-af < 4.5.90
-Conflicts: kde-l10n-ar < 4.5.90
-Conflicts: kde-l10n-ast < 4.5.90
-Conflicts: kde-l10n-be < 4.5.90
-Conflicts: kde-l10n-bg < 4.5.90
-Conflicts: kde-l10n-bn < 4.5.90
-Conflicts: kde-l10n-br < 4.5.90
-Conflicts: kde-l10n-ca < 4.5.90
-Conflicts: kde-l10n-cs < 4.5.90
-Conflicts: kde-l10n-cy < 4.5.90
-Conflicts: kde-l10n-da < 4.5.90
-Conflicts: kde-l10n-de < 4.5.90
-Conflicts: kde-l10n-el < 4.5.90
-Conflicts: kde-l10n-en_GB < 4.5.90
-Conflicts: kde-l10n-eo < 4.5.90
-Conflicts: kde-l10n-es < 4.5.90
-Conflicts: kde-l10n-et < 4.5.90
-Conflicts: kde-l10n-eu < 4.5.90
-Conflicts: kde-l10n-fa < 4.5.90
-Conflicts: kde-l10n-fi < 4.5.90
-Conflicts: kde-l10n-fr < 4.5.90
-Conflicts: kde-l10n-fy < 4.5.90
-Conflicts: kde-l10n-ga < 4.5.90
-Conflicts: kde-l10n-gl < 4.5.90
-Conflicts: kde-l10n-he < 4.5.90
-Conflicts: kde-l10n-hi < 4.5.90
-Conflicts: kde-l10n-hne < 4.5.90
-Conflicts: kde-l10n-hr < 4.5.90
-Conflicts: kde-l10n-hsb < 4.5.90
-Conflicts: kde-l10n-hu < 4.5.90
-Conflicts: kde-l10n-ia < 4.5.90
-Conflicts: kde-l10n-is < 4.5.90
-Conflicts: kde-l10n-it < 4.5.90
-Conflicts: kde-l10n-ja < 4.5.90
-Conflicts: kde-l10n-ka < 4.5.90
-Conflicts: kde-l10n-kk < 4.5.90
-Conflicts: kde-l10n-km < 4.5.90
-Conflicts: kde-l10n-ko < 4.5.90
-Conflicts: kde-l10n-ku < 4.5.90
-Conflicts: kde-l10n-lt < 4.5.90
-Conflicts: kde-l10n-lv < 4.5.90
-Conflicts: kde-l10n-mai < 4.5.90
-Conflicts: kde-l10n-mk < 4.5.90
-Conflicts: kde-l10n-ms < 4.5.90
-Conflicts: kde-l10n-nb < 4.5.90
-Conflicts: kde-l10n-nds < 4.5.90
-Conflicts: kde-l10n-ne < 4.5.90
-Conflicts: kde-l10n-nl < 4.5.90
-Conflicts: kde-l10n-nn < 4.5.90
-Conflicts: kde-l10n-oc < 4.5.90
-Conflicts: kde-l10n-pa < 4.5.90
-Conflicts: kde-l10n-pl < 4.5.90
-Conflicts: kde-l10n-pt < 4.5.90
-Conflicts: kde-l10n-pt_BR < 4.5.90
-Conflicts: kde-l10n-ro < 4.5.90
-Conflicts: kde-l10n-ru < 4.5.90
-Conflicts: kde-l10n-se < 4.5.90
-Conflicts: kde-l10n-si < 4.5.90
-Conflicts: kde-l10n-sk < 4.5.90
-Conflicts: kde-l10n-sl < 4.5.90
-Conflicts: kde-l10n-sr < 4.5.90
-Conflicts: kde-l10n-sv < 4.5.90
-Conflicts: kde-l10n-ta < 4.5.90
-Conflicts: kde-l10n-tg < 4.5.90
-Conflicts: kde-l10n-th < 4.5.90
-Conflicts: kde-l10n-tr < 4.5.90
-Conflicts: kde-l10n-uk < 4.5.90
-Conflicts: kde-l10n-uz < 4.5.90
-Conflicts: kde-l10n-vi < 4.5.90
-Conflicts: kde-l10n-wa < 4.5.90
-Conflicts: kde-l10n-xh < 4.5.90
-Conflicts: kde-l10n-zh_CN < 4.5.90
-Conflicts: kde-l10n-zh_TW < 4.5.90
 
 %description core
 Core files from kdepim.
 
-%files core -f %name.lang
+%files core
 %defattr(-,root,root,-)
-%exclude %_kde_docdir/HTML/en/*
 %_kde_libdir/strigi/*
-%dir %_kde_services/kontact
-%_kde_iconsdir/oxygen/*/mimetypes/x-mail-distribution-list.*
+%_kde_iconsdir/*/*/*/*
+%dir %_kde_datadir/kde4/services/kontact
 
 #-----------------------------------------------------------------------------
 
@@ -245,6 +219,9 @@ Summary: KDE 4 library
 Group: System/Libraries
 Obsoletes: %{mklibname kdepim42-common} < 1:3.93.0-1
 Obsoletes: %{_lib}kdepim42-index < 1:3.93.0-1
+%if %mdkversion >= 200910
+Conflicts: kdepim-common < 1:3.5.9-10mdv
+%endif
 
 %description -n %libkdepim
 KDE 4 library.
@@ -253,39 +230,9 @@ KDE 4 library.
 %defattr(-,root,root)
 %_kde_libdir/libkdepim.so.*
 %_kde_appsdir/kdepimwidgets
+%_kde_appsdir/libkdepim
+%_kde_libdir/kde4/kpartsdesignerplugin.so
 %_kde_libdir/kde4/plugins/designer/kdepimwidgets.so
-
-#---------------------------------------------------------------------------
-
-%package -n kincidenceeditor
-Summary: kincidenceeditor
-Group: Graphical desktop/KDE
-Obsoletes: keventeditor < 2:4.5.68
-
-%description -n kincidenceeditor
-New incidince editors 
-
-%files -n kincidenceeditor
-%defattr(-,root,root)
-%_kde_bindir/kincidenceeditor
-
-#----------------------------------------------------------------------------
-
-%define libincidenceeditorsngmobile_major 4
-%define libincidenceeditorsngmobile %mklibname incidenceeditorssngmobile %{libincidenceeditorsngmobile_major}
-
-%package -n %libincidenceeditorsngmobile
-Summary: KDEPIM Mobile Library
-Group:	System/Libraries
-
-%description -n %libincidenceeditorsngmobile
-KDE PIM Mobile library.
-
-%files -n %libincidenceeditorsngmobile
-
-%defattr(-,root,root)
-%_kde_libdir/libincidenceeditorsngmobile.so.%{libincidenceeditorsngmobile_major}*
-
 
 #-----------------------------------------------------------------------------
 
@@ -309,38 +256,6 @@ KDE 4 library.
 
 #-----------------------------------------------------------------------------
 
-%define kmanagesieve_major 4
-%define libkmanagesieve %mklibname kmanagesieve %{kmanagesieve_major}
-
-%package -n %libkmanagesieve
-Summary: KDE 4 library
-Group: System/Libraries
-
-%description -n %libkmanagesieve
-KDE 4 library.
-
-%files -n %libkmanagesieve
-%defattr(-,root,root)
-%_kde_libdir/libkmanagesieve.so.%{kmanagesieve_major}*
-
-#-----------------------------------------------------------------------------
-
-%define ksieveui_major 4
-%define libksieveui %mklibname ksieveui %{ksieveui_major}
-
-%package -n %libksieveui
-Summary: KDE 4 library
-Group: System/Libraries
-
-%description -n %libksieveui
-KDE 4 library.
-
-%files -n %libksieveui
-%defattr(-,root,root)
-%_kde_libdir/libksieveui.so.%{ksieveui_major}*
-
-#-----------------------------------------------------------------------------
-
 %package -n kleopatra
 Summary: KDE Certificate Manager
 Group: Graphical desktop/KDE
@@ -348,8 +263,7 @@ Requires: %name-core = %epoch:%version
 Obsoletes: %name-kleopatra < 1:3.93.0-1
 Obsoletes: kde4-kleopatra < 2:4.0.68
 Provides: kde4-kleopatra = %epoch:%version
-Conflicts: %{_lib}kleo4 < 4.0.80-3
-Conflicts: %name-core < 2:4.5.77
+Conflicts:  %{_lib}kleo4 < 4.0.80-3
 
 %description -n kleopatra
 KDE Certificate Manager
@@ -359,17 +273,16 @@ KDE Certificate Manager
 %_kde_bindir/kleopatra
 %_kde_bindir/kgpgconf
 %_kde_bindir/kwatchgnupg
-%_kde_applicationsdir/kleopatra.desktop
+%_kde_datadir/applications/kde4/kleopatra.desktop
 %_kde_configdir/libkleopatrarc
-%_kde_applicationsdir/kleopatra_import.desktop
+%_kde_datadir/applications/kde4/kleopatra_import.desktop
 %_kde_appsdir/kleopatra
 %_kde_appsdir/libkleopatra
-%_kde_iconsdir/*/*/apps/kleopatra.*
 %_kde_appsdir/kwatchgnupg
-%_kde_services/kleopatra_*
+%_kde_datadir/kde4/services/kleopatra_*
 %_kde_libdir/kde4/kcm_kleopatra.so
-%doc %_kde_docdir/HTML/en/kleopatra
-%doc %_kde_docdir/HTML/en/kwatchgnupg
+%doc %_kde_docdir/*/*/kleopatra
+%doc %_kde_docdir/*/*/kwatchgnupg
 
 #-----------------------------------------------------------------------------
 
@@ -387,6 +300,23 @@ KDE 4 library.
 %files -n %libksieve
 %defattr(-,root,root)
 %_kde_libdir/libksieve.so.%{ksieve_major}*
+
+#-----------------------------------------------------------------------------
+
+%define mimelib_major 4
+%define libmimelib %mklibname mimelib %{mimelib_major}
+
+%package -n %libmimelib
+Summary: KDE 4 library
+Group: System/Libraries
+Obsoletes: %{mklibname kdepim42-common} < 1:3.93.0-1
+
+%description -n %libmimelib
+KDE 4 library.
+
+%files -n %libmimelib
+%defattr(-,root,root)
+%_kde_libdir/libmimelib.so.%{mimelib_major}*
 
 #-----------------------------------------------------------------------------
 
@@ -428,13 +358,15 @@ KDE 4 library.
 %package -n akregator
 Summary: A Feed Reader for KDE
 Group: Graphical desktop/KDE
-URL: http://userbase.kde.org/Akregator
 Requires: %name-core = %epoch:%version
+
 Obsoletes: %name-akregator < 1:3.93.0-1
 Obsoletes: kde4-akregator < 2:4.0.68
+%if %mdkversion >= 200910
+Obsoletes: kdepim-akregator < 1:3.5.10-2
+%endif
 Provides: kde4-akregator = %epoch:%version
 Conflicts: kontact < 2:4.0.83-2
-Conflicts: %name-core < 2:4.5.77
 
 %description -n akregator
 Akregator is a news feed reader for the KDE desktop. It enables you to
@@ -449,19 +381,75 @@ easy news reading.
 %defattr(-,root,root)
 %_kde_bindir/akregator
 %_kde_bindir/akregatorstorageexporter
-%_kde_applicationsdir/akregator.desktop
+%_kde_datadir/applications/kde4/akregator.desktop
 %_kde_appsdir/akregator
-%_kde_appsdir/akregator_sharemicroblog_plugin
+%_kde_datadir/kde4/services/kontact/akregatorplugin.desktop
 %_kde_datadir/config.kcfg/akregator.kcfg
-%_kde_iconsdir/*/*/apps/akregator.*
-%_kde_iconsdir/*/*/apps/akregator_empty.*
-%_kde_services/kontact/akregatorplugin.desktop
-%_kde_services/akregator_*
-%_kde_services/feed.protocol
-%_kde_servicetypes/akregator_plugin.desktop
+%_kde_datadir/kde4/services/akregator_*
+%_kde_datadir/kde4/services/feed.protocol
+%_kde_datadir/kde4/servicetypes/akregator_plugin.desktop
 %_kde_libdir/kde4/akregator*
 %_kde_libdir/kde4/kontact_akregatorplugin.so
 %doc %_kde_docdir/HTML/en/akregator
+
+#-----------------------------------------------------------------------------
+
+%if %{with_kitchensync}
+
+%define kitchensyncprivate_major 4
+%define libkitchensyncprivate %mklibname kitchensyncprivate %{kitchensyncprivate_major}
+
+%package -n %libkitchensyncprivate
+Summary: KDE 4 library
+Group: System/Libraries
+Obsoletes: %{mklibname kdepim42-common} < 1:3.93.0-1
+
+%description -n %libkitchensyncprivate
+KDE 4 library.
+
+%files -n %libkitchensyncprivate
+%defattr(-,root,root)
+%_kde_libdir/libkitchensyncprivate.so.%{kitchensyncprivate_major}*
+
+#-----------------------------------------------------------------------------
+
+%define qopensync_major 4
+%define libqopensync %mklibname qopensync %{qopensync_major}
+
+%package -n %libqopensync
+Summary: KDE 4 library
+Group: System/Libraries
+Obsoletes: %{mklibname kdepim42-common} < 1:3.93.0-1
+
+%description -n %libqopensync
+KDE 4 library.
+
+%files -n %libqopensync
+%defattr(-,root,root)
+%_kde_libdir/libqopensync.so.%{qopensync_major}*
+
+#-----------------------------------------------------------------------------
+
+%package -n kitchensync
+Summary: KDE KitchenSync
+Group: Graphical desktop/KDE
+Requires: %name-core = %epoch:%version
+
+Obsoletes: %name-kitchensync < 1:3.93.0-1
+Obsoletes: kde4-kitchensync < 2:4.0.68
+
+Provides: kde4-kitchensync = %epoch:%version
+
+%description -n kitchensync
+The KDE Synchronization Tool
+
+%files -n kitchensync
+%defattr(-,root,root)
+%_kde_bindir/kitchensync
+%_kde_datadir/applications/kde4/kitchensync.desktop
+%_kde_appsdir/kitchensync
+%_kde_libdir/kde4/kitchensyncpart.so
+%endif
 
 #-----------------------------------------------------------------------------
 
@@ -486,14 +474,15 @@ KDE 4 library.
 %package -n knode
 Summary: A newsreader for the K Desktop Environment
 Group: Graphical desktop/KDE
-URL: http://userbase.kde.org/KNode
 Requires: %name-core = %epoch:%version
 Requires: kdepimlibs4-core
 Obsoletes: %name-knode < 1:3.93.0-1
 Obsoletes: kde4-knode < 2:4.0.68
-Provides: kde4-knode = %epoch:%version
+%if %mdkversion >= 200910
+Obsoletes: kdepim-knode < 1:3.5.10-2
+%endif
+Provides:  kde4-knode = %epoch:%version
 Conflicts: kontact < 2:4.0.83-2
-Conflicts: %name-core < 2:4.5.77
 Requires: kio4-nntp
 
 %description -n knode
@@ -508,20 +497,17 @@ leafnode also usable with dial-up connections.
 %files -n knode
 %defattr(-,root,root)
 %_kde_bindir/knode
-%_kde_applicationsdir/KNode.desktop
+%_kde_datadir/applications/kde4/KNode.desktop
 %_kde_appsdir/knode
-%_kde_appsdir/kconf_update/knode.upd
-%_kde_iconsdir/*/*/apps/knode.*
-%_kde_iconsdir/*/*/apps/knode2.*
-%_kde_services/kontact/knodeplugin.desktop
-%_kde_services/knewsservice.protocol
-%_kde_services/knode_config_accounts.desktop
-%_kde_services/knode_config_appearance.desktop
-%_kde_services/knode_config_cleanup.desktop
-%_kde_services/knode_config_identity.desktop
-%_kde_services/knode_config_post_news.desktop
-%_kde_services/knode_config_privacy.desktop
-%_kde_services/knode_config_read_news.desktop
+%_kde_datadir/kde4/services/kontact/knodeplugin.desktop
+%_kde_datadir/kde4/services/knewsservice.protocol
+%_kde_datadir/kde4/services/knode_config_accounts.desktop
+%_kde_datadir/kde4/services/knode_config_appearance.desktop
+%_kde_datadir/kde4/services/knode_config_cleanup.desktop
+%_kde_datadir/kde4/services/knode_config_identity.desktop
+%_kde_datadir/kde4/services/knode_config_post_news.desktop
+%_kde_datadir/kde4/services/knode_config_privacy.desktop
+%_kde_datadir/kde4/services/knode_config_read_news.desktop
 %_kde_libdir/kde4/kcm_knode.so
 %_kde_libdir/kde4/knodepart.so
 %_kde_libdir/kde4/kontact_knodeplugin.so
@@ -533,17 +519,18 @@ leafnode also usable with dial-up connections.
 %package -n kaddressbook
 Summary: The KDE addressbook application
 Group: Graphical desktop/KDE
-URL: http://userbase.kde.org/KAddressBook
 Requires: %name-core = %epoch:%version
-# Grantlee is needed for the simple view in kaddressbook
-Requires: grantlee
-
 Obsoletes: %name-kaddressbook < 1:3.93.0-1
 Obsoletes: kde4-kaddressbook < 2:4.0.68
+%if %mdkversion >= 200910
+Obsoletes: kdepim-kaddressbook < 1:3.5.10-2
+Obsoletes: kdeaddons-kaddressbook-plugins < 1:3.5.10-2
+Conflicts: kdeaddons-kaddressbook-plugins < 1:3.5.9-2mdv
+%endif
 Provides: kde4-kaddressbook = %epoch:%version
 Conflicts: kontact < 2:4.0.83-2
-Conflicts: kdepim4-core < 2:4.5.77
-Requires: akonadi-common 
+Conflicts: kdepim4-core < 2:4.1.81-1
+Requires:  akonadi-common 
 
 %description -n kaddressbook
 The KDE addressbook application.
@@ -551,19 +538,18 @@ The KDE addressbook application.
 %files -n kaddressbook
 %defattr(-,root,root)
 %_kde_bindir/kaddressbook
-%_kde_bindir/kabc2mutt        
+%_kde_bindir/kabc2mutt                        
 %_kde_bindir/kabcclient
-%_kde_applicationsdir/kaddressbook.desktop
+%_kde_datadir/applications/kde4/kaddressbook.desktop
 %_kde_appsdir/kaddressbook
 %_kde_libdir/kde4/kcm_ldap.so
 %_kde_libdir/akonadi/contact/editorpageplugins/cryptopageplugin.so
 %_kde_libdir/kde4/kaddressbookpart.so
 %_kde_libdir/kde4/kontact_kaddressbookplugin.so
-%_kde_iconsdir/*/*/apps/kaddressbook.*
 %_kde_datadir/kde4/services/kaddressbookpart.desktop
 %_kde_datadir/kde4/services/kontact/kaddressbookplugin.desktop
 %_kde_datadir/kde4/services/kcmldap.desktop
-%_kde_mandir/man1/kabcclient.1.*
+%_kde_mandir/man1/kabcclient.1.lzma
 %doc %_kde_docdir/HTML/en/kabcclient
 
 #-----------------------------------------------------------------------------
@@ -572,7 +558,6 @@ The KDE addressbook application.
 Summary: Blogging client for kde
 Group: Graphical desktop/KDE
 Requires: %name-core = %epoch:%version
-Conflicts: %name-core < 2:4.5.77
 
 %description -n blogilo
 Blogilo is a blogging client for KDE, which supports famous blogging
@@ -608,16 +593,10 @@ intervals.
 %files -n blogilo
 %defattr(-,root,root)
 %{_kde_bindir}/blogilo
-%_kde_applicationsdir/blogilo.desktop
+%_kde_datadir/applications/kde4/blogilo.desktop
 %_kde_datadir/config.kcfg/blogilo.kcfg
-%_kde_iconsdir/*/*/apps/blogilo.*
-%_kde_iconsdir/*/*/actions/format-text-blockquote.*
-%_kde_iconsdir/*/*/actions/format-text-code.*
-%_kde_iconsdir/*/*/actions/insert-more-mark.*
-%_kde_iconsdir/*/*/actions/remove-link.*
-%_kde_iconsdir/*/*/actions/upload-media.*
 %doc %_kde_docdir/HTML/en/blogilo
-%_kde_appsdir/blogilo
+%_kde_appsdir/blogilo/blogiloui.rc
 
 #-----------------------------------------------------------------------------
 
@@ -640,13 +619,11 @@ KDE 4 library.
 %package -n kalarm
 Summary: A personal alarm message, command and email scheduler
 Group: Graphical desktop/KDE
-URL: http://userbase.kde.org/KAlarm
 Requires: %name-core = %epoch:%version
 Obsoletes: %name-kalarm < 1:3.93.0-1
 Obsoletes: kde4-kalarm < 2:4.0.68
 Provides: kde4-kalarm = %epoch:%version
 Conflicts: kontact < 2:4.0.83-2
-Conflicts: %name-core < 2:4.5.77
 
 %description -n kalarm
 KAlarm is a personal alarm message, command and email scheduler. It lets you
@@ -660,7 +637,7 @@ or you can schedule commands to be executed or emails to be sent.
 %_kde_libdir/kde4/kalarm_local.so
 %_kde_libdir/kde4/kalarm_localdir.so
 %_kde_libdir/kde4/kalarm_remote.so
-%_kde_applicationsdir/kalarm.desktop
+%_kde_datadir/applications/kde4/kalarm.desktop
 %_kde_appsdir/kalarm
 %_kde_appsdir/kconf_update/kalarm-1.2.1-general.pl
 %_kde_appsdir/kconf_update/kalarm-1.9.5-defaults.pl
@@ -670,12 +647,11 @@ or you can schedule commands to be executed or emails to be sent.
 %_kde_appsdir/kconf_update/kalarm.upd
 %_kde_datadir/autostart/kalarm.autostart.desktop
 %_kde_datadir/config.kcfg/kalarmconfig.kcfg
-%_kde_iconsdir/*/*/apps/kalarm.*
 %doc %_kde_docdir/HTML/en/kalarm
-%_kde_services/kresources/alarms/local.desktop
-%_kde_services/kresources/alarms/localdir.desktop
-%_kde_services/kresources/alarms/remote.desktop
-%_kde_services/kresources/kalarm_manager.desktop
+%_kde_datadir/kde4/services/kresources/alarms/local.desktop
+%_kde_datadir/kde4/services/kresources/alarms/localdir.desktop
+%_kde_datadir/kde4/services/kresources/alarms/remote.desktop
+%_kde_datadir/kde4/services/kresources/kalarm_manager.desktop
 
 #-----------------------------------------------------------------------------
 
@@ -714,13 +690,14 @@ KDE 4 library.
 %package -n ktimetracker
 Summary: Tracks time spent on various tasks
 Group: Graphical desktop/KDE
-URL: http://community.kde.org/Ktimetracker
 Requires: %name-core = %epoch:%version
 Obsoletes: %name-ktimetracker < 1:3.93.0-1
 Obsoletes: kde4-ktimetracker < 2:4.0.68
+%if %mdkversion >= 200910
+Obsoletes: kdepim-karm < 1:3.5.10-2
+%endif
 Provides: kde4-ktimetracker = %epoch:%version
 Conflicts: kontact < 2:4.0.83-2
-Conflicts: %name-core < 2:4.5.77
 
 %description -n ktimetracker
 KTimeTracker tracks time spent on various tasks. It is useful for tracking
@@ -732,13 +709,12 @@ of your day is spent playing Doom or reading Slashdot.
 %_kde_bindir/karm
 %_kde_bindir/ktimetracker
 %_kde_appsdir/ktimetracker
-%_kde_applicationsdir/ktimetracker.desktop
-%_kde_iconsdir/*/*/apps/ktimetracker.*
-%_kde_services/ktimetrackerpart.desktop
-%_kde_services/ktimetracker_config_behavior.desktop
-%_kde_services/ktimetracker_config_display.desktop
-%_kde_services/ktimetracker_config_storage.desktop
-%_kde_services/kontact/ktimetracker_plugin.desktop
+%_kde_datadir/applications/kde4/ktimetracker.desktop
+%_kde_datadir/kde4/services/ktimetrackerpart.desktop
+%_kde_datadir/kde4/services/ktimetracker_config_behavior.desktop
+%_kde_datadir/kde4/services/ktimetracker_config_display.desktop
+%_kde_datadir/kde4/services/ktimetracker_config_storage.desktop
+%_kde_datadir/kde4/services/kontact/ktimetracker_plugin.desktop
 %_kde_libdir/kde4/ktimetrackerpart.so
 %_kde_libdir/kde4/kcm_ktimetracker.so
 %_kde_libdir/kde4/kontact_ktimetrackerplugin.so
@@ -763,26 +739,9 @@ KDE 4 library.
 
 #-----------------------------------------------------------------------------
 
-%define mailcommon_major 4
-%define libmailcommon %mklibname mailcommon %{mailcommon_major}
-
-%package -n %libmailcommon
-Summary: KDE 4 library
-Group: System/Libraries
-
-%description -n %libmailcommon
-KDE 4 library.
-
-%files -n %libmailcommon
-%defattr(-,root,root)
-%_kde_libdir/libmailcommon.so.%{mailcommon_major}*
-
-#-----------------------------------------------------------------------------
-
 %package -n kmail
 Summary: KDE Email Client
 Group: Graphical desktop/KDE
-URL: http://userbase.kde.org/KMail
 Requires: %name-core = %epoch:%version
 Requires: kdepimlibs4-core
 Requires: sasl-plug-plain
@@ -794,17 +753,17 @@ Requires: kio4-smtp
 Requires: kio4-mbox
 Requires: kio4-imap
 Requires: kio4-sieve
-Requires: kmail-common
 Suggests: kmailcvt
 Suggests: pinentry-qt4
 Suggests: openssh-askpass-qt4
 Obsoletes: kde4-kmail < 2:4.0.68
 Obsoletes: kdepim4-plugins <= 2:4.0.83
 Obsoletes: %name-kmail < 1:3.93.0-1
+%if %mdkversion >= 200910
+Obsoletes: kdepim-kmail < 1:3.5.10-2
+%endif
 Conflicts: kontact < 2:4.0.83-2
 Provides: kde4-kmail = %epoch:%version
-Provides: kmail2 = %epoch:%version
-Conflicts: %name-core < 2:4.5.77
 
 %description -n kmail
 KMail is the email component of Kontact, the integrated personal
@@ -818,10 +777,9 @@ information manager of KDE.
 %_kde_bindir/kmail_fprot.sh
 %_kde_bindir/kmail_sav.sh
 %_kde_appsdir/kmail
-%_kde_appsdir/kmail2
 %_kde_datadir/kde4/services/kontact/kmailplugin.desktop
-%_kde_applicationsdir/KMail2.desktop
-%_kde_applicationsdir/kmail_view.desktop
+%_kde_datadir/applications/kde4/KMail.desktop
+%_kde_datadir/applications/kde4/kmail_view.desktop
 %_kde_appsdir/kconf_update/kmail*
 %_kde_appsdir/kconf_update/upgrade-signature.pl
 %_kde_appsdir/kconf_update/upgrade-transport.pl
@@ -831,57 +789,32 @@ information manager of KDE.
 %_kde_datadir/config.kcfg/templatesconfiguration_kfg.kcfg
 %_kde_datadir/config/kmail.antispamrc
 %_kde_datadir/config/kmail.antivirusrc
-%_kde_iconsdir/*/*/apps/kmail.*
-%_kde_services/kmail_config_accounts.desktop
-%_kde_services/kmail_config_appearance.desktop
-%_kde_services/kmail_config_composer.desktop
-%_kde_services/kmail_config_identity.desktop
-%_kde_services/kmail_config_misc.desktop
-%_kde_services/kmail_config_security.desktop
-%_kde_servicetypes/dbusmail.desktop
+%_kde_datadir/kde4/services/kmail_config_accounts.desktop
+%_kde_datadir/kde4/services/kmail_config_appearance.desktop
+%_kde_datadir/kde4/services/kmail_config_composer.desktop
+%_kde_datadir/kde4/services/kmail_config_identity.desktop
+%_kde_datadir/kde4/services/kmail_config_misc.desktop
+%_kde_datadir/kde4/services/kmail_config_security.desktop
+%_kde_datadir/kde4/servicetypes/dbusimap.desktop
+%_kde_datadir/kde4/servicetypes/dbusmail.desktop
 %_kde_libdir/kde4/kcm_kmail.so
 %_kde_libdir/kde4/kmailpart.so
+%_kde_libdir/kde4/kmail_bodypartformatter_*
 %_kde_libdir/kde4/kcm_kmailsummary.so
 %_kde_libdir/kde4/kontact_kmailplugin.so
 %_kde_libdir/kde4/ktexteditorkabcbridge.so
-%_kde_services/kcmkmailsummary.desktop
-%_kde_services/ServiceMenus/kmail_addattachmentservicemenu.desktop
+%_kde_datadir/kde4/services/kcmkmailsummary.desktop
 %_kde_docdir/HTML/en/kmail
-
-#-----------------------------------------------------------------------------
-
-%package -n kmail-common
-Summary: KDE Email Client
-Group: Graphical desktop/KDE
-URL: http://userbase.kde.org/KMail
-Provides: kmail2-common = %epoch:%version-%release
-
-%description -n kmail-common
-Common files needed by kmail and kmail-mobile used to view messages.
-
-%files -n kmail-common
-%defattr(-,root,root)
-%_kde_libdir/kde4/messageviewer_bodypartformatter_application_mstnef.so
-%_kde_libdir/kde4/messageviewer_bodypartformatter_text_calendar.so
-%_kde_libdir/kde4/messageviewer_bodypartformatter_text_vcard.so
-%_kde_libdir/kde4/messageviewer_bodypartformatter_text_xdiff.so
-%_kde_services/kcm_kpimidentities.desktop
-%_kde_libdir/kde4/kcm_kpimidentities.so 
-%_kde_appsdir/libmessageviewer
-%_kde_appsdir/messageviewer
-%_kde_appsdir/messagelist
 
 #-----------------------------------------------------------------------------
 
 %package -n kmailcvt
 Summary: KDE Mail Import tool
 Group: Graphical desktop/KDE
-URL: http://userbase.kde.org/KMail
 Requires: %name-core = %epoch:%version
 Obsoletes: %name-kmailcvt < 1:3.93.0-1
 Obsoletes: kde4-kmailcvt < 2:4.0.68
 Provides: kde4-kmailcvt = %epoch:%version
-Conflicts: %name-core < 2:4.5.77
 
 %description -n kmailcvt
 KDE Mail Import tool
@@ -890,22 +823,22 @@ KDE Mail Import tool
 %defattr(-,root,root)
 %_kde_bindir/kmailcvt
 %_kde_appsdir/kmailcvt/pics/step1.png
-%_kde_iconsdir/*/*/apps/kmailcvt.*
 
 #-----------------------------------------------------------------------------
 
 %package -n knotes
 Summary: Notes for the K Desktop Environment
 Group: Graphical desktop/KDE
-URL: http://userbase.kde.org/KNotes
 Requires: %name-core = %epoch:%version
 Requires: %name-kresources
 Requires: kio4-nntp
 Obsoletes: kde4-knotes < 2:4.0.68
 Obsoletes: %name-knotes < 1:3.93.0-1
+%if %mdkversion >= 200910
+Obsoletes: kdepim-knotes < 1:3.5.10-2
+%endif
 Provides: kde4-knotes = %epoch:%version
 Conflicts: kontact < 2:4.0.83-2
-Conflicts: %name-core < 2:4.5.77
 
 %description -n knotes
 KNotes aims to be a useful and full featured notes application for
@@ -915,19 +848,18 @@ although including some advanced features.
 %files -n knotes
 %defattr(-,root,root)
 %_kde_bindir/knotes
-%_kde_applicationsdir/knotes.desktop
+%_kde_datadir/applications/kde4/knotes.desktop
 %_kde_datadir/kde4/services/kontact/knotesplugin.desktop
 %_kde_datadir/config.kcfg/knoteconfig.kcfg
 %_kde_datadir/config.kcfg/knotesglobalconfig.kcfg
 %_kde_appsdir/knotes
-%_kde_iconsdir/*/*/apps/knotes.*
-%_kde_services/kresources/knotes/local.desktop
-%_kde_services/kresources/knotes_manager.desktop
-%_kde_services/knote_config_action.desktop
-%_kde_services/knote_config_display.desktop
-%_kde_services/knote_config_editor.desktop
-%_kde_services/knote_config_network.desktop
-%_kde_services/knote_config_style.desktop
+%_kde_datadir/kde4/services/kresources/knotes/local.desktop
+%_kde_datadir/kde4/services/kresources/knotes_manager.desktop
+%_kde_datadir/kde4/services/knote_config_action.desktop
+%_kde_datadir/kde4/services/knote_config_display.desktop
+%_kde_datadir/kde4/services/knote_config_editor.desktop
+%_kde_datadir/kde4/services/knote_config_network.desktop
+%_kde_datadir/kde4/services/knote_config_style.desktop
 %_kde_libdir/kde4/knotes_local.so
 %_kde_libdir/kde4/kcm_knote.so
 %_kde_docdir/HTML/en/knotes
@@ -938,12 +870,13 @@ although including some advanced features.
 %package -n kontact
 Summary: Kontact Container
 Group: Graphical desktop/KDE
-URL: http://userbase.kde.org/Kontact
 Requires: %name-core = %epoch:%version
 Obsoletes: %name-kontact < 1:3.93.0-1
 Obsoletes: kde4-kontact < 2:4.0.68
-Conflicts: %name-core < 2:4.5.77
 Requires: kio4-ldap
+%if %mdkversion >= 200910
+Obsoletes: kdepim-kontact  kdepim-kpilot < 1:3.5.10-2
+%endif
 Provides: kde4-kontact = %epoch:%version
 Suggests: akregator
 Suggests: kmail
@@ -965,24 +898,71 @@ technology, existing applications are seamlessly integrated into one.
 %_kde_appsdir/kontact
 %_kde_appsdir/kontactsummary
 %_kde_datadir/config.kcfg/kontact.kcfg
-%_kde_iconsdir/*/*/apps/kontact.*
-%_kde_services/kontactconfig.desktop
-%_kde_services/kcmapptsummary.desktop
-%_kde_services/kcmkontactsummary.desktop
-%_kde_services/kcmsdsummary.desktop
-%_kde_services/kontact/summaryplugin.desktop
-%_kde_services/kontact/specialdatesplugin.desktop
+%_kde_datadir/kde4/services/kontactconfig.desktop
+%_kde_datadir/kde4/services/kcmapptsummary.desktop
+%_kde_datadir/kde4/services/kcmkontactsummary.desktop
+%_kde_datadir/kde4/services/kontact/summaryplugin.desktop
 %_kde_libdir/kde4/kcm_apptsummary.so
 %_kde_libdir/kde4/kcm_kontact.so
 %_kde_libdir/kde4/kcm_kontactsummary.so
 %_kde_libdir/kde4/kontact_journalplugin.so
-%_kde_libdir/kde4/kcm_sdsummary.so
-%_kde_libdir/kde4/kontact_specialdatesplugin.so
 %_kde_libdir/kde4/kontact_summaryplugin.so
-%_kde_applicationsdir/Kontact.desktop
-%_kde_applicationsdir/kontact-admin.desktop
+%_kde_datadir/applications/kde4/Kontact.desktop
+%_kde_datadir/applications/kde4/kontact-admin.desktop
+
 %_kde_docdir/HTML/en/kontact
 %_kde_docdir/HTML/en/kontact-admin
+
+#-----------------------------------------------------------------------------
+
+%define korg_stdprinting_major 4
+%define libkorg_stdprinting %mklibname korg_stdprinting %{korg_stdprinting_major}
+
+%package -n %libkorg_stdprinting
+Summary: KDE 4 library
+Group: System/Libraries
+Obsoletes: %{mklibname kdepim42-common} < 1:3.93.0-1
+
+%description -n %libkorg_stdprinting
+KDE 4 library.
+
+%files -n %libkorg_stdprinting
+%defattr(-,root,root)
+%_kde_libdir/libkorg_stdprinting.so.%{korg_stdprinting_major}*
+
+#-----------------------------------------------------------------------------
+
+%define korganizer_calendar_major 4
+%define libkorganizer_calendar %mklibname korganizer_calendar %{korganizer_calendar_major}
+
+%package -n %libkorganizer_calendar
+Summary: KDE 4 library
+Group: System/Libraries
+Obsoletes: %{mklibname kdepim42-common} < 1:3.93.0-1
+
+%description -n %libkorganizer_calendar
+KDE 4 library.
+
+%files -n %libkorganizer_calendar
+%defattr(-,root,root)
+%_kde_libdir/libkorganizer_calendar.so.%{korganizer_calendar_major}*
+
+#-----------------------------------------------------------------------------
+
+%define korganizer_eventviewer_major 4
+%define libkorganizer_eventviewer %mklibname korganizer_eventviewer %{korganizer_eventviewer_major}
+
+%package -n %libkorganizer_eventviewer
+Summary: KDE 4 library
+Group: System/Libraries
+Obsoletes: %{mklibname kdepim42-common} < 1:3.93.0-1
+
+%description -n %libkorganizer_eventviewer
+KDE 4 library.
+
+%files -n %libkorganizer_eventviewer
+%defattr(-,root,root)
+%_kde_libdir/libkorganizer_eventviewer.so.%{korganizer_eventviewer_major}*
 
 #-----------------------------------------------------------------------------
 
@@ -1006,16 +986,17 @@ KDE 4 library.
 %package -n korganizer
 Summary: Calendar and scheduling component
 Group: Graphical desktop/KDE
-URL: http://userbase.kde.org/KOrganizer
-Requires: %name-core = %epoch:%version
-Requires: %name-kresources
+Requires:  %name-core = %epoch:%version
+Requires:  %name-kresources
 Obsoletes: kde4-korganizer < 2:4.0.68
 Obsoletes: %name-korganizer < 1:3.93.0-1
 Requires: kio4-ldap
-Suggests: kincidenceeditor
-Provides: kde4-korganizer = %epoch:%version
+%if %mdkversion >= 200910
+Obsoletes: kdepim-korganizer < 1:3.5.10-2
+%endif
+Provides:  kde4-korganizer = %epoch:%version
 Conflicts: kontact < 2:4.0.83-2
-Conflicts: kdepim4-core < 2:4.5.77
+Conflicts: kdepim4-core < 2:4.1.81-1
 
 %description -n korganizer
 KOrganizer provides management of events and tasks, alarm notification,
@@ -1029,39 +1010,36 @@ Citadel or OpenGroupware.org.
 %_kde_bindir/ical2vcal
 %_kde_bindir/korgac
 %_kde_bindir/korganizer
-%_kde_services/kontact/korganizerplugin.desktop
-%_kde_applicationsdir/korganizer-import.desktop
-%_kde_applicationsdir/korganizer.desktop
+%_kde_datadir/kde4/services/kontact/korganizerplugin.desktop
+%_kde_datadir/applications/kde4/korganizer-import.desktop
+%_kde_datadir/applications/kde4/korganizer.desktop
 %_kde_appsdir/kconf_update/korganizer.upd
 %_kde_appsdir/korgac
 %_kde_appsdir/korganizer
-%_kde_iconsdir/*/*/apps/korganizer.*
-%_kde_iconsdir/*/*/actions/checkmark.*
-%_kde_iconsdir/*/*/actions/smallclock.*
-%_kde_iconsdir/*/*/actions/upindicator.*
-%_kde_services/kontact/todoplugin.desktop
-%_kde_services/kcmtodosummary.desktop
-%_kde_services/kontact/journalplugin.desktop
+%_kde_datadir/kde4/services/kontact/todoplugin.desktop
+%_kde_datadir/kde4/services/kcmtodosummary.desktop
+%_kde_datadir/kde4/services/kontact/journalplugin.desktop
 %_kde_libdir/kde4/kcm_todosummary.so
 %_kde_libdir/kde4/kontact_todoplugin.so
 %_kde_datadir/autostart/korgac.desktop
 %_kde_datadir/config.kcfg/korganizer.kcfg
 %_kde_datadir/config/korganizer.knsrc
-%_kde_services/korganizer*
-%_kde_services/webcal.protocol
-%_kde_servicetypes/calendardecoration.desktop
-%_kde_servicetypes/calendarplugin.desktop
-%_kde_servicetypes/dbuscalendar.desktop
-%_kde_servicetypes/korganizerpart.desktop
-%_kde_servicetypes/korgprintplugin.desktop
+%_kde_datadir/kde4/services/korganizer*
+%_kde_datadir/kde4/services/webcal.protocol
+%_kde_datadir/kde4/servicetypes/calendardecoration.desktop
+%_kde_datadir/kde4/servicetypes/calendarplugin.desktop
+%_kde_datadir/kde4/servicetypes/dbuscalendar.desktop
+%_kde_datadir/kde4/servicetypes/korganizerpart.desktop
+%_kde_datadir/kde4/servicetypes/korgprintplugin.desktop
 %_kde_libdir/kde4/kcm_korganizer.so
 %_kde_libdir/kde4/korg_*
 %_kde_libdir/kde4/korganizerpart.so
 %_kde_libdir/kde4/kontact_korganizerplugin.so
+%doc %_kde_docdir/*/*/korganizer
+
 %_kde_bindir/konsolekalendar
-%_kde_applicationsdir/konsolekalendar.desktop
-%_kde_iconsdir/*/*/apps/konsolekalendar.*
-%doc %_kde_docdir/HTML/en/korganizer
+%_kde_datadir/applications/kde4/konsolekalendar.desktop
+%_kde_appsdir/konsolekalendar
 %doc %_kde_docdir/HTML/en/konsolekalendar
 
 #-----------------------------------------------------------------------------
@@ -1082,21 +1060,39 @@ KDE 4 library.
 %defattr(-,root,root)
 %_kde_libdir/libkorganizerprivate.so.%{korganizerprivate_major}*
 
-#------------------------------------------------------------------------------
+#-----------------------------------------------------------------------------
 
-%define libcalendarsupport_major 4
-%define libcalendarsupport %mklibname calendarsupport %{libcalendarsupport_major}
+%define kabc_groupdav_major 4
+%define libkabc_groupdav %mklibname kabc_groupdav %{kabc_groupdav_major}
 
-%package -n %libcalendarsupport
+%package -n %libkabc_groupdav
 Summary: KDE 4 library
 Group: System/Libraries
+Obsoletes: %{mklibname kdepim42-common} < 1:3.93.0-1
 
-%description -n %libcalendarsupport
-KDE 4 library for korganizer-Mobile.
+%description -n %libkabc_groupdav
+KDE 4 library.
 
-%files -n %libcalendarsupport
+%files -n %libkabc_groupdav
 %defattr(-,root,root)
-%_kde_libdir/libcalendarsupport.so.%{libcalendarsupport_major}*
+%_kde_libdir/libkabc_groupdav.so.%{kabc_groupdav_major}*
+
+#-----------------------------------------------------------------------------
+
+%define kabc_slox_major 4
+%define libkabc_slox %mklibname kabc_slox %{kabc_slox_major}
+
+%package -n %libkabc_slox
+Summary: KDE 4 library
+Group: System/Libraries
+Obsoletes: %{mklibname kdepim42-common} < 1:3.93.0-1
+
+%description -n %libkabc_slox
+KDE 4 library.
+
+%files -n %libkabc_slox
+%defattr(-,root,root)
+%_kde_libdir/libkabc_slox.so.%{kabc_slox_major}*
 
 #-----------------------------------------------------------------------------
 
@@ -1113,6 +1109,40 @@ KDE 4 library.
 %files -n %libmessagelist
 %defattr(-,root,root)
 %_kde_libdir/libmessagelist.so.%{messagelist_major}*
+
+#-----------------------------------------------------------------------------
+
+%define kabckolab_major 4
+%define libkabckolab %mklibname kabckolab %{kabckolab_major}
+
+%package -n %libkabckolab
+Summary: KDE 4 library
+Group: System/Libraries
+Obsoletes: %{mklibname kdepim42-common} < 1:3.93.0-1
+
+%description -n %libkabckolab
+KDE 4 library.
+
+%files -n %libkabckolab
+%defattr(-,root,root)
+%_kde_libdir/libkabckolab.so.%{kabckolab_major}*
+
+#-----------------------------------------------------------------------------
+
+%define kcal_groupdav_major 4
+%define libkcal_groupdav %mklibname kcal_groupdav %{kcal_groupdav_major}
+
+%package -n %libkcal_groupdav
+Summary: KDE 4 library
+Group: System/Libraries
+Obsoletes: %{mklibname kdepim42-common} < 1:3.93.0-1
+
+%description -n %libkcal_groupdav
+KDE 4 library.
+
+%files -n %libkcal_groupdav
+%defattr(-,root,root)
+%_kde_libdir/libkcal_groupdav.so.%{kcal_groupdav_major}*
 
 #-----------------------------------------------------------------------------
 
@@ -1148,22 +1178,106 @@ KDE 4 library.
 %defattr(-,root,root)
 %_kde_libdir/libkcal_resourceremote.so.%{kcal_resourceremote_major}*
 
-#-----------------------------------------------------------------------
+#-----------------------------------------------------------------------------
 
+%define kcal_slox_major 4
+%define libkcal_slox %mklibname kcal_slox %{kcal_slox_major}
 
-%define libkdgantt2_major 0
-%define libkdgantt2 %mklibname kdgantt2 %{libkdgantt2_major}
-
-%package -n %libkdgantt2
-Summary: KDE4 library
+%package -n %libkcal_slox
+Summary: KDE 4 library
 Group: System/Libraries
+Obsoletes: %{mklibname kdepim42-common} < 1:3.93.0-1
 
-%description -n %libkdgantt2
+%description -n %libkcal_slox
 KDE 4 library.
 
-%files -n %libkdgantt2
+%files -n %libkcal_slox
 %defattr(-,root,root)
-%_kde_libdir/libkdgantt2.so.%{libkdgantt2_major}*
+%_kde_libdir/libkcal_slox.so.%{kcal_slox_major}*
+
+#-----------------------------------------------------------------------------
+
+%define kcalkolab_major 4
+%define libkcalkolab %mklibname kcalkolab %{kcalkolab_major}
+
+%package -n %libkcalkolab
+Summary: KDE 4 library
+Group: System/Libraries
+Obsoletes: %{mklibname kdepim42-common} < 1:3.93.0-1
+
+%description -n %libkcalkolab
+KDE 4 library.
+
+%files -n %libkcalkolab
+%defattr(-,root,root)
+%_kde_libdir/libkcalkolab.so.%{kcalkolab_major}*
+
+#-----------------------------------------------------------------------------
+
+%define kgroupwarebase_major 4
+%define libkgroupwarebase %mklibname kgroupwarebase %{kgroupwarebase_major}
+
+%package -n %libkgroupwarebase
+Summary: KDE 4 library
+Group: System/Libraries
+Obsoletes: %{mklibname kdepim42-common} < 1:3.93.0-1
+
+%description -n %libkgroupwarebase
+KDE 4 library.
+
+%files -n %libkgroupwarebase
+%defattr(-,root,root)
+%_kde_libdir/libkgroupwarebase.so.%{kgroupwarebase_major}*
+
+#-----------------------------------------------------------------------------
+
+%define kgroupwaredav_major 4
+%define libkgroupwaredav %mklibname kgroupwaredav %{kgroupwaredav_major}
+
+%package -n %libkgroupwaredav
+Summary: KDE 4 library
+Group: System/Libraries
+Obsoletes: %{mklibname kdepim42-common} < 1:3.93.0-1
+
+%description -n %libkgroupwaredav
+KDE 4 library.
+
+%files -n %libkgroupwaredav
+%defattr(-,root,root)
+%_kde_libdir/libkgroupwaredav.so.%{kgroupwaredav_major}*
+
+#-----------------------------------------------------------------------------
+
+%define knoteskolab_major 4
+%define libknoteskolab %mklibname knoteskolab %{knoteskolab_major}
+
+%package -n %libknoteskolab
+Summary: KDE 4 library
+Group: System/Libraries
+Obsoletes: %{mklibname kdepim42-common} < 1:3.93.0-1
+
+%description -n %libknoteskolab
+KDE 4 library.
+
+%files -n %libknoteskolab
+%defattr(-,root,root)
+%_kde_libdir/libknoteskolab.so.%{knoteskolab_major}*
+#-----------------------------------------------------------------------------
+
+%define kslox_major 4
+%define libkslox %mklibname kslox %{kslox_major}
+
+%package -n %libkslox
+Summary: KDE 4 library
+Group: System/Libraries
+Obsoletes: %{mklibname kdepim42-common} < 1:3.93.0-1
+
+%description -n %libkslox
+KDE 4 library.
+
+%files -n %libkslox
+%defattr(-,root,root)
+%_kde_libdir/libkslox.so.%{kslox_major}*
 
 #-----------------------------------------------------------------------------
 
@@ -1199,11 +1313,27 @@ tracking feature plans.
 
 %files kresources
 %defattr(-,root,root)
-%_kde_libdir/kde4/kcal_blog.so
-%_kde_libdir/kde4/kcal_groupwise.so
-%_kde_libdir/kde4/kcal_remote.so
-%_kde_services/kresources/kcal/blog.desktop
-%_kde_services/kresources/kcal/remote.desktop
+%_kde_datadir/kde4/services/kresources/kabc/kabc_groupdav.desktop
+%_kde_datadir/kde4/services/kresources/kabc/kabc_opengroupware.desktop
+%_kde_datadir/kde4/services/kresources/kabc/kabc_ox.desktop
+%_kde_datadir/kde4/services/kresources/kabc/kabc_slox.desktop
+%_kde_datadir/kde4/services/kresources/kabc/kolab.desktop
+%_kde_datadir/kde4/services/kresources/kcal/kabc.desktop
+%_kde_datadir/kde4/services/kresources/kcal/kcal_groupdav.desktop
+%_kde_datadir/kde4/services/kresources/kcal/kcal_opengroupware.desktop
+%_kde_datadir/kde4/services/kresources/kcal/kcal_ox.desktop
+%_kde_datadir/kde4/services/kresources/kcal/kcal_slox.desktop
+%_kde_datadir/kde4/services/kresources/kcal/kolab.desktop
+%_kde_datadir/kde4/services/kresources/kcal/remote.desktop
+%_kde_datadir/kde4/services/kresources/kcal/blog.desktop
+%_kde_datadir/kde4/services/kresources/knotes/kolabresource.desktop
+%_kde_appsdir/kconf_update/kolab-resource.upd
+%_kde_appsdir/kconf_update/upgrade-resourcetype.pl
+%_kde_libdir/kde4/kabc_groupdav.so
+%_kde_libdir/kde4/kabc_kolab.so
+%_kde_libdir/kde4/kabc_slox.so
+%_kde_libdir/kde4/kcal_*
+%_kde_libdir/kde4/knotes_kolab.so
 
 #-----------------------------------------------------------------------------
 
@@ -1212,6 +1342,9 @@ Summary: KDE Groupware Wizard
 Group: Graphical desktop/KDE
 Requires: %name-core = %epoch:%version
 Obsoletes: %name-wizards < 1:3.93.0-1
+%if %mdkversion >= 200910
+Obsoletes: kdepim-wizards < 1:3.5.10-2
+%endif
 
 %description wizards
 KDE Groupware Wizard
@@ -1219,15 +1352,19 @@ KDE Groupware Wizard
 %files wizards
 %defattr(-,root,root)
 %_kde_bindir/groupwarewizard
+%_kde_bindir/kolabwizard
+%_kde_bindir/sloxwizard
 %_kde_bindir/groupwisewizard
 %_kde_libdir/kde4/kio_groupwise.so
 %_kde_libdir/kde4/kabc_groupwise.so
-%_kde_applicationsdir/groupwarewizard.desktop
+%_kde_datadir/applications/kde4/groupwarewizard.desktop
 %_kde_datadir/config.kcfg/groupwise.kcfg
-%_kde_services/groupwise.protocol
-%_kde_services/groupwises.protocol
-%_kde_services/kresources/kabc/kabc_groupwise.desktop
-%_kde_services/kresources/kcal/kcal_groupwise.desktop
+%_kde_datadir/config.kcfg/kolab.kcfg
+%_kde_datadir/config.kcfg/slox.kcfg
+%_kde_datadir/kde4/services/groupwise.protocol
+%_kde_datadir/kde4/services/groupwises.protocol
+%_kde_datadir/kde4/services/kresources/kabc/kabc_groupwise.desktop
+%_kde_datadir/kde4/services/kresources/kcal/kcal_groupwise.desktop
 
 #-----------------------------------------------------------------------------
 
@@ -1263,6 +1400,34 @@ KDE 4 library.
 
 #-----------------------------------------------------------------------------
 
+%package -n kjots
+Summary: %{name} kjots
+Group: Graphical desktop/KDE
+Requires: %name-core = %epoch:%version
+Obsoletes: %name-kjots < 3.93.0-0.714053.1
+Obsoletes: kde4-kjots < 4.0.68
+Provides: kde4-kjots = %version
+Conflicts: kontact < 2:4.0.83-2
+
+%description -n kjots
+%{name} kjots.
+
+%files -n kjots
+%defattr(-,root,root)
+%_kde_bindir/kjots
+%_kde_appsdir/kjots
+%_kde_datadir/kde4/services/kontact/kjots_plugin.desktop
+%_kde_libdir/kde4/kjotspart.so
+%_kde_libdir/kde4/kcm_kjots.so
+%_kde_datadir/applications/kde4/Kjots.desktop
+%_kde_datadir/kde4/services/kjotspart.desktop
+%_kde_datadir/kde4/services/kjots_config_misc.desktop
+%_kde_datadir/config.kcfg/kjots.kcfg
+%_kde_docdir/HTML/*/kjots
+%_kde_libdir/kde4/kontact_kjotsplugin.so
+
+#-----------------------------------------------------------------------------
+
 %package -n ksendemail
 Summary: %{name} ksendemail
 Group: Graphical desktop/KDE
@@ -1277,7 +1442,7 @@ Conflicts: kontact < 2:4.0.83-2
 %_kde_bindir/ksendemail
 
 #-----------------------------------------------------------------------------
-
+%if 0 
 %package -n nepomuk-email-feeder
 Summary: %{name} nepomuk-email-feeder
 Group: Graphical desktop/KDE
@@ -1291,6 +1456,7 @@ Conflicts: kontact < 2:4.0.83-2
 %defattr(-,root,root)
 %_kde_bindir/akonadi_nepomuk_email_feeder
 %_kde_datadir/akonadi/agents/nepomukemailfeeder.desktop
+%endif
 
 #-----------------------------------------------------------------------------
 
@@ -1307,12 +1473,12 @@ Console that help to debug akonadi
 %files -n akonadiconsole
 %defattr(-,root,root)
 %_kde_bindir/akonadiconsole
-%_kde_applicationsdir/akonadiconsole.desktop
+%_kde_datadir/applications/kde4/akonadiconsole.desktop
 %_kde_appsdir/akonadiconsole/akonadiconsoleui.rc
 
 #-----------------------------------------------------------------------------
 
-%define messageviewer_major 4
+%define messageviewer_major 0
 %define libmessageviewer %mklibname messageviewer %{messageviewer_major}
 
 %package -n %libmessageviewer
@@ -1345,184 +1511,60 @@ KDE 4 library.
 
 #-----------------------------------------------------------------------------
 
-%define eventviews_major 4
-%define libeventviews %mklibname eventviews %{eventviews_major}
+%define akonadi_kcal_next_major 4
+%define libakonadi_kcal_next %mklibname akonadi-kcal_next %{akonadi_kcal_next_major}
 
-%package -n %libeventviews
+%package -n %libakonadi_kcal_next
 Summary: KDE 4 library
 Group: System/Libraries
 
-%description -n %libeventviews
+%description -n %libakonadi_kcal_next
 KDE 4 library.
 
-%files -n %libeventviews
+%files -n %libakonadi_kcal_next
 %defattr(-,root,root)
-%_kde_libdir/libeventviews.so.%{eventviews_major}*
+%_kde_libdir/libakonadi-kcal_next.so.%{akonadi_kcal_next_major}*
 
 #-----------------------------------------------------------------------------
 
-%define libincidenceeditorsng_major 4
-%define libincidenceeditorsng %mklibname incidenceeditorsng %{libincidenceeditorsng_major}
-
-%package -n %libincidenceeditorsng
-Summary: KDE 4 library
-Group: System/Libraries
-Obsoletes: %{_lib}incidenceeditors4 < 2:4.5.68
-
-%description -n %libincidenceeditorsng
-KDE 4 library.
-
-%files -n %libincidenceeditorsng
-%defattr(-,root,root)
-%_kde_libdir/libincidenceeditorsng.so.%{libincidenceeditorsng_major}*
-
-#-----------------------------------------------------------------------------
-
-%define kdepimdbusinterfaces_major 4
-%define libkdepimdbusinterfaces %mklibname kdepimdbusinterfaces %{kdepimdbusinterfaces_major}
-
-%package -n %libkdepimdbusinterfaces
-Summary: KDE 4 library
-Group: System/Libraries
-
-%description -n %libkdepimdbusinterfaces
-KDE 4 library.
-
-%files -n %libkdepimdbusinterfaces
-%defattr(-,root,root)
-%_kde_libdir/libkdepimdbusinterfaces.so.%{kdepimdbusinterfaces_major}*
-
-#-----------------------------------------------------------------------------
-
-%define kleopatraclientcore_major 0
-%define libkleopatraclientcore %mklibname kleopatraclientcore %{kleopatraclientcore_major}
-
-%package -n %libkleopatraclientcore
-Summary: KDE 4 library
-Group: System/Libraries
-Obsoletes: %{_lib}kleopatraclientcore4 <= 2:4.5-0.beta1.1
-
-%description -n %libkleopatraclientcore
-KDE 4 library.
-
-%files -n %libkleopatraclientcore
-%defattr(-,root,root)
-%_kde_libdir/libkleopatraclientcore.so.%{kleopatraclientcore_major}*
-
-#-----------------------------------------------------------------------------
-
-%define kleopatraclientgui_major 0
-%define libkleopatraclientgui %mklibname kleopatraclientgui %{kleopatraclientgui_major}
-
-%package -n %libkleopatraclientgui
-Summary: KDE 4 library
-Group: System/Libraries
-Obsoletes: %{_lib}kleopatraclientgui4 <= 2:4.5-0.beta1.1
-
-%description -n %libkleopatraclientgui
-KDE 4 library.
-
-%files -n %libkleopatraclientgui
-%defattr(-,root,root)
-%_kde_libdir/libkleopatraclientgui.so.%{kleopatraclientgui_major}*
-
-#-----------------------------------------------------------------------------
-
-%define messagecomposer_major 4
-%define libmessagecomposer %mklibname messagecomposer %{messagecomposer_major}
-
-%package -n %libmessagecomposer
-Summary: KDE 4 library
-Group: System/Libraries
-
-%description -n %libmessagecomposer
-KDE 4 library.
-
-%files -n %libmessagecomposer
-%defattr(-,root,root)
-%_kde_libdir/libmessagecomposer.so.%{messagecomposer_major}*
-
-#-----------------------------------------------------------------------------
-
-%define templateparser_major 4
-%define libtemplateparser %mklibname templateparser %{templateparser_major}
-
-%package -n %libtemplateparser
-Summary: KDE 4 library
-Group: System/Libraries
-
-%description -n %libtemplateparser
-KDE 4 library.
-
-%files -n %libtemplateparser
-%defattr(-,root,root)
-%_kde_libdir/libtemplateparser.so.%{templateparser_major}*
-
-#-----------------------------------------------------------------------------
-
-%package -n kjots
-Summary: KDE note taking utility
-Group: Graphical desktop/KDE
-URL: http://userbase.kde.org/KJots
-Requires: %name-core = %epoch:%version
-Obsoletes: %name-kjots < 3.93.0-0.714053.1
-Obsoletes: kde4-kjots < 4.0.68
-Provides: kde4-kjots = %version
-Conflicts: kontact < 2:4.0.83-2
-Conflicts: %name-core < 2:4.5.77
-
-%description -n kjots
-A small program which is handy for keeping and organizing miscellaneous
-notes.
-
-%files -n kjots
-%defattr(-,root,root)
-%_kde_bindir/kjots
-%_kde_libdir/kde4/kcm_kjots.so
-%_kde_libdir/kde4/kjotspart.so
-%_kde_libdir/kde4/kontact_kjotsplugin.so
-%_kde_libdir/kde4/plasma_applet_akonotes_list.so
-%_kde_libdir/kde4/plasma_applet_akonotes_note.so
-%_kde_applicationsdir/Kjots.desktop
-%_kde_appsdir/kjots
-%_kde_datadir/config.kcfg/kjots.kcfg
-%_kde_iconsdir/*/*/apps/kjots.*
-%_kde_iconsdir/*/*/actions/edit-delete-page.*
-%doc %_kde_docdir/HTML/en/kjots
-%_kde_services/akonotes_list.desktop
-%_kde_services/akonotes_note.desktop
-%_kde_services/kjots_config_misc.desktop
-%_kde_services/kjotspart.desktop
-%_kde_services/kontact/kjots_plugin.desktop
-%_kde_appsdir/desktoptheme/default/widgets/stickynote.svgz
-
-#-----------------------------------------------------------------------------
 
 %package devel
 Summary: Devel stuff for %name
 Group: Development/KDE and Qt
-Requires: kdelibs4-devel >= 2:4.5.61
-Requires: kdepimlibs4-devel >= 2:4.5.61
-Requires: kdepim4-runtime-devel >= 4.5.61
+Requires: kde4-macros
+Requires: kdelibs4-devel >= 2:4.2.98
+Requires: kdelibs4-experimental-devel >= 4.2.98
+Requires: kdepimlibs4-devel >= 2:4.2.98
+Requires: kdepim4-runtime-devel >= 4.2.98
 Requires: %libkdepim = %epoch:%version
-Requires: %libeventviews = %epoch:%version
-Requires: %libkleopatraclientcore = %epoch:%version
-Requires: %libincidenceeditorsng = %epoch:%version
-Requires: %libtemplateparser = %epoch:%version
-Requires: %libmessagecomposer = %epoch:%version
-Requires: %libkleopatraclientgui = %epoch:%version
-Requires: %libkdepimdbusinterfaces = %epoch:%version
 Requires: %libkpgp = %epoch:%version
 Requires: %libksieve = %epoch:%version
+Requires: %libmimelib = %epoch:%version
 Requires: %libakregatorinterfaces = %epoch:%version
 Requires: %libakregatorprivate = %epoch:%version
+%if %{with_kitchensync}
+Requires: %libkitchensyncprivate = %epoch:%version
+Requires: %libqopensync = %epoch:%version
+%endif
 Requires: %libknodecommon = %epoch:%version
 Requires: %libkmailprivate = %epoch:%version
-Requires: %libmailcommon = %epoch:%version
+Requires: %libkorg_stdprinting = %epoch:%version
 Requires: %libkorganizerprivate = %epoch:%version
+Requires: %libkorganizer_calendar = %epoch:%version
+Requires: %libkorganizer_eventviewer = %epoch:%version
 Requires: %libkorganizer_interfaces = %epoch:%version
+Requires: %libkabc_groupdav = %epoch:%version
+Requires: %libkabc_slox = %epoch:%version
+Requires: %libkabckolab = %epoch:%version
+Requires: %libkcal_groupdav = %epoch:%version
 Requires: %libkcal_resourceremote = %epoch:%version
 Requires: %libkcal_resourceblog = %epoch:%version
+Requires: %libkcal_slox = %epoch:%version
+Requires: %libkcalkolab = %epoch:%version
+Requires: %libkgroupwarebase = %epoch:%version
+Requires: %libkgroupwaredav = %epoch:%version
+Requires: %libknoteskolab = %epoch:%version
+Requires: %libkslox = %epoch:%version
 Requires: %libkleo = %epoch:%version
 Requires: %libgwsoap = %epoch:%version
 Requires: %libkabcgroupwise = %epoch:%version
@@ -1533,13 +1575,13 @@ Requires: %libmessageviewer = %epoch:%version
 Requires: %libkalarm_calendar = %epoch:%version
 Requires: %libkalarm_resources = %epoch:%version
 Requires: %libakonadi_next = %epoch:%version
-Requires: %libkdgantt2 = %epoch:%version
-Requires: %libincidenceeditorsngmobile = %epoch:%version
-Requires: %libcalendarsupport = %epoch:%version
-Requires: %libkmanagesieve = %epoch:%version
-Requires: %libksieveui = %epoch:%version
+Requires: %libakonadi_kcal_next = %epoch:%version
+%if %mdkversion >= 200910
+Obsoletes: kdepim-devel < 1:3.5.10-2
+Obsoletes: kdepim-devel-doc < 1:3.5.10-2
+%endif
 
-%description devel
+%description  devel
 This package contains header files needed if you wish to build applications
 based on kdepim.
 
@@ -1549,23 +1591,31 @@ based on kdepim.
 %_kde_datadir/dbus-1/interfaces/*
 
 #----------------------------------------------------------------------
+
 %prep
+
 %if %branch
 %setup -q -n kdepim-%version%kde_snapshot
 %else
 %setup -q -n kdepim-%version
 %endif
 
+%patch1 -p0
+
 %build
-%cmake_kde4 -DKDEPIM_BUILD_MOBILE=false
+%cmake_kde4
 %make
 
 %install
-%__rm -fr %buildroot
+rm -fr %buildroot
 
 %makeinstall_std -C build
-
-%find_lang %name --all-name --with-html
+# We copy some missing icons from oxygen to hicolor
+for size in 16  22 32 48 64 128; do
+    mkdir -p %buildroot/%_datadir/icons/hicolor/${size}x${size}/apps
+    %__cp %buildroot%_kde_iconsdir/oxygen/${size}x${size}/apps/kleopatra.png  %buildroot/%_datadir/icons/hicolor/${size}x${size}/apps
+done
 
 %clean
-%__rm -fr %buildroot
+rm -fr %buildroot
+

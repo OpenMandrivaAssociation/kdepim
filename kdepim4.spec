@@ -11,7 +11,7 @@
 Name: kdepim4
 Summary: K Desktop Environment
 Version: 4.4.11.1
-Release: %mkrel 1
+Release: %mkrel 2
 Epoch: 3
 Group: Graphical desktop/KDE
 License: GPL
@@ -31,29 +31,21 @@ Patch300:      kdepim-4.3.2-kmail-nepomuk.patch
 BuildRequires: kdelibs4-devel >= 2:4.2.98
 BuildRequires: kdelibs4-experimental-devel >= 2:4.2.98
 BuildRequires: kdepimlibs4-devel >= 2:4.2.98
-BuildRequires: kdepim4-runtime-devel >= 4.2.98
+BuildRequires: kdepim4-runtime-devel >= 3:%{version}
+BuildRequires: libx11-devel
+BuildRequires: libxscrnsaver-devel
 BuildRequires: gpgme-devel
-BuildRequires: X11-devel 
 BuildRequires: flex 
 BuildRequires: byacc 
 BuildRequires: pam
-BuildRequires: libncurses-devel
-BuildRequires: readline-devel
 BuildRequires: libgpg-error-devel
 BuildRequires: gnokii-devel >= 0.6.18
 BuildRequires: libxml2-utils
 BuildRequires: gnupg
-BuildRequires: bluez-devel 
-BuildRequires: libsasl-devel
-BuildRequires: pilot-link-devel
 BuildRequires: libxslt-proc
 BuildRequires: boost-devel
-BuildRequires: qca2-devel
-BuildRequires: glib2-devel
 BuildRequires: libassuan-devel
 BuildRequires: mysql-static-devel
-BuildRequires: libmal-devel
-BuildRequires: soprano-devel
 BuildRequires: automoc
 %if %{with_kitchensync}
 BuildRequires: libopensync-devel >= 0.30
@@ -61,7 +53,6 @@ BuildRequires: libopensync-devel >= 0.30
 BuildRequires: akonadi-devel
 #FIXME: Remove later
 BuildRequires: kdepimlibs4-core
-BuildRequires: akonadi-devel
 BuildRequires: shared-desktop-ontologies-devel
 #BuildRequires: nepomuk-scribo-devel
 #(nl) Do not enable back w/o kde team agreement

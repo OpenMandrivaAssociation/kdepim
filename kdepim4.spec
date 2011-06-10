@@ -913,6 +913,7 @@ although including some advanced features.
 %_kde_datadir/config.kcfg/knotesglobalconfig.kcfg
 %_kde_appsdir/knotes
 %_kde_iconsdir/*/*/apps/knotes.*
+%_kde_iconsdir/*/*/actions/knotes_*
 %_kde_services/kresources/knotes/local.desktop
 %_kde_services/kresources/knotes_manager.desktop
 %_kde_services/knote_config_action.desktop
@@ -1031,6 +1032,8 @@ Citadel or OpenGroupware.org.
 %_kde_iconsdir/*/*/actions/checkmark.*
 %_kde_iconsdir/*/*/actions/smallclock.*
 %_kde_iconsdir/*/*/actions/upindicator.*
+%_kde_iconsdir/*/*/apps/korg-journal.*
+%_kde_iconsdir/*/*/apps/korg-todo.*
 %_kde_services/kontact/todoplugin.desktop
 %_kde_services/kcmtodosummary.desktop
 %_kde_services/kontact/journalplugin.desktop
@@ -1301,6 +1304,7 @@ Console that help to debug akonadi
 %_kde_bindir/akonadiconsole
 %_kde_applicationsdir/akonadiconsole.desktop
 %_kde_appsdir/akonadiconsole/akonadiconsoleui.rc
+%_kde_iconsdir/hicolor/*/apps/akonadiconsole.png
 
 #-----------------------------------------------------------------------------
 

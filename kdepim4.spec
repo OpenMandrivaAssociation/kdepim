@@ -636,6 +636,7 @@ or you can schedule commands to be executed or emails to be sent.
 %_kde_libdir/kde4/kalarm_local.so
 %_kde_libdir/kde4/kalarm_localdir.so
 %_kde_libdir/kde4/kalarm_remote.so
+%_kde_libdir/kde4/libexec/kalarm_helper
 %_kde_applicationsdir/kalarm.desktop
 %_kde_appsdir/kalarm
 %_kde_appsdir/kconf_update/kalarm-1.2.1-general.pl
@@ -646,12 +647,15 @@ or you can schedule commands to be executed or emails to be sent.
 %_kde_appsdir/kconf_update/kalarm.upd
 %_kde_datadir/autostart/kalarm.autostart.desktop
 %_kde_datadir/config.kcfg/kalarmconfig.kcfg
+%_kde_datadir/polkit-1/actions/org.kde.kalarmrtcwake.policy
 %_kde_iconsdir/*/*/apps/kalarm.*
 %doc %_kde_docdir/HTML/en/kalarm
 %_kde_services/kresources/alarms/local.desktop
 %_kde_services/kresources/alarms/localdir.desktop
 %_kde_services/kresources/alarms/remote.desktop
 %_kde_services/kresources/kalarm_manager.desktop
+%_sysconfdir/dbus-1/system.d/org.kde.kalarmrtcwake.conf
+%_datadir/dbus-1/system-services/org.kde.kalarmrtcwake.service
 
 #-----------------------------------------------------------------------------
 

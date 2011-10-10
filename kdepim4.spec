@@ -801,7 +801,6 @@ information manager of KDE.
 %_kde_appsdir/kconf_update/kmail*
 %_kde_appsdir/kconf_update/upgrade-signature.pl
 %_kde_appsdir/kconf_update/upgrade-transport.pl
-%_kde_datadir/config.kcfg/custommimeheader.kcfg
 %_kde_datadir/config.kcfg/customtemplates_kfg.kcfg
 %_kde_datadir/config.kcfg/kmail.kcfg
 %_kde_datadir/config.kcfg/templatesconfiguration_kfg.kcfg

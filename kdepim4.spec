@@ -1,28 +1,12 @@
-%define branch 0
-%{?_branch: %{expand: %%global branch 1}}
-
-%if %branch
-%define kde_snapshot svn1198704
-%endif
-
 Name: kdepim4
 Summary: An application suite to manage personal information
-Version: 4.6.0
-%if %branch
-Release: 0.%kde_snapshot.1
-%else
-Release: 2
-%endif
+Version: 4.7.41
+Release: 1
 Epoch: 3
 Group: Graphical desktop/KDE
 License: GPL
 URL: http://community.kde.org/KDE_PIM
-%if %branch
-Source: ftp://ftp.kde.org/pub/kde/unstable/%version/src/kdepim-%version%kde_snapshot.tar.bz2
-%else
 Source: ftp://ftp.kde.org/pub/kde/unstable/kdepim/%version/src/kdepim-%version.tar.bz2
-%endif
-Buildroot: %_tmppath/%name-%version-%release-root
 BuildRequires: kdelibs4-devel >= 2:4.5.61
 BuildRequires: kdepimlibs4-devel >= 2:4.5.74
 BuildRequires: kdepim4-runtime-devel >= 4.5.74
@@ -1546,22 +1530,14 @@ based on kdepim.
 
 #----------------------------------------------------------------------
 %prep
-%if %branch
-%setup -q -n kdepim-%version%kde_snapshot
-%else
 %setup -q -n kdepim-%version
-%endif
 
 %build
 %cmake_kde4 -DKDEPIM_BUILD_MOBILE=false
 %make
 
 %install
-%__rm -fr %buildroot
-
 %makeinstall_std -C build
 
 %find_lang %name --all-name --with-html
 
-%clean
-%__rm -fr %buildroot

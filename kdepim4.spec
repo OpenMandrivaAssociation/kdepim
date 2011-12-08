@@ -34,7 +34,6 @@ Suggests: kontact
 Suggests: korganizer
 Suggests: ksendemail
 Suggests: kjots
-Suggests: nepomuk-email-feeder
 Obsoletes: kpilot < %epoch:%version
 Obsoletes: korn <= 2:4.1.0
 Obsoletes: ktnef
@@ -633,9 +632,6 @@ or you can schedule commands to be executed or emails to be sent.
 %defattr(-,root,root)
 %_kde_bindir/kalarm
 %_kde_bindir/kalarmautostart
-%_kde_libdir/kde4/kalarm_local.so
-%_kde_libdir/kde4/kalarm_localdir.so
-%_kde_libdir/kde4/kalarm_remote.so
 %_kde_libdir/kde4/libexec/kalarm_helper
 %_kde_applicationsdir/kalarm.desktop
 %_kde_appsdir/kalarm
@@ -650,44 +646,8 @@ or you can schedule commands to be executed or emails to be sent.
 %_kde_datadir/polkit-1/actions/org.kde.kalarmrtcwake.policy
 %_kde_iconsdir/*/*/apps/kalarm.*
 %doc %_kde_docdir/HTML/en/kalarm
-%_kde_services/kresources/alarms/local.desktop
-%_kde_services/kresources/alarms/localdir.desktop
-%_kde_services/kresources/alarms/remote.desktop
-%_kde_services/kresources/kalarm_manager.desktop
 %_sysconfdir/dbus-1/system.d/org.kde.kalarmrtcwake.conf
 %_datadir/dbus-1/system-services/org.kde.kalarmrtcwake.service
-
-#-----------------------------------------------------------------------------
-
-%define kalarm_calendar_major 4 
-%define libkalarm_calendar %mklibname kalarm_calendar %{kalarm_calendar_major} 
-
-%package -n %libkalarm_calendar
-Summary: KDE 4 library
-Group: System/Libraries
-
-%description -n %libkalarm_calendar
-KDE 4 library.
-
-%files -n %libkalarm_calendar
-%defattr(-,root,root)
-%_kde_libdir/libkalarm_calendar.so.%{kalarm_calendar_major}*
-
-#-----------------------------------------------------------------------------
-
-%define kalarm_resources_major 4
-%define libkalarm_resources %mklibname kalarm_resources %{kalarm_resources_major}
-
-%package -n %libkalarm_resources
-Summary: KDE 4 library
-Group: System/Libraries
-
-%description -n %libkalarm_resources
-KDE 4 library.
-
-%files -n %libkalarm_resources
-%defattr(-,root,root)
-%_kde_libdir/libkalarm_resources.so.%{kalarm_resources_major}*
 
 #-----------------------------------------------------------------------------
 
@@ -1260,22 +1220,6 @@ Conflicts: kontact < 2:4.0.83-2
 
 #-----------------------------------------------------------------------------
 
-%package -n nepomuk-email-feeder
-Summary: %{name} nepomuk-email-feeder
-Group: Graphical desktop/KDE
-Requires: %name-core = %epoch:%version
-Conflicts: kontact < 2:4.0.83-2
-
-%description -n nepomuk-email-feeder
-%{name} nepomuk-email-feeder.
- 
-%files -n nepomuk-email-feeder 
-%defattr(-,root,root)
-%_kde_bindir/akonadi_nepomuk_email_feeder
-%_kde_datadir/akonadi/agents/nepomukemailfeeder.desktop
-
-#-----------------------------------------------------------------------------
-
 %package -n akonadiconsole
 Summary:Console that help to debug akonadi
 Group: Graphical desktop/KDE
@@ -1292,6 +1236,23 @@ Console that help to debug akonadi
 %_kde_applicationsdir/akonadiconsole.desktop
 %_kde_appsdir/akonadiconsole/akonadiconsoleui.rc
 %_kde_iconsdir/hicolor/*/apps/akonadiconsole.png
+
+#-----------------------------------------------------------------------------
+
+%package -n	akonadi-mailfilter-agent
+Summary:	Akonadi mailfilter agent
+Group:		Graphical desktop/KDE
+Requires:	%{name}-core = %{EVRD}
+
+%description -n	akonadi-mailfilter-agent
+Akonadi mailfilter agent.
+
+%files -n	akonadi-mailfilter-agent
+%{_kde_bindir}/akonadi_mailfilter_agent
+%{_kde_plugindir}/accessible/messagevieweraccessiblewidgetfactory.so
+%{_kde_datadir}/akonadi/agents/mailfilteragent.desktop
+%{_kde_appsdir}/kconf_update/mailfilteragent.upd
+%{_kde_appsdir}/kconf_update/migrate-kmail-filters.pl
 
 #-----------------------------------------------------------------------------
 
@@ -1513,8 +1474,6 @@ Requires: %libkcalgroupwise = %epoch:%version
 Requires: %libmessagelist = %epoch:%version
 Requires: %libmessagecore = %epoch:%version
 Requires: %libmessageviewer = %epoch:%version
-Requires: %libkalarm_calendar = %epoch:%version
-Requires: %libkalarm_resources = %epoch:%version
 Requires: %libakonadi_next = %epoch:%version
 Requires: %libkdgantt2 = %epoch:%version
 Requires: %libincidenceeditorsngmobile = %epoch:%version

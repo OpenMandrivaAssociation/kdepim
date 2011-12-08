@@ -43,8 +43,8 @@ Information Management applications for the K Desktop Environment.
 	- kaddressbook: The KDE addressbook application.
 	- korganizer: a calendar-of-events and todo-list manager
 	- kalarm: gui for setting up personal alarm/reminder messages
-	- kalarmd: personal alarm/reminder messages daemon, shared by korganizer and
-  kalarm.
+	- kalarmd: personal alarm/reminder messages daemon, shared by korganizer
+	  and kalarm.
 	- kaplan: A shell for the PIM apps, still experimental.
 	- ktimetracker: Time tracker.
 	- kfile-plugins: vCard KFIleItem plugin.

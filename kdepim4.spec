@@ -1,5 +1,5 @@
 # workaround bug in rpm unpackaged subdir check
-%define	_unpackaged_subdirs_terminate_build 1
+%define	_unpackaged_subdirs_terminate_build 0
 
 Name: kdepim4
 Summary: An application suite to manage personal information

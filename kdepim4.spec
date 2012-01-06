@@ -1135,62 +1135,6 @@ tracking feature plans.
 
 #-----------------------------------------------------------------------------
 
-%package wizards
-Summary: KDE Groupware Wizard
-Group: Graphical desktop/KDE
-Requires: %name-core = %epoch:%version
-Obsoletes: %name-wizards < 1:3.93.0-1
-
-%description wizards
-KDE Groupware Wizard
-
-%files wizards
-%defattr(-,root,root)
-%_kde_bindir/groupwarewizard
-%_kde_bindir/groupwisewizard
-%_kde_libdir/kde4/kio_groupwise.so
-%_kde_libdir/kde4/kabc_groupwise.so
-%_kde_applicationsdir/groupwarewizard.desktop
-%_kde_datadir/config.kcfg/groupwise.kcfg
-%_kde_services/groupwise.protocol
-%_kde_services/groupwises.protocol
-%_kde_services/kresources/kabc/kabc_groupwise.desktop
-%_kde_services/kresources/kcal/kcal_groupwise.desktop
-
-#-----------------------------------------------------------------------------
-
-%define kabc_groupwise_major 4
-%define libkabcgroupwise %mklibname kabc_groupwise %{kabc_groupwise_major}
-
-%package -n %libkabcgroupwise
-Summary: KDE 4 library
-Group: System/Libraries
-
-%description -n %libkabcgroupwise
-KDE 4 library.
-
-%files -n %libkabcgroupwise
-%defattr(-,root,root)
-%_kde_libdir/libkabcgroupwise.so.%{kabc_groupwise_major}*
-
-#-----------------------------------------------------------------------------
-
-%define kcal_groupwise_major 4
-%define libkcalgroupwise %mklibname kcal_groupwise %{kcal_groupwise_major}
-
-%package -n %libkcalgroupwise
-Summary: KDE 4 library
-Group: System/Libraries
-
-%description -n %libkcalgroupwise
-KDE 4 library.
-
-%files -n %libkcalgroupwise
-%defattr(-,root,root)
-%_kde_libdir/libkcalgroupwise.so.%{kcal_groupwise_major}*
-
-#-----------------------------------------------------------------------------
-
 %package -n ksendemail
 Summary: %{name} ksendemail
 Group: Graphical desktop/KDE
@@ -1454,8 +1398,6 @@ Requires: %libkorganizer_interfaces = %epoch:%version
 Requires: %libkcal_resourceremote = %epoch:%version
 Requires: %libkcal_resourceblog = %epoch:%version
 Requires: %libkleo = %epoch:%version
-Requires: %libkabcgroupwise = %epoch:%version
-Requires: %libkcalgroupwise = %epoch:%version
 Requires: %libmessagelist = %epoch:%version
 Requires: %libmessagecore = %epoch:%version
 Requires: %libmessageviewer = %epoch:%version

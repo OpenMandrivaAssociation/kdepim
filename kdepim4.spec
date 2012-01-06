@@ -151,22 +151,6 @@ Core files from kdepim.
 
 #-----------------------------------------------------------------------------
 
-%define gwsoap_major 4
-%define libgwsoap %mklibname gwsoap %{gwsoap_major}
-
-%package -n %libgwsoap
-Summary: KDE 4 library
-Group: System/Libraries
-
-%description -n %libgwsoap
-KDE 4 library.
-
-%files -n %libgwsoap
-%defattr(-,root,root)
-%_kde_libdir/libgwsoap.so.%{gwsoap_major}*
-
-#-----------------------------------------------------------------------------
-
 %define kaddressbookprivate_major 4
 %define libkaddressbookprivate %mklibname kaddressbookprivate %{kaddressbookprivate_major}
 
@@ -1471,7 +1455,6 @@ Requires: %libkorganizer_interfaces = %epoch:%version
 Requires: %libkcal_resourceremote = %epoch:%version
 Requires: %libkcal_resourceblog = %epoch:%version
 Requires: %libkleo = %epoch:%version
-Requires: %libgwsoap = %epoch:%version
 Requires: %libkabcgroupwise = %epoch:%version
 Requires: %libkcalgroupwise = %epoch:%version
 Requires: %libmessagelist = %epoch:%version

@@ -1129,7 +1129,6 @@ tracking feature plans.
 %files kresources
 %defattr(-,root,root)
 %_kde_libdir/kde4/kcal_blog.so
-%_kde_libdir/kde4/kcal_groupwise.so
 %_kde_libdir/kde4/kcal_remote.so
 %_kde_services/kresources/kcal/blog.desktop
 %_kde_services/kresources/kcal/remote.desktop

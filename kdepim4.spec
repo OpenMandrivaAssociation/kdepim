@@ -3,13 +3,13 @@
 
 Name: kdepim4
 Summary: An application suite to manage personal information
-Version: 4.8.1
+Version: 4.8.2
 Release: 1
 Epoch: 3
 Group: Graphical desktop/KDE
 License: GPL
 URL: http://community.kde.org/KDE_PIM
-Source: ftp://ftp.kde.org/pub/kde/unstable/kdepim/%version/src/kdepim-%version.tar.bz2
+Source: ftp://ftp.kde.org/pub/kde/unstable/kdepim/%version/src/kdepim-%version.tar.xz
 BuildRequires: kdelibs4-devel >= 2:4.5.61
 BuildRequires: kdepimlibs4-devel >= 2:4.5.74
 BuildRequires: kdepim4-runtime-devel >= 4.5.74

@@ -148,6 +148,7 @@ Core files from kdepim.
 %_kde_libdir/strigi/*
 %dir %_kde_services/kontact
 %_kde_iconsdir/oxygen/*/mimetypes/x-mail-distribution-list.*
+%_kde_datadir/ontology/kde/messagetag.*
 
 #-----------------------------------------------------------------------------
 

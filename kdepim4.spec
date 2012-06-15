@@ -4,7 +4,7 @@
 Name: kdepim4
 Summary: An application suite to manage personal information
 Version: 4.8.4
-Release: 1
+Release: 2
 Epoch: 3
 Group: Graphical desktop/KDE
 License: GPL
@@ -722,6 +722,7 @@ Requires: kio4-smtp
 Requires: kio4-mbox
 Requires: kio4-imap
 Requires: kio4-sieve
+Requires: akonadi-mailfilter-agent = %epoch:%version-%release
 Requires: kmail-common
 Suggests: kmailcvt
 Suggests: pinentry-qt4

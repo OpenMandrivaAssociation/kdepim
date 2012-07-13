@@ -3,7 +3,7 @@
 
 Name: kdepim4
 Summary: An application suite to manage personal information
-Version: 4.8.4
+Version: 4.8.95
 Release: 2
 Epoch: 3
 Group: Graphical desktop/KDE

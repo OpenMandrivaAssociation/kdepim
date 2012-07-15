@@ -477,7 +477,6 @@ leafnode also usable with dial-up connections.
 %_kde_appsdir/kconf_update/knode.upd
 %_kde_iconsdir/*/*/apps/knode.*
 %_kde_services/kontact/knodeplugin.desktop
-%_kde_services/knewsservice.protocol
 %_kde_services/knode_config_accounts.desktop
 %_kde_services/knode_config_appearance.desktop
 %_kde_services/knode_config_cleanup.desktop

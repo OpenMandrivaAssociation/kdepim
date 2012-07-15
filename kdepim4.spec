@@ -150,6 +150,21 @@ Core files from kdepim.
 %_kde_iconsdir/oxygen/*/mimetypes/x-mail-distribution-list.*
 %_kde_datadir/ontology/kde/messagetag.*
 
+#------------------------------------------------------------------------------
+
+%define mailimporter_major 4
+%define libmailimporter %mklibname mailimporter %{mailimporter_major}
+
+%package -n %libmailimporter
+Summary: Mail Importer Library
+Group: System/Libraries
+
+%description -n %libmailimporter
+Mail Importer Library
+
+%files -n %libmailimporter
+%_kde_libdir/libmailimporter.so.%{mailimporter_major}*
+
 #-----------------------------------------------------------------------------
 
 %define kaddressbookprivate_major 4
@@ -745,9 +760,13 @@ information manager of KDE.
 %_kde_bindir/kmail_clamav.sh
 %_kde_bindir/kmail_fprot.sh
 %_kde_bindir/kmail_sav.sh
+%_kde_bindir/importwizard
+%_kde_bindir/backupmail
 %_kde_appsdir/kmail
 %_kde_appsdir/kmail2
+%_kde_appsdir/backupmail
 %_kde_datadir/kde4/services/kontact/kmailplugin.desktop
+%_kde_applicationsdir/importwizard.desktop
 %_kde_applicationsdir/KMail2.desktop
 %_kde_applicationsdir/kmail_view.desktop
 %_kde_appsdir/kconf_update/kmail*
@@ -1182,8 +1201,24 @@ Akonadi mailfilter agent.
 %{_kde_bindir}/akonadi_mailfilter_agent
 %{_kde_plugindir}/accessible/messagevieweraccessiblewidgetfactory.so
 %{_kde_datadir}/akonadi/agents/mailfilteragent.desktop
+%{_kde_appsdir}/akonadi_mailfilter_agent/akonadi_mailfilter_agent.notifyrc
 %{_kde_appsdir}/kconf_update/mailfilteragent.upd
 %{_kde_appsdir}/kconf_update/migrate-kmail-filters.pl
+
+#-----------------------------------------------------------------------------
+
+%package -n     akonadi-archivemail-agent
+Summary:        Akonadi archivemail agent
+Group:          Graphical desktop/KDE
+Requires:       %{name}-core = %{EVRD}
+
+%description -n akonadi-archivemail-agent
+Akonadi archivemail agent.
+
+%files -n       akonadi-archivemail-agent
+%{_kde_bindir}/akonadi_archivemail_agent
+%{_kde_datadir}/akonadi/agents/archivemailagent.desktop
+%{_kde_appsdir}/akonadi_archivemail_agent/akonadi_archivemail_agent.notifyrc
 
 #-----------------------------------------------------------------------------
 
@@ -1370,6 +1405,28 @@ notes.
 %_kde_services/kjotspart.desktop
 %_kde_services/kontact/kjots_plugin.desktop
 %_kde_appsdir/desktoptheme/default/widgets/stickynote.svgz
+
+
+#-----------------------------------------------------------------------------
+
+%package -n ktnef
+Summary: KDE TNEF attachemtn viewer
+Group: Graphical desktop/KDE
+URL: http://userbase.kde.org/KTnef
+Requires: %name-core = %epoch:%version
+Provides: kde4-ktnef = %version
+
+%description -n ktnef
+KTnef is a standalone TNEF attachment viewer. 
+
+%files -n ktnef
+%defattr(-,root,root)
+%_kde_bindir/ktnef
+%_kde_applicationsdir/ktnef.desktop
+%_kde_iconsdir/*/*/apps/ktnef.*
+%_kde_iconsdir/*/*/actions/ktnef*.*
+%doc %_kde_docdir/HTML/en/ktnef
+%_kde_appsdir/ktnef
 
 #-----------------------------------------------------------------------------
 

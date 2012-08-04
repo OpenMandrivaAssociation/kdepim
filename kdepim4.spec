@@ -3,13 +3,13 @@
 
 Name:		kdepim4
 Summary:	An application suite to manage personal information
-Version:	4.8.97
-Release:	2
+Version: 4.9.0
+Release: 1
 Epoch:		3
 Group:		Graphical desktop/KDE
 License:	GPL
 URL:		http://community.kde.org/KDE_PIM
-Source:		ftp://ftp.kde.org/pub/kde/unstable/%{version}/src/kdepim-%{version}.tar.xz
+Source:		ftp://ftp.kde.org/pub/kde/stable/%{version}/src/kdepim-%{version}.tar.xz
 Patch0:		kdepim-4.8.97-l10n-ru.patch
 BuildRequires:	boost-devel
 BuildRequires:	gpgme-devel

@@ -1388,7 +1388,7 @@ based on kdepim.
 
 %prep
 %setup -q -n kdepim-%{version}
-%patch0 -p1
+#%patch0 -p1
 
 %build
 %cmake_kde4 -DKDEPIM_BUILD_MOBILE=false

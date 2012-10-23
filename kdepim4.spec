@@ -4,7 +4,7 @@
 Name:		kdepim4
 Summary:	An application suite to manage personal information
 Version: 4.9.2
-Release: 1
+Release: 2
 Epoch:		3
 Group:		Graphical desktop/KDE
 License:	GPL

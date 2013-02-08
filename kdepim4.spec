@@ -3,7 +3,7 @@
 
 Name:		kdepim4
 Summary:	An application suite to manage personal information
-Version:	4.9.4
+Version:	4.10.0
 Release:	1
 Epoch:		3
 Group:		Graphical desktop/KDE
@@ -1396,6 +1396,9 @@ based on kdepim.
 %find_lang %{name} --all-name --with-html
 
 %changelog
+* Thu Feb 07 2013 Andrey Bondrov <andrey.bondrov@rosalab.ru> 3:4.10.0-1
+- New version 4.10.0
+
 * Wed Dec 05 2012 Andrey Bondrov <andrey.bondrov@rosalab.ru> 3:4.9.4-1
 - New version 4.9.4
 

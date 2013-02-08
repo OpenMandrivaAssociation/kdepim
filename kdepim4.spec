@@ -605,10 +605,8 @@ of your day is spent playing Doom or reading Slashdot.
 %{_kde_services}/ktimetracker_config_behavior.desktop
 %{_kde_services}/ktimetracker_config_display.desktop
 %{_kde_services}/ktimetracker_config_storage.desktop
-%{_kde_services}/kontact/ktimetracker_plugin.desktop
 %{_kde_libdir}/kde4/ktimetrackerpart.so
 %{_kde_libdir}/kde4/kcm_ktimetracker.so
-%{_kde_libdir}/kde4/kontact_ktimetrackerplugin.so
 
 #-----------------------------------------------------------------------------
 
@@ -663,7 +661,7 @@ Requires:	akonadi-mailfilter-agent = %{EVRD}
 Suggests:	kmailcvt
 Suggests:	pinentry-qt4
 Suggests:	openssh-askpass-qt4
-Suggests:	backupmail
+Suggests:	pimsettingexporter
 Suggests:	importwizard
 Provides:	kde4-kmail = %{EVRD}
 Provides:	kmail2 = %{EVRD}
@@ -753,18 +751,19 @@ KDE Mail Import tool
 
 #-----------------------------------------------------------------------------
 
-%package -n backupmail
-Summary:	Backup Mail allows to save all data from kmail and restore them in other system
+%package -n pimsettingexporter
+Summary:	Allows to save data from KDE PIM applications and restore them in other systems
 Group:		Graphical desktop/KDE
 Requires:	kmail
+Obsoletes:	backupmail < 3:4.10.0
 
-%description -n backupmail
-Backup Mail allows to save all data from kmail and restore them in
-other system.
+%description -n pimsettingexporter
+Allows to save data from KDE PIM applications and restore them in other systems.
+Successor of Backup Mail from KDE 4.9.
 
-%files -n backupmail
-%{_kde_bindir}/backupmail
-%{_kde_appsdir}/backupmail
+%files -n pimsettingexporter
+%{_kde_bindir}/pimsettingexporter
+%{_kde_appsdir}/pimsettingexporter/pimsettingexporter.rc
 
 #-----------------------------------------------------------------------------
 
@@ -1284,6 +1283,21 @@ KDE 4 library.
 
 #-----------------------------------------------------------------------------
 
+%define libpimcommon_major 4
+%define libpimcommon %mklibname pimcommon %{libpimcommon_major}
+
+%package -n %{libpimcommon}
+Summary:	Library to import/export PIM configuration
+Group:		System/Libraries
+
+%description -n %{libpimcommon}
+This library provides the tool to import/export PIM configuration.
+
+%files -n %{libpimcommon}
+%{_kde_libdir}/libpimcommon.so.%{libpimcommon_major}*
+
+#-----------------------------------------------------------------------------
+
 %package -n kjots
 Summary:	KDE note taking utility
 Group:		Graphical desktop/KDE
@@ -1374,6 +1388,7 @@ Requires:	%{libcalendarsupport} = %{EVRD}
 Requires:	%{libkmanagesieve} = %{EVRD}
 Requires:	%{libksieveui} = %{EVRD}
 Requires:	%{libmailimporter} = %{EVRD}
+Requires:	%{libpimcommon} = %{EVRD}
 
 %description devel
 This package contains header files needed if you wish to build applications
@@ -1401,6 +1416,8 @@ based on kdepim.
 * Thu Feb 07 2013 Andrey Bondrov <andrey.bondrov@rosalab.ru> 3:4.10.0-1
 - New version 4.10.0
 - Add BuildRequires nepomuk-core-devel and nepomuk-widgets-devel
+- Replace backupmail subpackage with pimsettingexporter
+- New library subpackage added - libpimcommon
 
 * Wed Dec 05 2012 Andrey Bondrov <andrey.bondrov@rosalab.ru> 3:4.9.4-1
 - New version 4.9.4

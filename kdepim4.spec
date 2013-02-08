@@ -17,6 +17,8 @@ BuildRequires:	kdelibs4-devel
 BuildRequires:	kdepimlibs4-devel
 BuildRequires:	kdepim4-runtime-devel
 BuildRequires:	libassuan-devel
+BuildRequires:	nepomuk-core-devel
+BuildRequires:	nepomuk-widgets-devel
 BuildRequires:	xsltproc
 BuildRequires:	zlib-devel
 BuildRequires:	pkgconfig(akonadi)
@@ -1398,6 +1400,7 @@ based on kdepim.
 %changelog
 * Thu Feb 07 2013 Andrey Bondrov <andrey.bondrov@rosalab.ru> 3:4.10.0-1
 - New version 4.10.0
+- Add BuildRequires nepomuk-core-devel and nepomuk-widgets-devel
 
 * Wed Dec 05 2012 Andrey Bondrov <andrey.bondrov@rosalab.ru> 3:4.9.4-1
 - New version 4.9.4

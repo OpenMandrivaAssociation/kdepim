@@ -757,8 +757,8 @@ Requires:	kmail
 Obsoletes:	backupmail < 3:4.10.0
 
 %description -n pimsettingexporter
-Allows to save data from KDE PIM applications and restore them in other systems.
-Successor of Backup Mail from KDE 4.9.
+Allows to save data from KDE PIM applications and restore them in other
+systems. Successor of Backup Mail from KDE 4.9.
 
 %files -n pimsettingexporter
 %{_kde_bindir}/pimsettingexporter

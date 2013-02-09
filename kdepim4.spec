@@ -678,7 +678,6 @@ information manager of KDE.
 %{_kde_bindir}/kmail_clamav.sh
 %{_kde_bindir}/kmail_fprot.sh
 %{_kde_bindir}/kmail_sav.sh
-%{_kde_appsdir}/kmail
 %{_kde_appsdir}/kmail2
 %{_kde_applicationsdir}/KMail2.desktop
 %{_kde_applicationsdir}/kmail_view.desktop
@@ -1418,6 +1417,7 @@ based on kdepim.
 - Add BuildRequires nepomuk-core-devel and nepomuk-widgets-devel
 - Replace backupmail subpackage with pimsettingexporter
 - New library subpackage added - libpimcommon
+- Update files
 
 * Wed Dec 05 2012 Andrey Bondrov <andrey.bondrov@rosalab.ru> 3:4.9.4-1
 - New version 4.9.4

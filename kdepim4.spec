@@ -777,6 +777,7 @@ Import Wizard allows to migrate data from mailer as thunderbird/evolution etc.
 %files -n importwizard
 %{_kde_bindir}/importwizard
 %{_kde_applicationsdir}/importwizard.desktop
+%{_kde_iconsdir}/*/*/apps/kontact-import-wizard.*
 
 #-----------------------------------------------------------------------------
 
@@ -1414,6 +1415,7 @@ based on kdepim.
 %changelog
 * Wed Apr 03 2013 Andrey Bondrov <andrey.bondrov@rosalab.ru> 3:4.10.2-1
 - New version 4.10.2
+- Update files (add kontact-import-wizard icons)
 
 * Sat Mar 09 2013 Andrey Bondrov <andrey.bondrov@rosalab.ru> 3:4.10.1-1
 - New version 4.10.1

@@ -1,15 +1,21 @@
 # workaround bug in rpm unpackaged subdir check
 %define _unpackaged_subdirs_terminate_build 0
 
-Name:		kdepim4
 Summary:	An application suite to manage personal information
-Version:	4.10.3
+Name:		kdepim4
+Version:	4.10.4
 Release:	1
 Epoch:		3
 Group:		Graphical desktop/KDE
 License:	GPL
-URL:		http://community.kde.org/KDE_PIM
-Source:		ftp://ftp.kde.org/pub/kde/stable/%{version}/src/kdepim-%{version}.tar.xz
+Url:		http://community.kde.org/KDE_PIM
+%define is_beta %(if test `echo %{version} |cut -d. -f3` -ge 70; then echo -n 1; else echo -n 0; fi)
+%if %{is_beta}
+%define ftpdir unstable
+%else
+%define ftpdir stable
+%endif
+Source0:	ftp://ftp.kde.org/pub/kde/%{ftpdir}/%{version}/src/kdepim-%{version}.tar.xz
 BuildRequires:	boost-devel
 BuildRequires:	gpgme-devel
 BuildRequires:	grantlee-devel
@@ -357,7 +363,7 @@ KDE 4 library.
 %package -n akregator
 Summary:	A Feed Reader for KDE
 Group:		Graphical desktop/KDE
-URL:		http://userbase.kde.org/Akregator
+Url:		http://userbase.kde.org/Akregator
 Requires:	%{name}-core = %{EVRD}
 Provides:	kde4-akregator = %{EVRD}
 Conflicts:	%{name}-core < 2:4.5.77
@@ -408,7 +414,7 @@ KDE 4 library.
 %package -n knode
 Summary:	A newsreader for the K Desktop Environment
 Group:		Graphical desktop/KDE
-URL:		http://userbase.kde.org/KNode
+Url:		http://userbase.kde.org/KNode
 Requires:	%{name}-core = %{EVRD}
 Requires:	kdepimlibs4-core
 Requires:	kio4-nntp
@@ -449,7 +455,7 @@ leafnode also usable with dial-up connections.
 %package -n kaddressbook
 Summary:	The KDE addressbook application
 Group:		Graphical desktop/KDE
-URL:		http://userbase.kde.org/KAddressBook
+Url:		http://userbase.kde.org/KAddressBook
 Requires:	%{name}-core = %{EVRD}
 # Grantlee is needed for the simple view in kaddressbook
 Requires:	grantlee
@@ -549,7 +555,7 @@ KDE 4 library.
 %package -n kalarm
 Summary:	A personal alarm message, command and email scheduler
 Group:		Graphical desktop/KDE
-URL:		http://userbase.kde.org/KAlarm
+Url:		http://userbase.kde.org/KAlarm
 Requires:	%{name}-core = %{EVRD}
 Provides:	kde4-kalarm = %{EVRD}
 Conflicts:	%{name}-core < 2:4.5.77
@@ -584,7 +590,7 @@ or you can schedule commands to be executed or emails to be sent.
 %package -n ktimetracker
 Summary:	Tracks time spent on various tasks
 Group:		Graphical desktop/KDE
-URL:		http://community.kde.org/Ktimetracker
+Url:		http://community.kde.org/Ktimetracker
 Requires:	%{name}-core = %{EVRD}
 Provides:	kde4-ktimetracker = %{EVRD}
 Conflicts:	%{name}-core < 2:4.5.77
@@ -643,7 +649,7 @@ KDE 4 library.
 %package -n kmail
 Summary:	KDE Email Client
 Group:		Graphical desktop/KDE
-URL:		http://userbase.kde.org/KMail
+Url:		http://userbase.kde.org/KMail
 Requires:	%{name}-core = %{EVRD}
 Requires:	kdepimlibs4-core
 Requires:	sasl-plug-plain
@@ -713,7 +719,7 @@ information manager of KDE.
 %package -n kmail-common
 Summary:	KDE Email Client
 Group:		Graphical desktop/KDE
-URL:		http://userbase.kde.org/KMail
+Url:		http://userbase.kde.org/KMail
 Provides:	kmail2-common = %{EVRD}
 
 %description -n kmail-common
@@ -735,7 +741,7 @@ Common files needed by kmail and kmail-mobile used to view messages.
 %package -n kmailcvt
 Summary:	KDE Mail Import tool
 Group:		Graphical desktop/KDE
-URL:		http://userbase.kde.org/KMail
+Url:		http://userbase.kde.org/KMail
 Requires:	%{name}-core = %{EVRD}
 Provides:	kde4-kmailcvt = %{EVRD}
 Conflicts:	%{name}-core < 2:4.5.77
@@ -784,7 +790,7 @@ Import Wizard allows to migrate data from mailer as thunderbird/evolution etc.
 %package -n knotes
 Summary:	Notes for the K Desktop Environment
 Group:		Graphical desktop/KDE
-URL:		http://userbase.kde.org/KNotes
+Url:		http://userbase.kde.org/KNotes
 Requires:	%{name}-core = %{EVRD}
 Requires:	%{name}-kresources
 Requires:	kio4-nntp
@@ -822,7 +828,7 @@ although including some advanced features.
 %package -n kontact
 Summary:	Kontact Container
 Group:		Graphical desktop/KDE
-URL:		http://userbase.kde.org/Kontact
+Url:		http://userbase.kde.org/Kontact
 Requires:	%{name}-core = %{EVRD}
 Conflicts:	%{name}-core < 2:4.5.77
 Requires:	kio4-ldap
@@ -885,7 +891,7 @@ KDE 4 library.
 %package -n korganizer
 Summary:	Calendar and scheduling component
 Group:		Graphical desktop/KDE
-URL:		http://userbase.kde.org/KOrganizer
+Url:		http://userbase.kde.org/KOrganizer
 Requires:	%{name}-core = %{EVRD}
 Requires:	%{name}-kresources
 Requires:	kio4-ldap
@@ -1301,7 +1307,7 @@ This library provides the tool to import/export PIM configuration.
 %package -n kjots
 Summary:	KDE note taking utility
 Group:		Graphical desktop/KDE
-URL:		http://userbase.kde.org/KJots
+Url:		http://userbase.kde.org/KJots
 Requires:	%{name}-core = %{EVRD}
 Provides:	kde4-kjots = %{EVRD}
 Conflicts:	%{name}-core < 2:4.5.77
@@ -1413,6 +1419,9 @@ based on kdepim.
 %find_lang %{name} --all-name --with-html
 
 %changelog
+* Wed Jun 05 2013 Andrey Bondrov <andrey.bondrov@rosalab.ru> 3:4.10.4-1
+- New version 4.10.4
+
 * Tue May 07 2013 Andrey Bondrov <andrey.bondrov@rosalab.ru> 3:4.10.3-1
 - New version 4.10.3
 

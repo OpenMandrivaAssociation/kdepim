@@ -1,11 +1,8 @@
-# workaround bug in rpm unpackaged subdir check
-%define _unpackaged_subdirs_terminate_build 0
-
 Summary:	An application suite to manage personal information
 Name:		kdepim4
-Version:	4.10.5
-Release:	1
 Epoch:		3
+Version:	4.10.5
+Release:	2
 Group:		Graphical desktop/KDE
 License:	GPL
 Url:		http://community.kde.org/KDE_PIM
@@ -26,11 +23,12 @@ BuildRequires:	libassuan-devel
 BuildRequires:	nepomuk-core-devel
 BuildRequires:	nepomuk-widgets-devel
 BuildRequires:	xsltproc
-BuildRequires:	zlib-devel
 BuildRequires:	pkgconfig(akonadi)
 BuildRequires:	pkgconfig(libstreams)
+BuildRequires:	pkgconfig(shared-desktop-ontologies)
 BuildRequires:	pkgconfig(x11)
 BuildRequires:	pkgconfig(xscrnsaver)
+BuildRequires:	pkgconfig(zlib)
 Suggests:	akonadi-common
 Suggests:	kleopatra
 Suggests:	akregator
@@ -71,72 +69,6 @@ Group:		Graphical desktop/KDE
 Requires:	kdelibs4-core
 Requires:	kdebase4-runtime
 Requires:	akonadi-kde >= 3:%{version}
-Conflicts:	kde-l10n-ar < 4.6.3-2
-Conflicts:	kde-l10n-bg < 4.6.3-2
-Conflicts:	kde-l10n-bn_IN < 4.3.98-4
-Conflicts:	kde-l10n-ca < 4.6.3-2
-Conflicts:	kde-l10n-cs < 4.6.3-2
-Conflicts:	kde-l10n-csb < 4.4.95-7
-Conflicts:	kde-l10n-da < 4.6.3-2
-Conflicts:	kde-l10n-de < 4.6.3-2
-Conflicts:	kde-l10n-el < 4.6.3-2
-Conflicts:	kde-l10n-en_GB < 4.6.3-2
-Conflicts:	kde-l10n-eo < 4.5.95-6
-Conflicts:	kde-l10n-es < 4.6.3-2
-Conflicts:	kde-l10n-et < 4.6.3-2
-Conflicts:	kde-l10n-eu < 4.6.3-2
-Conflicts:	kde-l10n-fa < 4.2.96-5
-Conflicts:	kde-l10n-fi < 4.6.3-2
-Conflicts:	kde-l10n-fr < 4.6.3-2
-Conflicts:	kde-l10n-fy < 4.5.95-6
-Conflicts:	kde-l10n-ga < 4.6.3-2
-Conflicts:	kde-l10n-gl < 4.6.3-2
-Conflicts:	kde-l10n-gu < 4.6.3-2
-Conflicts:	kde-l10n-he < 4.6.3-2
-Conflicts:	kde-l10n-hi < 4.6.3-2
-Conflicts:	kde-l10n-hne < 4.3.98-4
-Conflicts:	kde-l10n-hr < 4.6.3-2
-Conflicts:	kde-l10n-hu < 4.6.3-2
-Conflicts:	kde-l10n-id < 4.6.3-2
-Conflicts:	kde-l10n-is < 4.6.3-2
-Conflicts:	kde-l10n-it < 4.6.3-2
-Conflicts:	kde-l10n-ja < 4.6.3-2
-Conflicts:	kde-l10n-kk < 4.6.3-2
-Conflicts:	kde-l10n-km < 4.6.3-2
-Conflicts:	kde-l10n-kn < 4.6.3-2
-Conflicts:	kde-l10n-ko < 4.6.3-2
-Conflicts:	kde-l10n-ku < 4.3.2-4
-Conflicts:	kde-l10n-lt < 4.6.3-2
-Conflicts:	kde-l10n-lv < 4.6.3-2
-Conflicts:	kde-l10n-mai < 4.6.3-2
-Conflicts:	kde-l10n-mk < 4.4.95-7
-Conflicts:	kde-l10n-ml < 4.5.95-6
-Conflicts:	kde-l10n-mr < 4.3.98-4
-Conflicts:	kde-l10n-nb < 4.6.3-2
-Conflicts:	kde-l10n-nds < 4.6.3-2
-Conflicts:	kde-l10n-ne < 4.2.96-5
-Conflicts:	kde-l10n-nl < 4.6.3-2
-Conflicts:	kde-l10n-nn < 4.6.3-2
-Conflicts:	kde-l10n-pa < 4.6.3-2
-Conflicts:	kde-l10n-pl < 4.6.3-2
-Conflicts:	kde-l10n-pt < 4.6.3-2
-Conflicts:	kde-l10n-pt_BR < 4.6.3-2
-Conflicts:	kde-l10n-ro < 4.6.3-2
-Conflicts:	kde-l10n-ru < 4.6.3-4
-Conflicts:	kde-l10n-se < 4.2.96-6
-Conflicts:	kde-l10n-si < 4.4.95-7
-Conflicts:	kde-l10n-sk < 4.6.3-2
-Conflicts:	kde-l10n-sl < 4.6.3-2
-Conflicts:	kde-l10n-sr < 4.6.3-2
-Conflicts:	kde-l10n-sv < 4.6.3-2
-Conflicts:	kde-l10n-ta < 4.2.96-5
-Conflicts:	kde-l10n-tg < 4.4.95-7
-Conflicts:	kde-l10n-th < 4.6.3-2
-Conflicts:	kde-l10n-tr < 4.6.3-2
-Conflicts:	kde-l10n-uk < 4.6.3-2
-Conflicts:	kde-l10n-wa < 4.6.3-2
-Conflicts:	kde-l10n-zh_CN < 4.6.3-2
-Conflicts:	kde-l10n-zh_TW < 4.6.3-2
 
 %description core
 Core files from kdepim.
@@ -213,7 +145,6 @@ KDE 4 library.
 %package -n kincidenceeditor
 Summary:	kincidenceeditor
 Group:		Graphical desktop/KDE
-Obsoletes:	keventeditor < 2:4.5.68
 
 %description -n kincidenceeditor
 New incidince editors
@@ -292,7 +223,6 @@ Summary:	KDE Certificate Manager
 Group:		Graphical desktop/KDE
 Requires:	%{name}-core = %{EVRD}
 Provides:	kde4-kleopatra = %{EVRD}
-Conflicts:	%{name}-core < 2:4.5.77
 
 %description -n kleopatra
 KDE Certificate Manager
@@ -419,7 +349,6 @@ Requires:	%{name}-core = %{EVRD}
 Requires:	kdepimlibs4-core
 Requires:	kio4-nntp
 Provides:	kde4-knode = %{EVRD}
-Conflicts:	%{name}-core < 2:4.5.77
 
 %description -n knode
 KNode is a newsreader for the K Desktop Environment.
@@ -461,7 +390,6 @@ Requires:	%{name}-core = %{EVRD}
 Requires:	grantlee
 Requires:	akonadi-common
 Provides:	kde4-kaddressbook = %{EVRD}
-Conflicts:	kdepim4-core < 2:4.5.77
 
 %description -n kaddressbook
 The KDE addressbook application.
@@ -489,7 +417,6 @@ The KDE addressbook application.
 Summary:	Blogging client for kde
 Group:		Graphical desktop/KDE
 Requires:	%{name}-core = %{EVRD}
-Conflicts:	%{name}-core < 2:4.5.77
 
 %description -n blogilo
 Blogilo is a blogging client for KDE, which supports famous blogging
@@ -558,7 +485,6 @@ Group:		Graphical desktop/KDE
 Url:		http://userbase.kde.org/KAlarm
 Requires:	%{name}-core = %{EVRD}
 Provides:	kde4-kalarm = %{EVRD}
-Conflicts:	%{name}-core < 2:4.5.77
 
 %description -n kalarm
 KAlarm is a personal alarm message, command and email scheduler. It lets you
@@ -593,7 +519,6 @@ Group:		Graphical desktop/KDE
 Url:		http://community.kde.org/Ktimetracker
 Requires:	%{name}-core = %{EVRD}
 Provides:	kde4-ktimetracker = %{EVRD}
-Conflicts:	%{name}-core < 2:4.5.77
 
 %description -n ktimetracker
 KTimeTracker tracks time spent on various tasks. It is useful for tracking
@@ -671,7 +596,6 @@ Suggests:	pimsettingexporter
 Suggests:	importwizard
 Provides:	kde4-kmail = %{EVRD}
 Provides:	kmail2 = %{EVRD}
-Conflicts:	%{name}-core < 2:4.5.77
 
 %description -n kmail
 KMail is the email component of Kontact, the integrated personal
@@ -744,7 +668,6 @@ Group:		Graphical desktop/KDE
 Url:		http://userbase.kde.org/KMail
 Requires:	%{name}-core = %{EVRD}
 Provides:	kde4-kmailcvt = %{EVRD}
-Conflicts:	%{name}-core < 2:4.5.77
 
 %description -n kmailcvt
 KDE Mail Import tool
@@ -795,7 +718,6 @@ Requires:	%{name}-core = %{EVRD}
 Requires:	%{name}-kresources
 Requires:	kio4-nntp
 Provides:	kde4-knotes = %{EVRD}
-Conflicts:	%{name}-core < 2:4.5.77
 
 %description -n knotes
 KNotes aims to be a useful and full featured notes application for
@@ -830,7 +752,6 @@ Summary:	Kontact Container
 Group:		Graphical desktop/KDE
 Url:		http://userbase.kde.org/Kontact
 Requires:	%{name}-core = %{EVRD}
-Conflicts:	%{name}-core < 2:4.5.77
 Requires:	kio4-ldap
 Provides:	kde4-kontact = %{EVRD}
 Suggests:	akregator
@@ -897,7 +818,6 @@ Requires:	%{name}-kresources
 Requires:	kio4-ldap
 Suggests:	kincidenceeditor
 Provides:	kde4-korganizer = %{EVRD}
-Conflicts:	kdepim4-core < 2:4.5.77
 
 %description -n korganizer
 KOrganizer provides management of events and tasks, alarm notification,
@@ -1310,7 +1230,6 @@ Group:		Graphical desktop/KDE
 Url:		http://userbase.kde.org/KJots
 Requires:	%{name}-core = %{EVRD}
 Provides:	kde4-kjots = %{EVRD}
-Conflicts:	%{name}-core < 2:4.5.77
 
 %description -n kjots
 A small program which is handy for keeping and organizing miscellaneous
@@ -1419,6 +1338,10 @@ based on kdepim.
 %find_lang %{name} --all-name --with-html
 
 %changelog
+* Fri Jul 19 2013 Andrey Bondrov <andrey.bondrov@rosalab.ru> 3:4.10.5-2
+- Update BuildRequires
+- Cleanup Conflicts
+
 * Wed Jul 03 2013 Andrey Bondrov <andrey.bondrov@rosalab.ru> 3:4.10.5-1
 - New version 4.10.5
 

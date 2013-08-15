@@ -590,10 +590,10 @@ Requires:	kio4-smtp
 Requires:	kio4-mbox
 Requires:	kio4-imap
 Requires:	kio4-sieve
-Requires:	kmail-common
+Requires:	messageviewer = %{EVRD}
 Requires:	akonadi-archivemail-agent = %{EVRD}
 Requires:	akonadi-mailfilter-agent = %{EVRD}
-Suggests:	kmailcvt
+Suggests:	kmailcvt = %{EVRD}
 Suggests:	pinentry-qt4
 Suggests:	openssh-askpass-qt4
 Suggests:	pimsettingexporter
@@ -647,26 +647,27 @@ information manager of KDE.
 
 #-----------------------------------------------------------------------------
 
-%package -n kmail-common
-Summary:	KDE Email Client
+%package -n messageviewer
+Summary:	Message viewer for KDE Email Client
 Group:		Graphical desktop/KDE
 Url:		http://userbase.kde.org/KMail
-Provides:	kmail2-common = %{EVRD}
 Conflicts:	akonadi-mailfilter-agent < 3:4.11.0
+Conflicts:	kmail-common < 3:4.11.0
+Obsoletes:	kmail-common < 3:4.11.0
 
-%description -n kmail-common
-Common files needed by kmail and kmail-mobile used to view messages.
+%description -n messageviewer
+Message viewer for KDE Email Client.
 
-%files -n kmail-common
+%files -n messageviewer
+%{_kde_appsdir}/libmessageviewer
+%{_kde_appsdir}/messageviewer
+%{_kde_appsdir}/messagelist
 %{_kde_libdir}/kde4/messageviewer_bodypartformatter_application_mstnef.so
 %{_kde_libdir}/kde4/messageviewer_bodypartformatter_text_calendar.so
 %{_kde_libdir}/kde4/messageviewer_bodypartformatter_text_vcard.so
 %{_kde_libdir}/kde4/messageviewer_bodypartformatter_text_xdiff.so
 %{_kde_plugindir}/accessible/messagevieweraccessiblewidgetfactory.so
 %{_kde_plugindir}/grantlee/0.3/grantlee_messageheaderfilters.so
-%{_kde_appsdir}/libmessageviewer
-%{_kde_appsdir}/messageviewer
-%{_kde_appsdir}/messagelist
 %{_kde_datadir}/config/messageviewer_header_themes.knsrc
 
 #-----------------------------------------------------------------------------
@@ -1403,6 +1404,7 @@ based on kdepim.
 - Add pkgconfig(libkactivities) to BuildRequires
 - New subpackages libcomposereditorng, libgrammar, libsendlater
 - Move some files to core subpackage
+- Rename kmail-common to messageviewer
 - Update files list
 
 * Fri Jul 19 2013 Andrey Bondrov <andrey.bondrov@rosalab.ru> 3:4.10.5-2

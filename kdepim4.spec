@@ -70,6 +70,7 @@ Group:		Graphical desktop/KDE
 Requires:	kdelibs4-core
 Requires:	kdebase4-runtime
 Requires:	akonadi-kde >= 3:%{version}
+Conflicts:	%{_lib}kdepim4 < 3:4.11.0
 
 %description core
 Core files from kdepim.
@@ -78,6 +79,10 @@ Core files from kdepim.
 %exclude %{_kde_docdir}/HTML/en/*
 %dir %{_kde_services}/kontact
 %{_kde_iconsdir}/oxygen/*/mimetypes/x-mail-distribution-list.*
+%{_kde_appsdir}/kdepimwidgets
+%{_kde_plugindir}/designer/kdepimwidgets.so
+%{_kde_plugindir}/designer/mailcommonwidgets.so
+%{_kde_plugindir}/designer/pimcommonwidgets.so
 
 #-----------------------------------------------------------------------------
 
@@ -126,7 +131,8 @@ KDE 4 library.
 
 #-----------------------------------------------------------------------------
 
-%define libkdepim %mklibname kdepim 4
+%define kdepim_major 4
+%define libkdepim %mklibname kdepim %{kdepim_major}
 
 %package -n %{libkdepim}
 Summary:	KDE 4 library
@@ -136,9 +142,7 @@ Group:		System/Libraries
 KDE 4 library.
 
 %files -n %{libkdepim}
-%{_kde_libdir}/libkdepim.so.*
-%{_kde_appsdir}/kdepimwidgets
-%{_kde_libdir}/kde4/plugins/designer/kdepimwidgets.so
+%{_kde_libdir}/libkdepim.so.%{kdepim_major}*
 
 #---------------------------------------------------------------------------
 
@@ -596,6 +600,7 @@ Suggests:	pimsettingexporter
 Suggests:	importwizard
 Provides:	kde4-kmail = %{EVRD}
 Provides:	kmail2 = %{EVRD}
+Conflicts:	kmail-common < 3:4.11.0
 
 %description -n kmail
 KMail is the email component of Kontact, the integrated personal
@@ -630,9 +635,11 @@ information manager of KDE.
 %{_kde_services}/kmail_config_misc.desktop
 %{_kde_services}/kmail_config_security.desktop
 %{_kde_services}/kcmkmailsummary.desktop
+%{_kde_services}/kcm_kpimidentities.desktop
 %{_kde_services}/ServiceMenus/kmail_addattachmentservicemenu.desktop
 %{_kde_servicetypes}/dbusmail.desktop
 %{_kde_libdir}/kde4/kcm_kmail.so
+%{_kde_libdir}/kde4/kcm_kpimidentities.so
 %{_kde_libdir}/kde4/kmailpart.so
 %{_kde_libdir}/kde4/kcm_kmailsummary.so
 %{_kde_libdir}/kde4/kontact_kmailplugin.so
@@ -645,6 +652,7 @@ Summary:	KDE Email Client
 Group:		Graphical desktop/KDE
 Url:		http://userbase.kde.org/KMail
 Provides:	kmail2-common = %{EVRD}
+Conflicts:	akonadi-mailfilter-agent < 3:4.11.0
 
 %description -n kmail-common
 Common files needed by kmail and kmail-mobile used to view messages.
@@ -654,11 +662,12 @@ Common files needed by kmail and kmail-mobile used to view messages.
 %{_kde_libdir}/kde4/messageviewer_bodypartformatter_text_calendar.so
 %{_kde_libdir}/kde4/messageviewer_bodypartformatter_text_vcard.so
 %{_kde_libdir}/kde4/messageviewer_bodypartformatter_text_xdiff.so
-%{_kde_services}/kcm_kpimidentities.desktop
-%{_kde_libdir}/kde4/kcm_kpimidentities.so
+%{_kde_plugindir}/accessible/messagevieweraccessiblewidgetfactory.so
+%{_kde_plugindir}/grantlee/0.3/grantlee_messageheaderfilters.so
 %{_kde_appsdir}/libmessageviewer
 %{_kde_appsdir}/messageviewer
 %{_kde_appsdir}/messagelist
+%{_kde_datadir}/config/messageviewer_header_themes.knsrc
 
 #-----------------------------------------------------------------------------
 
@@ -673,6 +682,7 @@ Provides:	kde4-kmailcvt = %{EVRD}
 KDE Mail Import tool
 
 %files -n kmailcvt
+%doc %{_kde_docdir}/HTML/en/kmailcvt
 %{_kde_bindir}/kmailcvt
 %{_kde_appsdir}/kmailcvt/pics/step1.png
 %{_kde_iconsdir}/*/*/apps/kmailcvt.*
@@ -690,6 +700,7 @@ Allows to save data from KDE PIM applications and restore them in other
 systems. Successor of Backup Mail from KDE 4.9.
 
 %files -n pimsettingexporter
+%doc %{_kde_docdir}/HTML/en/pimsettingexporter
 %{_kde_bindir}/pimsettingexporter
 %{_kde_appsdir}/pimsettingexporter/pimsettingexporter.rc
 
@@ -704,6 +715,7 @@ Requires:	kmail
 Import Wizard allows to migrate data from mailer as thunderbird/evolution etc.
 
 %files -n importwizard
+%doc %{_kde_docdir}/HTML/en/importwizard
 %{_kde_bindir}/importwizard
 %{_kde_applicationsdir}/importwizard.desktop
 %{_kde_iconsdir}/*/*/apps/kontact-import-wizard.*
@@ -1032,6 +1044,7 @@ Requires:	%{name}-core = %{EVRD}
 Akonadi archivemail agent.
 
 %files -n akonadi-archivemail-agent
+%doc %{_kde_docdir}/HTML/en/akonadi_archivemail_agent
 %{_kde_bindir}/akonadi_archivemail_agent
 %{_kde_datadir}/akonadi/agents/archivemailagent.desktop
 %{_kde_appsdir}/akonadi_archivemail_agent
@@ -1048,7 +1061,6 @@ Akonadi mailfilter agent.
 
 %files -n akonadi-mailfilter-agent
 %{_kde_bindir}/akonadi_mailfilter_agent
-%{_kde_plugindir}/accessible/messagevieweraccessiblewidgetfactory.so
 %{_kde_datadir}/akonadi/agents/mailfilteragent.desktop
 %{_kde_appsdir}/akonadi_mailfilter_agent
 %{_kde_appsdir}/kconf_update/mailfilteragent.upd
@@ -1390,6 +1402,8 @@ based on kdepim.
 - New version 4.11.0
 - Add pkgconfig(libkactivities) to BuildRequires
 - New subpackages libcomposereditorng, libgrammar, libsendlater
+- Move some files to core subpackage
+- Update files list
 
 * Fri Jul 19 2013 Andrey Bondrov <andrey.bondrov@rosalab.ru> 3:4.10.5-2
 - Update BuildRequires

@@ -24,6 +24,7 @@ BuildRequires:	nepomuk-core-devel
 BuildRequires:	nepomuk-widgets-devel
 BuildRequires:	xsltproc
 BuildRequires:	pkgconfig(akonadi)
+BuildRequires:	pkgconfig(libkactivities)
 BuildRequires:	pkgconfig(libstreams)
 BuildRequires:	pkgconfig(shared-desktop-ontologies)
 BuildRequires:	pkgconfig(x11)
@@ -1340,6 +1341,7 @@ based on kdepim.
 %changelog
 * Wed Aug 14 2013 Andrey Bondrov <andrey.bondrov@rosalab.ru> 3:4.11.0-1
 - New version 4.11.0
+- Add pkgconfig(libkactivities) to BuildRequires
 
 * Fri Jul 19 2013 Andrey Bondrov <andrey.bondrov@rosalab.ru> 3:4.10.5-2
 - Update BuildRequires

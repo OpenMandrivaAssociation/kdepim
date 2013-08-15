@@ -76,7 +76,6 @@ Core files from kdepim.
 
 %files core -f %{name}.lang
 %exclude %{_kde_docdir}/HTML/en/*
-%{_kde_libdir}/strigi/*
 %dir %{_kde_services}/kontact
 %{_kde_iconsdir}/oxygen/*/mimetypes/x-mail-distribution-list.*
 
@@ -1195,6 +1194,36 @@ KDE 4 library.
 
 #-----------------------------------------------------------------------------
 
+%define libcomposereditorng_major 4
+%define libcomposereditorng %mklibname composereditorng %{libcomposereditorng_major}
+
+%package -n %{libcomposereditorng}
+Summary:	Library providing autospell checking
+Group:		System/Libraries
+
+%description -n %{libcomposereditorng}
+This library provides autospell checking.
+
+%files -n %{libcomposereditorng}
+%{_kde_libdir}/libcomposereditorng.so.%{libcomposereditorng_major}*
+
+#-----------------------------------------------------------------------------
+
+%define libgrammar_major 4
+%define libgrammar %mklibname grammar %{libgrammar_major}
+
+%package -n %{libgrammar}
+Summary:	Library providing grammar support
+Group:		System/Libraries
+
+%description -n %{libgrammar}
+This library provides grammar support.
+
+%files -n %{libgrammar}
+%{_kde_libdir}/libgrammar.so.%{libgrammar_major}*
+
+#-----------------------------------------------------------------------------
+
 %define mailimporter_major 4
 %define libmailimporter %mklibname mailimporter %{mailimporter_major}
 
@@ -1222,6 +1251,21 @@ This library provides the tool to import/export PIM configuration.
 
 %files -n %{libpimcommon}
 %{_kde_libdir}/libpimcommon.so.%{libpimcommon_major}*
+
+#-----------------------------------------------------------------------------
+
+%define sendlater_major 4
+%define libsendlater %mklibname sendlater %{sendlater_major}
+
+%package -n %{libsendlater}
+Summary:	KDE PIM library
+Group:		System/Libraries
+
+%description -n %{libsendlater}
+KDE PIM library.
+
+%files -n %{libsendlater}
+%{_kde_libdir}/libsendlater.so.%{sendlater_major}*
 
 #-----------------------------------------------------------------------------
 
@@ -1284,7 +1328,10 @@ Group:		Development/KDE and Qt
 Requires:	kdelibs4-devel
 Requires:	kdepimlibs4-devel
 Requires:	kdepim4-runtime-devel
+Requires:	%{libcomposereditorng} = %{EVRD}
+Requires:	%{libgrammar} = %{EVRD}
 Requires:	%{libkdepim} = %{EVRD}
+Requires:	%{libsendlater} = %{EVRD}
 Requires:	%{libeventviews} = %{EVRD}
 Requires:	%{libkleopatraclientcore} = %{EVRD}
 Requires:	%{libincidenceeditorsng} = %{EVRD}
@@ -1342,6 +1389,7 @@ based on kdepim.
 * Wed Aug 14 2013 Andrey Bondrov <andrey.bondrov@rosalab.ru> 3:4.11.0-1
 - New version 4.11.0
 - Add pkgconfig(libkactivities) to BuildRequires
+- New subpackages libcomposereditorng, libgrammar, libsendlater
 
 * Fri Jul 19 2013 Andrey Bondrov <andrey.bondrov@rosalab.ru> 3:4.10.5-2
 - Update BuildRequires

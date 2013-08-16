@@ -380,6 +380,7 @@ Requires:	kio4-sieve
 Requires:	messageviewer = %{EVRD}
 Requires:	akonadi-archivemail-agent = %{EVRD}
 Requires:	akonadi-mailfilter-agent = %{EVRD}
+Requires:	akonadi-sendlater-agent = %{EVRD}
 Suggests:	kmailcvt = %{EVRD}
 Suggests:	pinentry-qt4
 Suggests:	openssh-askpass-qt4
@@ -712,6 +713,22 @@ Akonadi mailfilter agent.
 %{_kde_appsdir}/akonadi_mailfilter_agent
 %{_kde_appsdir}/kconf_update/mailfilteragent.upd
 %{_kde_appsdir}/kconf_update/migrate-kmail-filters.pl
+
+#-----------------------------------------------------------------------------
+
+%package -n akonadi-sendlater-agent
+Summary:	Akonadi sendlater agent
+Group:		Graphical desktop/KDE
+Requires:	%{name}-core = %{EVRD}
+
+%description -n akonadi-sendlater-agent
+Akonadi sendlater agent.
+
+%files -n akonadi-sendlater-agent
+%doc %{_kde_docdir}/HTML/en/akonadi_sendlater_agent
+%{_kde_bindir}/akonadi_sendlater_agent
+%{_kde_datadir}/akonadi/agents/sendlateragent.desktop
+%{_kde_appsdir}/akonadi_sendlater_agent
 
 #-----------------------------------------------------------------------------
 
@@ -1457,6 +1474,7 @@ based on kdepim.
 - Add pkgconfig(libkactivities) to BuildRequires
 - New subpackages libcomposereditorng, libgrammar, libsendlater
 - New subpackages libpimactivity, pimactivity
+- New subpackage akonadi-sendlater-agent
 - Move some files to core subpackage
 - Rename kmail-common to messageviewer
 - Update files list

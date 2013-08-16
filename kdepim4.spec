@@ -66,16 +66,17 @@ Information Management applications for the K Desktop Environment.
 #----------------------------------------------------------------------
 
 %package core
-Summary:	Core files for kdepim
+Summary:	Core files for KDE PIM
 Group:		Graphical desktop/KDE
 Requires:	kdelibs4-core
 Requires:	kdebase4-runtime
 Requires:	akonadi-kde >= 3:%{version}
 Conflicts:	%{_lib}kdepim4 < 3:4.11.0
 Conflicts:	%{_lib}kpgp4 < 3:4.11.0
+Conflicts:	%{name}-devel < 3:4.11.0
 
 %description core
-Core files from kdepim.
+Core files for KDE PIM.
 
 %files core -f %{name}.lang
 %exclude %{_kde_docdir}/HTML/en/*
@@ -87,6 +88,7 @@ Core files from kdepim.
 %{_kde_plugindir}/designer/pimcommonwidgets.so
 %{_kde_appsdir}/kconf_update/kpgp-3.1-upgrade-address-data.pl
 %{_kde_appsdir}/kconf_update/kpgp.upd
+%{_datadir}/dbus-1/interfaces/org.kde.mailtransport.service.xml
 
 #---------------------------------------------------------------------------
 
@@ -95,7 +97,7 @@ Summary:	kincidenceeditor
 Group:		Graphical desktop/KDE
 
 %description -n kincidenceeditor
-New incidince editors
+New incidince editor.
 
 %files -n kincidenceeditor
 %{_kde_bindir}/kincidenceeditor
@@ -136,6 +138,7 @@ Url:		http://userbase.kde.org/Akregator
 Requires:	%{name}-core = %{EVRD}
 Provides:	kde4-akregator = %{EVRD}
 Conflicts:	%{name}-core < 2:4.5.77
+Conflicts:	%{name}-devel < 3:4.11.0
 
 %description -n akregator
 Akregator is a news feed reader for the KDE desktop. It enables you to
@@ -162,6 +165,7 @@ easy news reading.
 %{_kde_servicetypes}/akregator_plugin.desktop
 %{_kde_libdir}/kde4/akregator*
 %{_kde_libdir}/kde4/kontact_akregatorplugin.so
+%{_datadir}/dbus-1/interfaces/org.kde.akregator.part.xml
 
 #-----------------------------------------------------------------------------
 
@@ -173,6 +177,7 @@ Requires:	%{name}-core = %{EVRD}
 Requires:	kdepimlibs4-core
 Requires:	kio4-nntp
 Provides:	kde4-knode = %{EVRD}
+Conflicts:	%{name}-devel < 3:4.11.0
 
 %description -n knode
 KNode is a newsreader for the K Desktop Environment.
@@ -202,6 +207,7 @@ leafnode also usable with dial-up connections.
 %{_kde_libdir}/kde4/kcm_knode.so
 %{_kde_libdir}/kde4/knodepart.so
 %{_kde_libdir}/kde4/kontact_knodeplugin.so
+%{_datadir}/dbus-1/interfaces/org.kde.knode.xml
 
 #-----------------------------------------------------------------------------
 
@@ -214,6 +220,7 @@ Requires:	%{name}-core = %{EVRD}
 Requires:	grantlee
 Requires:	akonadi-common
 Provides:	kde4-kaddressbook = %{EVRD}
+Conflicts:	%{name}-devel < 3:4.11.0
 
 %description -n kaddressbook
 The KDE addressbook application.
@@ -234,6 +241,7 @@ The KDE addressbook application.
 %{_kde_services}/kontact/kaddressbookplugin.desktop
 %{_kde_services}/kcmldap.desktop
 %{_kde_mandir}/man1/kabcclient.1.*
+%{_datadir}/dbus-1/interfaces/org.kde.addressbook.service.xml
 
 #-----------------------------------------------------------------------------
 
@@ -294,6 +302,7 @@ Group:		Graphical desktop/KDE
 Url:		http://userbase.kde.org/KAlarm
 Requires:	%{name}-core = %{EVRD}
 Provides:	kde4-kalarm = %{EVRD}
+Conflicts:	%{name}-devel < 3:4.11.0
 
 %description -n kalarm
 KAlarm is a personal alarm message, command and email scheduler. It lets you
@@ -319,6 +328,7 @@ or you can schedule commands to be executed or emails to be sent.
 %{_kde_iconsdir}/*/*/apps/kalarm.*
 %{_sysconfdir}/dbus-1/system.d/org.kde.kalarmrtcwake.conf
 %{_datadir}/dbus-1/system-services/org.kde.kalarmrtcwake.service
+%{_datadir}/dbus-1/interfaces/org.kde.kalarm.kalarm.xml
 
 #-----------------------------------------------------------------------------
 
@@ -328,6 +338,7 @@ Group:		Graphical desktop/KDE
 Url:		http://community.kde.org/Ktimetracker
 Requires:	%{name}-core = %{EVRD}
 Provides:	kde4-ktimetracker = %{EVRD}
+Conflicts:	%{name}-devel < 3:4.11.0
 
 %description -n ktimetracker
 KTimeTracker tracks time spent on various tasks. It is useful for tracking
@@ -347,6 +358,7 @@ of your day is spent playing Doom or reading Slashdot.
 %{_kde_services}/ktimetracker_config_storage.desktop
 %{_kde_libdir}/kde4/ktimetrackerpart.so
 %{_kde_libdir}/kde4/kcm_ktimetracker.so
+%{_datadir}/dbus-1/interfaces/org.kde.ktimetracker.ktimetracker.xml
 
 #-----------------------------------------------------------------------------
 
@@ -376,6 +388,7 @@ Suggests:	importwizard
 Provides:	kde4-kmail = %{EVRD}
 Provides:	kmail2 = %{EVRD}
 Conflicts:	kmail-common < 3:4.11.0
+Conflicts:	%{name}-devel < 3:4.11.0
 
 %description -n kmail
 KMail is the email component of Kontact, the integrated personal
@@ -419,6 +432,8 @@ information manager of KDE.
 %{_kde_libdir}/kde4/kcm_kmailsummary.so
 %{_kde_libdir}/kde4/kontact_kmailplugin.so
 %{_kde_libdir}/kde4/ktexteditorkabcbridge.so
+%{_datadir}/dbus-1/interfaces/org.kde.kmail.kmail.xml
+%{_datadir}/dbus-1/interfaces/org.kde.kmail.kmailpart.xml
 
 #-----------------------------------------------------------------------------
 
@@ -506,6 +521,7 @@ Requires:	%{name}-core = %{EVRD}
 Requires:	%{name}-kresources
 Requires:	kio4-nntp
 Provides:	kde4-knotes = %{EVRD}
+Conflicts:	%{name}-devel < 3:4.11.0
 
 %description -n knotes
 KNotes aims to be a useful and full featured notes application for
@@ -532,6 +548,7 @@ although including some advanced features.
 %{_kde_libdir}/kde4/knotes_local.so
 %{_kde_libdir}/kde4/kcm_knote.so
 %{_kde_libdir}/kde4/kontact_knotesplugin.so
+%{_datadir}/dbus-1/interfaces/org.kde.KNotes.xml
 
 #-----------------------------------------------------------------------------
 
@@ -550,6 +567,7 @@ Suggests:	knode
 Suggests:	kalarm
 Suggests:	kaddressbook
 Suggests:	korganizer
+Conflicts:	%{name}-devel < 3:4.11.0
 
 %description -n kontact
 The KDE Kontact Personal Information Management suite unites mature and
@@ -579,6 +597,7 @@ technology, existing applications are seamlessly integrated into one.
 %{_kde_libdir}/kde4/kcm_sdsummary.so
 %{_kde_libdir}/kde4/kontact_specialdatesplugin.so
 %{_kde_libdir}/kde4/kontact_summaryplugin.so
+%{_datadir}/dbus-1/interfaces/org.kde.kontact.KNotes.xml
 
 #-----------------------------------------------------------------------------
 
@@ -591,6 +610,7 @@ Requires:	%{name}-kresources
 Requires:	kio4-ldap
 Suggests:	kincidenceeditor
 Provides:	kde4-korganizer = %{EVRD}
+Conflicts:	%{name}-devel < 3:4.11.0
 
 %description -n korganizer
 KOrganizer provides management of events and tasks, alarm notification,
@@ -639,6 +659,9 @@ Citadel or OpenGroupware.org.
 %{_kde_libdir}/kde4/korg_*
 %{_kde_libdir}/kde4/korganizerpart.so
 %{_kde_libdir}/kde4/kontact_korganizerplugin.so
+%{_datadir}/dbus-1/interfaces/org.kde.korganizer.KOrgac.xml
+%{_datadir}/dbus-1/interfaces/org.kde.korganizer.Korganizer.xml
+%{_datadir}/dbus-1/interfaces/org.kde.Korganizer.Calendar.xml
 
 #-----------------------------------------------------------------------------
 
@@ -1413,7 +1436,6 @@ based on kdepim.
 
 %files devel
 %{_kde_libdir}/*.so
-%{_kde_datadir}/dbus-1/interfaces/*
 
 #----------------------------------------------------------------------
 
@@ -1438,6 +1460,7 @@ based on kdepim.
 - Move some files to core subpackage
 - Rename kmail-common to messageviewer
 - Update files list
+- Move dbus files out of devel package
 
 * Fri Jul 19 2013 Andrey Bondrov <andrey.bondrov@rosalab.ru> 3:4.10.5-2
 - Update BuildRequires

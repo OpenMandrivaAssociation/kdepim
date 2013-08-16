@@ -169,6 +169,22 @@ easy news reading.
 
 #-----------------------------------------------------------------------------
 
+%package -n headerthemeeditor
+Summary:	KMail Header Theme Editor
+Group:		Graphical desktop/KDE
+Requires:	kmail
+
+%description -n headerthemeeditor
+KMail Header Theme Editor.
+
+%files -n headerthemeeditor
+%doc %{_kde_docdir}/HTML/en/headerthemeeditor
+%{_kde_bindir}/headerthemeeditor
+%{_kde_appsdir}/headerthemeeditor
+%{_kde_applicationsdir}/headerthemeeditor.desktop
+
+#-----------------------------------------------------------------------------
+
 %package -n knode
 Summary:	A newsreader for the K Desktop Environment
 Group:		Graphical desktop/KDE
@@ -377,6 +393,7 @@ Requires:	kio4-smtp
 Requires:	kio4-mbox
 Requires:	kio4-imap
 Requires:	kio4-sieve
+Requires:	headerthemeeditor = %{EVRD}
 Requires:	messageviewer = %{EVRD}
 Requires:	akonadi-archivemail-agent = %{EVRD}
 Requires:	akonadi-mailfilter-agent = %{EVRD}
@@ -402,12 +419,13 @@ information manager of KDE.
 %{_kde_bindir}/kmail_clamav.sh
 %{_kde_bindir}/kmail_fprot.sh
 %{_kde_bindir}/kmail_sav.sh
-%{_kde_appsdir}/kmail2
 %{_kde_applicationsdir}/KMail2.desktop
 %{_kde_applicationsdir}/kmail_view.desktop
+%{_kde_appsdir}/composereditor/composereditorinitialhtml
 %{_kde_appsdir}/kconf_update/kmail*
 %{_kde_appsdir}/kconf_update/upgrade-signature.pl
 %{_kde_appsdir}/kconf_update/upgrade-transport.pl
+%{_kde_appsdir}/kmail2
 %{_kde_datadir}/config.kcfg/customtemplates_kfg.kcfg
 %{_kde_datadir}/config.kcfg/kmail.kcfg
 %{_kde_datadir}/config.kcfg/templatesconfiguration_kfg.kcfg
@@ -1475,6 +1493,7 @@ based on kdepim.
 - New subpackages libcomposereditorng, libgrammar, libsendlater
 - New subpackages libpimactivity, pimactivity
 - New subpackage akonadi-sendlater-agent
+- New subpackage headerthemeeditor
 - Move some files to core subpackage
 - Rename kmail-common to messageviewer
 - Update files list

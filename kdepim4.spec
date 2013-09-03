@@ -1,7 +1,7 @@
 Summary:	An application suite to manage personal information
 Name:		kdepim4
 Epoch:		3
-Version:	4.11.1
+Version:	4.11.0
 Release:	1
 Group:		Graphical desktop/KDE
 License:	GPL
@@ -1487,9 +1487,6 @@ based on kdepim.
 %find_lang %{name} --all-name --with-html
 
 %changelog
-* Tue Sep 03 2013 Andrey Bondrov <andrey.bondrov@rosalab.ru> 3:4.11.1-1
-- New version 4.11.1
-
 * Wed Aug 14 2013 Andrey Bondrov <andrey.bondrov@rosalab.ru> 3:4.11.0-1
 - New version 4.11.0
 - Add pkgconfig(libkactivities) to BuildRequires

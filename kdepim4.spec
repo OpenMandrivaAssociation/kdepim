@@ -1,7 +1,7 @@
 Summary:	An application suite to manage personal information
 Name:		kdepim4
 Epoch:		3
-Version:	4.11.1
+Version:	4.11.2
 Release:	1
 Group:		Graphical desktop/KDE
 License:	GPL
@@ -1487,6 +1487,9 @@ based on kdepim.
 %find_lang %{name} --all-name --with-html
 
 %changelog
+* Wed Oct 02 2013 Andrey Bondrov <andrey.bondrov@rosalab.ru> 3:4.11.2-1
+- New version 4.11.2
+
 * Tue Sep 03 2013 Andrey Bondrov <andrey.bondrov@rosalab.ru> 3:4.11.1-1
 - New version 4.11.1
 

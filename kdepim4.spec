@@ -13,6 +13,7 @@ Url:		http://community.kde.org/KDE_PIM
 %define ftpdir stable
 %endif
 Source0:	ftp://ftp.kde.org/pub/kde/%{ftpdir}/%{version}/src/kdepim-%{version}.tar.xz
+Patch0:		kdepim-4.12.1-cmake-libkaddressbookgrantlee.patch
 BuildRequires:	boost-devel
 BuildRequires:	gpgme-devel
 BuildRequires:	grantlee-devel
@@ -1609,6 +1610,7 @@ based on kdepim.
 
 %prep
 %setup -q -n kdepim-%{version}
+%patch0 -p1
 
 %build
 %cmake_kde4 -DKDEPIM_BUILD_MOBILE=false
@@ -1629,6 +1631,7 @@ based on kdepim.
 - New subpackages libkaddressbookgrantlee, libknotesprivate
 - New subpackages contactthemeeditor and mboximporter
 - Update files
+- Add cmake-libkaddressbookgrantlee patch to fix devel dependencies issue
 
 * Wed Dec 04 2013 Andrey Bondrov <andrey.bondrov@rosalab.ru> 3:4.11.4-1
 - New version 4.11.4

@@ -279,6 +279,22 @@ KMail Header Theme Editor.
 
 #-----------------------------------------------------------------------------
 
+%package -n contactthemeeditor
+Summary:	KDE Contact Theme Editor
+Group:		Graphical desktop/KDE
+Requires:	kaddressbook
+
+%description -n contactthemeeditor
+KDE Contact Theme Editor.
+
+%files -n contactthemeeditor
+%{_kde_bindir}/contactthemeeditor
+%{_kde_appsdir}/contactthemeeditor
+%{_kde_appsdir}/kconf_update/grantleetheme.upd
+%{_kde_applicationsdir}/contactthemeeditor.desktop
+
+#-----------------------------------------------------------------------------
+
 %package -n importwizard
 Summary:	Import Wizard allows to migrate data from mailer as thunderbird/evolution etc
 Group:		Graphical desktop/KDE
@@ -303,6 +319,7 @@ Requires:	%{name}-core = %{EVRD}
 # Grantlee is needed for the simple view in kaddressbook
 Requires:	grantlee
 Requires:	akonadi-common
+Suggests:	contactthemeeditor = %{EVRD}
 Provides:	kde4-kaddressbook = %{EVRD}
 Conflicts:	%{name}-devel < 3:4.11.0
 
@@ -459,11 +476,13 @@ Requires:	akonadi-archivemail-agent = %{EVRD}
 Requires:	akonadi-folderarchive-agent = %{EVRD}
 Requires:	akonadi-mailfilter-agent = %{EVRD}
 Requires:	akonadi-sendlater-agent = %{EVRD}
+Suggests:	kaddressbook = %{EVRD}
 Suggests:	kmailcvt = %{EVRD}
 Suggests:	pinentry-qt4
 Suggests:	openssh-askpass-qt4
 Suggests:	pimsettingexporter
 Suggests:	importwizard
+Suggests:	mboximporter
 Provides:	kde4-kmail = %{EVRD}
 Provides:	kmail2 = %{EVRD}
 Conflicts:	kmail-common < 3:4.11.0
@@ -809,6 +828,20 @@ mail servers and embed the mail properties as well as the actual attachments.
 %{_kde_appsdir}/ktnef
 %{_kde_iconsdir}/*/*/apps/ktnef*.*
 %{_kde_iconsdir}/*/*/actions/ktnef*.*
+
+#-----------------------------------------------------------------------------
+
+%package -n mboximporter
+Summary:	MBoxImporter allows to migrate data from MBox
+Group:		Graphical desktop/KDE
+Requires:	kmail
+
+%description -n mboximporter
+MBoxImporter allows to migrate data from MBox.
+
+%files -n mboximporter
+%{_kde_bindir}/mboximporter
+%{_kde_applicationsdir}/mboximporter.desktop
 
 #-----------------------------------------------------------------------------
 
@@ -1594,6 +1627,7 @@ based on kdepim.
 - Sort library subpackages
 - New subpackages libfolderarchive, libgrantleetheme, libgrantleethemeeditor
 - New subpackages libkaddressbookgrantlee, libknotesprivate
+- New subpackages contactthemeeditor and mboximporter
 - Update files
 
 * Wed Dec 04 2013 Andrey Bondrov <andrey.bondrov@rosalab.ru> 3:4.11.4-1

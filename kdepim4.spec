@@ -90,44 +90,87 @@ Core files for KDE PIM.
 %{_kde_appsdir}/kconf_update/kpgp.upd
 %{_datadir}/dbus-1/interfaces/org.kde.mailtransport.service.xml
 
-#---------------------------------------------------------------------------
+#-----------------------------------------------------------------------------
 
-%package -n kincidenceeditor
-Summary:	kincidenceeditor
+%package -n akonadiconsole
+Summary:	Console that help to debug akonadi
 Group:		Graphical desktop/KDE
+Requires:	%{name}-core = %{EVRD}
+Conflicts:	kdepim4-core < 2:4.4.2-5
 
-%description -n kincidenceeditor
-New incidince editor.
+%description -n akonadiconsole
+Console that help to debug akonadi
 
-%files -n kincidenceeditor
-%{_kde_bindir}/kincidenceeditor
+%files -n akonadiconsole
+%{_kde_bindir}/akonadiconsole
+%{_kde_applicationsdir}/akonadiconsole.desktop
+%{_kde_appsdir}/akonadiconsole/akonadiconsoleui.rc
+%{_kde_iconsdir}/hicolor/*/apps/akonadiconsole.png
 
 #-----------------------------------------------------------------------------
 
-%package -n kleopatra
-Summary:	KDE Certificate Manager
+%package -n akonadi-archivemail-agent
+Summary:	Akonadi archivemail agent
 Group:		Graphical desktop/KDE
 Requires:	%{name}-core = %{EVRD}
-Provides:	kde4-kleopatra = %{EVRD}
 
-%description -n kleopatra
-KDE Certificate Manager
+%description -n akonadi-archivemail-agent
+Akonadi archivemail agent.
 
-%files -n kleopatra
-%doc %{_kde_docdir}/HTML/en/kleopatra
-%doc %{_kde_docdir}/HTML/en/kwatchgnupg
-%{_kde_bindir}/kleopatra
-%{_kde_bindir}/kgpgconf
-%{_kde_bindir}/kwatchgnupg
-%{_kde_applicationsdir}/kleopatra.desktop
-%{_kde_applicationsdir}/kleopatra_import.desktop
-%{_kde_configdir}/libkleopatrarc
-%{_kde_appsdir}/kleopatra
-%{_kde_appsdir}/libkleopatra
-%{_kde_appsdir}/kwatchgnupg
-%{_kde_iconsdir}/*/*/apps/kleopatra.*
-%{_kde_services}/kleopatra_*
-%{_kde_libdir}/kde4/kcm_kleopatra.so
+%files -n akonadi-archivemail-agent
+%doc %{_kde_docdir}/HTML/en/akonadi_archivemail_agent
+%{_kde_bindir}/akonadi_archivemail_agent
+%{_kde_datadir}/akonadi/agents/archivemailagent.desktop
+%{_kde_appsdir}/akonadi_archivemail_agent
+
+#-----------------------------------------------------------------------------
+
+%package -n akonadi-folderarchive-agent
+Summary:	Akonadi folderarchive agent
+Group:		Graphical desktop/KDE
+Requires:	%{name}-core = %{EVRD}
+
+%description -n akonadi-folderarchive-agent
+Akonadi folderarchive agent.
+
+%files -n akonadi-folderarchive-agent
+%doc %{_kde_docdir}/HTML/en/akonadi_folderarchive_agent
+%{_kde_bindir}/akonadi_folderarchive_agent
+%{_kde_datadir}/akonadi/agents/folderarchiveagent.desktop
+%{_kde_appsdir}/akonadi_folderarchive_agent
+
+#-----------------------------------------------------------------------------
+
+%package -n akonadi-mailfilter-agent
+Summary:	Akonadi mailfilter agent
+Group:		Graphical desktop/KDE
+Requires:	%{name}-core = %{EVRD}
+
+%description -n akonadi-mailfilter-agent
+Akonadi mailfilter agent.
+
+%files -n akonadi-mailfilter-agent
+%{_kde_bindir}/akonadi_mailfilter_agent
+%{_kde_datadir}/akonadi/agents/mailfilteragent.desktop
+%{_kde_appsdir}/akonadi_mailfilter_agent
+%{_kde_appsdir}/kconf_update/mailfilteragent.upd
+%{_kde_appsdir}/kconf_update/migrate-kmail-filters.pl
+
+#-----------------------------------------------------------------------------
+
+%package -n akonadi-sendlater-agent
+Summary:	Akonadi sendlater agent
+Group:		Graphical desktop/KDE
+Requires:	%{name}-core = %{EVRD}
+
+%description -n akonadi-sendlater-agent
+Akonadi sendlater agent.
+
+%files -n akonadi-sendlater-agent
+%doc %{_kde_docdir}/HTML/en/akonadi_sendlater_agent
+%{_kde_bindir}/akonadi_sendlater_agent
+%{_kde_datadir}/akonadi/agents/sendlateragent.desktop
+%{_kde_appsdir}/akonadi_sendlater_agent
 
 #-----------------------------------------------------------------------------
 
@@ -166,99 +209,6 @@ easy news reading.
 %{_kde_libdir}/kde4/akregator*
 %{_kde_libdir}/kde4/kontact_akregatorplugin.so
 %{_datadir}/dbus-1/interfaces/org.kde.akregator.part.xml
-
-#-----------------------------------------------------------------------------
-
-%package -n headerthemeeditor
-Summary:	KMail Header Theme Editor
-Group:		Graphical desktop/KDE
-Requires:	kmail
-
-%description -n headerthemeeditor
-KMail Header Theme Editor.
-
-%files -n headerthemeeditor
-%doc %{_kde_docdir}/HTML/en/headerthemeeditor
-%{_kde_bindir}/headerthemeeditor
-%{_kde_appsdir}/headerthemeeditor
-%{_kde_applicationsdir}/headerthemeeditor.desktop
-
-#-----------------------------------------------------------------------------
-
-%package -n knode
-Summary:	A newsreader for the K Desktop Environment
-Group:		Graphical desktop/KDE
-Url:		http://userbase.kde.org/KNode
-Requires:	%{name}-core = %{EVRD}
-Requires:	kdepimlibs4-core
-Requires:	kio4-nntp
-Provides:	kde4-knode = %{EVRD}
-Conflicts:	%{name}-devel < 3:4.11.0
-
-%description -n knode
-KNode is a newsreader for the K Desktop Environment.
-
-It is GNKSA compliant (unfortunally a review is still pending), and has
-support for MIME and multiple servers.
-
-It is a online-reader, but in combination with a local newsserver like
-leafnode also usable with dial-up connections.
-
-%files -n knode
-%doc %{_kde_docdir}/HTML/en/knode
-%doc %{_kde_docdir}/HTML/en/kioslave/news
-%{_kde_bindir}/knode
-%{_kde_applicationsdir}/KNode.desktop
-%{_kde_appsdir}/knode
-%{_kde_appsdir}/kconf_update/knode.upd
-%{_kde_iconsdir}/*/*/apps/knode.*
-%{_kde_services}/kontact/knodeplugin.desktop
-%{_kde_services}/knode_config_accounts.desktop
-%{_kde_services}/knode_config_appearance.desktop
-%{_kde_services}/knode_config_cleanup.desktop
-%{_kde_services}/knode_config_identity.desktop
-%{_kde_services}/knode_config_post_news.desktop
-%{_kde_services}/knode_config_privacy.desktop
-%{_kde_services}/knode_config_read_news.desktop
-%{_kde_libdir}/kde4/kcm_knode.so
-%{_kde_libdir}/kde4/knodepart.so
-%{_kde_libdir}/kde4/kontact_knodeplugin.so
-%{_datadir}/dbus-1/interfaces/org.kde.knode.xml
-
-#-----------------------------------------------------------------------------
-
-%package -n kaddressbook
-Summary:	The KDE addressbook application
-Group:		Graphical desktop/KDE
-Url:		http://userbase.kde.org/KAddressBook
-Requires:	%{name}-core = %{EVRD}
-# Grantlee is needed for the simple view in kaddressbook
-Requires:	grantlee
-Requires:	akonadi-common
-Provides:	kde4-kaddressbook = %{EVRD}
-Conflicts:	%{name}-devel < 3:4.11.0
-
-%description -n kaddressbook
-The KDE addressbook application.
-
-%files -n kaddressbook
-%doc %{_kde_docdir}/HTML/en/kabcclient
-%{_kde_bindir}/kaddressbook
-%{_kde_bindir}/kabc2mutt
-%{_kde_bindir}/kabcclient
-%{_kde_applicationsdir}/kaddressbook.desktop
-%{_kde_appsdir}/kaddressbook
-%{_kde_configdir}/kaddressbook_themes.knsrc
-%{_kde_libdir}/kde4/kcm_ldap.so
-%{_kde_libdir}/akonadi/contact/editorpageplugins/cryptopageplugin.so
-%{_kde_libdir}/kde4/kaddressbookpart.so
-%{_kde_libdir}/kde4/kontact_kaddressbookplugin.so
-%{_kde_iconsdir}/*/*/apps/kaddressbook.*
-%{_kde_services}/kaddressbookpart.desktop
-%{_kde_services}/kontact/kaddressbookplugin.desktop
-%{_kde_services}/kcmldap.desktop
-%{_kde_mandir}/man1/kabcclient.1.*
-%{_datadir}/dbus-1/interfaces/org.kde.addressbook.service.xml
 
 #-----------------------------------------------------------------------------
 
@@ -313,6 +263,73 @@ intervals.
 
 #-----------------------------------------------------------------------------
 
+%package -n headerthemeeditor
+Summary:	KMail Header Theme Editor
+Group:		Graphical desktop/KDE
+Requires:	kmail
+
+%description -n headerthemeeditor
+KMail Header Theme Editor.
+
+%files -n headerthemeeditor
+%doc %{_kde_docdir}/HTML/en/headerthemeeditor
+%{_kde_bindir}/headerthemeeditor
+%{_kde_appsdir}/headerthemeeditor
+%{_kde_applicationsdir}/headerthemeeditor.desktop
+
+#-----------------------------------------------------------------------------
+
+%package -n importwizard
+Summary:	Import Wizard allows to migrate data from mailer as thunderbird/evolution etc
+Group:		Graphical desktop/KDE
+Requires:	kmail
+
+%description -n importwizard
+Import Wizard allows to migrate data from mailer as thunderbird/evolution etc.
+
+%files -n importwizard
+%doc %{_kde_docdir}/HTML/en/importwizard
+%{_kde_bindir}/importwizard
+%{_kde_applicationsdir}/importwizard.desktop
+%{_kde_iconsdir}/*/*/apps/kontact-import-wizard.*
+
+#-----------------------------------------------------------------------------
+
+%package -n kaddressbook
+Summary:	The KDE addressbook application
+Group:		Graphical desktop/KDE
+Url:		http://userbase.kde.org/KAddressBook
+Requires:	%{name}-core = %{EVRD}
+# Grantlee is needed for the simple view in kaddressbook
+Requires:	grantlee
+Requires:	akonadi-common
+Provides:	kde4-kaddressbook = %{EVRD}
+Conflicts:	%{name}-devel < 3:4.11.0
+
+%description -n kaddressbook
+The KDE addressbook application.
+
+%files -n kaddressbook
+%doc %{_kde_docdir}/HTML/en/kabcclient
+%{_kde_bindir}/kaddressbook
+%{_kde_bindir}/kabc2mutt
+%{_kde_bindir}/kabcclient
+%{_kde_applicationsdir}/kaddressbook.desktop
+%{_kde_appsdir}/kaddressbook
+%{_kde_configdir}/kaddressbook_themes.knsrc
+%{_kde_libdir}/kde4/kcm_ldap.so
+%{_kde_libdir}/akonadi/contact/editorpageplugins/cryptopageplugin.so
+%{_kde_libdir}/kde4/kaddressbookpart.so
+%{_kde_libdir}/kde4/kontact_kaddressbookplugin.so
+%{_kde_iconsdir}/*/*/apps/kaddressbook.*
+%{_kde_services}/kaddressbookpart.desktop
+%{_kde_services}/kontact/kaddressbookplugin.desktop
+%{_kde_services}/kcmldap.desktop
+%{_kde_mandir}/man1/kabcclient.1.*
+%{_datadir}/dbus-1/interfaces/org.kde.addressbook.service.xml
+
+#-----------------------------------------------------------------------------
+
 %package -n kalarm
 Summary:	A personal alarm message, command and email scheduler
 Group:		Graphical desktop/KDE
@@ -347,35 +364,77 @@ or you can schedule commands to be executed or emails to be sent.
 %{_datadir}/dbus-1/system-services/org.kde.kalarmrtcwake.service
 %{_datadir}/dbus-1/interfaces/org.kde.kalarm.kalarm.xml
 
+#---------------------------------------------------------------------------
+
+%package -n kincidenceeditor
+Summary:	kincidenceeditor
+Group:		Graphical desktop/KDE
+
+%description -n kincidenceeditor
+New incidince editor.
+
+%files -n kincidenceeditor
+%{_kde_bindir}/kincidenceeditor
+
 #-----------------------------------------------------------------------------
 
-%package -n ktimetracker
-Summary:	Tracks time spent on various tasks
+%package -n kjots
+Summary:	KDE note taking utility
 Group:		Graphical desktop/KDE
-Url:		http://community.kde.org/Ktimetracker
+Url:		http://userbase.kde.org/KJots
 Requires:	%{name}-core = %{EVRD}
-Provides:	kde4-ktimetracker = %{EVRD}
-Conflicts:	%{name}-devel < 3:4.11.0
+Provides:	kde4-kjots = %{EVRD}
 
-%description -n ktimetracker
-KTimeTracker tracks time spent on various tasks. It is useful for tracking
-hours to be billed to different clients or just to find out what percentage
-of your day is spent playing Doom or reading Slashdot.
+%description -n kjots
+A small program which is handy for keeping and organizing miscellaneous
+notes.
 
-%files -n ktimetracker
-%doc %{_kde_docdir}/HTML/en/ktimetracker
-%{_kde_bindir}/karm
-%{_kde_bindir}/ktimetracker
-%{_kde_appsdir}/ktimetracker
-%{_kde_applicationsdir}/ktimetracker.desktop
-%{_kde_iconsdir}/*/*/apps/ktimetracker.*
-%{_kde_services}/ktimetrackerpart.desktop
-%{_kde_services}/ktimetracker_config_behavior.desktop
-%{_kde_services}/ktimetracker_config_display.desktop
-%{_kde_services}/ktimetracker_config_storage.desktop
-%{_kde_libdir}/kde4/ktimetrackerpart.so
-%{_kde_libdir}/kde4/kcm_ktimetracker.so
-%{_datadir}/dbus-1/interfaces/org.kde.ktimetracker.ktimetracker.xml
+%files -n kjots
+%doc %{_kde_docdir}/HTML/en/kjots
+%{_kde_bindir}/kjots
+%{_kde_appsdir}/desktoptheme/default/widgets/stickynote.svgz
+%{_kde_appsdir}/kjots
+%{_kde_applicationsdir}/Kjots.desktop
+%{_kde_libdir}/kde4/kcm_kjots.so
+%{_kde_libdir}/kde4/kjotspart.so
+%{_kde_libdir}/kde4/kontact_kjotsplugin.so
+%{_kde_libdir}/kde4/plasma_applet_akonotes_list.so
+%{_kde_libdir}/kde4/plasma_applet_akonotes_note.so
+%{_kde_datadir}/config.kcfg/kjots.kcfg
+%{_kde_iconsdir}/*/*/apps/kjots.*
+%{_kde_iconsdir}/*/*/actions/edit-delete-page.*
+%{_kde_services}/akonotes_list.desktop
+%{_kde_services}/akonotes_note.desktop
+%{_kde_services}/kjots_config_misc.desktop
+%{_kde_services}/kjotspart.desktop
+%{_kde_services}/kontact/kjots_plugin.desktop
+
+#-----------------------------------------------------------------------------
+
+%package -n kleopatra
+Summary:	KDE Certificate Manager
+Group:		Graphical desktop/KDE
+Requires:	%{name}-core = %{EVRD}
+Provides:	kde4-kleopatra = %{EVRD}
+
+%description -n kleopatra
+KDE Certificate Manager
+
+%files -n kleopatra
+%doc %{_kde_docdir}/HTML/en/kleopatra
+%doc %{_kde_docdir}/HTML/en/kwatchgnupg
+%{_kde_bindir}/kleopatra
+%{_kde_bindir}/kgpgconf
+%{_kde_bindir}/kwatchgnupg
+%{_kde_applicationsdir}/kleopatra.desktop
+%{_kde_applicationsdir}/kleopatra_import.desktop
+%{_kde_configdir}/libkleopatrarc
+%{_kde_appsdir}/kleopatra
+%{_kde_appsdir}/libkleopatra
+%{_kde_appsdir}/kwatchgnupg
+%{_kde_iconsdir}/*/*/apps/kleopatra.*
+%{_kde_services}/kleopatra_*
+%{_kde_libdir}/kde4/kcm_kleopatra.so
 
 #-----------------------------------------------------------------------------
 
@@ -433,6 +492,7 @@ information manager of KDE.
 %{_kde_datadir}/config.kcfg/templatesconfiguration_kfg.kcfg
 %{_kde_configdir}/kmail.antispamrc
 %{_kde_configdir}/kmail.antivirusrc
+%{_kde_configdir}/ksieve_script.knsrc
 %{_kde_datadir}/ontology/kde/messagetag.ontology
 %{_kde_datadir}/ontology/kde/messagetag.trig
 %{_kde_iconsdir}/*/*/apps/kmail.*
@@ -458,31 +518,6 @@ information manager of KDE.
 
 #-----------------------------------------------------------------------------
 
-%package -n messageviewer
-Summary:	Message viewer for KDE Email Client
-Group:		Graphical desktop/KDE
-Url:		http://userbase.kde.org/KMail
-Conflicts:	akonadi-mailfilter-agent < 3:4.11.0
-Conflicts:	kmail-common < 3:4.11.0
-Obsoletes:	kmail-common < 3:4.11.0
-
-%description -n messageviewer
-Message viewer for KDE Email Client.
-
-%files -n messageviewer
-%{_kde_appsdir}/libmessageviewer
-%{_kde_appsdir}/messageviewer
-%{_kde_appsdir}/messagelist
-%{_kde_libdir}/kde4/messageviewer_bodypartformatter_application_mstnef.so
-%{_kde_libdir}/kde4/messageviewer_bodypartformatter_text_calendar.so
-%{_kde_libdir}/kde4/messageviewer_bodypartformatter_text_vcard.so
-%{_kde_libdir}/kde4/messageviewer_bodypartformatter_text_xdiff.so
-%{_kde_plugindir}/accessible/messagevieweraccessiblewidgetfactory.so
-%{_kde_plugindir}/grantlee/0.3/grantlee_messageheaderfilters.so
-%{_kde_datadir}/config/messageviewer_header_themes.knsrc
-
-#-----------------------------------------------------------------------------
-
 %package -n kmailcvt
 Summary:	KDE Mail Import tool
 Group:		Graphical desktop/KDE
@@ -501,36 +536,45 @@ KDE Mail Import tool
 
 #-----------------------------------------------------------------------------
 
-%package -n pimsettingexporter
-Summary:	Allows to save data from KDE PIM applications and restore them in other systems
+%package -n knode
+Summary:	A newsreader for the K Desktop Environment
 Group:		Graphical desktop/KDE
-Requires:	kmail
-Obsoletes:	backupmail < 3:4.10.0
+Url:		http://userbase.kde.org/KNode
+Requires:	%{name}-core = %{EVRD}
+Requires:	kdepimlibs4-core
+Requires:	kio4-nntp
+Provides:	kde4-knode = %{EVRD}
+Conflicts:	%{name}-devel < 3:4.11.0
 
-%description -n pimsettingexporter
-Allows to save data from KDE PIM applications and restore them in other
-systems. Successor of Backup Mail from KDE 4.9.
+%description -n knode
+KNode is a newsreader for the K Desktop Environment.
 
-%files -n pimsettingexporter
-%doc %{_kde_docdir}/HTML/en/pimsettingexporter
-%{_kde_bindir}/pimsettingexporter
-%{_kde_appsdir}/pimsettingexporter/pimsettingexporter.rc
+It is GNKSA compliant (unfortunally a review is still pending), and has
+support for MIME and multiple servers.
 
-#-----------------------------------------------------------------------------
+It is a online-reader, but in combination with a local newsserver like
+leafnode also usable with dial-up connections.
 
-%package -n importwizard
-Summary:	Import Wizard allows to migrate data from mailer as thunderbird/evolution etc
-Group:		Graphical desktop/KDE
-Requires:	kmail
-
-%description -n importwizard
-Import Wizard allows to migrate data from mailer as thunderbird/evolution etc.
-
-%files -n importwizard
-%doc %{_kde_docdir}/HTML/en/importwizard
-%{_kde_bindir}/importwizard
-%{_kde_applicationsdir}/importwizard.desktop
-%{_kde_iconsdir}/*/*/apps/kontact-import-wizard.*
+%files -n knode
+%doc %{_kde_docdir}/HTML/en/knode
+%doc %{_kde_docdir}/HTML/en/kioslave/news
+%{_kde_bindir}/knode
+%{_kde_applicationsdir}/KNode.desktop
+%{_kde_appsdir}/knode
+%{_kde_appsdir}/kconf_update/knode.upd
+%{_kde_iconsdir}/*/*/apps/knode.*
+%{_kde_services}/kontact/knodeplugin.desktop
+%{_kde_services}/knode_config_accounts.desktop
+%{_kde_services}/knode_config_appearance.desktop
+%{_kde_services}/knode_config_cleanup.desktop
+%{_kde_services}/knode_config_identity.desktop
+%{_kde_services}/knode_config_post_news.desktop
+%{_kde_services}/knode_config_privacy.desktop
+%{_kde_services}/knode_config_read_news.desktop
+%{_kde_libdir}/kde4/kcm_knode.so
+%{_kde_libdir}/kde4/knodepart.so
+%{_kde_libdir}/kde4/kontact_knodeplugin.so
+%{_datadir}/dbus-1/interfaces/org.kde.knode.xml
 
 #-----------------------------------------------------------------------------
 
@@ -687,121 +731,6 @@ Citadel or OpenGroupware.org.
 
 #-----------------------------------------------------------------------------
 
-%package -n akonadiconsole
-Summary:	Console that help to debug akonadi
-Group:		Graphical desktop/KDE
-Requires:	%{name}-core = %{EVRD}
-Conflicts:	kdepim4-core < 2:4.4.2-5
-
-%description -n akonadiconsole
-Console that help to debug akonadi
-
-%files -n akonadiconsole
-%{_kde_bindir}/akonadiconsole
-%{_kde_applicationsdir}/akonadiconsole.desktop
-%{_kde_appsdir}/akonadiconsole/akonadiconsoleui.rc
-%{_kde_iconsdir}/hicolor/*/apps/akonadiconsole.png
-
-#-----------------------------------------------------------------------------
-
-%package -n akonadi-archivemail-agent
-Summary:	Akonadi archivemail agent
-Group:		Graphical desktop/KDE
-Requires:	%{name}-core = %{EVRD}
-
-%description -n akonadi-archivemail-agent
-Akonadi archivemail agent.
-
-%files -n akonadi-archivemail-agent
-%doc %{_kde_docdir}/HTML/en/akonadi_archivemail_agent
-%{_kde_bindir}/akonadi_archivemail_agent
-%{_kde_datadir}/akonadi/agents/archivemailagent.desktop
-%{_kde_appsdir}/akonadi_archivemail_agent
-
-#-----------------------------------------------------------------------------
-
-%package -n akonadi-folderarchive-agent
-Summary:	Akonadi folderarchive agent
-Group:		Graphical desktop/KDE
-Requires:	%{name}-core = %{EVRD}
-
-%description -n akonadi-folderarchive-agent
-Akonadi folderarchive agent.
-
-%files -n akonadi-folderarchive-agent
-%doc %{_kde_docdir}/HTML/en/akonadi_folderarchive_agent
-%{_kde_bindir}/akonadi_folderarchive_agent
-%{_kde_datadir}/akonadi/agents/folderarchiveagent.desktop
-%{_kde_appsdir}/akonadi_folderarchive_agent
-
-#-----------------------------------------------------------------------------
-
-%package -n akonadi-mailfilter-agent
-Summary:	Akonadi mailfilter agent
-Group:		Graphical desktop/KDE
-Requires:	%{name}-core = %{EVRD}
-
-%description -n akonadi-mailfilter-agent
-Akonadi mailfilter agent.
-
-%files -n akonadi-mailfilter-agent
-%{_kde_bindir}/akonadi_mailfilter_agent
-%{_kde_datadir}/akonadi/agents/mailfilteragent.desktop
-%{_kde_appsdir}/akonadi_mailfilter_agent
-%{_kde_appsdir}/kconf_update/mailfilteragent.upd
-%{_kde_appsdir}/kconf_update/migrate-kmail-filters.pl
-
-#-----------------------------------------------------------------------------
-
-%package -n akonadi-sendlater-agent
-Summary:	Akonadi sendlater agent
-Group:		Graphical desktop/KDE
-Requires:	%{name}-core = %{EVRD}
-
-%description -n akonadi-sendlater-agent
-Akonadi sendlater agent.
-
-%files -n akonadi-sendlater-agent
-%doc %{_kde_docdir}/HTML/en/akonadi_sendlater_agent
-%{_kde_bindir}/akonadi_sendlater_agent
-%{_kde_datadir}/akonadi/agents/sendlateragent.desktop
-%{_kde_appsdir}/akonadi_sendlater_agent
-
-#-----------------------------------------------------------------------------
-
-%package -n kjots
-Summary:	KDE note taking utility
-Group:		Graphical desktop/KDE
-Url:		http://userbase.kde.org/KJots
-Requires:	%{name}-core = %{EVRD}
-Provides:	kde4-kjots = %{EVRD}
-
-%description -n kjots
-A small program which is handy for keeping and organizing miscellaneous
-notes.
-
-%files -n kjots
-%doc %{_kde_docdir}/HTML/en/kjots
-%{_kde_bindir}/kjots
-%{_kde_appsdir}/desktoptheme/default/widgets/stickynote.svgz
-%{_kde_appsdir}/kjots
-%{_kde_applicationsdir}/Kjots.desktop
-%{_kde_libdir}/kde4/kcm_kjots.so
-%{_kde_libdir}/kde4/kjotspart.so
-%{_kde_libdir}/kde4/kontact_kjotsplugin.so
-%{_kde_libdir}/kde4/plasma_applet_akonotes_list.so
-%{_kde_libdir}/kde4/plasma_applet_akonotes_note.so
-%{_kde_datadir}/config.kcfg/kjots.kcfg
-%{_kde_iconsdir}/*/*/apps/kjots.*
-%{_kde_iconsdir}/*/*/actions/edit-delete-page.*
-%{_kde_services}/akonotes_list.desktop
-%{_kde_services}/akonotes_note.desktop
-%{_kde_services}/kjots_config_misc.desktop
-%{_kde_services}/kjotspart.desktop
-%{_kde_services}/kontact/kjots_plugin.desktop
-
-#-----------------------------------------------------------------------------
-
 %package kresources
 Summary:	KDE pim resource plugins
 Group:		Graphical desktop/KDE
@@ -833,6 +762,36 @@ Requires:	%{name}-core = %{EVRD}
 
 #-----------------------------------------------------------------------------
 
+%package -n ktimetracker
+Summary:	Tracks time spent on various tasks
+Group:		Graphical desktop/KDE
+Url:		http://community.kde.org/Ktimetracker
+Requires:	%{name}-core = %{EVRD}
+Provides:	kde4-ktimetracker = %{EVRD}
+Conflicts:	%{name}-devel < 3:4.11.0
+
+%description -n ktimetracker
+KTimeTracker tracks time spent on various tasks. It is useful for tracking
+hours to be billed to different clients or just to find out what percentage
+of your day is spent playing Doom or reading Slashdot.
+
+%files -n ktimetracker
+%doc %{_kde_docdir}/HTML/en/ktimetracker
+%{_kde_bindir}/karm
+%{_kde_bindir}/ktimetracker
+%{_kde_appsdir}/ktimetracker
+%{_kde_applicationsdir}/ktimetracker.desktop
+%{_kde_iconsdir}/*/*/apps/ktimetracker.*
+%{_kde_services}/ktimetrackerpart.desktop
+%{_kde_services}/ktimetracker_config_behavior.desktop
+%{_kde_services}/ktimetracker_config_display.desktop
+%{_kde_services}/ktimetracker_config_storage.desktop
+%{_kde_libdir}/kde4/ktimetrackerpart.so
+%{_kde_libdir}/kde4/kcm_ktimetracker.so
+%{_datadir}/dbus-1/interfaces/org.kde.ktimetracker.ktimetracker.xml
+
+#-----------------------------------------------------------------------------
+
 %package -n ktnef
 Summary:	KDE TNEF File Viewer
 Group:		Graphical desktop/KDE
@@ -853,6 +812,31 @@ mail servers and embed the mail properties as well as the actual attachments.
 
 #-----------------------------------------------------------------------------
 
+%package -n messageviewer
+Summary:	Message viewer for KDE Email Client
+Group:		Graphical desktop/KDE
+Url:		http://userbase.kde.org/KMail
+Conflicts:	akonadi-mailfilter-agent < 3:4.11.0
+Conflicts:	kmail-common < 3:4.11.0
+Obsoletes:	kmail-common < 3:4.11.0
+
+%description -n messageviewer
+Message viewer for KDE Email Client.
+
+%files -n messageviewer
+%{_kde_appsdir}/libmessageviewer
+%{_kde_appsdir}/messageviewer
+%{_kde_appsdir}/messagelist
+%{_kde_libdir}/kde4/messageviewer_bodypartformatter_application_mstnef.so
+%{_kde_libdir}/kde4/messageviewer_bodypartformatter_text_calendar.so
+%{_kde_libdir}/kde4/messageviewer_bodypartformatter_text_vcard.so
+%{_kde_libdir}/kde4/messageviewer_bodypartformatter_text_xdiff.so
+%{_kde_plugindir}/accessible/messagevieweraccessiblewidgetfactory.so
+%{_kde_plugindir}/grantlee/0.3/grantlee_messageheaderfilters.so
+%{_kde_datadir}/config/messageviewer_header_themes.knsrc
+
+#-----------------------------------------------------------------------------
+
 %package -n pimactivity
 Summary:	KDE Activities integration in PIM
 Group:		Graphical desktop/KDE
@@ -864,6 +848,24 @@ KDE Activities integration in PIM.
 %files -n pimactivity
 %{_kde_services}/kcmpimactivity.desktop
 %{_kde_libdir}/kde4/kcm_pimactivity.so
+
+#-----------------------------------------------------------------------------
+
+%package -n pimsettingexporter
+Summary:	Allows to save data from KDE PIM applications and restore them in other systems
+Group:		Graphical desktop/KDE
+Requires:	kmail
+Obsoletes:	backupmail < 3:4.10.0
+
+%description -n pimsettingexporter
+Allows to save data from KDE PIM applications and restore them in other
+systems. Successor of Backup Mail from KDE 4.9.
+
+%files -n pimsettingexporter
+%doc %{_kde_docdir}/HTML/en/pimsettingexporter
+%{_kde_bindir}/pimsettingexporter
+%{_kde_appsdir}/pimsettingexporter/backup-structure.txt
+%{_kde_appsdir}/pimsettingexporter/pimsettingexporter.rc
 
 #-----------------------------------------------------------------------------
 

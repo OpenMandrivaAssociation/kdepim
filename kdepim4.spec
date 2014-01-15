@@ -248,6 +248,7 @@ The KDE addressbook application.
 %{_kde_bindir}/kabcclient
 %{_kde_applicationsdir}/kaddressbook.desktop
 %{_kde_appsdir}/kaddressbook
+%{_kde_configdir}/kaddressbook_themes.knsrc
 %{_kde_libdir}/kde4/kcm_ldap.so
 %{_kde_libdir}/akonadi/contact/editorpageplugins/cryptopageplugin.so
 %{_kde_libdir}/kde4/kaddressbookpart.so
@@ -564,7 +565,7 @@ although including some advanced features.
 %{_kde_services}/knote_config_display.desktop
 %{_kde_services}/knote_config_editor.desktop
 %{_kde_services}/knote_config_network.desktop
-%{_kde_services}/knote_config_style.desktop
+%{_kde_services}/knote_config_print.desktop
 %{_kde_libdir}/kde4/knotes_local.so
 %{_kde_libdir}/kde4/kcm_knote.so
 %{_kde_libdir}/kde4/kontact_knotesplugin.so
@@ -642,6 +643,7 @@ Citadel or OpenGroupware.org.
 %files -n korganizer
 %doc %{_kde_docdir}/HTML/en/korganizer
 %doc %{_kde_docdir}/HTML/en/konsolekalendar
+%{_kde_bindir}/calendarjanitor
 %{_kde_bindir}/ical2vcal
 %{_kde_bindir}/konsolekalendar
 %{_kde_bindir}/korgac
@@ -1507,6 +1509,8 @@ based on kdepim.
 * Tue Jan 14 2014 Andrey Bondrov <andrey.bondrov@rosalab.ru> 3:4.12.1-1
 - New version 4.12.1
 - New subpackage akonadi-folderarchive-agent
+- Add new tool calendarjanitor to korganizer package
+- Update files
 
 * Wed Dec 04 2013 Andrey Bondrov <andrey.bondrov@rosalab.ru> 3:4.11.4-1
 - New version 4.11.4

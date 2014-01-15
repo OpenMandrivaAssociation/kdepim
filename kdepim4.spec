@@ -957,6 +957,21 @@ KDE 4 library.
 
 #-----------------------------------------------------------------------------
 
+%define folderarchive_major 4
+%define libfolderarchive %mklibname folderarchive %{folderarchive_major}
+
+%package -n %{libfolderarchive}
+Summary:	KDE 4 library
+Group:		System/Libraries
+
+%description -n %{libfolderarchive}
+KDE 4 library.
+
+%files -n %{libfolderarchive}
+%{_kde_libdir}/libfolderarchive.so.%{folderarchive_major}*
+
+#-----------------------------------------------------------------------------
+
 %define grammar_major 4
 %define libgrammar %mklibname grammar %{grammar_major}
 
@@ -969,6 +984,36 @@ This library provides grammar support.
 
 %files -n %{libgrammar}
 %{_kde_libdir}/libgrammar.so.%{grammar_major}*
+
+#-----------------------------------------------------------------------------
+
+%define grantleetheme_major 4
+%define libgrantleetheme %mklibname grantleetheme %{grantleetheme_major}
+
+%package -n %{libgrantleetheme}
+Summary:	KDE 4 library
+Group:		System/Libraries
+
+%description -n %{libgrantleetheme}
+KDE 4 library.
+
+%files -n %{libgrantleetheme}
+%{_kde_libdir}/libgrantleetheme.so.%{grantleetheme_major}*
+
+#-----------------------------------------------------------------------------
+
+%define grantleethemeeditor_major 4
+%define libgrantleethemeeditor %mklibname grantleethemeeditor %{grantleethemeeditor_major}
+
+%package -n %{libgrantleethemeeditor}
+Summary:	KDE 4 library
+Group:		System/Libraries
+
+%description -n %{libgrantleethemeeditor}
+KDE 4 library.
+
+%files -n %{libgrantleethemeeditor}
+%{_kde_libdir}/libgrantleethemeeditor.so.%{grantleethemeeditor_major}*
 
 #----------------------------------------------------------------------------
 
@@ -1452,7 +1497,10 @@ Requires:	%{libakregatorprivate} = %{EVRD}
 Requires:	%{libcalendarsupport} = %{EVRD}
 Requires:	%{libcomposereditorng} = %{EVRD}
 Requires:	%{libeventviews} = %{EVRD}
+Requires:	%{libfolderarchive} = %{EVRD}
 Requires:	%{libgrammar} = %{EVRD}
+Requires:	%{libgrantleetheme} = %{EVRD}
+Requires:	%{libgrantleethemeeditor} = %{EVRD}
 Requires:	%{libincidenceeditorsng} = %{EVRD}
 Requires:	%{libincidenceeditorsngmobile} = %{EVRD}
 Requires:	%{libkcal_resourceblog} = %{EVRD}
@@ -1509,6 +1557,7 @@ based on kdepim.
 - New subpackage akonadi-folderarchive-agent
 - Add new tool calendarjanitor to korganizer package
 - Sort library subpackages
+- New subpackages libfolderarchive, libgrantleetheme, libgrantleethemeeditor
 - Update files
 
 * Wed Dec 04 2013 Andrey Bondrov <andrey.bondrov@rosalab.ru> 3:4.11.4-1

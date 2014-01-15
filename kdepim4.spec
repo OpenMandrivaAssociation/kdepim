@@ -867,6 +867,142 @@ KDE Activities integration in PIM.
 
 #-----------------------------------------------------------------------------
 
+%define akonadi_next_major 4
+%define libakonadi_next %mklibname akonadi-next %{akonadi_next_major}
+
+%package -n %{libakonadi_next}
+Summary:	KDE 4 library
+Group:		System/Libraries
+
+%description -n %{libakonadi_next}
+KDE 4 library.
+
+%files -n %{libakonadi_next}
+%{_kde_libdir}/libakonadi_next.so.%{akonadi_next_major}*
+
+#-----------------------------------------------------------------------------
+
+%define akregatorinterfaces_major 4
+%define libakregatorinterfaces %mklibname akregatorinterfaces %{akregatorinterfaces_major}
+
+%package -n %{libakregatorinterfaces}
+Summary:	KDE 4 library
+Group:		System/Libraries
+
+%description -n %{libakregatorinterfaces}
+KDE 4 library.
+
+%files -n %{libakregatorinterfaces}
+%{_kde_libdir}/libakregatorinterfaces.so.%{akregatorinterfaces_major}*
+
+#-----------------------------------------------------------------------------
+
+%define akregatorprivate_major 4
+%define libakregatorprivate %mklibname akregatorprivate %{akregatorprivate_major}
+
+%package -n %{libakregatorprivate}
+Summary:	KDE 4 library
+Group:		System/Libraries
+
+%description -n %{libakregatorprivate}
+KDE 4 library.
+
+%files -n %{libakregatorprivate}
+%{_kde_libdir}/libakregatorprivate.so.%{akregatorprivate_major}*
+
+#------------------------------------------------------------------------------
+
+%define calendarsupport_major 4
+%define libcalendarsupport %mklibname calendarsupport %{calendarsupport_major}
+
+%package -n %{libcalendarsupport}
+Summary:	KDE 4 library
+Group:		System/Libraries
+
+%description -n %{libcalendarsupport}
+KDE 4 library for korganizer-Mobile.
+
+%files -n %{libcalendarsupport}
+%{_kde_libdir}/libcalendarsupport.so.%{calendarsupport_major}*
+
+#-----------------------------------------------------------------------------
+
+%define composereditorng_major 4
+%define libcomposereditorng %mklibname composereditorng %{composereditorng_major}
+
+%package -n %{libcomposereditorng}
+Summary:	Library providing autospell checking
+Group:		System/Libraries
+
+%description -n %{libcomposereditorng}
+This library provides autospell checking.
+
+%files -n %{libcomposereditorng}
+%{_kde_libdir}/libcomposereditorng.so.%{composereditorng_major}*
+
+#-----------------------------------------------------------------------------
+
+%define eventviews_major 4
+%define libeventviews %mklibname eventviews %{eventviews_major}
+
+%package -n %{libeventviews}
+Summary:	KDE 4 library
+Group:		System/Libraries
+
+%description -n %{libeventviews}
+KDE 4 library.
+
+%files -n %{libeventviews}
+%{_kde_libdir}/libeventviews.so.%{eventviews_major}*
+
+#-----------------------------------------------------------------------------
+
+%define grammar_major 4
+%define libgrammar %mklibname grammar %{grammar_major}
+
+%package -n %{libgrammar}
+Summary:	Library providing grammar support
+Group:		System/Libraries
+
+%description -n %{libgrammar}
+This library provides grammar support.
+
+%files -n %{libgrammar}
+%{_kde_libdir}/libgrammar.so.%{grammar_major}*
+
+#----------------------------------------------------------------------------
+
+%define incidenceeditorsng_major 4
+%define libincidenceeditorsng %mklibname incidenceeditorsng %{incidenceeditorsng_major}
+
+%package -n %{libincidenceeditorsng}
+Summary:	KDE 4 library
+Group:		System/Libraries
+Obsoletes:	%{_lib}incidenceeditors4 < 2:4.5.68
+
+%description -n %{libincidenceeditorsng}
+KDE 4 library.
+
+%files -n %{libincidenceeditorsng}
+%{_kde_libdir}/libincidenceeditorsng.so.%{incidenceeditorsng_major}*
+
+#-----------------------------------------------------------------------------
+
+%define incidenceeditorsngmobile_major 4
+%define libincidenceeditorsngmobile %mklibname incidenceeditorssngmobile %{incidenceeditorsngmobile_major}
+
+%package -n %{libincidenceeditorsngmobile}
+Summary:	KDEPIM Mobile Library
+Group:		System/Libraries
+
+%description -n %{libincidenceeditorsngmobile}
+KDE PIM Mobile library.
+
+%files -n %{libincidenceeditorsngmobile}
+%{_kde_libdir}/libincidenceeditorsngmobile.so.%{incidenceeditorsngmobile_major}*
+
+#-----------------------------------------------------------------------------
+
 %define kaddressbookprivate_major 4
 %define libkaddressbookprivate %mklibname kaddressbookprivate %{kaddressbookprivate_major}
 
@@ -879,6 +1015,126 @@ KDE 4 library.
 
 %files -n %{libkaddressbookprivate}
 %{_kde_libdir}/libkaddressbookprivate.so.%{kaddressbookprivate_major}*
+
+#-----------------------------------------------------------------------------
+
+%define kcal_resourceblog 4
+%define libkcal_resourceblog %mklibname kcal_resourceblog %{kcal_resourceblog}
+
+%package -n %{libkcal_resourceblog}
+Summary:	KDE 4 library
+Group:		System/Libraries
+
+%description -n %{libkcal_resourceblog}
+KDE 4 library.
+
+%files -n %{libkcal_resourceblog}
+%{_kde_libdir}/libkcal_resourceblog.so.%{kcal_resourceblog}*
+
+#-----------------------------------------------------------------------------
+
+%define kcal_resourceremote_major 4
+%define libkcal_resourceremote %mklibname kcal_resourceremote %{kcal_resourceremote_major}
+
+%package -n %{libkcal_resourceremote}
+Summary:	KDE 4 library
+Group:		System/Libraries
+
+%description -n %{libkcal_resourceremote}
+KDE 4 library.
+
+%files -n %{libkcal_resourceremote}
+%{_kde_libdir}/libkcal_resourceremote.so.%{kcal_resourceremote_major}*
+
+#-----------------------------------------------------------------------------
+
+%define kdepim_major 4
+%define libkdepim %mklibname kdepim %{kdepim_major}
+
+%package -n %{libkdepim}
+Summary:	KDE 4 library
+Group:		System/Libraries
+
+%description -n %{libkdepim}
+KDE 4 library.
+
+%files -n %{libkdepim}
+%{_kde_libdir}/libkdepim.so.%{kdepim_major}*
+
+#-----------------------------------------------------------------------
+
+%define kdgantt2_major 0
+%define libkdgantt2 %mklibname kdgantt2 %{kdgantt2_major}
+
+%package -n %{libkdgantt2}
+Summary:	KDE4 library
+Group:		System/Libraries
+
+%description -n %{libkdgantt2}
+KDE 4 library.
+
+%files -n %{libkdgantt2}
+%{_kde_libdir}/libkdgantt2.so.%{kdgantt2_major}*
+
+#-----------------------------------------------------------------------------
+
+%define kleo_major 4
+%define libkleo %mklibname kleo %{kleo_major}
+
+%package -n %{libkleo}
+Summary:	KDE 4 library
+Group:		System/Libraries
+
+%description -n %{libkleo}
+KDE 4 library.
+
+%files -n %{libkleo}
+%{_kde_libdir}/libkleo.so.%{kleo_major}*
+
+#-----------------------------------------------------------------------------
+
+%define kmailprivate_major 4
+%define libkmailprivate %mklibname kmailprivate %{kmailprivate_major}
+
+%package -n %{libkmailprivate}
+Summary:	KDE 4 library
+Group:		System/Libraries
+
+%description -n %{libkmailprivate}
+KDE 4 library.
+
+%files -n %{libkmailprivate}
+%{_kde_libdir}/libkmailprivate.so.%{kmailprivate_major}*
+
+#-----------------------------------------------------------------------------
+
+%define kmanagesieve_major 4
+%define libkmanagesieve %mklibname kmanagesieve %{kmanagesieve_major}
+
+%package -n %{libkmanagesieve}
+Summary:	KDE 4 library
+Group:		System/Libraries
+
+%description -n %{libkmanagesieve}
+KDE 4 library.
+
+%files -n %{libkmanagesieve}
+%{_kde_libdir}/libkmanagesieve.so.%{kmanagesieve_major}*
+
+#-----------------------------------------------------------------------------
+
+%define knodecommon_major 4
+%define libknodecommon %mklibname knodecommon %{knodecommon_major}
+
+%package -n %{libknodecommon}
+Summary:	KDE 4 library
+Group:		System/Libraries
+
+%description -n %{libknodecommon}
+KDE 4 library.
+
+%files -n %{libknodecommon}
+%{_kde_libdir}/libknodecommon.so.%{knodecommon_major}*
 
 #-----------------------------------------------------------------------------
 
@@ -912,34 +1168,33 @@ KDE 4 library.
 
 #-----------------------------------------------------------------------------
 
-%define kdepim_major 4
-%define libkdepim %mklibname kdepim %{kdepim_major}
+%define korganizer_interfaces_major 4
+%define libkorganizer_interfaces %mklibname korganizer_interfaces %{korganizer_interfaces_major}
 
-%package -n %{libkdepim}
+%package -n %{libkorganizer_interfaces}
 Summary:	KDE 4 library
 Group:		System/Libraries
 
-%description -n %{libkdepim}
+%description -n %{libkorganizer_interfaces}
 KDE 4 library.
 
-%files -n %{libkdepim}
-%{_kde_libdir}/libkdepim.so.%{kdepim_major}*
+%files -n %{libkorganizer_interfaces}
+%{_kde_libdir}/libkorganizer_interfaces.so.%{korganizer_interfaces_major}*
 
-#----------------------------------------------------------------------------
+#-----------------------------------------------------------------------------
 
-%define libincidenceeditorsngmobile_major 4
-%define libincidenceeditorsngmobile %mklibname incidenceeditorssngmobile %{libincidenceeditorsngmobile_major}
+%define korganizerprivate_major 4
+%define libkorganizerprivate %mklibname korganizerprivate %{korganizerprivate_major}
 
-%package -n %{libincidenceeditorsngmobile}
-Summary:	KDEPIM Mobile Library
+%package -n %{libkorganizerprivate}
+Summary:	KDE 4 library
 Group:		System/Libraries
 
-%description -n %{libincidenceeditorsngmobile}
-KDE PIM Mobile library.
+%description -n %{libkorganizerprivate}
+KDE 4 library.
 
-%files -n %{libincidenceeditorsngmobile}
-%{_kde_libdir}/libincidenceeditorsngmobile.so.%{libincidenceeditorsngmobile_major}*
-
+%files -n %{libkorganizerprivate}
+%{_kde_libdir}/libkorganizerprivate.so.%{korganizerprivate_major}*
 
 #-----------------------------------------------------------------------------
 
@@ -955,36 +1210,6 @@ KDE 4 library.
 
 %files -n %{libkpgp}
 %{_kde_libdir}/libkpgp.so.%{kpgp_major}*
-
-#-----------------------------------------------------------------------------
-
-%define kmanagesieve_major 4
-%define libkmanagesieve %mklibname kmanagesieve %{kmanagesieve_major}
-
-%package -n %{libkmanagesieve}
-Summary:	KDE 4 library
-Group:		System/Libraries
-
-%description -n %{libkmanagesieve}
-KDE 4 library.
-
-%files -n %{libkmanagesieve}
-%{_kde_libdir}/libkmanagesieve.so.%{kmanagesieve_major}*
-
-#-----------------------------------------------------------------------------
-
-%define ksieveui_major 4
-%define libksieveui %mklibname ksieveui %{ksieveui_major}
-
-%package -n %{libksieveui}
-Summary:	KDE 4 library
-Group:		System/Libraries
-
-%description -n %{libksieveui}
-KDE 4 library.
-
-%files -n %{libksieveui}
-%{_kde_libdir}/libksieveui.so.%{ksieveui_major}*
 
 #----------------------------------------------------------------------------
 
@@ -1003,78 +1228,18 @@ KDE 4 library.
 
 #-----------------------------------------------------------------------------
 
-%define akregatorinterfaces_major 4
-%define libakregatorinterfaces %mklibname akregatorinterfaces %{akregatorinterfaces_major}
+%define ksieveui_major 4
+%define libksieveui %mklibname ksieveui %{ksieveui_major}
 
-%package -n %{libakregatorinterfaces}
+%package -n %{libksieveui}
 Summary:	KDE 4 library
 Group:		System/Libraries
 
-%description -n %{libakregatorinterfaces}
+%description -n %{libksieveui}
 KDE 4 library.
 
-%files -n %{libakregatorinterfaces}
-%{_kde_libdir}/libakregatorinterfaces.so.%{akregatorinterfaces_major}*
-
-#-----------------------------------------------------------------------------
-
-%define akregatorprivate_major 4
-%define libakregatorprivate %mklibname akregatorprivate %{akregatorprivate_major}
-
-%package -n %{libakregatorprivate}
-Summary:	KDE 4 library
-Group:		System/Libraries
-
-%description -n %{libakregatorprivate}
-KDE 4 library.
-
-%files -n %{libakregatorprivate}
-%{_kde_libdir}/libakregatorprivate.so.%{akregatorprivate_major}*
-
-#-----------------------------------------------------------------------------
-
-%define korganizerprivate_major 4
-%define libkorganizerprivate %mklibname korganizerprivate %{korganizerprivate_major}
-
-%package -n %{libkorganizerprivate}
-Summary:	KDE 4 library
-Group:		System/Libraries
-
-%description -n %{libkorganizerprivate}
-KDE 4 library.
-
-%files -n %{libkorganizerprivate}
-%{_kde_libdir}/libkorganizerprivate.so.%{korganizerprivate_major}*
-
-#------------------------------------------------------------------------------
-
-%define libcalendarsupport_major 4
-%define libcalendarsupport %mklibname calendarsupport %{libcalendarsupport_major}
-
-%package -n %{libcalendarsupport}
-Summary:	KDE 4 library
-Group:		System/Libraries
-
-%description -n %{libcalendarsupport}
-KDE 4 library for korganizer-Mobile.
-
-%files -n %{libcalendarsupport}
-%{_kde_libdir}/libcalendarsupport.so.%{libcalendarsupport_major}*
-
-#-----------------------------------------------------------------------------
-
-%define kmailprivate_major 4
-%define libkmailprivate %mklibname kmailprivate %{kmailprivate_major}
-
-%package -n %{libkmailprivate}
-Summary:	KDE 4 library
-Group:		System/Libraries
-
-%description -n %{libkmailprivate}
-KDE 4 library.
-
-%files -n %{libkmailprivate}
-%{_kde_libdir}/libkmailprivate.so.%{kmailprivate_major}*
+%files -n %{libksieveui}
+%{_kde_libdir}/libksieveui.so.%{ksieveui_major}*
 
 #-----------------------------------------------------------------------------
 
@@ -1090,6 +1255,21 @@ KDE 4 library.
 
 %files -n %{libmailcommon}
 %{_kde_libdir}/libmailcommon.so.%{mailcommon_major}*
+
+#-----------------------------------------------------------------------------
+
+%define mailimporter_major 4
+%define libmailimporter %mklibname mailimporter %{mailimporter_major}
+
+%package -n %{libmailimporter}
+Summary:	KDE 4 library
+Group:		System/Libraries
+
+%description -n %{libmailimporter}
+KDE 4 library.
+
+%files -n %{libmailimporter}
+%{_kde_libdir}/libmailimporter.so.%{mailimporter_major}*
 
 #-----------------------------------------------------------------------------
 
@@ -1123,82 +1303,6 @@ KDE 4 library.
 
 #-----------------------------------------------------------------------------
 
-%define knodecommon_major 4
-%define libknodecommon %mklibname knodecommon %{knodecommon_major}
-
-%package -n %{libknodecommon}
-Summary:	KDE 4 library
-Group:		System/Libraries
-
-%description -n %{libknodecommon}
-KDE 4 library.
-
-%files -n %{libknodecommon}
-%{_kde_libdir}/libknodecommon.so.%{knodecommon_major}*
-
-#-----------------------------------------------------------------------------
-
-%define kcal_resourceblog 4
-%define libkcal_resourceblog %mklibname kcal_resourceblog %{kcal_resourceblog}
-
-%package -n %{libkcal_resourceblog}
-Summary:	KDE 4 library
-Group:		System/Libraries
-
-%description -n %{libkcal_resourceblog}
-KDE 4 library.
-
-%files -n %{libkcal_resourceblog}
-%{_kde_libdir}/libkcal_resourceblog.so.%{kcal_resourceblog}*
-
-#-----------------------------------------------------------------------------
-
-%define kcal_resourceremote_major 4
-%define libkcal_resourceremote %mklibname kcal_resourceremote %{kcal_resourceremote_major}
-
-%package -n %{libkcal_resourceremote}
-Summary:	KDE 4 library
-Group:		System/Libraries
-
-%description -n %{libkcal_resourceremote}
-KDE 4 library.
-
-%files -n %{libkcal_resourceremote}
-%{_kde_libdir}/libkcal_resourceremote.so.%{kcal_resourceremote_major}*
-
-#-----------------------------------------------------------------------
-
-%define libkdgantt2_major 0
-%define libkdgantt2 %mklibname kdgantt2 %{libkdgantt2_major}
-
-%package -n %{libkdgantt2}
-Summary:	KDE4 library
-Group:		System/Libraries
-
-%description -n %{libkdgantt2}
-KDE 4 library.
-
-%files -n %{libkdgantt2}
-%{_kde_libdir}/libkdgantt2.so.%{libkdgantt2_major}*
-
-#-----------------------------------------------------------------------------
-
-%define kleo_major 4
-%define libkleo %mklibname kleo %{kleo_major}
-
-%package -n %{libkleo}
-Summary:	KDE 4 library
-Group:		System/Libraries
-
-%description -n %{libkleo}
-KDE 4 library.
-
-%files -n %{libkleo}
-%{_kde_libdir}/libkleo.so.%{kleo_major}*
-
-
-#-----------------------------------------------------------------------------
-
 %define messageviewer_major 4
 %define libmessageviewer %mklibname messageviewer %{messageviewer_major}
 
@@ -1211,67 +1315,6 @@ KDE 4 library.
 
 %files -n %{libmessageviewer}
 %{_kde_libdir}/libmessageviewer.so.%{messageviewer_major}*
-
-#-----------------------------------------------------------------------------
-
-%define korganizer_interfaces_major 4
-%define libkorganizer_interfaces %mklibname korganizer_interfaces %{korganizer_interfaces_major}
-
-%package -n %{libkorganizer_interfaces}
-Summary:	KDE 4 library
-Group:		System/Libraries
-
-%description -n %{libkorganizer_interfaces}
-KDE 4 library.
-
-%files -n %{libkorganizer_interfaces}
-%{_kde_libdir}/libkorganizer_interfaces.so.%{korganizer_interfaces_major}*
-
-#-----------------------------------------------------------------------------
-
-%define akonadi_next_major 4
-%define libakonadi_next %mklibname akonadi-next %{akonadi_next_major}
-
-%package -n %{libakonadi_next}
-Summary:	KDE 4 library
-Group:		System/Libraries
-
-%description -n %{libakonadi_next}
-KDE 4 library.
-
-%files -n %{libakonadi_next}
-%{_kde_libdir}/libakonadi_next.so.%{akonadi_next_major}*
-
-#-----------------------------------------------------------------------------
-
-%define eventviews_major 4
-%define libeventviews %mklibname eventviews %{eventviews_major}
-
-%package -n %{libeventviews}
-Summary:	KDE 4 library
-Group:		System/Libraries
-
-%description -n %{libeventviews}
-KDE 4 library.
-
-%files -n %{libeventviews}
-%{_kde_libdir}/libeventviews.so.%{eventviews_major}*
-
-#-----------------------------------------------------------------------------
-
-%define libincidenceeditorsng_major 4
-%define libincidenceeditorsng %mklibname incidenceeditorsng %{libincidenceeditorsng_major}
-
-%package -n %{libincidenceeditorsng}
-Summary:	KDE 4 library
-Group:		System/Libraries
-Obsoletes:	%{_lib}incidenceeditors4 < 2:4.5.68
-
-%description -n %{libincidenceeditorsng}
-KDE 4 library.
-
-%files -n %{libincidenceeditorsng}
-%{_kde_libdir}/libincidenceeditorsng.so.%{libincidenceeditorsng_major}*
 
 #-----------------------------------------------------------------------------
 
@@ -1337,68 +1380,8 @@ KDE 4 library.
 
 #-----------------------------------------------------------------------------
 
-%define templateparser_major 4
-%define libtemplateparser %mklibname templateparser %{templateparser_major}
-
-%package -n %{libtemplateparser}
-Summary:	KDE 4 library
-Group:		System/Libraries
-
-%description -n %{libtemplateparser}
-KDE 4 library.
-
-%files -n %{libtemplateparser}
-%{_kde_libdir}/libtemplateparser.so.%{templateparser_major}*
-
-#-----------------------------------------------------------------------------
-
-%define libcomposereditorng_major 4
-%define libcomposereditorng %mklibname composereditorng %{libcomposereditorng_major}
-
-%package -n %{libcomposereditorng}
-Summary:	Library providing autospell checking
-Group:		System/Libraries
-
-%description -n %{libcomposereditorng}
-This library provides autospell checking.
-
-%files -n %{libcomposereditorng}
-%{_kde_libdir}/libcomposereditorng.so.%{libcomposereditorng_major}*
-
-#-----------------------------------------------------------------------------
-
-%define libgrammar_major 4
-%define libgrammar %mklibname grammar %{libgrammar_major}
-
-%package -n %{libgrammar}
-Summary:	Library providing grammar support
-Group:		System/Libraries
-
-%description -n %{libgrammar}
-This library provides grammar support.
-
-%files -n %{libgrammar}
-%{_kde_libdir}/libgrammar.so.%{libgrammar_major}*
-
-#-----------------------------------------------------------------------------
-
-%define mailimporter_major 4
-%define libmailimporter %mklibname mailimporter %{mailimporter_major}
-
-%package -n %{libmailimporter}
-Summary:	KDE 4 library
-Group:		System/Libraries
-
-%description -n %{libmailimporter}
-KDE 4 library.
-
-%files -n %{libmailimporter}
-%{_kde_libdir}/libmailimporter.so.%{mailimporter_major}*
-
-#-----------------------------------------------------------------------------
-
-%define libpimactivity_major 4
-%define libpimactivity %mklibname pimactivity %{libpimactivity_major}
+%define pimactivity_major 4
+%define libpimactivity %mklibname pimactivity %{pimactivity_major}
 
 %package -n %{libpimactivity}
 Summary:	Library for KDE Activities integration in PIM
@@ -1408,12 +1391,12 @@ Group:		System/Libraries
 Library for KDE Activities integration in PIM.
 
 %files -n %{libpimactivity}
-%{_kde_libdir}/libpimactivity.so.%{libpimactivity_major}*
+%{_kde_libdir}/libpimactivity.so.%{pimactivity_major}*
 
 #-----------------------------------------------------------------------------
 
-%define libpimcommon_major 4
-%define libpimcommon %mklibname pimcommon %{libpimcommon_major}
+%define pimcommon_major 4
+%define libpimcommon %mklibname pimcommon %{pimcommon_major}
 
 %package -n %{libpimcommon}
 Summary:	Library to import/export PIM configuration
@@ -1423,7 +1406,7 @@ Group:		System/Libraries
 This library provides the tool to import/export PIM configuration.
 
 %files -n %{libpimcommon}
-%{_kde_libdir}/libpimcommon.so.%{libpimcommon_major}*
+%{_kde_libdir}/libpimcommon.so.%{pimcommon_major}*
 
 #-----------------------------------------------------------------------------
 
@@ -1442,47 +1425,62 @@ KDE PIM library.
 
 #-----------------------------------------------------------------------------
 
+%define templateparser_major 4
+%define libtemplateparser %mklibname templateparser %{templateparser_major}
+
+%package -n %{libtemplateparser}
+Summary:	KDE 4 library
+Group:		System/Libraries
+
+%description -n %{libtemplateparser}
+KDE 4 library.
+
+%files -n %{libtemplateparser}
+%{_kde_libdir}/libtemplateparser.so.%{templateparser_major}*
+
+#-----------------------------------------------------------------------------
+
 %package devel
 Summary:	Devel stuff for %{name}
 Group:		Development/KDE and Qt
 Requires:	kdelibs4-devel
 Requires:	kdepimlibs4-devel
 Requires:	kdepim4-runtime-devel
-Requires:	%{libcomposereditorng} = %{EVRD}
-Requires:	%{libgrammar} = %{EVRD}
-Requires:	%{libkdepim} = %{EVRD}
-Requires:	%{libpimactivity} = %{EVRD}
-Requires:	%{libsendlater} = %{EVRD}
-Requires:	%{libeventviews} = %{EVRD}
-Requires:	%{libkleopatraclientcore} = %{EVRD}
-Requires:	%{libincidenceeditorsng} = %{EVRD}
-Requires:	%{libtemplateparser} = %{EVRD}
-Requires:	%{libmessagecomposer} = %{EVRD}
-Requires:	%{libkleopatraclientgui} = %{EVRD}
-Requires:	%{libkdepimdbusinterfaces} = %{EVRD}
-Requires:	%{libkpgp} = %{EVRD}
-Requires:	%{libksieve} = %{EVRD}
+Requires:	%{libakonadi_next} = %{EVRD}
 Requires:	%{libakregatorinterfaces} = %{EVRD}
 Requires:	%{libakregatorprivate} = %{EVRD}
-Requires:	%{libknodecommon} = %{EVRD}
-Requires:	%{libkmailprivate} = %{EVRD}
-Requires:	%{libmailcommon} = %{EVRD}
-Requires:	%{libkorganizerprivate} = %{EVRD}
-Requires:	%{libkorganizer_interfaces} = %{EVRD}
-Requires:	%{libkcal_resourceremote} = %{EVRD}
-Requires:	%{libkcal_resourceblog} = %{EVRD}
-Requires:	%{libkleo} = %{EVRD}
-Requires:	%{libmessagelist} = %{EVRD}
-Requires:	%{libmessagecore} = %{EVRD}
-Requires:	%{libmessageviewer} = %{EVRD}
-Requires:	%{libakonadi_next} = %{EVRD}
-Requires:	%{libkdgantt2} = %{EVRD}
-Requires:	%{libincidenceeditorsngmobile} = %{EVRD}
 Requires:	%{libcalendarsupport} = %{EVRD}
+Requires:	%{libcomposereditorng} = %{EVRD}
+Requires:	%{libeventviews} = %{EVRD}
+Requires:	%{libgrammar} = %{EVRD}
+Requires:	%{libincidenceeditorsng} = %{EVRD}
+Requires:	%{libincidenceeditorsngmobile} = %{EVRD}
+Requires:	%{libkcal_resourceblog} = %{EVRD}
+Requires:	%{libkcal_resourceremote} = %{EVRD}
+Requires:	%{libkdepim} = %{EVRD}
+Requires:	%{libkdepimdbusinterfaces} = %{EVRD}
+Requires:	%{libkdgantt2} = %{EVRD}
+Requires:	%{libkleo} = %{EVRD}
+Requires:	%{libkleopatraclientcore} = %{EVRD}
+Requires:	%{libkleopatraclientgui} = %{EVRD}
+Requires:	%{libkmailprivate} = %{EVRD}
 Requires:	%{libkmanagesieve} = %{EVRD}
+Requires:	%{libknodecommon} = %{EVRD}
+Requires:	%{libkorganizer_interfaces} = %{EVRD}
+Requires:	%{libkorganizerprivate} = %{EVRD}
+Requires:	%{libkpgp} = %{EVRD}
+Requires:	%{libksieve} = %{EVRD}
 Requires:	%{libksieveui} = %{EVRD}
+Requires:	%{libmailcommon} = %{EVRD}
 Requires:	%{libmailimporter} = %{EVRD}
+Requires:	%{libmessagecomposer} = %{EVRD}
+Requires:	%{libmessagecore} = %{EVRD}
+Requires:	%{libmessagelist} = %{EVRD}
+Requires:	%{libmessageviewer} = %{EVRD}
+Requires:	%{libpimactivity} = %{EVRD}
 Requires:	%{libpimcommon} = %{EVRD}
+Requires:	%{libsendlater} = %{EVRD}
+Requires:	%{libtemplateparser} = %{EVRD}
 
 %description devel
 This package contains header files needed if you wish to build applications
@@ -1510,6 +1508,7 @@ based on kdepim.
 - New version 4.12.1
 - New subpackage akonadi-folderarchive-agent
 - Add new tool calendarjanitor to korganizer package
+- Sort library subpackages
 - Update files
 
 * Wed Dec 04 2013 Andrey Bondrov <andrey.bondrov@rosalab.ru> 3:4.11.4-1

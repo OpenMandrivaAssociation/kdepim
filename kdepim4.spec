@@ -396,6 +396,7 @@ Requires:	kio4-sieve
 Requires:	headerthemeeditor = %{EVRD}
 Requires:	messageviewer = %{EVRD}
 Requires:	akonadi-archivemail-agent = %{EVRD}
+Requires:	akonadi-folderarchive-agent = %{EVRD}
 Requires:	akonadi-mailfilter-agent = %{EVRD}
 Requires:	akonadi-sendlater-agent = %{EVRD}
 Suggests:	kmailcvt = %{EVRD}
@@ -714,6 +715,22 @@ Akonadi archivemail agent.
 %{_kde_bindir}/akonadi_archivemail_agent
 %{_kde_datadir}/akonadi/agents/archivemailagent.desktop
 %{_kde_appsdir}/akonadi_archivemail_agent
+
+#-----------------------------------------------------------------------------
+
+%package -n akonadi-folderarchive-agent
+Summary:	Akonadi folderarchive agent
+Group:		Graphical desktop/KDE
+Requires:	%{name}-core = %{EVRD}
+
+%description -n akonadi-folderarchive-agent
+Akonadi folderarchive agent.
+
+%files -n akonadi-folderarchive-agent
+%doc %{_kde_docdir}/HTML/en/akonadi_folderarchive_agent
+%{_kde_bindir}/akonadi_folderarchive_agent
+%{_kde_datadir}/akonadi/agents/folderarchiveagent.desktop
+%{_kde_appsdir}/akonadi_folderarchive_agent
 
 #-----------------------------------------------------------------------------
 
@@ -1489,6 +1506,7 @@ based on kdepim.
 %changelog
 * Tue Jan 14 2014 Andrey Bondrov <andrey.bondrov@rosalab.ru> 3:4.12.1-1
 - New version 4.12.1
+- New subpackage akonadi-folderarchive-agent
 
 * Wed Dec 04 2013 Andrey Bondrov <andrey.bondrov@rosalab.ru> 3:4.11.4-1
 - New version 4.11.4

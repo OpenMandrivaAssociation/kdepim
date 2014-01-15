@@ -1048,6 +1048,21 @@ KDE PIM Mobile library.
 
 #-----------------------------------------------------------------------------
 
+%define kaddressbookgrantlee_major 4
+%define libkaddressbookgrantlee %mklibname kaddressbookgrantlee %{kaddressbookgrantlee_major}
+
+%package -n %{libkaddressbookgrantlee}
+Summary:	KDE 4 library
+Group:		System/Libraries
+
+%description -n %{libkaddressbookgrantlee}
+KDE 4 library.
+
+%files -n %{libkaddressbookgrantlee}
+%{_kde_libdir}/libkaddressbookgrantlee.so.%{kaddressbookgrantlee_major}*
+
+#-----------------------------------------------------------------------------
+
 %define kaddressbookprivate_major 4
 %define libkaddressbookprivate %mklibname kaddressbookprivate %{kaddressbookprivate_major}
 
@@ -1180,6 +1195,21 @@ KDE 4 library.
 
 %files -n %{libknodecommon}
 %{_kde_libdir}/libknodecommon.so.%{knodecommon_major}*
+
+#-----------------------------------------------------------------------------
+
+%define knotesprivate_major 4
+%define libknotesprivate %mklibname knotesprivate %{knotesprivate_major}
+
+%package -n %{libknotesprivate}
+Summary:	KDE 4 library
+Group:		System/Libraries
+
+%description -n %{libknotesprivate}
+KDE 4 library.
+
+%files -n %{libknotesprivate}
+%{_kde_libdir}/libknotesprivate.so.%{knotesprivate_major}*
 
 #-----------------------------------------------------------------------------
 
@@ -1503,6 +1533,8 @@ Requires:	%{libgrantleetheme} = %{EVRD}
 Requires:	%{libgrantleethemeeditor} = %{EVRD}
 Requires:	%{libincidenceeditorsng} = %{EVRD}
 Requires:	%{libincidenceeditorsngmobile} = %{EVRD}
+Requires:	%{libkaddressbookgrantlee} = %{EVRD}
+Requires:	%{libkaddressbookprivate} = %{EVRD}
 Requires:	%{libkcal_resourceblog} = %{EVRD}
 Requires:	%{libkcal_resourceremote} = %{EVRD}
 Requires:	%{libkdepim} = %{EVRD}
@@ -1514,6 +1546,7 @@ Requires:	%{libkleopatraclientgui} = %{EVRD}
 Requires:	%{libkmailprivate} = %{EVRD}
 Requires:	%{libkmanagesieve} = %{EVRD}
 Requires:	%{libknodecommon} = %{EVRD}
+Requires:	%{libknotesprivate} = %{EVRD}
 Requires:	%{libkorganizer_interfaces} = %{EVRD}
 Requires:	%{libkorganizerprivate} = %{EVRD}
 Requires:	%{libkpgp} = %{EVRD}
@@ -1558,6 +1591,7 @@ based on kdepim.
 - Add new tool calendarjanitor to korganizer package
 - Sort library subpackages
 - New subpackages libfolderarchive, libgrantleetheme, libgrantleethemeeditor
+- New subpackages libkaddressbookgrantlee, libknotesprivate
 - Update files
 
 * Wed Dec 04 2013 Andrey Bondrov <andrey.bondrov@rosalab.ru> 3:4.11.4-1

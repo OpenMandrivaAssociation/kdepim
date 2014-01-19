@@ -1,0 +1,10 @@
+diff -urN kdepim-4.12.1/kaddressbookgrantlee/CMakeLists.txt kdepim-4.12.1-patched/kaddressbookgrantlee/CMakeLists.txt
+--- kdepim-4.12.1/kaddressbookgrantlee/CMakeLists.txt	2014-01-09 17:26:37.000000000 +1100
++++ kdepim-4.12.1-patched/kaddressbookgrantlee/CMakeLists.txt	2014-01-15 14:53:19.798206760 +1100
+@@ -39,5 +39,5 @@
+ endif()
+ 
+ set_target_properties(kaddressbookgrantlee PROPERTIES VERSION ${GENERIC_LIB_VERSION} SOVERSION ${GENERIC_LIB_SOVERSION})
+-install(TARGETS kaddressbookgrantlee ${INSTALL_TARGETS_DEFAULT_ARGS} LIBRARY NAMELINK_SKIP)
++install(TARGETS kaddressbookgrantlee ${INSTALL_TARGETS_DEFAULT_ARGS} )
+ 

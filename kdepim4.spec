@@ -4,7 +4,7 @@ Epoch:		3
 Version:	4.13.2
 Release:	1
 Group:		Graphical desktop/KDE
-License:	GPL
+License:	GPLv2+
 Url:		http://community.kde.org/KDE_PIM
 %define is_beta %(if test `echo %{version} |cut -d. -f3` -ge 70; then echo -n 1; else echo -n 0; fi)
 %if %{is_beta}
@@ -274,6 +274,7 @@ Requires:	kaddressbook
 KDE Contact Theme Editor.
 
 %files -n contactthemeeditor
+%doc %{_kde_docdir}/HTML/en/contactthemeeditor
 %{_kde_bindir}/contactthemeeditor
 %{_kde_appsdir}/contactthemeeditor
 %{_kde_appsdir}/kconf_update/grantleetheme.upd
@@ -497,8 +498,6 @@ information manager of KDE.
 %{_kde_configdir}/kmail.antispamrc
 %{_kde_configdir}/kmail.antivirusrc
 %{_kde_configdir}/ksieve_script.knsrc
-%{_kde_datadir}/ontology/kde/messagetag.ontology
-%{_kde_datadir}/ontology/kde/messagetag.trig
 %{_kde_iconsdir}/*/*/apps/kmail.*
 %{_kde_services}/kontact/kmailplugin.desktop
 %{_kde_services}/kmail_config_accounts.desktop
@@ -601,20 +600,16 @@ although including some advanced features.
 %doc %{_kde_docdir}/HTML/en/knotes
 %{_kde_bindir}/knotes
 %{_kde_applicationsdir}/knotes.desktop
-%{_kde_datadir}/config.kcfg/knoteconfig.kcfg
 %{_kde_datadir}/config.kcfg/knotesglobalconfig.kcfg
 %{_kde_appsdir}/knotes
 %{_kde_iconsdir}/*/*/apps/knotes.*
 %{_kde_iconsdir}/*/*/actions/knotes_*
 %{_kde_services}/kontact/knotesplugin.desktop
-%{_kde_services}/kresources/knotes/local.desktop
-%{_kde_services}/kresources/knotes_manager.desktop
 %{_kde_services}/knote_config_action.desktop
 %{_kde_services}/knote_config_display.desktop
 %{_kde_services}/knote_config_editor.desktop
 %{_kde_services}/knote_config_network.desktop
 %{_kde_services}/knote_config_print.desktop
-%{_kde_libdir}/kde4/knotes_local.so
 %{_kde_libdir}/kde4/kcm_knote.so
 %{_kde_libdir}/kde4/kontact_knotesplugin.so
 %{_datadir}/dbus-1/interfaces/org.kde.KNotes.xml
@@ -721,8 +716,6 @@ Citadel or OpenGroupware.org.
 %{_kde_servicetypes}/calendardecoration.desktop
 %{_kde_servicetypes}/calendarplugin.desktop
 %{_kde_servicetypes}/dbuscalendar.desktop
-%{_kde_servicetypes}/korganizerpart.desktop
-%{_kde_servicetypes}/korgprintplugin.desktop
 %{_kde_libdir}/kde4/kcm_todosummary.so
 %{_kde_libdir}/kde4/kontact_todoplugin.so
 %{_kde_libdir}/kde4/kcm_korganizer.so
@@ -1571,6 +1564,7 @@ rm -f %{buildroot}%{_kde_datadir}/akonadi/agents/folderarchiveagent.desktop
 - Drop no longer built libpimactivity, libgrammar and libfolderarchive
 - Drop no longer build akonadi-folderarchive-agent
 - Drop no longer build pimactivity
+- Update files
 
 * Wed Apr 02 2014 Andrey Bondrov <andrey.bondrov@rosalab.ru> 3:4.12.4-1
 - New version 4.12.4

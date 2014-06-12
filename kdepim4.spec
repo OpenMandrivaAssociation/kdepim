@@ -14,6 +14,8 @@ Url:		http://community.kde.org/KDE_PIM
 %endif
 Source0:	ftp://ftp.kde.org/pub/kde/%{ftpdir}/%{version}/src/kdepim-%{version}.tar.xz
 Patch0:		kdepim-4.12.1-cmake-libkaddressbookgrantlee.patch
+BuildRequires:	xsltproc
+BuildRequires:	baloo-devel
 BuildRequires:	boost-devel
 BuildRequires:	gpgme-devel
 BuildRequires:	grantlee-devel
@@ -21,11 +23,9 @@ BuildRequires:	kdelibs4-devel
 BuildRequires:	kdepimlibs4-devel
 BuildRequires:	kdepim4-runtime-devel
 BuildRequires:	libassuan-devel
-BuildRequires:	nepomuk-core-devel
-BuildRequires:	nepomuk-widgets-devel
-BuildRequires:	xsltproc
 BuildRequires:	pkgconfig(akonadi)
 BuildRequires:	pkgconfig(libkactivities)
+BuildRequires:	pkgconfig(libkgapi)
 BuildRequires:	pkgconfig(libstreams)
 BuildRequires:	pkgconfig(shared-desktop-ontologies)
 BuildRequires:	pkgconfig(x11)
@@ -1624,6 +1624,8 @@ based on kdepim.
 %changelog
 * Wed Jun 11 2014 Andrey Bondrov <andrey.bondrov@rosalab.ru> 3:4.13.2-1
 - New version 4.13.2
+- Add pkgconfig(libkgapi) and baloo-devel to BuildRequires
+- Drop nepomuk-core-devel and nepomuk-widgets-devel from BuildRequires
 
 * Wed Apr 02 2014 Andrey Bondrov <andrey.bondrov@rosalab.ru> 3:4.12.4-1
 - New version 4.12.4

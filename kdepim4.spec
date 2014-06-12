@@ -75,6 +75,7 @@ Requires:	akonadi-kde >= 3:%{version}
 Conflicts:	%{_lib}kdepim4 < 3:4.11.0
 Conflicts:	%{_lib}kpgp4 < 3:4.11.0
 Conflicts:	%{name}-devel < 3:4.11.0
+Obsoletes:	akonadi-folderarchive-agent < 3:4.13.0
 
 %description core
 Core files for KDE PIM.
@@ -123,22 +124,6 @@ Akonadi archivemail agent.
 %{_kde_bindir}/akonadi_archivemail_agent
 %{_kde_datadir}/akonadi/agents/archivemailagent.desktop
 %{_kde_appsdir}/akonadi_archivemail_agent
-
-#-----------------------------------------------------------------------------
-
-%package -n akonadi-folderarchive-agent
-Summary:	Akonadi folderarchive agent
-Group:		Graphical desktop/KDE
-Requires:	%{name}-core = %{EVRD}
-
-%description -n akonadi-folderarchive-agent
-Akonadi folderarchive agent.
-
-%files -n akonadi-folderarchive-agent
-%doc %{_kde_docdir}/HTML/en/akonadi_folderarchive_agent
-%{_kde_bindir}/akonadi_folderarchive_agent
-%{_kde_datadir}/akonadi/agents/folderarchiveagent.desktop
-%{_kde_appsdir}/akonadi_folderarchive_agent
 
 #-----------------------------------------------------------------------------
 
@@ -474,7 +459,6 @@ Requires:	kio4-sieve
 Requires:	headerthemeeditor = %{EVRD}
 Requires:	messageviewer = %{EVRD}
 Requires:	akonadi-archivemail-agent = %{EVRD}
-Requires:	akonadi-folderarchive-agent = %{EVRD}
 Requires:	akonadi-mailfilter-agent = %{EVRD}
 Requires:	akonadi-sendlater-agent = %{EVRD}
 Suggests:	kaddressbook = %{EVRD}
@@ -1587,6 +1571,9 @@ based on kdepim.
 %install
 %makeinstall_std -C build
 
+# akonadi_folderarchive_agent was removed, no need to keep desktop file
+rm -f %{buildroot}%{_kde_datadir}/akonadi/agents/folderarchiveagent.desktop
+
 %find_lang %{name} --all-name --with-html
 
 %changelog
@@ -1594,8 +1581,9 @@ based on kdepim.
 - New version 4.13.2
 - Add pkgconfig(libkgapi) and baloo-devel to BuildRequires
 - Drop nepomuk-core-devel and nepomuk-widgets-devel from BuildRequires
-- Drop no longer built libpimactivity, libgrammar and libfolderarchive
 - New library libnoteshared
+- Drop no longer built libpimactivity, libgrammar and libfolderarchive
+- Drop no longer build akonadi-folderarchive-agent
 
 * Wed Apr 02 2014 Andrey Bondrov <andrey.bondrov@rosalab.ru> 3:4.12.4-1
 - New version 4.12.4

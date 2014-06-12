@@ -101,7 +101,7 @@ Requires:	%{name}-core = %{EVRD}
 Conflicts:	kdepim4-core < 2:4.4.2-5
 
 %description -n akonadiconsole
-Console that help to debug akonadi
+Console that help to debug akonadi.
 
 %files -n akonadiconsole
 %{_kde_bindir}/akonadiconsole
@@ -319,6 +319,7 @@ The KDE addressbook application.
 %{_kde_bindir}/kabc2mutt
 %{_kde_bindir}/kabcclient
 %{_kde_applicationsdir}/kaddressbook.desktop
+%{_kde_applicationsdir}/kaddressbook-importer.desktop
 %{_kde_appsdir}/kaddressbook
 %{_kde_configdir}/kaddressbook_themes.knsrc
 %{_kde_libdir}/kde4/kcm_ldap.so
@@ -601,16 +602,22 @@ although including some advanced features.
 %{_kde_bindir}/knotes
 %{_kde_applicationsdir}/knotes.desktop
 %{_kde_datadir}/config.kcfg/knotesglobalconfig.kcfg
+%{_kde_datadir}/config/knotes_printing_theme.knsrc
 %{_kde_appsdir}/knotes
 %{_kde_iconsdir}/*/*/apps/knotes.*
 %{_kde_iconsdir}/*/*/actions/knotes_*
+%{_kde_services}/kcmknotessummary.desktop
 %{_kde_services}/kontact/knotesplugin.desktop
 %{_kde_services}/knote_config_action.desktop
+%{_kde_services}/knote_config_collection.desktop
 %{_kde_services}/knote_config_display.desktop
 %{_kde_services}/knote_config_editor.desktop
+%{_kde_services}/knote_config_misc.desktop
 %{_kde_services}/knote_config_network.desktop
 %{_kde_services}/knote_config_print.desktop
+%{_kde_services}/kcmknotessummary.desktop
 %{_kde_libdir}/kde4/kcm_knote.so
+%{_kde_libdir}/kde4/kcm_knotessummary.so
 %{_kde_libdir}/kde4/kontact_knotesplugin.so
 %{_datadir}/dbus-1/interfaces/org.kde.KNotes.xml
 

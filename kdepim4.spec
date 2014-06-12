@@ -459,11 +459,11 @@ Requires:	kio4-smtp
 Requires:	kio4-mbox
 Requires:	kio4-imap
 Requires:	kio4-sieve
-Requires:	headerthemeeditor = %{EVRD}
-Requires:	messageviewer = %{EVRD}
 Requires:	akonadi-archivemail-agent = %{EVRD}
 Requires:	akonadi-mailfilter-agent = %{EVRD}
 Requires:	akonadi-sendlater-agent = %{EVRD}
+Requires:	headerthemeeditor = %{EVRD}
+Requires:	messageviewer = %{EVRD}
 Suggests:	kaddressbook = %{EVRD}
 Suggests:	kmailcvt = %{EVRD}
 Suggests:	pinentry-qt4
@@ -471,6 +471,7 @@ Suggests:	openssh-askpass-qt4
 Suggests:	pimsettingexporter
 Suggests:	importwizard
 Suggests:	mboximporter
+Suggests:	sieveeditor
 Provides:	kde4-kmail = %{EVRD}
 Provides:	kmail2 = %{EVRD}
 Conflicts:	kmail-common < 3:4.11.0
@@ -616,7 +617,6 @@ although including some advanced features.
 %{_kde_services}/knote_config_misc.desktop
 %{_kde_services}/knote_config_network.desktop
 %{_kde_services}/knote_config_print.desktop
-%{_kde_services}/kcmknotessummary.desktop
 %{_kde_libdir}/kde4/kcm_knote.so
 %{_kde_libdir}/kde4/kcm_knotessummary.so
 %{_kde_libdir}/kde4/kontact_knotesplugin.so
@@ -871,6 +871,24 @@ systems. Successor of Backup Mail from KDE 4.9.
 %{_kde_bindir}/pimsettingexporter
 %{_kde_appsdir}/pimsettingexporter/backup-structure.txt
 %{_kde_appsdir}/pimsettingexporter/pimsettingexporter.rc
+
+#-----------------------------------------------------------------------------
+
+%package -n sieveeditor
+Summary:	Storage service manager
+Group:		Graphical desktop/KDE
+Requires:	%{name}-core = %{EVRD}
+
+%description -n sieveeditor
+KDE storage service manager. It allows to manage your storage service as
+DropBox etc.
+
+%files -n sieveeditor
+%doc %{_kde_docdir}/HTML/en/sieveeditor
+%{_kde_bindir}/sieveeditor
+%{_kde_applicationsdir}/sieveeditor.desktop
+%{_kde_appsdir}/sieve/scripts/
+%{_kde_appsdir}/sieveeditor/
 
 #-----------------------------------------------------------------------------
 
@@ -1587,6 +1605,7 @@ rm -f %{buildroot}%{_kde_datadir}/akonadi/agents/folderarchiveagent.desktop
 - Add pkgconfig(libkgapi) and baloo-devel to BuildRequires
 - Drop nepomuk-core-devel and nepomuk-widgets-devel from BuildRequires
 - New library libnoteshared
+- New package sieveeditor
 - New package storageservicemanager
 - Drop no longer built libpimactivity, libgrammar and libfolderarchive
 - Drop no longer build akonadi-folderarchive-agent

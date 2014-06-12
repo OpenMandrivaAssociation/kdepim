@@ -1461,6 +1461,21 @@ KDE 4 library.
 
 #-----------------------------------------------------------------------------
 
+%define noteshared_major 4
+%define libnoteshared %mklibname noteshared %{noteshared_major}
+
+%package -n %{libnoteshared}
+Summary:	KDE 4 library
+Group:		System/Libraries
+
+%description -n %{libnoteshared}
+KDE 4 library.
+
+%files -n %{libnoteshared}
+%{_kde_libdir}/libnoteshared.so.%{noteshared_major}*
+
+#-----------------------------------------------------------------------------
+
 %define pimcommon_major 4
 %define libpimcommon %mklibname pimcommon %{pimcommon_major}
 
@@ -1547,6 +1562,7 @@ Requires:	%{libmessagecomposer} = %{EVRD}
 Requires:	%{libmessagecore} = %{EVRD}
 Requires:	%{libmessagelist} = %{EVRD}
 Requires:	%{libmessageviewer} = %{EVRD}
+Requires:	%{libnoteshared} = %{EVRD}
 Requires:	%{libpimcommon} = %{EVRD}
 Requires:	%{libsendlater} = %{EVRD}
 Requires:	%{libtemplateparser} = %{EVRD}
@@ -1579,6 +1595,7 @@ based on kdepim.
 - Add pkgconfig(libkgapi) and baloo-devel to BuildRequires
 - Drop nepomuk-core-devel and nepomuk-widgets-devel from BuildRequires
 - Drop no longer built libpimactivity, libgrammar and libfolderarchive
+- New library libnoteshared
 
 * Wed Apr 02 2014 Andrey Bondrov <andrey.bondrov@rosalab.ru> 3:4.12.4-1
 - New version 4.12.4

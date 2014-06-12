@@ -68,9 +68,10 @@ Information Management applications for the K Desktop Environment.
 %package core
 Summary:	Core files for KDE PIM
 Group:		Graphical desktop/KDE
-Requires:	kdelibs4-core
-Requires:	kdebase4-runtime
 Requires:	akonadi-kde >= 3:%{version}
+Requires:	kdebase4-runtime
+Requires:	kdelibs4-core
+Requires:	storageservicemanager = %{EVRD}
 Conflicts:	%{_lib}kdepim4 < 3:4.11.0
 Conflicts:	%{_lib}kpgp4 < 3:4.11.0
 Conflicts:	%{name}-devel < 3:4.11.0
@@ -873,6 +874,24 @@ systems. Successor of Backup Mail from KDE 4.9.
 
 #-----------------------------------------------------------------------------
 
+%package -n storageservicemanager
+Summary:	Storage service manager
+Group:		Graphical desktop/KDE
+Requires:	%{name}-core = %{EVRD}
+
+%description -n storageservicemanager
+KDE storage service manager. It allows to manage your storage service as
+DropBox etc.
+
+%files -n storageservicemanager
+%{_kde_bindir}/storageservicemanager
+%{_kde_applicationsdir}/storageservicemanager.desktop
+%{_kde_appsdir}/storageservicemanager/
+%{_kde_iconsdir}/*/*/apps/kdepim-dropbox.*
+%{_kde_iconsdir}/*/*/apps/kdepim-googledrive.*
+
+#-----------------------------------------------------------------------------
+
 %define akonadi_next_major 4
 %define libakonadi_next %mklibname akonadi-next %{akonadi_next_major}
 
@@ -1568,6 +1587,7 @@ rm -f %{buildroot}%{_kde_datadir}/akonadi/agents/folderarchiveagent.desktop
 - Add pkgconfig(libkgapi) and baloo-devel to BuildRequires
 - Drop nepomuk-core-devel and nepomuk-widgets-devel from BuildRequires
 - New library libnoteshared
+- New package storageservicemanager
 - Drop no longer built libpimactivity, libgrammar and libfolderarchive
 - Drop no longer build akonadi-folderarchive-agent
 - Drop no longer build pimactivity

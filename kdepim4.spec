@@ -45,7 +45,6 @@ Suggests:	kontact
 Suggests:	korganizer
 Suggests:	ksendemail
 Suggests:	kjots
-Suggests:	pimactivity
 
 %description
 Information Management applications for the K Desktop Environment.
@@ -76,6 +75,7 @@ Conflicts:	%{_lib}kdepim4 < 3:4.11.0
 Conflicts:	%{_lib}kpgp4 < 3:4.11.0
 Conflicts:	%{name}-devel < 3:4.11.0
 Obsoletes:	akonadi-folderarchive-agent < 3:4.13.0
+Obsoletes:	pimactivity < 3:4.13.0
 
 %description core
 Core files for KDE PIM.
@@ -855,20 +855,6 @@ Message viewer for KDE Email Client.
 
 #-----------------------------------------------------------------------------
 
-%package -n pimactivity
-Summary:	KDE Activities integration in PIM
-Group:		Graphical desktop/KDE
-Requires:	%{name}-core = %{EVRD}
-
-%description -n pimactivity
-KDE Activities integration in PIM.
-
-%files -n pimactivity
-%{_kde_services}/kcmpimactivity.desktop
-%{_kde_libdir}/kde4/kcm_pimactivity.so
-
-#-----------------------------------------------------------------------------
-
 %package -n pimsettingexporter
 Summary:	Allows to save data from KDE PIM applications and restore them in other systems
 Group:		Graphical desktop/KDE
@@ -1584,6 +1570,7 @@ rm -f %{buildroot}%{_kde_datadir}/akonadi/agents/folderarchiveagent.desktop
 - New library libnoteshared
 - Drop no longer built libpimactivity, libgrammar and libfolderarchive
 - Drop no longer build akonadi-folderarchive-agent
+- Drop no longer build pimactivity
 
 * Wed Apr 02 2014 Andrey Bondrov <andrey.bondrov@rosalab.ru> 3:4.12.4-1
 - New version 4.12.4

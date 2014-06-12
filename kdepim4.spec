@@ -993,36 +993,6 @@ KDE 4 library.
 
 #-----------------------------------------------------------------------------
 
-%define folderarchive_major 4
-%define libfolderarchive %mklibname folderarchive %{folderarchive_major}
-
-%package -n %{libfolderarchive}
-Summary:	KDE 4 library
-Group:		System/Libraries
-
-%description -n %{libfolderarchive}
-KDE 4 library.
-
-%files -n %{libfolderarchive}
-%{_kde_libdir}/libfolderarchive.so.%{folderarchive_major}*
-
-#-----------------------------------------------------------------------------
-
-%define grammar_major 4
-%define libgrammar %mklibname grammar %{grammar_major}
-
-%package -n %{libgrammar}
-Summary:	Library providing grammar support
-Group:		System/Libraries
-
-%description -n %{libgrammar}
-This library provides grammar support.
-
-%files -n %{libgrammar}
-%{_kde_libdir}/libgrammar.so.%{grammar_major}*
-
-#-----------------------------------------------------------------------------
-
 %define grantleetheme_major 4
 %define libgrantleetheme %mklibname grantleetheme %{grantleetheme_major}
 
@@ -1491,21 +1461,6 @@ KDE 4 library.
 
 #-----------------------------------------------------------------------------
 
-%define pimactivity_major 4
-%define libpimactivity %mklibname pimactivity %{pimactivity_major}
-
-%package -n %{libpimactivity}
-Summary:	Library for KDE Activities integration in PIM
-Group:		System/Libraries
-
-%description -n %{libpimactivity}
-Library for KDE Activities integration in PIM.
-
-%files -n %{libpimactivity}
-%{_kde_libdir}/libpimactivity.so.%{pimactivity_major}*
-
-#-----------------------------------------------------------------------------
-
 %define pimcommon_major 4
 %define libpimcommon %mklibname pimcommon %{pimcommon_major}
 
@@ -1563,8 +1518,6 @@ Requires:	%{libakregatorprivate} = %{EVRD}
 Requires:	%{libcalendarsupport} = %{EVRD}
 Requires:	%{libcomposereditorng} = %{EVRD}
 Requires:	%{libeventviews} = %{EVRD}
-Requires:	%{libfolderarchive} = %{EVRD}
-Requires:	%{libgrammar} = %{EVRD}
 Requires:	%{libgrantleetheme} = %{EVRD}
 Requires:	%{libgrantleethemeeditor} = %{EVRD}
 Requires:	%{libincidenceeditorsng} = %{EVRD}
@@ -1594,7 +1547,6 @@ Requires:	%{libmessagecomposer} = %{EVRD}
 Requires:	%{libmessagecore} = %{EVRD}
 Requires:	%{libmessagelist} = %{EVRD}
 Requires:	%{libmessageviewer} = %{EVRD}
-Requires:	%{libpimactivity} = %{EVRD}
 Requires:	%{libpimcommon} = %{EVRD}
 Requires:	%{libsendlater} = %{EVRD}
 Requires:	%{libtemplateparser} = %{EVRD}
@@ -1626,6 +1578,7 @@ based on kdepim.
 - New version 4.13.2
 - Add pkgconfig(libkgapi) and baloo-devel to BuildRequires
 - Drop nepomuk-core-devel and nepomuk-widgets-devel from BuildRequires
+- Drop no longer built libpimactivity, libgrammar and libfolderarchive
 
 * Wed Apr 02 2014 Andrey Bondrov <andrey.bondrov@rosalab.ru> 3:4.12.4-1
 - New version 4.12.4

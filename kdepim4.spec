@@ -124,7 +124,7 @@ Akonadi archivemail agent.
 %doc %{_kde_docdir}/HTML/en/akonadi_archivemail_agent
 %{_kde_bindir}/akonadi_archivemail_agent
 %{_kde_datadir}/akonadi/agents/archivemailagent.desktop
-%{_kde_appsdir}/akonadi_archivemail_agent
+%{_kde_appsdir}/akonadi_archivemail_agent/
 
 #-----------------------------------------------------------------------------
 
@@ -139,9 +139,28 @@ Akonadi mailfilter agent.
 %files -n akonadi-mailfilter-agent
 %{_kde_bindir}/akonadi_mailfilter_agent
 %{_kde_datadir}/akonadi/agents/mailfilteragent.desktop
-%{_kde_appsdir}/akonadi_mailfilter_agent
+%{_kde_appsdir}/akonadi_mailfilter_agent/
 %{_kde_appsdir}/kconf_update/mailfilteragent.upd
 %{_kde_appsdir}/kconf_update/migrate-kmail-filters.pl
+
+#-----------------------------------------------------------------------------
+
+%package -n akonadi-notes-agent
+Summary:	Akonadi notes agent
+Group:		Graphical desktop/KDE
+Requires:	%{name}-core = %{EVRD}
+Requires:	knotes = %{EVRD}
+
+%description -n akonadi-notes-agent
+Akonadi notes agent. It adds notes received via network and handles note
+alarm notifications.
+
+%files -n akonadi-notes-agent
+%doc %{_kde_docdir}/HTML/en/akonadi_notes_agent
+%{_kde_bindir}/akonadi_notes_agent
+%{_kde_datadir}/akonadi/agents/notesagent.desktop
+%{_kde_appsdir}/akonadi_notes_agent/
+%{_kde_appsdir}/kconf_update/noteglobalsettings.upd
 
 #-----------------------------------------------------------------------------
 
@@ -157,7 +176,7 @@ Akonadi sendlater agent.
 %doc %{_kde_docdir}/HTML/en/akonadi_sendlater_agent
 %{_kde_bindir}/akonadi_sendlater_agent
 %{_kde_datadir}/akonadi/agents/sendlateragent.desktop
-%{_kde_appsdir}/akonadi_sendlater_agent
+%{_kde_appsdir}/akonadi_sendlater_agent/
 
 #-----------------------------------------------------------------------------
 
@@ -590,6 +609,7 @@ Group:		Graphical desktop/KDE
 Url:		http://userbase.kde.org/KNotes
 Requires:	%{name}-core = %{EVRD}
 Requires:	%{name}-kresources
+Requires:	akonadi-notes-agent = %{EVRD}
 Requires:	kio4-nntp
 Provides:	kde4-knotes = %{EVRD}
 Conflicts:	%{name}-devel < 3:4.11.0
@@ -1605,6 +1625,7 @@ rm -f %{buildroot}%{_kde_datadir}/akonadi/agents/folderarchiveagent.desktop
 - Add pkgconfig(libkgapi) and baloo-devel to BuildRequires
 - Drop nepomuk-core-devel and nepomuk-widgets-devel from BuildRequires
 - New library libnoteshared
+- New package akonadi-notes-agent
 - New package sieveeditor
 - New package storageservicemanager
 - Drop no longer built libpimactivity, libgrammar and libfolderarchive

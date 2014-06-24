@@ -1,10 +1,10 @@
 Summary:	An application suite to manage personal information
 Name:		kdepim4
 Epoch:		3
-Version:	4.12.4
+Version:	4.13.2
 Release:	1
 Group:		Graphical desktop/KDE
-License:	GPL
+License:	GPLv2+
 Url:		http://community.kde.org/KDE_PIM
 %define is_beta %(if test `echo %{version} |cut -d. -f3` -ge 70; then echo -n 1; else echo -n 0; fi)
 %if %{is_beta}
@@ -14,6 +14,8 @@ Url:		http://community.kde.org/KDE_PIM
 %endif
 Source0:	ftp://ftp.kde.org/pub/kde/%{ftpdir}/%{version}/src/kdepim-%{version}.tar.xz
 Patch0:		kdepim-4.12.1-cmake-libkaddressbookgrantlee.patch
+BuildRequires:	xsltproc
+BuildRequires:	baloo-devel
 BuildRequires:	boost-devel
 BuildRequires:	gpgme-devel
 BuildRequires:	grantlee-devel
@@ -21,11 +23,9 @@ BuildRequires:	kdelibs4-devel
 BuildRequires:	kdepimlibs4-devel
 BuildRequires:	kdepim4-runtime-devel
 BuildRequires:	libassuan-devel
-BuildRequires:	nepomuk-core-devel
-BuildRequires:	nepomuk-widgets-devel
-BuildRequires:	xsltproc
 BuildRequires:	pkgconfig(akonadi)
 BuildRequires:	pkgconfig(libkactivities)
+BuildRequires:	pkgconfig(libkgapi)
 BuildRequires:	pkgconfig(libstreams)
 BuildRequires:	pkgconfig(shared-desktop-ontologies)
 BuildRequires:	pkgconfig(x11)
@@ -45,7 +45,6 @@ Suggests:	kontact
 Suggests:	korganizer
 Suggests:	ksendemail
 Suggests:	kjots
-Suggests:	pimactivity
 
 %description
 Information Management applications for the K Desktop Environment.
@@ -69,12 +68,15 @@ Information Management applications for the K Desktop Environment.
 %package core
 Summary:	Core files for KDE PIM
 Group:		Graphical desktop/KDE
-Requires:	kdelibs4-core
-Requires:	kdebase4-runtime
 Requires:	akonadi-kde >= 3:%{version}
+Requires:	kdebase4-runtime
+Requires:	kdelibs4-core
+Requires:	storageservicemanager = %{EVRD}
 Conflicts:	%{_lib}kdepim4 < 3:4.11.0
 Conflicts:	%{_lib}kpgp4 < 3:4.11.0
 Conflicts:	%{name}-devel < 3:4.11.0
+Obsoletes:	akonadi-folderarchive-agent < 3:4.13.0
+Obsoletes:	pimactivity < 3:4.13.0
 
 %description core
 Core files for KDE PIM.
@@ -100,7 +102,7 @@ Requires:	%{name}-core = %{EVRD}
 Conflicts:	kdepim4-core < 2:4.4.2-5
 
 %description -n akonadiconsole
-Console that help to debug akonadi
+Console that help to debug akonadi.
 
 %files -n akonadiconsole
 %{_kde_bindir}/akonadiconsole
@@ -122,23 +124,7 @@ Akonadi archivemail agent.
 %doc %{_kde_docdir}/HTML/en/akonadi_archivemail_agent
 %{_kde_bindir}/akonadi_archivemail_agent
 %{_kde_datadir}/akonadi/agents/archivemailagent.desktop
-%{_kde_appsdir}/akonadi_archivemail_agent
-
-#-----------------------------------------------------------------------------
-
-%package -n akonadi-folderarchive-agent
-Summary:	Akonadi folderarchive agent
-Group:		Graphical desktop/KDE
-Requires:	%{name}-core = %{EVRD}
-
-%description -n akonadi-folderarchive-agent
-Akonadi folderarchive agent.
-
-%files -n akonadi-folderarchive-agent
-%doc %{_kde_docdir}/HTML/en/akonadi_folderarchive_agent
-%{_kde_bindir}/akonadi_folderarchive_agent
-%{_kde_datadir}/akonadi/agents/folderarchiveagent.desktop
-%{_kde_appsdir}/akonadi_folderarchive_agent
+%{_kde_appsdir}/akonadi_archivemail_agent/
 
 #-----------------------------------------------------------------------------
 
@@ -153,9 +139,28 @@ Akonadi mailfilter agent.
 %files -n akonadi-mailfilter-agent
 %{_kde_bindir}/akonadi_mailfilter_agent
 %{_kde_datadir}/akonadi/agents/mailfilteragent.desktop
-%{_kde_appsdir}/akonadi_mailfilter_agent
+%{_kde_appsdir}/akonadi_mailfilter_agent/
 %{_kde_appsdir}/kconf_update/mailfilteragent.upd
 %{_kde_appsdir}/kconf_update/migrate-kmail-filters.pl
+
+#-----------------------------------------------------------------------------
+
+%package -n akonadi-notes-agent
+Summary:	Akonadi notes agent
+Group:		Graphical desktop/KDE
+Requires:	%{name}-core = %{EVRD}
+Requires:	knotes = %{EVRD}
+
+%description -n akonadi-notes-agent
+Akonadi notes agent. It adds notes received via network and handles note
+alarm notifications.
+
+%files -n akonadi-notes-agent
+%doc %{_kde_docdir}/HTML/en/akonadi_notes_agent
+%{_kde_bindir}/akonadi_notes_agent
+%{_kde_datadir}/akonadi/agents/notesagent.desktop
+%{_kde_appsdir}/akonadi_notes_agent/
+%{_kde_appsdir}/kconf_update/noteglobalsettings.upd
 
 #-----------------------------------------------------------------------------
 
@@ -171,7 +176,7 @@ Akonadi sendlater agent.
 %doc %{_kde_docdir}/HTML/en/akonadi_sendlater_agent
 %{_kde_bindir}/akonadi_sendlater_agent
 %{_kde_datadir}/akonadi/agents/sendlateragent.desktop
-%{_kde_appsdir}/akonadi_sendlater_agent
+%{_kde_appsdir}/akonadi_sendlater_agent/
 
 #-----------------------------------------------------------------------------
 
@@ -289,6 +294,7 @@ Requires:	kaddressbook
 KDE Contact Theme Editor.
 
 %files -n contactthemeeditor
+%doc %{_kde_docdir}/HTML/en/contactthemeeditor
 %{_kde_bindir}/contactthemeeditor
 %{_kde_appsdir}/contactthemeeditor
 %{_kde_appsdir}/kconf_update/grantleetheme.upd
@@ -333,6 +339,7 @@ The KDE addressbook application.
 %{_kde_bindir}/kabc2mutt
 %{_kde_bindir}/kabcclient
 %{_kde_applicationsdir}/kaddressbook.desktop
+%{_kde_applicationsdir}/kaddressbook-importer.desktop
 %{_kde_appsdir}/kaddressbook
 %{_kde_configdir}/kaddressbook_themes.knsrc
 %{_kde_libdir}/kde4/kcm_ldap.so
@@ -471,12 +478,11 @@ Requires:	kio4-smtp
 Requires:	kio4-mbox
 Requires:	kio4-imap
 Requires:	kio4-sieve
-Requires:	headerthemeeditor = %{EVRD}
-Requires:	messageviewer = %{EVRD}
 Requires:	akonadi-archivemail-agent = %{EVRD}
-Requires:	akonadi-folderarchive-agent = %{EVRD}
 Requires:	akonadi-mailfilter-agent = %{EVRD}
 Requires:	akonadi-sendlater-agent = %{EVRD}
+Requires:	headerthemeeditor = %{EVRD}
+Requires:	messageviewer = %{EVRD}
 Suggests:	kaddressbook = %{EVRD}
 Suggests:	kmailcvt = %{EVRD}
 Suggests:	pinentry-qt4
@@ -484,6 +490,7 @@ Suggests:	openssh-askpass-qt4
 Suggests:	pimsettingexporter
 Suggests:	importwizard
 Suggests:	mboximporter
+Suggests:	sieveeditor
 Provides:	kde4-kmail = %{EVRD}
 Provides:	kmail2 = %{EVRD}
 Conflicts:	kmail-common < 3:4.11.0
@@ -513,8 +520,6 @@ information manager of KDE.
 %{_kde_configdir}/kmail.antispamrc
 %{_kde_configdir}/kmail.antivirusrc
 %{_kde_configdir}/ksieve_script.knsrc
-%{_kde_datadir}/ontology/kde/messagetag.ontology
-%{_kde_datadir}/ontology/kde/messagetag.trig
 %{_kde_iconsdir}/*/*/apps/kmail.*
 %{_kde_services}/kontact/kmailplugin.desktop
 %{_kde_services}/kmail_config_accounts.desktop
@@ -604,6 +609,7 @@ Group:		Graphical desktop/KDE
 Url:		http://userbase.kde.org/KNotes
 Requires:	%{name}-core = %{EVRD}
 Requires:	%{name}-kresources
+Requires:	akonadi-notes-agent = %{EVRD}
 Requires:	kio4-nntp
 Provides:	kde4-knotes = %{EVRD}
 Conflicts:	%{name}-devel < 3:4.11.0
@@ -617,21 +623,22 @@ although including some advanced features.
 %doc %{_kde_docdir}/HTML/en/knotes
 %{_kde_bindir}/knotes
 %{_kde_applicationsdir}/knotes.desktop
-%{_kde_datadir}/config.kcfg/knoteconfig.kcfg
 %{_kde_datadir}/config.kcfg/knotesglobalconfig.kcfg
+%{_kde_datadir}/config/knotes_printing_theme.knsrc
 %{_kde_appsdir}/knotes
 %{_kde_iconsdir}/*/*/apps/knotes.*
 %{_kde_iconsdir}/*/*/actions/knotes_*
+%{_kde_services}/kcmknotessummary.desktop
 %{_kde_services}/kontact/knotesplugin.desktop
-%{_kde_services}/kresources/knotes/local.desktop
-%{_kde_services}/kresources/knotes_manager.desktop
 %{_kde_services}/knote_config_action.desktop
+%{_kde_services}/knote_config_collection.desktop
 %{_kde_services}/knote_config_display.desktop
 %{_kde_services}/knote_config_editor.desktop
+%{_kde_services}/knote_config_misc.desktop
 %{_kde_services}/knote_config_network.desktop
 %{_kde_services}/knote_config_print.desktop
-%{_kde_libdir}/kde4/knotes_local.so
 %{_kde_libdir}/kde4/kcm_knote.so
+%{_kde_libdir}/kde4/kcm_knotessummary.so
 %{_kde_libdir}/kde4/kontact_knotesplugin.so
 %{_datadir}/dbus-1/interfaces/org.kde.KNotes.xml
 
@@ -737,8 +744,6 @@ Citadel or OpenGroupware.org.
 %{_kde_servicetypes}/calendardecoration.desktop
 %{_kde_servicetypes}/calendarplugin.desktop
 %{_kde_servicetypes}/dbuscalendar.desktop
-%{_kde_servicetypes}/korganizerpart.desktop
-%{_kde_servicetypes}/korgprintplugin.desktop
 %{_kde_libdir}/kde4/kcm_todosummary.so
 %{_kde_libdir}/kde4/kontact_todoplugin.so
 %{_kde_libdir}/kde4/kcm_korganizer.so
@@ -871,20 +876,6 @@ Message viewer for KDE Email Client.
 
 #-----------------------------------------------------------------------------
 
-%package -n pimactivity
-Summary:	KDE Activities integration in PIM
-Group:		Graphical desktop/KDE
-Requires:	%{name}-core = %{EVRD}
-
-%description -n pimactivity
-KDE Activities integration in PIM.
-
-%files -n pimactivity
-%{_kde_services}/kcmpimactivity.desktop
-%{_kde_libdir}/kde4/kcm_pimactivity.so
-
-#-----------------------------------------------------------------------------
-
 %package -n pimsettingexporter
 Summary:	Allows to save data from KDE PIM applications and restore them in other systems
 Group:		Graphical desktop/KDE
@@ -900,6 +891,42 @@ systems. Successor of Backup Mail from KDE 4.9.
 %{_kde_bindir}/pimsettingexporter
 %{_kde_appsdir}/pimsettingexporter/backup-structure.txt
 %{_kde_appsdir}/pimsettingexporter/pimsettingexporter.rc
+
+#-----------------------------------------------------------------------------
+
+%package -n sieveeditor
+Summary:	Storage service manager
+Group:		Graphical desktop/KDE
+Requires:	%{name}-core = %{EVRD}
+
+%description -n sieveeditor
+KDE storage service manager. It allows to manage your storage service as
+DropBox etc.
+
+%files -n sieveeditor
+%doc %{_kde_docdir}/HTML/en/sieveeditor
+%{_kde_bindir}/sieveeditor
+%{_kde_applicationsdir}/sieveeditor.desktop
+%{_kde_appsdir}/sieve/scripts/
+%{_kde_appsdir}/sieveeditor/
+
+#-----------------------------------------------------------------------------
+
+%package -n storageservicemanager
+Summary:	Storage service manager
+Group:		Graphical desktop/KDE
+Requires:	%{name}-core = %{EVRD}
+
+%description -n storageservicemanager
+KDE storage service manager. It allows to manage your storage service as
+DropBox etc.
+
+%files -n storageservicemanager
+%{_kde_bindir}/storageservicemanager
+%{_kde_applicationsdir}/storageservicemanager.desktop
+%{_kde_appsdir}/storageservicemanager/
+%{_kde_iconsdir}/*/*/apps/kdepim-dropbox.*
+%{_kde_iconsdir}/*/*/apps/kdepim-googledrive.*
 
 #-----------------------------------------------------------------------------
 
@@ -990,36 +1017,6 @@ KDE 4 library.
 
 %files -n %{libeventviews}
 %{_kde_libdir}/libeventviews.so.%{eventviews_major}*
-
-#-----------------------------------------------------------------------------
-
-%define folderarchive_major 4
-%define libfolderarchive %mklibname folderarchive %{folderarchive_major}
-
-%package -n %{libfolderarchive}
-Summary:	KDE 4 library
-Group:		System/Libraries
-
-%description -n %{libfolderarchive}
-KDE 4 library.
-
-%files -n %{libfolderarchive}
-%{_kde_libdir}/libfolderarchive.so.%{folderarchive_major}*
-
-#-----------------------------------------------------------------------------
-
-%define grammar_major 4
-%define libgrammar %mklibname grammar %{grammar_major}
-
-%package -n %{libgrammar}
-Summary:	Library providing grammar support
-Group:		System/Libraries
-
-%description -n %{libgrammar}
-This library provides grammar support.
-
-%files -n %{libgrammar}
-%{_kde_libdir}/libgrammar.so.%{grammar_major}*
 
 #-----------------------------------------------------------------------------
 
@@ -1491,18 +1488,18 @@ KDE 4 library.
 
 #-----------------------------------------------------------------------------
 
-%define pimactivity_major 4
-%define libpimactivity %mklibname pimactivity %{pimactivity_major}
+%define noteshared_major 4
+%define libnoteshared %mklibname noteshared %{noteshared_major}
 
-%package -n %{libpimactivity}
-Summary:	Library for KDE Activities integration in PIM
+%package -n %{libnoteshared}
+Summary:	KDE 4 library
 Group:		System/Libraries
 
-%description -n %{libpimactivity}
-Library for KDE Activities integration in PIM.
+%description -n %{libnoteshared}
+KDE 4 library.
 
-%files -n %{libpimactivity}
-%{_kde_libdir}/libpimactivity.so.%{pimactivity_major}*
+%files -n %{libnoteshared}
+%{_kde_libdir}/libnoteshared.so.%{noteshared_major}*
 
 #-----------------------------------------------------------------------------
 
@@ -1563,8 +1560,6 @@ Requires:	%{libakregatorprivate} = %{EVRD}
 Requires:	%{libcalendarsupport} = %{EVRD}
 Requires:	%{libcomposereditorng} = %{EVRD}
 Requires:	%{libeventviews} = %{EVRD}
-Requires:	%{libfolderarchive} = %{EVRD}
-Requires:	%{libgrammar} = %{EVRD}
 Requires:	%{libgrantleetheme} = %{EVRD}
 Requires:	%{libgrantleethemeeditor} = %{EVRD}
 Requires:	%{libincidenceeditorsng} = %{EVRD}
@@ -1594,7 +1589,7 @@ Requires:	%{libmessagecomposer} = %{EVRD}
 Requires:	%{libmessagecore} = %{EVRD}
 Requires:	%{libmessagelist} = %{EVRD}
 Requires:	%{libmessageviewer} = %{EVRD}
-Requires:	%{libpimactivity} = %{EVRD}
+Requires:	%{libnoteshared} = %{EVRD}
 Requires:	%{libpimcommon} = %{EVRD}
 Requires:	%{libsendlater} = %{EVRD}
 Requires:	%{libtemplateparser} = %{EVRD}
@@ -1619,9 +1614,25 @@ based on kdepim.
 %install
 %makeinstall_std -C build
 
+# akonadi_folderarchive_agent was removed, no need to keep desktop file
+rm -f %{buildroot}%{_kde_datadir}/akonadi/agents/folderarchiveagent.desktop
+
 %find_lang %{name} --all-name --with-html
 
 %changelog
+* Wed Jun 11 2014 Andrey Bondrov <andrey.bondrov@rosalab.ru> 3:4.13.2-1
+- New version 4.13.2
+- Add pkgconfig(libkgapi) and baloo-devel to BuildRequires
+- Drop nepomuk-core-devel and nepomuk-widgets-devel from BuildRequires
+- New library libnoteshared
+- New package akonadi-notes-agent
+- New package sieveeditor
+- New package storageservicemanager
+- Drop no longer built libpimactivity, libgrammar and libfolderarchive
+- Drop no longer build akonadi-folderarchive-agent
+- Drop no longer build pimactivity
+- Update files
+
 * Wed Apr 02 2014 Andrey Bondrov <andrey.bondrov@rosalab.ru> 3:4.12.4-1
 - New version 4.12.4
 

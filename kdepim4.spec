@@ -1,7 +1,7 @@
 Summary:	An application suite to manage personal information
 Name:		kdepim4
 Epoch:		3
-Version:	4.13.2
+Version:	4.13.3
 Release:	1
 Group:		Graphical desktop/KDE
 License:	GPLv2+
@@ -1620,6 +1620,9 @@ rm -f %{buildroot}%{_kde_datadir}/akonadi/agents/folderarchiveagent.desktop
 %find_lang %{name} --all-name --with-html
 
 %changelog
+* Tue Jul 15 2014 Andrey Bondrov <andrey.bondrov@rosalab.ru> 3:4.13.3-1
+- New version 4.13.3
+
 * Wed Jun 11 2014 Andrey Bondrov <andrey.bondrov@rosalab.ru> 3:4.13.2-1
 - New version 4.13.2
 - Add pkgconfig(libkgapi) and baloo-devel to BuildRequires

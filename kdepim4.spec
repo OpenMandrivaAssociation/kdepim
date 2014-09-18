@@ -2,9 +2,9 @@ Summary:	An application suite to manage personal information
 Name:		kdepim4
 Epoch:		3
 Version:	4.13.3
-Release:	1
-Group:		Graphical desktop/KDE
+Release:	2
 License:	GPLv2+
+Group:		Graphical desktop/KDE
 Url:		http://community.kde.org/KDE_PIM
 %define is_beta %(if test `echo %{version} |cut -d. -f3` -ge 70; then echo -n 1; else echo -n 0; fi)
 %if %{is_beta}
@@ -14,6 +14,7 @@ Url:		http://community.kde.org/KDE_PIM
 %endif
 Source0:	ftp://ftp.kde.org/pub/kde/%{ftpdir}/%{version}/src/kdepim-%{version}.tar.xz
 Patch0:		kdepim-4.12.1-cmake-libkaddressbookgrantlee.patch
+Patch1:		kdepim-4.13.3-storageservicemanager-desktop.patch
 BuildRequires:	xsltproc
 BuildRequires:	baloo-devel
 BuildRequires:	boost-devel
@@ -1606,6 +1607,7 @@ based on kdepim.
 %prep
 %setup -q -n kdepim-%{version}
 %patch0 -p1
+%patch1 -p1
 
 %build
 %cmake_kde4 -DKDEPIM_BUILD_MOBILE=false
@@ -1620,6 +1622,9 @@ rm -f %{buildroot}%{_kde_datadir}/akonadi/agents/folderarchiveagent.desktop
 %find_lang %{name} --all-name --with-html
 
 %changelog
+* Fri Aug 22 2014 Andrey Bondrov <andrey.bondrov@rosalab.ru> 3:4.13.3-2
+- Add storageservicemanager-desktop patch to hide useless menu entry
+
 * Tue Jul 15 2014 Andrey Bondrov <andrey.bondrov@rosalab.ru> 3:4.13.3-1
 - New version 4.13.3
 

@@ -1,8 +1,8 @@
 Summary:	An application suite to manage personal information
 Name:		kdepim4
 Epoch:		3
-Version:	4.13.3
-Release:	2
+Version:	4.14.1
+Release:	1
 License:	GPLv2+
 Group:		Graphical desktop/KDE
 Url:		http://community.kde.org/KDE_PIM
@@ -1622,6 +1622,9 @@ rm -f %{buildroot}%{_kde_datadir}/akonadi/agents/folderarchiveagent.desktop
 %find_lang %{name} --all-name --with-html
 
 %changelog
+* Mon Sep 29 2014 Andrey Bondrov <andrey.bondrov@rosalab.ru> 3:4.14.1-1
+- New version 4.14.1
+
 * Fri Aug 22 2014 Andrey Bondrov <andrey.bondrov@rosalab.ru> 3:4.13.3-2
 - Add storageservicemanager-desktop patch to hide useless menu entry
 

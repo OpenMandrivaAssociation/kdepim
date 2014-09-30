@@ -129,6 +129,23 @@ Akonadi archivemail agent.
 
 #-----------------------------------------------------------------------------
 
+%package -n akonadi-followupreminder-agent
+Summary:	Akonadi followupreminder agent
+Group:		Graphical desktop/KDE
+Requires:	%{name}-core = %{EVRD}
+
+%description -n akonadi-followupreminder-agent
+Akonadi followup reminder agent allows to remind you when an email was not
+answered.
+
+%files -n akonadi-followupreminder-agent
+%doc %{_kde_docdir}/HTML/en/akonadi_followupreminder_agent
+%{_kde_bindir}/akonadi_followupreminder_agent
+%{_kde_datadir}/akonadi/agents/followupreminder.desktop
+%{_kde_appsdir}/akonadi_followupreminder_agent/
+
+#-----------------------------------------------------------------------------
+
 %package -n akonadi-mailfilter-agent
 Summary:	Akonadi mailfilter agent
 Group:		Graphical desktop/KDE
@@ -480,6 +497,7 @@ Requires:	kio4-mbox
 Requires:	kio4-imap
 Requires:	kio4-sieve
 Requires:	akonadi-archivemail-agent = %{EVRD}
+Requires:	akonadi-followupreminder-agent = %{EVRD}
 Requires:	akonadi-mailfilter-agent = %{EVRD}
 Requires:	akonadi-sendlater-agent = %{EVRD}
 Requires:	headerthemeeditor = %{EVRD}
@@ -1643,6 +1661,7 @@ rm -f %{buildroot}%{_kde_datadir}/akonadi/agents/folderarchiveagent.desktop
 - Re-diff storageservicemanager-desktop patch
 - New shared library package libfollowupreminder
 - Requires libkgapi at least 2.2.0
+- New package akonadi-followupreminder-agent
 
 * Fri Aug 22 2014 Andrey Bondrov <andrey.bondrov@rosalab.ru> 3:4.13.3-2
 - Add storageservicemanager-desktop patch to hide useless menu entry

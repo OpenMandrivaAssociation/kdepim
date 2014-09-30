@@ -1021,6 +1021,21 @@ KDE 4 library.
 
 #-----------------------------------------------------------------------------
 
+%define followupreminder_major 4
+%define libfollowupreminder %mklibname followupreminder %{followupreminder_major}
+
+%package -n %{libfollowupreminder}
+Summary:	KDE 4 library
+Group:		System/Libraries
+
+%description -n %{libfollowupreminder}
+KDE 4 library.
+
+%files -n %{libfollowupreminder}
+%{_kde_libdir}/libfollowupreminder.so.%{followupreminder_major}*
+
+#-----------------------------------------------------------------------------
+
 %define grantleetheme_major 4
 %define libgrantleetheme %mklibname grantleetheme %{grantleetheme_major}
 
@@ -1561,6 +1576,7 @@ Requires:	%{libakregatorprivate} = %{EVRD}
 Requires:	%{libcalendarsupport} = %{EVRD}
 Requires:	%{libcomposereditorng} = %{EVRD}
 Requires:	%{libeventviews} = %{EVRD}
+Requires:	%{libfollowupreminder} = %{EVRD}
 Requires:	%{libgrantleetheme} = %{EVRD}
 Requires:	%{libgrantleethemeeditor} = %{EVRD}
 Requires:	%{libincidenceeditorsng} = %{EVRD}
@@ -1625,6 +1641,7 @@ rm -f %{buildroot}%{_kde_datadir}/akonadi/agents/folderarchiveagent.desktop
 * Mon Sep 29 2014 Andrey Bondrov <andrey.bondrov@rosalab.ru> 3:4.14.1-1
 - New version 4.14.1
 - Re-diff storageservicemanager-desktop patch
+- New shared library package libfollowupreminder
 
 * Fri Aug 22 2014 Andrey Bondrov <andrey.bondrov@rosalab.ru> 3:4.13.3-2
 - Add storageservicemanager-desktop patch to hide useless menu entry

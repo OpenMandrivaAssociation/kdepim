@@ -26,7 +26,7 @@ BuildRequires:	kdepim4-runtime-devel
 BuildRequires:	libassuan-devel
 BuildRequires:	pkgconfig(akonadi)
 BuildRequires:	pkgconfig(libkactivities)
-BuildRequires:	pkgconfig(libkgapi)
+BuildRequires:	pkgconfig(libkgapi) >= 2.2.0
 BuildRequires:	pkgconfig(libstreams)
 BuildRequires:	pkgconfig(shared-desktop-ontologies)
 BuildRequires:	pkgconfig(x11)
@@ -1642,6 +1642,7 @@ rm -f %{buildroot}%{_kde_datadir}/akonadi/agents/folderarchiveagent.desktop
 - New version 4.14.1
 - Re-diff storageservicemanager-desktop patch
 - New shared library package libfollowupreminder
+- Requires libkgapi at least 2.2.0
 
 * Fri Aug 22 2014 Andrey Bondrov <andrey.bondrov@rosalab.ru> 3:4.13.3-2
 - Add storageservicemanager-desktop patch to hide useless menu entry

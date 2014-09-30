@@ -908,6 +908,7 @@ systems. Successor of Backup Mail from KDE 4.9.
 %files -n pimsettingexporter
 %doc %{_kde_docdir}/HTML/en/pimsettingexporter
 %{_kde_bindir}/pimsettingexporter
+%{_kde_applicationsdir}/pimsettingexporter.desktop
 %{_kde_appsdir}/pimsettingexporter/backup-structure.txt
 %{_kde_appsdir}/pimsettingexporter/pimsettingexporter.rc
 
@@ -1662,6 +1663,7 @@ rm -f %{buildroot}%{_kde_datadir}/akonadi/agents/folderarchiveagent.desktop
 - New shared library package libfollowupreminder
 - Requires libkgapi at least 2.2.0
 - New package akonadi-followupreminder-agent
+- Update files
 
 * Fri Aug 22 2014 Andrey Bondrov <andrey.bondrov@rosalab.ru> 3:4.13.3-2
 - Add storageservicemanager-desktop patch to hide useless menu entry

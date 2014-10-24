@@ -2,7 +2,7 @@ Summary:	An application suite to manage personal information
 Name:		kdepim4
 Epoch:		3
 Version:	4.14.2
-Release:	1
+Release:	2
 License:	GPLv2+
 Group:		Graphical desktop/KDE
 Url:		http://community.kde.org/KDE_PIM
@@ -1197,6 +1197,7 @@ KDE 4 library.
 %package -n %{libkdgantt2}
 Summary:	KDE4 library
 Group:		System/Libraries
+Obsoletes:	%{_lib}kdgantt20
 
 %description -n %{libkdgantt2}
 KDE 4 library.

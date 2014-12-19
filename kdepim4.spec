@@ -1,8 +1,8 @@
 Summary:	An application suite to manage personal information
 Name:		kdepim4
 Epoch:		3
-Version:	4.13.3
-Release:	2
+Version:	4.14.3
+Release:	1
 License:	GPLv2+
 Group:		Graphical desktop/KDE
 Url:		http://community.kde.org/KDE_PIM
@@ -14,7 +14,7 @@ Url:		http://community.kde.org/KDE_PIM
 %endif
 Source0:	ftp://ftp.kde.org/pub/kde/%{ftpdir}/%{version}/src/kdepim-%{version}.tar.xz
 Patch0:		kdepim-4.12.1-cmake-libkaddressbookgrantlee.patch
-Patch1:		kdepim-4.13.3-storageservicemanager-desktop.patch
+Patch1:		kdepim-4.14.1-storageservicemanager-desktop.patch
 BuildRequires:	xsltproc
 BuildRequires:	baloo-devel
 BuildRequires:	boost-devel
@@ -26,7 +26,7 @@ BuildRequires:	kdepim4-runtime-devel
 BuildRequires:	libassuan-devel
 BuildRequires:	pkgconfig(akonadi)
 BuildRequires:	pkgconfig(libkactivities)
-BuildRequires:	pkgconfig(libkgapi)
+BuildRequires:	pkgconfig(libkgapi) >= 2.2.0
 BuildRequires:	pkgconfig(libstreams)
 BuildRequires:	pkgconfig(shared-desktop-ontologies)
 BuildRequires:	pkgconfig(x11)
@@ -126,6 +126,23 @@ Akonadi archivemail agent.
 %{_kde_bindir}/akonadi_archivemail_agent
 %{_kde_datadir}/akonadi/agents/archivemailagent.desktop
 %{_kde_appsdir}/akonadi_archivemail_agent/
+
+#-----------------------------------------------------------------------------
+
+%package -n akonadi-followupreminder-agent
+Summary:	Akonadi followupreminder agent
+Group:		Graphical desktop/KDE
+Requires:	%{name}-core = %{EVRD}
+
+%description -n akonadi-followupreminder-agent
+Akonadi followup reminder agent allows to remind you when an email was not
+answered.
+
+%files -n akonadi-followupreminder-agent
+%doc %{_kde_docdir}/HTML/en/akonadi_followupreminder_agent
+%{_kde_bindir}/akonadi_followupreminder_agent
+%{_kde_datadir}/akonadi/agents/followupreminder.desktop
+%{_kde_appsdir}/akonadi_followupreminder_agent/
 
 #-----------------------------------------------------------------------------
 
@@ -480,6 +497,7 @@ Requires:	kio4-mbox
 Requires:	kio4-imap
 Requires:	kio4-sieve
 Requires:	akonadi-archivemail-agent = %{EVRD}
+Requires:	akonadi-followupreminder-agent = %{EVRD}
 Requires:	akonadi-mailfilter-agent = %{EVRD}
 Requires:	akonadi-sendlater-agent = %{EVRD}
 Requires:	headerthemeeditor = %{EVRD}
@@ -890,6 +908,7 @@ systems. Successor of Backup Mail from KDE 4.9.
 %files -n pimsettingexporter
 %doc %{_kde_docdir}/HTML/en/pimsettingexporter
 %{_kde_bindir}/pimsettingexporter
+%{_kde_applicationsdir}/pimsettingexporter.desktop
 %{_kde_appsdir}/pimsettingexporter/backup-structure.txt
 %{_kde_appsdir}/pimsettingexporter/pimsettingexporter.rc
 
@@ -1018,6 +1037,21 @@ KDE 4 library.
 
 %files -n %{libeventviews}
 %{_kde_libdir}/libeventviews.so.%{eventviews_major}*
+
+#-----------------------------------------------------------------------------
+
+%define followupreminder_major 4
+%define libfollowupreminder %mklibname followupreminder %{followupreminder_major}
+
+%package -n %{libfollowupreminder}
+Summary:	KDE 4 library
+Group:		System/Libraries
+
+%description -n %{libfollowupreminder}
+KDE 4 library.
+
+%files -n %{libfollowupreminder}
+%{_kde_libdir}/libfollowupreminder.so.%{followupreminder_major}*
 
 #-----------------------------------------------------------------------------
 
@@ -1561,6 +1595,7 @@ Requires:	%{libakregatorprivate} = %{EVRD}
 Requires:	%{libcalendarsupport} = %{EVRD}
 Requires:	%{libcomposereditorng} = %{EVRD}
 Requires:	%{libeventviews} = %{EVRD}
+Requires:	%{libfollowupreminder} = %{EVRD}
 Requires:	%{libgrantleetheme} = %{EVRD}
 Requires:	%{libgrantleethemeeditor} = %{EVRD}
 Requires:	%{libincidenceeditorsng} = %{EVRD}

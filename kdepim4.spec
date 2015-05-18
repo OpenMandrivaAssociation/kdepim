@@ -1,8 +1,8 @@
 Summary:	An application suite to manage personal information
-Name:		kdepim4
+Name:		kdepim
 Epoch:		3
-Version:	4.14.3
-Release:	2
+Version:	4.14.8
+Release:	1
 License:	GPLv2+
 Group:		Graphical desktop/KDE
 Url:		http://community.kde.org/KDE_PIM
@@ -12,7 +12,7 @@ Url:		http://community.kde.org/KDE_PIM
 %else
 %define ftpdir stable
 %endif
-Source0:	ftp://ftp.kde.org/pub/kde/%{ftpdir}/%{version}/src/kdepim-%{version}.tar.xz
+Source0:	http://download.kde.org/%{ftpdir}/%{version}/src/%{name}-%{version}.tar.xz
 Patch0:		kdepim-4.12.1-cmake-libkaddressbookgrantlee.patch
 Patch1:		kdepim-4.14.1-storageservicemanager-desktop.patch
 BuildRequires:	xsltproc
@@ -20,9 +20,9 @@ BuildRequires:	baloo-devel
 BuildRequires:	boost-devel
 BuildRequires:	gpgme-devel
 BuildRequires:	grantlee-devel
-BuildRequires:	kdelibs4-devel
-BuildRequires:	kdepimlibs4-devel
-BuildRequires:	kdepim4-runtime-devel
+BuildRequires:	kdelibs-devel >= 4.14.8
+BuildRequires:	kdepimlibs-devel >= 4.14.8
+BuildRequires:	kdepim-runtime-devel >= 4.14.8
 BuildRequires:	libassuan-devel
 BuildRequires:	pkgconfig(akonadi)
 BuildRequires:	pkgconfig(libkactivities)
@@ -46,6 +46,7 @@ Suggests:	kontact
 Suggests:	korganizer
 Suggests:	ksendemail
 Suggests:	kjots
+%rename		kdepim4
 
 %description
 Information Management applications for the K Desktop Environment.
@@ -78,6 +79,7 @@ Conflicts:	%{_lib}kpgp4 < 3:4.11.0
 Conflicts:	%{name}-devel < 3:4.11.0
 Obsoletes:	akonadi-folderarchive-agent < 3:4.13.0
 Obsoletes:	pimactivity < 3:4.13.0
+%rename		kdepim4-core
 
 %description core
 Core files for KDE PIM.
@@ -461,7 +463,7 @@ Requires:	%{name}-core = %{EVRD}
 Provides:	kde4-kleopatra = %{EVRD}
 
 %description -n kleopatra
-KDE Certificate Manager
+KDE Certificate Manager.
 
 %files -n kleopatra
 %doc %{_kde_docdir}/HTML/en/kleopatra
@@ -585,7 +587,7 @@ Summary:	A newsreader for the K Desktop Environment
 Group:		Graphical desktop/KDE
 Url:		http://userbase.kde.org/KNode
 Requires:	%{name}-core = %{EVRD}
-Requires:	kdepimlibs4-core
+Requires:	kdepimlibs-core
 Requires:	kio4-nntp
 Provides:	kde4-knode = %{EVRD}
 Conflicts:	%{name}-devel < 3:4.11.0
@@ -1586,9 +1588,9 @@ KDE 4 library.
 %package devel
 Summary:	Devel stuff for %{name}
 Group:		Development/KDE and Qt
-Requires:	kdelibs4-devel
-Requires:	kdepimlibs4-devel
-Requires:	kdepim4-runtime-devel
+Requires:	kdelibs-devel
+Requires:	kdepimlibs-devel
+Requires:	kdepim-runtime-devel
 Requires:	%{libakonadi_next} = %{EVRD}
 Requires:	%{libakregatorinterfaces} = %{EVRD}
 Requires:	%{libakregatorprivate} = %{EVRD}
@@ -1629,6 +1631,7 @@ Requires:	%{libnoteshared} = %{EVRD}
 Requires:	%{libpimcommon} = %{EVRD}
 Requires:	%{libsendlater} = %{EVRD}
 Requires:	%{libtemplateparser} = %{EVRD}
+%rename		kdepim4-devel
 
 %description devel
 This package contains header files needed if you wish to build applications

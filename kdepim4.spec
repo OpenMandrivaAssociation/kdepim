@@ -19,7 +19,7 @@ BuildRequires:	xsltproc
 BuildRequires:	baloo-devel
 BuildRequires:	boost-devel
 BuildRequires:	gpgme-devel
-BuildRequires:	grantlee-devel
+BuildRequires:	grantlee-devel >= 0.4.0
 BuildRequires:	kdelibs-devel >= 4.14.8
 BuildRequires:	kdepimlibs-devel >= 4.14.8
 BuildRequires:	kdepim-runtime-devel >= 4.14.8

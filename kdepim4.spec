@@ -32,6 +32,7 @@ BuildRequires:	pkgconfig(shared-desktop-ontologies)
 BuildRequires:	pkgconfig(x11)
 BuildRequires:	pkgconfig(xscrnsaver)
 BuildRequires:	pkgconfig(zlib)
+BuildRequires:	cmake(Prison)
 Suggests:	akonadi-common
 Suggests:	kleopatra
 Suggests:	akregator

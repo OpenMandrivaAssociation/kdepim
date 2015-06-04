@@ -72,8 +72,8 @@ Information Management applications for the K Desktop Environment.
 Summary:	Core files for KDE PIM
 Group:		Graphical desktop/KDE
 Requires:	akonadi-kde >= 3:%{version}
-Requires:	kdebase4-runtime
-Requires:	kdelibs4-core
+Requires:	kdebase-runtime
+Requires:	kdelibs-core
 Requires:	storageservicemanager = %{EVRD}
 Conflicts:	%{_lib}kdepim4 < 3:4.11.0
 Conflicts:	%{_lib}kpgp4 < 3:4.11.0
@@ -489,7 +489,7 @@ Summary:	KDE Email Client
 Group:		Graphical desktop/KDE
 Url:		http://userbase.kde.org/KMail
 Requires:	%{name}-core = %{EVRD}
-Requires:	kdepimlibs4-core
+Requires:	kdepimlibs-core
 Requires:	sasl-plug-plain
 Requires:	sasl-plug-ntlm
 Requires:	sasl-plug-login

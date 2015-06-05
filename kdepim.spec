@@ -893,16 +893,19 @@ Message viewer for KDE Email Client.
 %{_kde_libdir}/kde4/messageviewer_bodypartformatter_text_vcard.so
 %{_kde_libdir}/kde4/messageviewer_bodypartformatter_text_xdiff.so
 %{_kde_plugindir}/accessible/messagevieweraccessiblewidgetfactory.so
-%{_kde_plugindir}/grantlee/0.3/grantlee_messageheaderfilters.so
+%{_kde_plugindir}/grantlee/0.4/grantlee_messageheaderfilters.so
 %{_kde_datadir}/config/messageviewer_header_themes.knsrc
 
 #-----------------------------------------------------------------------------
+
+%libpackage pimsettingexporterprivate 4
 
 %package -n pimsettingexporter
 Summary:	Allows to save data from KDE PIM applications and restore them in other systems
 Group:		Graphical desktop/KDE
 Requires:	kmail
 Obsoletes:	backupmail < 3:4.10.0
+Requires:	%{mklibname pimsettingexporterprivate 4}
 
 %description -n pimsettingexporter
 Allows to save data from KDE PIM applications and restore them in other
@@ -998,12 +1001,15 @@ KDE 4 library.
 
 #------------------------------------------------------------------------------
 
+%libpackage calendarsupportcollectionpage 4
+
 %define calendarsupport_major 4
 %define libcalendarsupport %mklibname calendarsupport %{calendarsupport_major}
 
 %package -n %{libcalendarsupport}
 Summary:	KDE 4 library
 Group:		System/Libraries
+Requires:	%{mklibname calendarsupportcollectionpage 4}
 
 %description -n %{libcalendarsupport}
 KDE 4 library for korganizer-Mobile.
@@ -1630,6 +1636,7 @@ Requires:	%{libmessagelist} = %{EVRD}
 Requires:	%{libmessageviewer} = %{EVRD}
 Requires:	%{libnoteshared} = %{EVRD}
 Requires:	%{libpimcommon} = %{EVRD}
+Requires:	%{mklibname pimsettingexporterprivate 4}  = %{EVRD}
 Requires:	%{libsendlater} = %{EVRD}
 Requires:	%{libtemplateparser} = %{EVRD}
 %rename		kdepim4-devel

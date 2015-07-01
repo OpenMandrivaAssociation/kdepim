@@ -2,7 +2,7 @@ Summary:	An application suite to manage personal information
 Name:		kdepim
 Epoch:		3
 Version:	4.14.9
-Release:	2
+Release:	3
 License:	GPLv2+
 Group:		Graphical desktop/KDE
 Url:		http://community.kde.org/KDE_PIM
@@ -80,7 +80,8 @@ Conflicts:	%{_lib}kpgp4 < 3:4.11.0
 Conflicts:	%{name}-devel < 3:4.11.0
 Obsoletes:	akonadi-folderarchive-agent < 3:4.13.0
 Obsoletes:	pimactivity < 3:4.13.0
-%rename		kdepim4-core
+%rename	kdepim4-core
+Provides:	kdepim4-core = 3:4.14.3-1
 
 %description core
 Core files for KDE PIM.

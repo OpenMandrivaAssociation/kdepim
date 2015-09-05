@@ -1,8 +1,8 @@
 Summary:	An application suite to manage personal information
 Name:		kdepim
 Epoch:		3
-Version:	4.14.10
-Release:	2
+Version:	15.08.0
+Release:	1
 License:	GPLv2+
 Group:		Graphical desktop/KDE
 Url:		http://community.kde.org/KDE_PIM
@@ -20,18 +20,60 @@ BuildRequires:	baloo-devel
 BuildRequires:	boost-devel
 BuildRequires:	gpgme-devel
 BuildRequires:	grantlee-devel >= 0.4.0
-BuildRequires:	kdelibs-devel >= 4.14.8
-BuildRequires:	kdepimlibs-devel >= 4.14.8
-BuildRequires:	kdepim-runtime-devel >= 4.14.8
 BuildRequires:	libassuan-devel
-BuildRequires:	pkgconfig(akonadi)
-BuildRequires:	pkgconfig(libkactivities)
-BuildRequires:	pkgconfig(libkgapi) >= 2.2.0
 BuildRequires:	pkgconfig(libstreams)
 BuildRequires:	pkgconfig(shared-desktop-ontologies)
 BuildRequires:	pkgconfig(x11)
 BuildRequires:	pkgconfig(xscrnsaver)
 BuildRequires:	pkgconfig(zlib)
+
+BuildRequires:  cmake(KF5Akonadi)
+BuildRequires:  cmake(KF5AkonadiCalendar)
+BuildRequires:  cmake(KF5AkonadiContact)
+BuildRequires:  cmake(KF5AkonadiMime)
+BuildRequires:  cmake(KF5AkonadiNotes)
+BuildRequires:  cmake(KF5AkonadiSearch)
+BuildRequires:  cmake(KF5AkonadiServer)
+BuildRequires:  cmake(KF5AlarmCalendar)
+BuildRequires:  cmake(KF5Archive)
+BuildRequires:  cmake(KF5Auth)
+BuildRequires:  cmake(KF5Blog)
+BuildRequires:  cmake(KF5CalendarCore)
+BuildRequires:  cmake(KF5CalendarUtils)
+BuildRequires:  cmake(KF5Codecs)
+BuildRequires:  cmake(KF5Config)
+BuildRequires:  cmake(KF5Contacts)
+BuildRequires:  cmake(KF5DBusAddons)
+BuildRequires:  cmake(KF5DNSSD)
+BuildRequires:  cmake(KF5DocTools)
+BuildRequires:  cmake(KF5GAPI)
+BuildRequires:  cmake(KF5GlobalAccel)
+BuildRequires:  cmake(KF5Gpgmepp)
+BuildRequires:  cmake(KF5Holidays)
+BuildRequires:  cmake(KF5IMAP)
+BuildRequires:  cmake(KF5IdentityManagement)
+BuildRequires:  cmake(KF5KCMUtils)
+BuildRequires:  cmake(KF5KDELibs4Support)
+BuildRequires:  cmake(KF5KHtml)
+BuildRequires:  cmake(KF5KontactInterface)
+BuildRequires:  cmake(KF5Kross)
+BuildRequires:  cmake(KF5Ldap)
+BuildRequires:  cmake(KF5MailTransport)
+BuildRequires:  cmake(KF5Mbox)
+BuildRequires:  cmake(KF5Mime)
+BuildRequires:  cmake(KF5NewStuff)
+BuildRequires:  cmake(KF5NotifyConfig)
+BuildRequires:  cmake(KF5PimTextEdit)
+BuildRequires:  cmake(KF5Prison)
+BuildRequires:  cmake(KF5Service)
+BuildRequires:  cmake(KF5Sonnet)
+BuildRequires:  cmake(KF5Syndication)
+BuildRequires:  cmake(KF5TextEditor)
+BuildRequires:  cmake(KF5Tnef)
+BuildRequires:  cmake(KF5Wallet)
+BuildRequires:  cmake(KF5WebKit)
+BuildRequires:  cmake(KF5XmlRpcClient)
+
 BuildRequires:	cmake(Prison)
 Suggests:	akonadi-common
 Suggests:	kleopatra

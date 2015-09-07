@@ -13,8 +13,6 @@ Url:		http://community.kde.org/KDE_PIM
 %define ftpdir stable
 %endif
 Source0:	http://download.kde.org/%{ftpdir}/%{version}/src/%{name}-%{version}.tar.xz
-Patch0:		kdepim-4.12.1-cmake-libkaddressbookgrantlee.patch
-Patch1:		kdepim-4.14.1-storageservicemanager-desktop.patch
 BuildRequires:	xsltproc
 BuildRequires:	baloo-devel
 BuildRequires:	boost-devel
@@ -73,17 +71,15 @@ BuildRequires:  cmake(KF5Tnef)
 BuildRequires:  cmake(KF5Wallet)
 BuildRequires:  cmake(KF5WebKit)
 BuildRequires:  cmake(KF5XmlRpcClient)
+BuildRequires:	cmake(Grantlee5)
 
 BuildRequires:	cmake(Prison)
 Suggests:	akonadi-common
 Suggests:	kleopatra
 Suggests:	akregator
-Suggests:	knode
 Suggests:	kaddressbook
 Suggests:	kalarm
-Suggests:	ktimetracker
 Suggests:	kmail
-Suggests:	kmailcvt
 Suggests:	knotes
 Suggests:	kontact
 Suggests:	korganizer
@@ -99,12 +95,10 @@ Information Management applications for the K Desktop Environment.
 	- kalarmd: personal alarm/reminder messages daemon, shared by korganizer
 	  and kalarm.
 	- kaplan: A shell for the PIM apps, still experimental.
-	- ktimetracker: Time tracker.
 	- kfile-plugins: vCard KFIleItem plugin.
 	- knotes: yellow notes application
 	- konsolecalendar: Command line tool for accessing calendar files.
 	- kmail: universal mail client
-	- kmailcvt: converst addressbooks to kmail format
 
 %files
 
@@ -130,15 +124,26 @@ Core files for KDE PIM.
 
 %files core -f %{name}.lang
 %exclude %{_kde_docdir}/HTML/en/*
-%dir %{_kde_services}/kontact
-%{_kde_iconsdir}/oxygen/*/mimetypes/x-mail-distribution-list.*
-%{_kde_appsdir}/kdepimwidgets
-%{_kde_plugindir}/designer/kdepimwidgets.so
-%{_kde_plugindir}/designer/mailcommonwidgets.so
-%{_kde_plugindir}/designer/pimcommonwidgets.so
-%{_kde_appsdir}/kconf_update/kpgp-3.1-upgrade-address-data.pl
-%{_kde_appsdir}/kconf_update/kpgp.upd
-%{_datadir}/dbus-1/interfaces/org.kde.mailtransport.service.xml
+%_kde5_bindir/pimsettingexporter
+%_kde5_bindir/pimsettingexporterconsole
+%_kde5_bindir/storageservicemanager
+%_kde5_bindir/contactprintthemeeditor
+%_kde5_datadir/pimsettingexporter
+%_kde5_datadir/kdepimwidgets
+%_sysconfdir/xdg/kdepim.categories
+%_datadir/dbus-1/interfaces/org.kde.mailtransport.service.xml
+%_kde5_docdir/HTML/en/pimsettingexporter
+%_kde5_docdir/HTML/en/contactthemeeditor
+%_kde5_datadir/applications/org.kde.pimsettingexporter.desktop
+%_kde5_datadir/applications/org.kde.storageservicemanager.desktop
+%_kde5_datadir/kxmlgui5/pimsettingexporter
+%_kde5_datadir/knotifications5/storageservicemanager.notifyrc
+%_kde5_datadir/kxmlgui5/storageservicemanager
+%_qt5_plugindir/designer/kdepimwidgets.so
+%_qt5_plugindir/designer/pimcommonwidgets.so
+%_kde5_datadir/applications/org.kde.contactprintthemeeditor.desktop
+%_kde5_datadir/composereditor/composereditorinitialhtml
+%_kde5_datadir/kxmlgui5/contactprintthemeeditor/contactprintthemeeditorui.rc
 
 #-----------------------------------------------------------------------------
 
@@ -272,9 +277,9 @@ easy news reading.
 %{_kde_datadir}/config.kcfg/akregator.kcfg
 %{_kde_iconsdir}/*/*/apps/akregator.*
 %{_kde_iconsdir}/*/*/apps/akregator_empty.*
-%{_kde_services}/kontact/akregatorplugin.desktop
-%{_kde_services}/akregator_*
-%{_kde_services}/feed.protocol
+%{_kde5_services}/kontact/akregatorplugin.desktop
+%{_kde5_services}/akregator_*
+%{_kde5_services}/feed.protocol
 %{_kde_servicetypes}/akregator_plugin.desktop
 %{_kde_libdir}/kde4/akregator*
 %{_kde_libdir}/kde4/kontact_akregatorplugin.so
@@ -411,9 +416,9 @@ The KDE addressbook application.
 %{_kde_libdir}/kde4/kaddressbookpart.so
 %{_kde_libdir}/kde4/kontact_kaddressbookplugin.so
 %{_kde_iconsdir}/*/*/apps/kaddressbook.*
-%{_kde_services}/kaddressbookpart.desktop
-%{_kde_services}/kontact/kaddressbookplugin.desktop
-%{_kde_services}/kcmldap.desktop
+%{_kde5_services}/kaddressbookpart.desktop
+%{_kde5_services}/kontact/kaddressbookplugin.desktop
+%{_kde5_services}/kcmldap.desktop
 %{_kde_mandir}/man1/kabcclient.1.*
 %{_datadir}/dbus-1/interfaces/org.kde.addressbook.service.xml
 
@@ -492,11 +497,11 @@ notes.
 %{_kde_datadir}/config.kcfg/kjots.kcfg
 %{_kde_iconsdir}/*/*/apps/kjots.*
 %{_kde_iconsdir}/*/*/actions/edit-delete-page.*
-%{_kde_services}/akonotes_list.desktop
-%{_kde_services}/akonotes_note.desktop
-%{_kde_services}/kjots_config_misc.desktop
-%{_kde_services}/kjotspart.desktop
-%{_kde_services}/kontact/kjots_plugin.desktop
+%{_kde5_services}/akonotes_list.desktop
+%{_kde5_services}/akonotes_note.desktop
+%{_kde5_services}/kjots_config_misc.desktop
+%{_kde5_services}/kjotspart.desktop
+%{_kde5_services}/kontact/kjots_plugin.desktop
 
 #-----------------------------------------------------------------------------
 
@@ -522,7 +527,7 @@ KDE Certificate Manager.
 %{_kde_appsdir}/libkleopatra
 %{_kde_appsdir}/kwatchgnupg
 %{_kde_iconsdir}/*/*/apps/kleopatra.*
-%{_kde_services}/kleopatra_*
+%{_kde5_services}/kleopatra_*
 %{_kde_libdir}/kde4/kcm_kleopatra.so
 
 #-----------------------------------------------------------------------------
@@ -549,7 +554,6 @@ Requires:	akonadi-sendlater-agent = %{EVRD}
 Requires:	headerthemeeditor = %{EVRD}
 Requires:	messageviewer = %{EVRD}
 Suggests:	kaddressbook = %{EVRD}
-Suggests:	kmailcvt = %{EVRD}
 Suggests:	pinentry-qt4
 Suggests:	openssh-askpass-qt4
 Suggests:	pimsettingexporter
@@ -586,16 +590,16 @@ information manager of KDE.
 %{_kde_configdir}/kmail.antivirusrc
 %{_kde_configdir}/ksieve_script.knsrc
 %{_kde_iconsdir}/*/*/apps/kmail.*
-%{_kde_services}/kontact/kmailplugin.desktop
-%{_kde_services}/kmail_config_accounts.desktop
-%{_kde_services}/kmail_config_appearance.desktop
-%{_kde_services}/kmail_config_composer.desktop
-%{_kde_services}/kmail_config_identity.desktop
-%{_kde_services}/kmail_config_misc.desktop
-%{_kde_services}/kmail_config_security.desktop
-%{_kde_services}/kcmkmailsummary.desktop
-%{_kde_services}/kcm_kpimidentities.desktop
-%{_kde_services}/ServiceMenus/kmail_addattachmentservicemenu.desktop
+%{_kde5_services}/kontact/kmailplugin.desktop
+%{_kde5_services}/kmail_config_accounts.desktop
+%{_kde5_services}/kmail_config_appearance.desktop
+%{_kde5_services}/kmail_config_composer.desktop
+%{_kde5_services}/kmail_config_identity.desktop
+%{_kde5_services}/kmail_config_misc.desktop
+%{_kde5_services}/kmail_config_security.desktop
+%{_kde5_services}/kcmkmailsummary.desktop
+%{_kde5_services}/kcm_kpimidentities.desktop
+%{_kde5_services}/ServiceMenus/kmail_addattachmentservicemenu.desktop
 %{_kde_servicetypes}/dbusmail.desktop
 %{_kde_libdir}/kde4/kcm_kmail.so
 %{_kde_libdir}/kde4/kcm_kpimidentities.so
@@ -605,66 +609,6 @@ information manager of KDE.
 %{_kde_libdir}/kde4/ktexteditorkabcbridge.so
 %{_datadir}/dbus-1/interfaces/org.kde.kmail.kmail.xml
 %{_datadir}/dbus-1/interfaces/org.kde.kmail.kmailpart.xml
-
-#-----------------------------------------------------------------------------
-
-%package -n kmailcvt
-Summary:	KDE Mail Import tool
-Group:		Graphical desktop/KDE
-Url:		http://userbase.kde.org/KMail
-Requires:	%{name}-core = %{EVRD}
-Provides:	kde4-kmailcvt = %{EVRD}
-
-%description -n kmailcvt
-KDE Mail Import tool
-
-%files -n kmailcvt
-%doc %{_kde_docdir}/HTML/en/kmailcvt
-%{_kde_bindir}/kmailcvt
-%{_kde_appsdir}/kmailcvt/pics/step1.png
-%{_kde_iconsdir}/*/*/apps/kmailcvt.*
-
-#-----------------------------------------------------------------------------
-
-%package -n knode
-Summary:	A newsreader for the K Desktop Environment
-Group:		Graphical desktop/KDE
-Url:		http://userbase.kde.org/KNode
-Requires:	%{name}-core = %{EVRD}
-Requires:	kdepimlibs-core
-Requires:	kio4-nntp
-Provides:	kde4-knode = %{EVRD}
-Conflicts:	%{name}-devel < 3:4.11.0
-
-%description -n knode
-KNode is a newsreader for the K Desktop Environment.
-
-It is GNKSA compliant (unfortunally a review is still pending), and has
-support for MIME and multiple servers.
-
-It is a online-reader, but in combination with a local newsserver like
-leafnode also usable with dial-up connections.
-
-%files -n knode
-%doc %{_kde_docdir}/HTML/en/knode
-%doc %{_kde_docdir}/HTML/en/kioslave/news
-%{_kde_bindir}/knode
-%{_kde_applicationsdir}/KNode.desktop
-%{_kde_appsdir}/knode
-%{_kde_appsdir}/kconf_update/knode.upd
-%{_kde_iconsdir}/*/*/apps/knode.*
-%{_kde_services}/kontact/knodeplugin.desktop
-%{_kde_services}/knode_config_accounts.desktop
-%{_kde_services}/knode_config_appearance.desktop
-%{_kde_services}/knode_config_cleanup.desktop
-%{_kde_services}/knode_config_identity.desktop
-%{_kde_services}/knode_config_post_news.desktop
-%{_kde_services}/knode_config_privacy.desktop
-%{_kde_services}/knode_config_read_news.desktop
-%{_kde_libdir}/kde4/kcm_knode.so
-%{_kde_libdir}/kde4/knodepart.so
-%{_kde_libdir}/kde4/kontact_knodeplugin.so
-%{_datadir}/dbus-1/interfaces/org.kde.knode.xml
 
 #-----------------------------------------------------------------------------
 
@@ -693,15 +637,15 @@ although including some advanced features.
 %{_kde_appsdir}/knotes
 %{_kde_iconsdir}/*/*/apps/knotes.*
 %{_kde_iconsdir}/*/*/actions/knotes_*
-%{_kde_services}/kcmknotessummary.desktop
-%{_kde_services}/kontact/knotesplugin.desktop
-%{_kde_services}/knote_config_action.desktop
-%{_kde_services}/knote_config_collection.desktop
-%{_kde_services}/knote_config_display.desktop
-%{_kde_services}/knote_config_editor.desktop
-%{_kde_services}/knote_config_misc.desktop
-%{_kde_services}/knote_config_network.desktop
-%{_kde_services}/knote_config_print.desktop
+%{_kde5_services}/kcmknotessummary.desktop
+%{_kde5_services}/kontact/knotesplugin.desktop
+%{_kde5_services}/knote_config_action.desktop
+%{_kde5_services}/knote_config_collection.desktop
+%{_kde5_services}/knote_config_display.desktop
+%{_kde5_services}/knote_config_editor.desktop
+%{_kde5_services}/knote_config_misc.desktop
+%{_kde5_services}/knote_config_network.desktop
+%{_kde5_services}/knote_config_print.desktop
 %{_kde_libdir}/kde4/kcm_knote.so
 %{_kde_libdir}/kde4/kcm_knotessummary.so
 %{_kde_libdir}/kde4/kontact_knotesplugin.so
@@ -719,8 +663,6 @@ Provides:	kde4-kontact = %{EVRD}
 Suggests:	akregator
 Suggests:	kmail
 Suggests:	knotes
-Suggests:	ktimetracker
-Suggests:	knode
 Suggests:	kalarm
 Suggests:	kaddressbook
 Suggests:	korganizer
@@ -741,12 +683,12 @@ technology, existing applications are seamlessly integrated into one.
 %{_kde_applicationsdir}/kontact-admin.desktop
 %{_kde_datadir}/config.kcfg/kontact.kcfg
 %{_kde_iconsdir}/*/*/apps/kontact.*
-%{_kde_services}/kontactconfig.desktop
-%{_kde_services}/kcmapptsummary.desktop
-%{_kde_services}/kcmkontactsummary.desktop
-%{_kde_services}/kcmsdsummary.desktop
-%{_kde_services}/kontact/summaryplugin.desktop
-%{_kde_services}/kontact/specialdatesplugin.desktop
+%{_kde5_services}/kontactconfig.desktop
+%{_kde5_services}/kcmapptsummary.desktop
+%{_kde5_services}/kcmkontactsummary.desktop
+%{_kde5_services}/kcmsdsummary.desktop
+%{_kde5_services}/kontact/summaryplugin.desktop
+%{_kde5_services}/kontact/specialdatesplugin.desktop
 %{_kde_libdir}/kde4/kcm_apptsummary.so
 %{_kde_libdir}/kde4/kcm_kontact.so
 %{_kde_libdir}/kde4/kcm_kontactsummary.so
@@ -800,12 +742,12 @@ Citadel or OpenGroupware.org.
 %{_kde_autostart}/korgac.desktop
 %{_kde_datadir}/config.kcfg/korganizer.kcfg
 %{_kde_configdir}/korganizer.knsrc
-%{_kde_services}/kontact/korganizerplugin.desktop
-%{_kde_services}/kontact/todoplugin.desktop
-%{_kde_services}/kcmtodosummary.desktop
-%{_kde_services}/kontact/journalplugin.desktop
-%{_kde_services}/korganizer*
-%{_kde_services}/webcal.protocol
+%{_kde5_services}/kontact/korganizerplugin.desktop
+%{_kde5_services}/kontact/todoplugin.desktop
+%{_kde5_services}/kcmtodosummary.desktop
+%{_kde5_services}/kontact/journalplugin.desktop
+%{_kde5_services}/korganizer*
+%{_kde5_services}/webcal.protocol
 %{_kde_servicetypes}/calendardecoration.desktop
 %{_kde_servicetypes}/calendarplugin.desktop
 %{_kde_servicetypes}/dbuscalendar.desktop
@@ -834,8 +776,8 @@ tracking feature plans.
 %files kresources
 %{_kde_libdir}/kde4/kcal_blog.so
 %{_kde_libdir}/kde4/kcal_remote.so
-%{_kde_services}/kresources/kcal/blog.desktop
-%{_kde_services}/kresources/kcal/remote.desktop
+%{_kde5_services}/kresources/kcal/blog.desktop
+%{_kde5_services}/kresources/kcal/remote.desktop
 
 #-----------------------------------------------------------------------------
 
@@ -849,36 +791,6 @@ Requires:	%{name}-core = %{EVRD}
 
 %files -n ksendemail
 %{_kde_bindir}/ksendemail
-
-#-----------------------------------------------------------------------------
-
-%package -n ktimetracker
-Summary:	Tracks time spent on various tasks
-Group:		Graphical desktop/KDE
-Url:		http://community.kde.org/Ktimetracker
-Requires:	%{name}-core = %{EVRD}
-Provides:	kde4-ktimetracker = %{EVRD}
-Conflicts:	%{name}-devel < 3:4.11.0
-
-%description -n ktimetracker
-KTimeTracker tracks time spent on various tasks. It is useful for tracking
-hours to be billed to different clients or just to find out what percentage
-of your day is spent playing Doom or reading Slashdot.
-
-%files -n ktimetracker
-%doc %{_kde_docdir}/HTML/en/ktimetracker
-%{_kde_bindir}/karm
-%{_kde_bindir}/ktimetracker
-%{_kde_appsdir}/ktimetracker
-%{_kde_applicationsdir}/ktimetracker.desktop
-%{_kde_iconsdir}/*/*/apps/ktimetracker.*
-%{_kde_services}/ktimetrackerpart.desktop
-%{_kde_services}/ktimetracker_config_behavior.desktop
-%{_kde_services}/ktimetracker_config_display.desktop
-%{_kde_services}/ktimetracker_config_storage.desktop
-%{_kde_libdir}/kde4/ktimetrackerpart.so
-%{_kde_libdir}/kde4/kcm_ktimetracker.so
-%{_datadir}/dbus-1/interfaces/org.kde.ktimetracker.ktimetracker.xml
 
 #-----------------------------------------------------------------------------
 
@@ -1303,21 +1215,6 @@ KDE 4 library.
 
 #-----------------------------------------------------------------------------
 
-%define knodecommon_major 4
-%define libknodecommon %mklibname knodecommon %{knodecommon_major}
-
-%package -n %{libknodecommon}
-Summary:	KDE 4 library
-Group:		System/Libraries
-
-%description -n %{libknodecommon}
-KDE 4 library.
-
-%files -n %{libknodecommon}
-%{_kde_libdir}/libknodecommon.so.%{knodecommon_major}*
-
-#-----------------------------------------------------------------------------
-
 %define knotesprivate_major 4
 %define libknotesprivate %mklibname knotesprivate %{knotesprivate_major}
 
@@ -1664,7 +1561,6 @@ Requires:	%{libkleopatraclientcore} = %{EVRD}
 Requires:	%{libkleopatraclientgui} = %{EVRD}
 Requires:	%{libkmailprivate} = %{EVRD}
 Requires:	%{libkmanagesieve} = %{EVRD}
-Requires:	%{libknodecommon} = %{EVRD}
 Requires:	%{libknotesprivate} = %{EVRD}
 Requires:	%{libkorganizer_interfaces} = %{EVRD}
 Requires:	%{libkorganizerprivate} = %{EVRD}
@@ -1695,8 +1591,6 @@ based on kdepim.
 
 %prep
 %setup -q -n kdepim-%{version}
-%patch0 -p1
-%patch1 -p1
 
 %build
 %cmake_kde4 -DKDEPIM_BUILD_MOBILE=false

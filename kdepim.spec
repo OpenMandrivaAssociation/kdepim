@@ -30,6 +30,7 @@ BuildRequires:  pkgconfig(Qt5Gui)
 BuildRequires:  pkgconfig(Qt5Test) 
 BuildRequires:  pkgconfig(Qt5Script) 
 BuildRequires:	pkgconfig(Qt5Help)
+BuildRequires:	pkgconfig(Qt5UiTools)
 
 BuildRequires:  cmake(KF5Akonadi)
 BuildRequires:  cmake(KF5AkonadiCalendar)

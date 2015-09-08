@@ -815,6 +815,7 @@ Message viewer for KDE Email Client.
 #-----------------------------------------------------------------------------
 
 %libpackage pimsettingexporterprivate 4
+
 %libpackage pimsettingexporterprivate 5
 
 %package -n pimsettingexporter
@@ -1516,7 +1517,6 @@ Group:		Development/KDE and Qt
 Requires:	kdelibs-devel
 Requires:	kdepimlibs-devel
 Requires:	kdepim-runtime-devel
-Requires:	%{libakonadi_next} = %{EVRD}
 Requires:	%{libakregatorinterfaces} = %{EVRD}
 Requires:	%{libakregatorprivate} = %{EVRD}
 Requires:	%{libcalendarsupport} = %{EVRD}
@@ -1529,8 +1529,6 @@ Requires:	%{libincidenceeditorsng} = %{EVRD}
 Requires:	%{libincidenceeditorsngmobile} = %{EVRD}
 Requires:	%{libkaddressbookgrantlee} = %{EVRD}
 Requires:	%{libkaddressbookprivate} = %{EVRD}
-Requires:	%{libkcal_resourceblog} = %{EVRD}
-Requires:	%{libkcal_resourceremote} = %{EVRD}
 Requires:	%{libkdepim} = %{EVRD}
 Requires:	%{libkdepimdbusinterfaces} = %{EVRD}
 Requires:	%{libkdgantt2} = %{EVRD}

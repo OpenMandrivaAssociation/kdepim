@@ -519,11 +519,6 @@ Requires:	sasl-plug-plain
 Requires:	sasl-plug-ntlm
 Requires:	sasl-plug-login
 Requires:	sasl-plug-digestmd5
-Requires:	kio4-pop3
-Requires:	kio4-smtp
-Requires:	kio4-mbox
-Requires:	kio4-imap
-Requires:	kio4-sieve
 Requires:	akonadi-archivemail-agent = %{EVRD}
 Requires:	akonadi-followupreminder-agent = %{EVRD}
 Requires:	akonadi-mailfilter-agent = %{EVRD}

@@ -14,7 +14,6 @@ Url:		http://community.kde.org/KDE_PIM
 %endif
 Source0:	http://download.kde.org/%{ftpdir}/%{version}/src/%{name}-%{version}.tar.xz
 BuildRequires:	xsltproc
-BuildRequires:	baloo-devel
 BuildRequires:	boost-devel
 BuildRequires:	gpgme-devel
 BuildRequires:	grantlee-devel >= 0.4.0
@@ -45,6 +44,7 @@ BuildRequires:	pkgconfig(Qt5Gui)
 # (tpg) we are missing it
 #BuildRequires:	pkgconfig(Qt5TextToSpeech)
 
+BuildRequires:	cmake(KF5Baloo)
 BuildRequires:	cmake(KF5Akonadi)
 BuildRequires:	cmake(KF5AkonadiCalendar)
 BuildRequires:	cmake(KF5AkonadiContact)

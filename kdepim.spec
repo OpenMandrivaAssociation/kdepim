@@ -26,9 +26,9 @@ BuildRequires:	pkgconfig(x11)
 BuildRequires:	pkgconfig(xscrnsaver)
 BuildRequires:	pkgconfig(zlib)
 BuildRequires:	cmake(ECM)
-BuildRequires:  pkgconfig(Qt5Core) 
-BuildRequires:  pkgconfig(Qt5Test) 
-BuildRequires:  pkgconfig(Qt5Script) 
+BuildRequires:	pkgconfig(Qt5Core) 
+BuildRequires:	pkgconfig(Qt5Test) 
+BuildRequires:	pkgconfig(Qt5Script) 
 BuildRequires:	pkgconfig(Qt5Help)
 BuildRequires:	pkgconfig(Qt5UiTools)
 BuildRequires:	pkgconfig(Qt5X11Extras)
@@ -45,55 +45,54 @@ BuildRequires:	pkgconfig(Qt5Gui)
 # (tpg) we are missing it
 #BuildRequires:	pkgconfig(Qt5TextToSpeech)
 
-BuildRequires:  cmake(KF5Akonadi)
-BuildRequires:  cmake(KF5AkonadiCalendar)
-BuildRequires:  cmake(KF5AkonadiContact)
-BuildRequires:  cmake(KF5AkonadiMime)
-BuildRequires:  cmake(KF5AkonadiNotes)
-BuildRequires:  cmake(KF5AkonadiSearch)
-BuildRequires:  cmake(KF5AkonadiServer)
-BuildRequires:  cmake(KF5AlarmCalendar)
-BuildRequires:  cmake(KF5Archive)
-BuildRequires:  cmake(KF5Auth)
-BuildRequires:  cmake(KF5Blog)
-BuildRequires:  cmake(KF5CalendarCore)
-BuildRequires:  cmake(KF5CalendarUtils)
-BuildRequires:  cmake(KF5Codecs)
-BuildRequires:  cmake(KF5Config)
-BuildRequires:  cmake(KF5Contacts)
-BuildRequires:  cmake(KF5DBusAddons)
-BuildRequires:  cmake(KF5DNSSD)
-BuildRequires:  cmake(KF5DocTools)
-BuildRequires:  cmake(KF5GAPI)
-BuildRequires:  cmake(KF5GlobalAccel)
-BuildRequires:  cmake(KF5Gpgmepp)
-BuildRequires:  cmake(KF5Holidays)
-BuildRequires:  cmake(KF5IMAP)
-BuildRequires:  cmake(KF5IdentityManagement)
-BuildRequires:  cmake(KF5KCMUtils)
-BuildRequires:  cmake(KF5KDELibs4Support)
-BuildRequires:  cmake(KF5KHtml)
-BuildRequires:  cmake(KF5KontactInterface)
-BuildRequires:  cmake(KF5Kross)
-BuildRequires:  cmake(KF5KrossUi)
-BuildRequires:  cmake(KF5Ldap)
-BuildRequires:  cmake(KF5MailTransport)
-BuildRequires:  cmake(KF5Mbox)
-BuildRequires:  cmake(KF5Mime)
-BuildRequires:  cmake(KF5NewStuff)
-BuildRequires:  cmake(KF5NotifyConfig)
-BuildRequires:  cmake(KF5PimTextEdit)
-BuildRequires:  cmake(KF5Prison)
-BuildRequires:  cmake(KF5Service)
-BuildRequires:  cmake(KF5Sonnet)
-BuildRequires:  cmake(KF5Syndication)
-BuildRequires:  cmake(KF5TextEditor)
-BuildRequires:  cmake(KF5Tnef)
-BuildRequires:  cmake(KF5Wallet)
-BuildRequires:  cmake(KF5WebKit)
-BuildRequires:  cmake(KF5XmlRpcClient)
+BuildRequires:	cmake(KF5Akonadi)
+BuildRequires:	cmake(KF5AkonadiCalendar)
+BuildRequires:	cmake(KF5AkonadiContact)
+BuildRequires:	cmake(KF5AkonadiMime)
+BuildRequires:	cmake(KF5AkonadiNotes)
+BuildRequires:	cmake(KF5AkonadiSearch)
+BuildRequires:	cmake(KF5AkonadiServer)
+BuildRequires:	cmake(KF5AlarmCalendar)
+BuildRequires:	cmake(KF5Archive)
+BuildRequires:	cmake(KF5Auth)
+BuildRequires:	cmake(KF5Blog)
+BuildRequires:	cmake(KF5CalendarCore)
+BuildRequires:	cmake(KF5CalendarUtils)
+BuildRequires:	cmake(KF5Codecs)
+BuildRequires:	cmake(KF5Config)
+BuildRequires:	cmake(KF5Contacts)
+BuildRequires:	cmake(KF5DBusAddons)
+BuildRequires:	cmake(KF5DNSSD)
+BuildRequires:	cmake(KF5DocTools)
+BuildRequires:	cmake(KF5GAPI)
+BuildRequires:	cmake(KF5GlobalAccel)
+BuildRequires:	cmake(KF5Gpgmepp)
+BuildRequires:	cmake(KF5Holidays)
+BuildRequires:	cmake(KF5IMAP)
+BuildRequires:	cmake(KF5IdentityManagement)
+BuildRequires:	cmake(KF5KCMUtils)
+BuildRequires:	cmake(KF5KDELibs4Support)
+BuildRequires:	cmake(KF5KHtml)
+BuildRequires:	cmake(KF5KontactInterface)
+BuildRequires:	cmake(KF5Kross)
+BuildRequires:	cmake(KF5KrossUi)
+BuildRequires:	cmake(KF5Ldap)
+BuildRequires:	cmake(KF5MailTransport)
+BuildRequires:	cmake(KF5Mbox)
+BuildRequires:	cmake(KF5Mime)
+BuildRequires:	cmake(KF5NewStuff)
+BuildRequires:	cmake(KF5NotifyConfig)
+BuildRequires:	cmake(KF5PimTextEdit)
+BuildRequires:	cmake(KF5Prison)
+BuildRequires:	cmake(KF5Service)
+BuildRequires:	cmake(KF5Sonnet)
+BuildRequires:	cmake(KF5Syndication)
+BuildRequires:	cmake(KF5TextEditor)
+BuildRequires:	cmake(KF5Tnef)
+BuildRequires:	cmake(KF5Wallet)
+BuildRequires:	cmake(KF5WebKit)
+BuildRequires:	cmake(KF5XmlRpcClient)
 BuildRequires:	cmake(Grantlee5)
-
 BuildRequires:	cmake(Prison)
 Suggests:	akonadi-common
 Suggests:	kleopatra
@@ -128,15 +127,16 @@ Information Management applications for the K Desktop Environment.
 Summary:	Core files for KDE PIM
 Group:		Graphical desktop/KDE
 Requires:	akonadi-kde >= 3:%{version}
-Requires:	kde-runtime
-Requires:	kdelibs-core
+# (tpg) probably not needed
+#Requires:	kde-runtime
+#Requires:	kdelibs-core
 Requires:	storageservicemanager = %{EVRD}
 Conflicts:	%{_lib}kdepim4 < 3:4.11.0
 Conflicts:	%{_lib}kpgp4 < 3:4.11.0
 Conflicts:	%{name}-devel < 3:4.11.0
 Obsoletes:	akonadi-folderarchive-agent < 3:4.13.0
 Obsoletes:	pimactivity < 3:4.13.0
-%rename	kdepim4-core
+%rename		kdepim4-core
 Provides:	kdepim4-core = 3:4.14.3-1
 
 %description core
@@ -144,22 +144,22 @@ Core files for KDE PIM.
 
 %files core -f %{name}.lang
 %exclude %{_kde_docdir}/HTML/en/*
-%_kde5_bindir/contactprintthemeeditor
-%_kde5_datadir/kdepimwidgets
-%_sysconfdir/xdg/kdepim.categories
-%_datadir/dbus-1/interfaces/org.kde.mailtransport.service.xml
-%_kde5_docdir/HTML/en/contactthemeeditor
-%_kde5_datadir/applications/org.kde.storageservicemanager.desktop
-%_kde5_datadir/knotifications5/storageservicemanager.notifyrc
-%_kde5_datadir/kxmlgui5/storageservicemanager
-%_qt5_plugindir/designer/kdepimwidgets.so
-%_qt5_plugindir/designer/pimcommonwidgets.so
-%_kde5_datadir/applications/org.kde.contactprintthemeeditor.desktop
-%_kde5_datadir/composereditor/composereditorinitialhtml
-%_kde5_datadir/kxmlgui5/contactprintthemeeditor/contactprintthemeeditorui.rc
-%_kde5_iconsdir/*/*/*/quickview.png
-%_kde5_iconsdir/*/*/*/quickview.svgz
-%_kde5_iconsdir/*/*/*/x-mail-distribution-list.png
+%{_kde5_bindir}/contactprintthemeeditor
+%{_kde5_datadir}/kdepimwidgets
+%{_sysconfdir}/xdg/kdepim.categories
+%{_datadir}/dbus-1/interfaces/org.kde.mailtransport.service.xml
+%{_kde5_docdir}/HTML/en/contactthemeeditor
+%{_kde5_datadir}/applications/org.kde.storageservicemanager.desktop
+%{_kde5_datadir}/knotifications5/storageservicemanager.notifyrc
+%{_kde5_datadir}/kxmlgui5/storageservicemanager
+%{_qt5_plugindir}/designer/kdepimwidgets.so
+%{_qt5_plugindir}/designer/pimcommonwidgets.so
+%{_kde5_datadir}/applications/org.kde.contactprintthemeeditor.desktop
+%{_kde5_datadir}/composereditor/composereditorinitialhtml
+%{_kde5_datadir}/kxmlgui5/contactprintthemeeditor/contactprintthemeeditorui.rc
+%{_kde5_iconsdir}/*/*/*/quickview.png
+%{_kde5_iconsdir}/*/*/*/quickview.svgz
+%{_kde5_iconsdir}/*/*/*/x-mail-distribution-list.png
 
 #-----------------------------------------------------------------------------
 
@@ -281,11 +281,11 @@ easy news reading.
 %{_kde5_bindir}/akregatorstorageexporter
 %{_kde5_applicationsdir}/org.kde.akregator.desktop
 %{_kde5_datadir}/akregator
-%_kde5_datadir/knotifications5/akregator.notifyrc
-%_qt5_plugindir/akregator*
+%{_kde5_datadir}/knotifications5/akregator.notifyrc
+%{_qt5_plugindir}/akregator*
 %{_datadir}/appdata/akregator.appdata.xml
 %{_datadir}/kxmlgui5/akregator
-%_kde5_datadir/kservicetypes5/akregator_plugin.desktop
+%{_kde5_datadir}/kservicetypes5/akregator_plugin.desktop
 %{_kde5_datadir}/config.kcfg/akregator.kcfg
 %{_kde5_iconsdir}/*/*/apps/akregator.*
 %{_kde5_iconsdir}/*/*/apps/akregator_empty.*
@@ -351,7 +351,7 @@ intervals.
 %package -n headerthemeeditor
 Summary:	KMail Header Theme Editor
 Group:		Graphical desktop/KDE
-Requires:	kmail
+Requires:	kmail = %{EVRD}
 
 %description -n headerthemeeditor
 KMail Header Theme Editor.
@@ -360,14 +360,14 @@ KMail Header Theme Editor.
 %doc %{_kde_docdir}/HTML/en/headerthemeeditor
 %{_kde_bindir}/headerthemeeditor
 %{_kde5_applicationsdir}/org.kde.headerthemeeditor.desktop
-%_kde5_datadir/kxmlgui5/headerthemeeditor
+%{_kde5_datadir}/kxmlgui5/headerthemeeditor
 
 #-----------------------------------------------------------------------------
 
 %package -n contactthemeeditor
 Summary:	KDE Contact Theme Editor
 Group:		Graphical desktop/KDE
-Requires:	kaddressbook
+Requires:	kaddressbook = %{EVRD}
 
 %description -n contactthemeeditor
 KDE Contact Theme Editor.
@@ -376,14 +376,14 @@ KDE Contact Theme Editor.
 %doc %{_kde_docdir}/HTML/en/contactthemeeditor
 %{_kde_bindir}/contactthemeeditor
 %{_kde5_applicationsdir}/org.kde.contactthemeeditor.desktop
-%_kde5_datadir/kxmlgui5/contactthemeeditor
+%{_kde5_datadir}/kxmlgui5/contactthemeeditor
 
 #-----------------------------------------------------------------------------
 
 %package -n importwizard
 Summary:	Import Wizard allows to migrate data from mailer as thunderbird/evolution etc
 Group:		Graphical desktop/KDE
-Requires:	kmail
+Requires:	kmail = %{EVRD}
 
 %description -n importwizard
 Import Wizard allows to migrate data from mailer as thunderbird/evolution etc.
@@ -416,18 +416,18 @@ The KDE addressbook application.
 %{_kde5_bindir}/kaddressbook
 %{_kde5_applicationsdir}/org.kde.kaddressbook.desktop
 %{_kde5_datadir}/kaddressbook
-%_sysconfdir/xdg/kaddressbook_themes.knsrc
-%_qt5_plugindir/kcm_ldap.so
+%{_sysconfdir}/xdg/kaddressbook_themes.knsrc
+%{_qt5_plugindir}/kcm_ldap.so
 %{_kde5_libdir}/akonadi/contact/editorpageplugins/cryptopageplugin.so
 %{_kde5_iconsdir}/*/*/apps/kaddressbook.*
 %{_kde5_services}/kaddressbookpart.desktop
 %{_kde5_services}/kontact/kaddressbookplugin.desktop
 %{_kde5_services}/kcmldap.desktop
 %{_datadir}/dbus-1/interfaces/org.kde.addressbook.service.xml
-%_qt5_plugindir/kaddressbookpart.so
-%_kde5_datadir/appdata/kaddressbook.appdata.xml
-%_kde5_datadir/kxmlgui5/kaddressbook
-%_kde5_datadir/applications/kaddressbook-importer.desktop
+%{_qt5_plugindir}/kaddressbookpart.so
+%{_kde5_datadir}/appdata/kaddressbook.appdata.xml
+%{_kde5_datadir}/kxmlgui5/kaddressbook
+%{_kde5_datadir}/applications/kaddressbook-importer.desktop
 
 #-----------------------------------------------------------------------------
 
@@ -449,7 +449,7 @@ or you can schedule commands to be executed or emails to be sent.
 %{_kde_bindir}/kalarm
 %{_kde_bindir}/kalarmautostart
 %_kde5_libexecdir/kalarm_helper
-%_sysconfdir/xdg/autostart/kalarm.autostart.desktop
+%{_sysconfdir}/xdg/autostart/kalarm.autostart.desktop
 %{_kde5_applicationsdir}/org.kde.kalarm.desktop
 %{_kde5_datadir}/kalarm
 %{_kde5_datadir}/kconf_update/kalarm-1.2.1-general.pl
@@ -464,8 +464,8 @@ or you can schedule commands to be executed or emails to be sent.
 %{_sysconfdir}/dbus-1/system.d/org.kde.kalarmrtcwake.conf
 %{_datadir}/dbus-1/system-services/org.kde.kalarmrtcwake.service
 %{_datadir}/dbus-1/interfaces/org.kde.kalarm.kalarm.xml
-%_kde5_datadir/appdata/kalarm.appdata.xml
-%_kde5_datadir/kxmlgui5/kalarm
+%{_kde5_datadir}/appdata/kalarm.appdata.xml
+%{_kde5_datadir}/kxmlgui5/kalarm
 
 #---------------------------------------------------------------------------
 
@@ -493,7 +493,7 @@ KDE Certificate Manager.
 %files -n kleopatra
 %doc %{_kde_docdir}/HTML/en/kleopatra
 %doc %{_kde_docdir}/HTML/en/kwatchgnupg
-%_sysconfdir/xdg/libkleopatrarc
+%{_sysconfdir}/xdg/libkleopatrarc
 %{_kde5_bindir}/kleopatra
 %{_kde5_bindir}/kgpgconf
 %{_kde5_bindir}/kwatchgnupg
@@ -506,8 +506,8 @@ KDE Certificate Manager.
 %{_datadir}/kxmlgui5/kwatchgnupg
 %{_kde5_iconsdir}/*/*/apps/kleopatra.*
 %{_kde5_services}/kleopatra_*
-%_qt5_plugindir/kcm_kleopatra.so
-%_kde5_datadir/appdata/kleopatra.appdata.xml
+%{_qt5_plugindir}/kcm_kleopatra.so
+%{_kde5_datadir}/appdata/kleopatra.appdata.xml
 
 #-----------------------------------------------------------------------------
 
@@ -551,22 +551,22 @@ information manager of KDE.
 %files -n kmail
 %doc %{_kde_docdir}/HTML/en/kmail
 %{_kde_bindir}/kmail
-%_sysconfdir/xdg/kmail.*
-%_sysconfdir/xdg/ksieve_script.knsrc
+%{_sysconfdir}/xdg/kmail.*
+%{_sysconfdir}/xdg/ksieve_script.knsrc
 %{_kde5_applicationsdir}/kmail_view.desktop
 %{_kde5_datadir}/kmail2
-%_kde5_datadir/kxmlgui5/kmail2
+%{_kde5_datadir}/kxmlgui5/kmail2
 %{_kde5_datadir}/sieve
 %{_kde5_datadir}/messagelist
-%_kde5_datadir/knotifications5/kmail2.notifyrc
-%_kde5_datadir/applications/org.kde.kmail.desktop
+%{_kde5_datadir}/knotifications5/kmail2.notifyrc
+%{_kde5_datadir}/applications/org.kde.kmail.desktop
 %{_kde_datadir}/config.kcfg/customtemplates_kfg.kcfg
 %{_kde_datadir}/config.kcfg/kmail.kcfg
 %{_kde_datadir}/config.kcfg/templatesconfiguration_kfg.kcfg
-%_kde5_datadir/knotifications5/akonadi_archivemail_agent.notifyrc
-%_kde5_datadir/knotifications5/akonadi_mailfilter_agent.notifyrc
-%_kde5_datadir/knotifications5/akonadi_followupreminder_agent.notifyrc
-%_kde5_datadir/knotifications5/akonadi_sendlater_agent.notifyrc
+%{_kde5_datadir}/knotifications5/akonadi_archivemail_agent.notifyrc
+%{_kde5_datadir}/knotifications5/akonadi_mailfilter_agent.notifyrc
+%{_kde5_datadir}/knotifications5/akonadi_followupreminder_agent.notifyrc
+%{_kde5_datadir}/knotifications5/akonadi_sendlater_agent.notifyrc
 %{_kde_iconsdir}/*/*/apps/kmail.*
 %{_kde5_services}/kontact/kmailplugin.desktop
 %{_kde5_services}/kmail_config_accounts.desktop
@@ -578,15 +578,15 @@ information manager of KDE.
 %{_kde5_services}/kcmkmailsummary.desktop
 %{_kde5_services}/kcm_kpimidentities.desktop
 %{_kde5_services}/ServiceMenus/kmail_addattachmentservicemenu.desktop
-%_qt5_plugindir/kcm_kmail.so
-%_qt5_plugindir/kcm_kpimidentities.so
-%_qt5_plugindir/kcm_kmailsummary.so
-%_qt5_plugindir/kmailpart.so
-%_qt5_plugindir/designer/mailcommonwidgets.so
+%{_qt5_plugindir}/kcm_kmail.so
+%{_qt5_plugindir}/kcm_kpimidentities.so
+%{_qt5_plugindir}/kcm_kmailsummary.so
+%{_qt5_plugindir}/kmailpart.so
+%{_qt5_plugindir}/designer/mailcommonwidgets.so
 %{_datadir}/dbus-1/interfaces/org.kde.kmail.kmail.xml
 %{_datadir}/dbus-1/interfaces/org.kde.kmail.kmailpart.xml
-%_kde5_datadir/appdata/org.kde.kmail.appdata.xml
-%_kde5_datadir/kservicetypes5/dbusmail.desktop
+%{_kde5_datadir}/appdata/org.kde.kmail.appdata.xml
+%{_kde5_datadir}/kservicetypes5/dbusmail.desktop
 
 #------------------------------------------------------------------------------
 
@@ -598,13 +598,13 @@ Group: Graphical desktop/KDE
 New incidence editors
 
 %files accountwizard
-%_kde5_bindir/accountwizard
-%_kde5_bindir/ispdb
-%_sysconfdir/xdg/accountwizard.knsrc
-%_qt5_plugindir/accountwizard_plugin.so
-%_kde5_datadir/akonadi/accountwizard
-%_kde5_datadir/mime/packages/accountwizard-mime.xml
-%_kde5_datadir/applications/org.kde.accountwizard.desktop
+%{_kde5_bindir}/accountwizard
+%{_kde5_bindir}/ispdb
+%{_sysconfdir}/xdg/accountwizard.knsrc
+%{_qt5_plugindir}/accountwizard_plugin.so
+%{_kde5_datadir}/akonadi/accountwizard
+%{_kde5_datadir}/mime/packages/accountwizard-mime.xml
+%{_kde5_datadir}/applications/org.kde.accountwizard.desktop
 
 #-----------------------------------------------------------------------------
 
@@ -627,7 +627,7 @@ although including some advanced features.
 %files -n knotes
 %doc %{_kde_docdir}/HTML/en/knotes
 %{_kde_bindir}/knotes
-%_sysconfdir/xdg/knotes_printing_theme.knsrc
+%{_sysconfdir}/xdg/knotes_printing_theme.knsrc
 %{_kde5_applicationsdir}/org.kde.knotes.desktop
 %{_kde5_datadir}/config.kcfg/knotesglobalconfig.kcfg
 %{_kde5_datadir}/knotes
@@ -643,11 +643,11 @@ although including some advanced features.
 %{_kde5_services}/knote_config_misc.desktop
 %{_kde5_services}/knote_config_network.desktop
 %{_kde5_services}/knote_config_print.desktop
-%_qt5_plugindir/kcm_knote.so
-%_qt5_plugindir/kcm_knotessummary.so
+%{_qt5_plugindir}/kcm_knote.so
+%{_qt5_plugindir}/kcm_knotessummary.so
 %{_datadir}/dbus-1/interfaces/org.kde.KNotes.xml
-%_kde5_datadir/appdata/knotes.appdata.xml
-%_kde5_datadir/knotifications5/akonadi_notes_agent.notifyrc
+%{_kde5_datadir}/appdata/knotes.appdata.xml
+%{_kde5_datadir}/knotifications5/akonadi_notes_agent.notifyrc
 
 #-----------------------------------------------------------------------------
 
@@ -687,15 +687,15 @@ technology, existing applications are seamlessly integrated into one.
 %{_kde5_services}/kcmsdsummary.desktop
 %{_kde5_services}/kontact/summaryplugin.desktop
 %{_kde5_services}/kontact/specialdatesplugin.desktop
-%_qt5_plugindir/kcm_apptsummary.so
-%_qt5_plugindir/kcm_kontact.so
-%_qt5_plugindir/kcm_kontactsummary.so
-%_qt5_plugindir/kcm_sdsummary.so
-%_qt5_plugindir/kontact_*
+%{_qt5_plugindir}/kcm_apptsummary.so
+%{_qt5_plugindir}/kcm_kontact.so
+%{_qt5_plugindir}/kcm_kontactsummary.so
+%{_qt5_plugindir}/kcm_sdsummary.so
+%{_qt5_plugindir}/kontact_*
 %{_datadir}/dbus-1/interfaces/org.kde.kontact.KNotes.xml
-%_kde5_datadir/appdata/Kontact.appdata.xml
-%_kde5_datadir/kxmlgui5/kontact
-%_kde5_datadir/kxmlgui5/kontactsummary
+%{_kde5_datadir}/appdata/Kontact.appdata.xml
+%{_kde5_datadir}/kxmlgui5/kontact
+%{_kde5_datadir}/kxmlgui5/kontactsummary
 
 #-----------------------------------------------------------------------------
 
@@ -729,7 +729,7 @@ Citadel or OpenGroupware.org.
 %{_kde5_applicationsdir}/konsolekalendar.desktop
 %{_kde5_applicationsdir}/korganizer-import.desktop
 %{_kde5_applicationsdir}/org.kde.korganizer.desktop
-%_sysconfdir/xdg/korganizer.knsrc
+%{_sysconfdir}/xdg/korganizer.knsrc
 %{_kde5_datadir}/korgac
 %{_kde5_datadir}/korganizer
 %{_kde5_iconsdir}/*/*/apps/konsolekalendar.*
@@ -746,19 +746,19 @@ Citadel or OpenGroupware.org.
 %{_kde5_services}/kontact/journalplugin.desktop
 %{_kde5_services}/korganizer*
 %{_kde5_services}/webcal.protocol
-%_sysconfdir/xdg/autostart/org.kde.korgac.desktop
-%_qt5_plugindir/kcm_todosummary.so
-%_qt5_plugindir/kcm_korganizer.so
-%_qt5_plugindir/korganizerpart.so
-%_qt5_plugindir/korg_*
+%{_sysconfdir}/xdg/autostart/org.kde.korgac.desktop
+%{_qt5_plugindir}/kcm_todosummary.so
+%{_qt5_plugindir}/kcm_korganizer.so
+%{_qt5_plugindir}/korganizerpart.so
+%{_qt5_plugindir}/korg_*
 %{_datadir}/dbus-1/interfaces/org.kde.korganizer.KOrgac.xml
 %{_datadir}/dbus-1/interfaces/org.kde.korganizer.Korganizer.xml
 %{_datadir}/dbus-1/interfaces/org.kde.Korganizer.Calendar.xml
-%_kde5_datadir/appdata/korganizer.appdata.xml
-%_kde5_datadir/kxmlgui5/korganizer
-%_kde5_datadir/kservicetypes5/calendardecoration.desktop
-%_kde5_datadir/kservicetypes5/calendarplugin.desktop
-%_kde5_datadir/kservicetypes5/dbuscalendar.desktop
+%{_kde5_datadir}/appdata/korganizer.appdata.xml
+%{_kde5_datadir}/kxmlgui5/korganizer
+%{_kde5_datadir}/kservicetypes5/calendardecoration.desktop
+%{_kde5_datadir}/kservicetypes5/calendarplugin.desktop
+%{_kde5_datadir}/kservicetypes5/dbuscalendar.desktop
 
 #-----------------------------------------------------------------------------
 
@@ -778,7 +778,7 @@ mail servers and embed the mail properties as well as the actual attachments.
 %{_kde5_applicationsdir}/org.kde.ktnef.desktop
 %{_kde5_iconsdir}/*/*/apps/ktnef*.*
 %{_kde5_iconsdir}/*/*/actions/ktnef*.*
-%_kde5_datadir/kxmlgui5/ktnef
+%{_kde5_datadir}/kxmlgui5/ktnef
 
 #-----------------------------------------------------------------------------
 
@@ -810,10 +810,10 @@ Message viewer for KDE Email Client.
 %files -n messageviewer
 %{_kde5_datadir}/libmessageviewer
 %{_kde5_datadir}/messageviewer
-%_kde5_datadir/knotifications5/messageviewer.notifyrc
+%{_kde5_datadir}/knotifications5/messageviewer.notifyrc
 %{_qt5_plugindir}/grantlee/5.0/grantlee_messageheaderfilters.so
-%_qt5_plugindir/messageviewer_*
-%_sysconfdir/xdg/messageviewer_header_themes.knsrc
+%{_qt5_plugindir}/messageviewer_*
+%{_sysconfdir}/xdg/messageviewer_header_themes.knsrc
 
 #-----------------------------------------------------------------------------
 
@@ -824,22 +824,22 @@ Message viewer for KDE Email Client.
 %package -n pimsettingexporter
 Summary:	Allows to save data from KDE PIM applications and restore them in other systems
 Group:		Graphical desktop/KDE
-Requires:	kmail
+Requires:	kmail = %{EVRD}
 Obsoletes:	backupmail < 3:4.10.0
 Requires:	%{mklibname pimsettingexporterprivate 4}
-Requires:       %{mklibname pimsettingexporterprivate 5}
+Requires:	%{mklibname pimsettingexporterprivate 5}
 
 %description -n pimsettingexporter
 Allows to save data from KDE PIM applications and restore them in other
-systems. Successor of Backup Mail from KDE 4.9.
+systems. Successor of Backup Mail from KDE.9.
 
 %files -n pimsettingexporter
 %doc %{_kde5_docdir}/HTML/en/pimsettingexporter
 %{_kde5_bindir}/pimsettingexporter
 %{_kde5_bindir}/pimsettingexporterconsole
-%_kde5_datadir/applications/org.kde.pimsettingexporter.desktop
-%_kde5_datadir/kxmlgui5/pimsettingexporter
-%_kde5_datadir/pimsettingexporter
+%{_kde5_datadir}/applications/org.kde.pimsettingexporter.desktop
+%{_kde5_datadir}/kxmlgui5/pimsettingexporter
+%{_kde5_datadir}/pimsettingexporter
 #-----------------------------------------------------------------------------
 
 %package -n sieveeditor
@@ -855,7 +855,7 @@ DropBox etc.
 %doc %{_kde_docdir}/HTML/en/sieveeditor
 %{_kde_bindir}/sieveeditor
 %{_kde5_applicationsdir}/org.kde.sieveeditor.desktop
-%_kde5_datadir/kxmlgui5/sieveeditor
+%{_kde5_datadir}/kxmlgui5/sieveeditor
 
 #-----------------------------------------------------------------------------
 
@@ -880,11 +880,11 @@ DropBox etc.
 %define libakregatorinterfaces %mklibname akregatorinterfaces %{akregatorinterfaces_major}
 
 %package -n %{libakregatorinterfaces}
-Summary:	KDE 4 library
+Summary:	KDE library
 Group:		System/Libraries
 
 %description -n %{libakregatorinterfaces}
-KDE 4 library.
+KDE library.
 
 %files -n %{libakregatorinterfaces}
 %{_kde_libdir}/libakregatorinterfaces.so.%{akregatorinterfaces_major}*
@@ -896,11 +896,11 @@ KDE 4 library.
 %define libakregatorprivate %mklibname akregatorprivate %{akregatorprivate_major}
 
 %package -n %{libakregatorprivate}
-Summary:	KDE 4 library
+Summary:	KDE library
 Group:		System/Libraries
 
 %description -n %{libakregatorprivate}
-KDE 4 library.
+KDE library.
 
 %files -n %{libakregatorprivate}
 %{_kde_libdir}/libakregatorprivate.so.%{akregatorprivate_major}*
@@ -914,12 +914,12 @@ KDE 4 library.
 %define libcalendarsupport %mklibname calendarsupport %{calendarsupport_major}
 
 %package -n %{libcalendarsupport}
-Summary:	KDE 4 library
+Summary:	KDE library
 Group:		System/Libraries
 Requires:	%{mklibname calendarsupportcollectionpage 4}
 
 %description -n %{libcalendarsupport}
-KDE 4 library for korganizer-Mobile.
+KDE library for korganizer-Mobile.
 
 %files -n %{libcalendarsupport}
 %{_kde_libdir}/libcalendarsupport.so.%{calendarsupport_major}*
@@ -947,11 +947,11 @@ This library provides autospell checking.
 %define libeventviews %mklibname eventviews %{eventviews_major}
 
 %package -n %{libeventviews}
-Summary:	KDE 4 library
+Summary:	KDE library
 Group:		System/Libraries
 
 %description -n %{libeventviews}
-KDE 4 library.
+KDE library.
 
 %files -n %{libeventviews}
 %{_kde_libdir}/libeventviews.so.%{eventviews_major}*
@@ -964,11 +964,11 @@ KDE 4 library.
 %define libfollowupreminder %mklibname followupreminder %{followupreminder_major}
 
 %package -n %{libfollowupreminder}
-Summary:	KDE 4 library
+Summary:	KDE library
 Group:		System/Libraries
 
 %description -n %{libfollowupreminder}
-KDE 4 library.
+KDE library.
 
 %files -n %{libfollowupreminder}
 %{_kde_libdir}/libfollowupreminder.so.%{followupreminder_major}*
@@ -981,11 +981,11 @@ KDE 4 library.
 %define libgrantleetheme %mklibname grantleetheme %{grantleetheme_major}
 
 %package -n %{libgrantleetheme}
-Summary:	KDE 4 library
+Summary:	KDE library
 Group:		System/Libraries
 
 %description -n %{libgrantleetheme}
-KDE 4 library.
+KDE library.
 
 %files -n %{libgrantleetheme}
 %{_kde_libdir}/libgrantleetheme.so.%{grantleetheme_major}*
@@ -998,11 +998,11 @@ KDE 4 library.
 %define libgrantleethemeeditor %mklibname grantleethemeeditor %{grantleethemeeditor_major}
 
 %package -n %{libgrantleethemeeditor}
-Summary:	KDE 4 library
+Summary:	KDE library
 Group:		System/Libraries
 
 %description -n %{libgrantleethemeeditor}
-KDE 4 library.
+KDE library.
 
 %files -n %{libgrantleethemeeditor}
 %{_kde_libdir}/libgrantleethemeeditor.so.%{grantleethemeeditor_major}*
@@ -1015,12 +1015,12 @@ KDE 4 library.
 %define libincidenceeditorsng %mklibname incidenceeditorsng %{incidenceeditorsng_major}
 
 %package -n %{libincidenceeditorsng}
-Summary:	KDE 4 library
+Summary:	KDE library
 Group:		System/Libraries
 Obsoletes:	%{_lib}incidenceeditors4 < 2:4.5.68
 
 %description -n %{libincidenceeditorsng}
-KDE 4 library.
+KDE library.
 
 %files -n %{libincidenceeditorsng}
 %{_kde_libdir}/libincidenceeditorsng.so.%{incidenceeditorsng_major}*
@@ -1050,11 +1050,11 @@ KDE PIM Mobile library.
 %define libkaddressbookgrantlee %mklibname kaddressbookgrantlee %{kaddressbookgrantlee_major}
 
 %package -n %{libkaddressbookgrantlee}
-Summary:	KDE 4 library
+Summary:	KDE library
 Group:		System/Libraries
 
 %description -n %{libkaddressbookgrantlee}
-KDE 4 library.
+KDE library.
 
 %files -n %{libkaddressbookgrantlee}
 %{_kde_libdir}/libkaddressbookgrantlee.so.%{kaddressbookgrantlee_major}*
@@ -1067,11 +1067,11 @@ KDE 4 library.
 %define libkaddressbookprivate %mklibname kaddressbookprivate %{kaddressbookprivate_major}
 
 %package -n %{libkaddressbookprivate}
-Summary:	KDE 4 library
+Summary:	KDE library
 Group:		System/Libraries
 
 %description -n %{libkaddressbookprivate}
-KDE 4 library.
+KDE library.
 
 %files -n %{libkaddressbookprivate}
 %{_kde_libdir}/libkaddressbookprivate.so.%{kaddressbookprivate_major}*
@@ -1084,11 +1084,11 @@ KDE 4 library.
 %define libkdepim %mklibname kdepim %{kdepim_major}
 
 %package -n %{libkdepim}
-Summary:	KDE 4 library
+Summary:	KDE library
 Group:		System/Libraries
 
 %description -n %{libkdepim}
-KDE 4 library.
+KDE library.
 
 %files -n %{libkdepim}
 %{_kde_libdir}/libkdepim.so.%{kdepim_major}*
@@ -1103,7 +1103,7 @@ Summary:       KDE4 library
 Group:         System/Libraries
 
 %description -n %{libkdgantt2}
-KDE 4 library.
+KDE library.
 
 %files -n %{libkdgantt2}
 %{_kde_libdir}/libkdgantt2.so.%{kdgantt2_major}*
@@ -1116,11 +1116,11 @@ KDE 4 library.
 %define libkleo %mklibname kleo %{kleo_major}
 
 %package -n %{libkleo}
-Summary:	KDE 4 library
+Summary:	KDE library
 Group:		System/Libraries
 
 %description -n %{libkleo}
-KDE 4 library.
+KDE library.
 
 %files -n %{libkleo}
 %{_kde_libdir}/libkleo.so.%{kleo_major}*
@@ -1133,11 +1133,11 @@ KDE 4 library.
 %define libkmailprivate %mklibname kmailprivate %{kmailprivate_major}
 
 %package -n %{libkmailprivate}
-Summary:	KDE 4 library
+Summary:	KDE library
 Group:		System/Libraries
 
 %description -n %{libkmailprivate}
-KDE 4 library.
+KDE library.
 
 %files -n %{libkmailprivate}
 %{_kde_libdir}/libkmailprivate.so.%{kmailprivate_major}*
@@ -1150,11 +1150,11 @@ KDE 4 library.
 %define libkmanagesieve %mklibname kmanagesieve %{kmanagesieve_major}
 
 %package -n %{libkmanagesieve}
-Summary:	KDE 4 library
+Summary:	KDE library
 Group:		System/Libraries
 
 %description -n %{libkmanagesieve}
-KDE 4 library.
+KDE library.
 
 %files -n %{libkmanagesieve}
 %{_kde_libdir}/libkmanagesieve.so.%{kmanagesieve_major}*
@@ -1167,11 +1167,11 @@ KDE 4 library.
 %define libknotesprivate %mklibname knotesprivate %{knotesprivate_major}
 
 %package -n %{libknotesprivate}
-Summary:	KDE 4 library
+Summary:	KDE library
 Group:		System/Libraries
 
 %description -n %{libknotesprivate}
-KDE 4 library.
+KDE library.
 
 %files -n %{libknotesprivate}
 %{_kde_libdir}/libknotesprivate.so.%{knotesprivate_major}*
@@ -1184,11 +1184,11 @@ KDE 4 library.
 %define libkontactprivate %mklibname kontactprivate %{kontactprivate_major}
 
 %package -n %{libkontactprivate}
-Summary:	KDE 4 library
+Summary:	KDE library
 Group:		System/Libraries
 
 %description -n %{libkontactprivate}
-KDE 4 library.
+KDE library.
 
 %files -n %{libkontactprivate}
 %{_kde_libdir}/libkontactprivate.so.%{kontactprivate_major}*
@@ -1201,11 +1201,11 @@ KDE 4 library.
 %define libkorganizer_core %mklibname korganizer_core %{korganizer_core_major}
 
 %package -n %{libkorganizer_core}
-Summary:	KDE 4 library
+Summary:	KDE library
 Group:		System/Libraries
 
 %description -n %{libkorganizer_core}
-KDE 4 library.
+KDE library.
 
 %files -n %{libkorganizer_core}
 %{_kde_libdir}/libkorganizer_core.so.%{korganizer_core_major}*
@@ -1218,11 +1218,11 @@ KDE 4 library.
 %define libkorganizer_interfaces %mklibname korganizer_interfaces %{korganizer_interfaces_major}
 
 %package -n %{libkorganizer_interfaces}
-Summary:	KDE 4 library
+Summary:	KDE library
 Group:		System/Libraries
 
 %description -n %{libkorganizer_interfaces}
-KDE 4 library.
+KDE library.
 
 %files -n %{libkorganizer_interfaces}
 %{_kde_libdir}/libkorganizer_interfaces.so.%{korganizer_interfaces_major}*
@@ -1235,11 +1235,11 @@ KDE 4 library.
 %define libkorganizerprivate %mklibname korganizerprivate %{korganizerprivate_major}
 
 %package -n %{libkorganizerprivate}
-Summary:	KDE 4 library
+Summary:	KDE library
 Group:		System/Libraries
 
 %description -n %{libkorganizerprivate}
-KDE 4 library.
+KDE library.
 
 %files -n %{libkorganizerprivate}
 %{_kde_libdir}/libkorganizerprivate.so.%{korganizerprivate_major}*
@@ -1252,11 +1252,11 @@ KDE 4 library.
 %define libkpgp %mklibname kpgp %{kpgp_major}
 
 %package -n %{libkpgp}
-Summary:	KDE 4 library
+Summary:	KDE library
 Group:		System/Libraries
 
 %description -n %{libkpgp}
-KDE 4 library.
+KDE library.
 
 %files -n %{libkpgp}
 %{_kde_libdir}/libkpgp.so.%{kpgp_major}*
@@ -1269,11 +1269,11 @@ KDE 4 library.
 %define libksieve %mklibname ksieve %{ksieve_major}
 
 %package -n %{libksieve}
-Summary:	KDE 4 library
+Summary:	KDE library
 Group:		System/Libraries
 
 %description -n %{libksieve}
-KDE 4 library.
+KDE library.
 
 %files -n %{libksieve}
 %{_kde_libdir}/libksieve.so.%{ksieve_major}*
@@ -1286,11 +1286,11 @@ KDE 4 library.
 %define libksieveui %mklibname ksieveui %{ksieveui_major}
 
 %package -n %{libksieveui}
-Summary:	KDE 4 library
+Summary:	KDE library
 Group:		System/Libraries
 
 %description -n %{libksieveui}
-KDE 4 library.
+KDE library.
 
 %files -n %{libksieveui}
 %{_kde_libdir}/libksieveui.so.%{ksieveui_major}*
@@ -1303,11 +1303,11 @@ KDE 4 library.
 %define libmailcommon %mklibname mailcommon %{mailcommon_major}
 
 %package -n %{libmailcommon}
-Summary:	KDE 4 library
+Summary:	KDE library
 Group:		System/Libraries
 
 %description -n %{libmailcommon}
-KDE 4 library.
+KDE library.
 
 %files -n %{libmailcommon}
 %{_kde_libdir}/libmailcommon.so.%{mailcommon_major}*
@@ -1320,11 +1320,11 @@ KDE 4 library.
 %define libmailimporter %mklibname mailimporter %{mailimporter_major}
 
 %package -n %{libmailimporter}
-Summary:	KDE 4 library
+Summary:	KDE library
 Group:		System/Libraries
 
 %description -n %{libmailimporter}
-KDE 4 library.
+KDE library.
 
 %files -n %{libmailimporter}
 %{_kde_libdir}/libmailimporter.so.%{mailimporter_major}*
@@ -1337,11 +1337,11 @@ KDE 4 library.
 %define libmessagecore %mklibname messagecore %{messagecore_major}
 
 %package -n %{libmessagecore}
-Summary:	KDE 4 library
+Summary:	KDE library
 Group:		System/Libraries
 
 %description -n %{libmessagecore}
-KDE 4 library.
+KDE library.
 
 %files -n %{libmessagecore}
 %{_kde_libdir}/libmessagecore.so.%{messagecore_major}*
@@ -1354,11 +1354,11 @@ KDE 4 library.
 %define libmessagelist %mklibname messagelist %{messagelist_major}
 
 %package -n %{libmessagelist}
-Summary:	KDE 4 library
+Summary:	KDE library
 Group:		System/Libraries
 
 %description -n %{libmessagelist}
-KDE 4 library.
+KDE library.
 
 %files -n %{libmessagelist}
 %{_kde_libdir}/libmessagelist.so.%{messagelist_major}*
@@ -1371,11 +1371,11 @@ KDE 4 library.
 %define libmessageviewer %mklibname messageviewer %{messageviewer_major}
 
 %package -n %{libmessageviewer}
-Summary:	KDE 4 library
+Summary:	KDE library
 Group:		System/Libraries
 
 %description -n %{libmessageviewer}
-KDE 4 library.
+KDE library.
 
 %files -n %{libmessageviewer}
 %{_kde_libdir}/libmessageviewer.so.%{messageviewer_major}*
@@ -1386,11 +1386,11 @@ KDE 4 library.
 %define libkdepimdbusinterfaces %mklibname kdepimdbusinterfaces %{kdepimdbusinterfaces_major}
 
 %package -n %{libkdepimdbusinterfaces}
-Summary:	KDE 4 library
+Summary:	KDE library
 Group:		System/Libraries
 
 %description -n %{libkdepimdbusinterfaces}
-KDE 4 library.
+KDE library.
 
 %files -n %{libkdepimdbusinterfaces}
 %{_kde_libdir}/libkdepimdbusinterfaces.so.%{kdepimdbusinterfaces_major}*
@@ -1401,12 +1401,12 @@ KDE 4 library.
 %define libkleopatraclientcore %mklibname kleopatraclientcore %{kleopatraclientcore_major}
 
 %package -n %{libkleopatraclientcore}
-Summary:	KDE 4 library
+Summary:	KDE library
 Group:		System/Libraries
 Obsoletes:	%{_lib}kleopatraclientcore4 <= 2:4.5
 
 %description -n %{libkleopatraclientcore}
-KDE 4 library.
+KDE library.
 
 %files -n %{libkleopatraclientcore}
 %{_kde_libdir}/libkleopatraclientcore.so.%{kleopatraclientcore_major}*
@@ -1417,12 +1417,12 @@ KDE 4 library.
 %define libkleopatraclientgui %mklibname kleopatraclientgui %{kleopatraclientgui_major}
 
 %package -n %{libkleopatraclientgui}
-Summary:	KDE 4 library
+Summary:	KDE library
 Group:		System/Libraries
 Obsoletes:	%{_lib}kleopatraclientgui4 <= 2:4.5
 
 %description -n %{libkleopatraclientgui}
-KDE 4 library.
+KDE library.
 
 %files -n %{libkleopatraclientgui}
 %{_kde_libdir}/libkleopatraclientgui.so.%{kleopatraclientgui_major}*
@@ -1435,11 +1435,11 @@ KDE 4 library.
 %define libmessagecomposer %mklibname messagecomposer %{messagecomposer_major}
 
 %package -n %{libmessagecomposer}
-Summary:	KDE 4 library
+Summary:	KDE library
 Group:		System/Libraries
 
 %description -n %{libmessagecomposer}
-KDE 4 library.
+KDE library.
 
 %files -n %{libmessagecomposer}
 %{_kde_libdir}/libmessagecomposer.so.%{messagecomposer_major}*
@@ -1452,11 +1452,11 @@ KDE 4 library.
 %define libnoteshared %mklibname noteshared %{noteshared_major}
 
 %package -n %{libnoteshared}
-Summary:	KDE 4 library
+Summary:	KDE library
 Group:		System/Libraries
 
 %description -n %{libnoteshared}
-KDE 4 library.
+KDE library.
 
 %files -n %{libnoteshared}
 %{_kde_libdir}/libnoteshared.so.%{noteshared_major}*
@@ -1503,11 +1503,11 @@ KDE PIM library.
 %define libtemplateparser %mklibname templateparser %{templateparser_major}
 
 %package -n %{libtemplateparser}
-Summary:	KDE 4 library
+Summary:	KDE library
 Group:		System/Libraries
 
 %description -n %{libtemplateparser}
-KDE 4 library.
+KDE library.
 
 %files -n %{libtemplateparser}
 %{_kde_libdir}/libtemplateparser.so.%{templateparser_major}*
@@ -1570,10 +1570,10 @@ based on kdepim.
 
 %prep
 %setup -q -n kdepim-%{version}
+%cmake_kde5 -DKDEPIM_BUILD_MOBILE:BOOL=OFF
 
 %build
-%cmake_kde5 -DKDEPIM_BUILD_MOBILE=false
-%ninja
+%ninja -C build
 
 %install
 %ninja_install -C build
@@ -1582,4 +1582,3 @@ based on kdepim.
 rm -f %{buildroot}%{_kde_datadir}/akonadi/agents/folderarchiveagent.desktop
 
 %find_lang %{name} --all-name --with-html
-

@@ -19,6 +19,7 @@ BuildRequires:	gpgme-devel
 BuildRequires:	grantlee-devel >= 0.4.0
 BuildRequires:	libassuan-devel
 BuildRequires:	sasl-devel
+BuildRequires:	shared-mime-info
 BuildRequires:	pkgconfig(libstreams)
 BuildRequires:	pkgconfig(shared-desktop-ontologies)
 BuildRequires:	pkgconfig(x11)

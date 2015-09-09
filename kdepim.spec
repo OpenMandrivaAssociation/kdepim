@@ -817,9 +817,22 @@ Message viewer for KDE Email Client.
 
 #-----------------------------------------------------------------------------
 
-%libpackage pimsettingexporterprivate 4
+%define pimsettingexporterprivate_major 5
+%define libpimsettingexporterprivate %mklibname pimsettingexporterprivate %{pimsettingexporterprivate_major}
 
-%libpackage pimsettingexporterprivate 5
+%package -n %{libpimsettingexporterprivate}
+Summary:        KDE 5 library
+Group:          System/Libraries
+Requires:       %{mklibname pimsettingexporterprivatecollectionpage 4}
+
+%description -n %{libpimsettingexporterprivate}
+KDE 5 library for korganizer-Mobile.
+
+%files -n %{libpimsettingexporterprivate}
+%{_kde_libdir}/libpimsettingexporterprivate.so.%{pimsettingexporterprivate_major}*
+%{_kde_libdir}/libpimsettingexporterprivate.so.4*
+
+#-----------------------------------------------------------------------------
 
 %package -n pimsettingexporter
 Summary:	Allows to save data from KDE PIM applications and restore them in other systems
@@ -874,59 +887,56 @@ DropBox etc.
 
 #-----------------------------------------------------------------------------
 
-%libpackage akregatorinterfaces 5
-
-%define akregatorinterfaces_major 4
+%define akregatorinterfaces_major 5
 %define libakregatorinterfaces %mklibname akregatorinterfaces %{akregatorinterfaces_major}
 
 %package -n %{libakregatorinterfaces}
-Summary:	KDE 4 library
+Summary:	KDE 5 library
 Group:		System/Libraries
 
 %description -n %{libakregatorinterfaces}
-KDE 4 library.
+KDE 5 library.
 
 %files -n %{libakregatorinterfaces}
 %{_kde_libdir}/libakregatorinterfaces.so.%{akregatorinterfaces_major}*
+%{_kde_libdir}/libakregatorinterfaces.so.4*
 
 #-----------------------------------------------------------------------------
-%libpackage akregatorprivate 5
-
-%define akregatorprivate_major 4
+%define akregatorprivate_major 5
 %define libakregatorprivate %mklibname akregatorprivate %{akregatorprivate_major}
 
 %package -n %{libakregatorprivate}
-Summary:	KDE 4 library
+Summary:	KDE 5 library
 Group:		System/Libraries
 
 %description -n %{libakregatorprivate}
-KDE 4 library.
+KDE 5 library.
 
 %files -n %{libakregatorprivate}
 %{_kde_libdir}/libakregatorprivate.so.%{akregatorprivate_major}*
+%{_kde_libdir}/libakregatorprivate.so.4*
 
 #------------------------------------------------------------------------------
 
 %libpackage calendarsupportcollectionpage 4
-%libpackage calendarsupport 5
 
-%define calendarsupport_major 4
+%define calendarsupport_major 5
 %define libcalendarsupport %mklibname calendarsupport %{calendarsupport_major}
 
 %package -n %{libcalendarsupport}
-Summary:	KDE 4 library
+Summary:	KDE 5 library
 Group:		System/Libraries
 Requires:	%{mklibname calendarsupportcollectionpage 4}
 
 %description -n %{libcalendarsupport}
-KDE 4 library for korganizer-Mobile.
+KDE 5 library for korganizer-Mobile.
 
 %files -n %{libcalendarsupport}
 %{_kde_libdir}/libcalendarsupport.so.%{calendarsupport_major}*
+%{_kde_libdir}/libcalendarsupport.so.4*
 
 #-----------------------------------------------------------------------------
-%libpackage composereditorng 5
-%define composereditorng_major 4
+%define composereditorng_major 5
 %define libcomposereditorng %mklibname composereditorng %{composereditorng_major}
 
 %package -n %{libcomposereditorng}
@@ -938,98 +948,92 @@ This library provides autospell checking.
 
 %files -n %{libcomposereditorng}
 %{_kde_libdir}/libcomposereditorng.so.%{composereditorng_major}*
+%{_kde_libdir}/libcomposereditorng.so.4*
 
 #-----------------------------------------------------------------------------
 
-%libpackage eventviews 5
-
-%define eventviews_major 4
+%define eventviews_major 5
 %define libeventviews %mklibname eventviews %{eventviews_major}
 
 %package -n %{libeventviews}
-Summary:	KDE 4 library
+Summary:	KDE 5 library
 Group:		System/Libraries
 
 %description -n %{libeventviews}
-KDE 4 library.
+KDE 5 library.
 
 %files -n %{libeventviews}
 %{_kde_libdir}/libeventviews.so.%{eventviews_major}*
+%{_kde_libdir}/libeventviews.so.4*
 
 #-----------------------------------------------------------------------------
 
-%libpackage followupreminder 5
-
-%define followupreminder_major 4
+%define followupreminder_major 5
 %define libfollowupreminder %mklibname followupreminder %{followupreminder_major}
 
 %package -n %{libfollowupreminder}
-Summary:	KDE 4 library
+Summary:	KDE 5 library
 Group:		System/Libraries
 
 %description -n %{libfollowupreminder}
-KDE 4 library.
+KDE 5 library.
 
 %files -n %{libfollowupreminder}
 %{_kde_libdir}/libfollowupreminder.so.%{followupreminder_major}*
+%{_kde_libdir}/libfollowupreminder.so.4*
 
 #-----------------------------------------------------------------------------
 
-%libpackage grantleetheme 5
-
-%define grantleetheme_major 4
+%define grantleetheme_major 5
 %define libgrantleetheme %mklibname grantleetheme %{grantleetheme_major}
 
 %package -n %{libgrantleetheme}
-Summary:	KDE 4 library
+Summary:	KDE 5 library
 Group:		System/Libraries
 
 %description -n %{libgrantleetheme}
-KDE 4 library.
+KDE 5 library.
 
 %files -n %{libgrantleetheme}
 %{_kde_libdir}/libgrantleetheme.so.%{grantleetheme_major}*
+%{_kde_libdir}/libgrantleetheme.so.4*
 
 #-----------------------------------------------------------------------------
 
-%libpackage grantleethemeeditor 5
-
-%define grantleethemeeditor_major 4
+%define grantleethemeeditor_major 5
 %define libgrantleethemeeditor %mklibname grantleethemeeditor %{grantleethemeeditor_major}
 
 %package -n %{libgrantleethemeeditor}
-Summary:	KDE 4 library
+Summary:	KDE 5 library
 Group:		System/Libraries
 
 %description -n %{libgrantleethemeeditor}
-KDE 4 library.
+KDE 5 library.
 
 %files -n %{libgrantleethemeeditor}
 %{_kde_libdir}/libgrantleethemeeditor.so.%{grantleethemeeditor_major}*
+%{_kde_libdir}/libgrantleethemeeditor.so.4*
 
 #----------------------------------------------------------------------------
 
-%libpackage incidenceeditorsng 5
-
-%define incidenceeditorsng_major 4
+%define incidenceeditorsng_major 5
 %define libincidenceeditorsng %mklibname incidenceeditorsng %{incidenceeditorsng_major}
 
 %package -n %{libincidenceeditorsng}
-Summary:	KDE 4 library
+Summary:	KDE 5 library
 Group:		System/Libraries
 Obsoletes:	%{_lib}incidenceeditors4 < 2:4.5.68
 
 %description -n %{libincidenceeditorsng}
-KDE 4 library.
+KDE 5 library.
 
 %files -n %{libincidenceeditorsng}
 %{_kde_libdir}/libincidenceeditorsng.so.%{incidenceeditorsng_major}*
+%{_kde_libdir}/libincidenceeditorsng.so.4*
 
 #-----------------------------------------------------------------------------
 
-%libpackage incidenceeditorsngmobile 5
-
-%define incidenceeditorsngmobile_major 4
+%define incidenceeditorsngmobile_major 5
 %define libincidenceeditorsngmobile %mklibname incidenceeditorssngmobile %{incidenceeditorsngmobile_major}
 
 %package -n %{libincidenceeditorsngmobile}
@@ -1041,57 +1045,55 @@ KDE PIM Mobile library.
 
 %files -n %{libincidenceeditorsngmobile}
 %{_kde_libdir}/libincidenceeditorsngmobile.so.%{incidenceeditorsngmobile_major}*
+%{_kde_libdir}/libincidenceeditorsngmobile.so.4*
 
 #-----------------------------------------------------------------------------
 
-%libpackage kaddressbookgrantlee 5
-
-%define kaddressbookgrantlee_major 4
+%define kaddressbookgrantlee_major 5
 %define libkaddressbookgrantlee %mklibname kaddressbookgrantlee %{kaddressbookgrantlee_major}
 
 %package -n %{libkaddressbookgrantlee}
-Summary:	KDE 4 library
+Summary:	KDE 5 library
 Group:		System/Libraries
 
 %description -n %{libkaddressbookgrantlee}
-KDE 4 library.
+KDE 5 library.
 
 %files -n %{libkaddressbookgrantlee}
 %{_kde_libdir}/libkaddressbookgrantlee.so.%{kaddressbookgrantlee_major}*
+%{_kde_libdir}/libkaddressbookgrantlee.so.4*
 
 #-----------------------------------------------------------------------------
 
-%libpackage kaddressbookprivate 5
-
-%define kaddressbookprivate_major 4
+%define kaddressbookprivate_major 5
 %define libkaddressbookprivate %mklibname kaddressbookprivate %{kaddressbookprivate_major}
 
 %package -n %{libkaddressbookprivate}
-Summary:	KDE 4 library
+Summary:	KDE 5 library
 Group:		System/Libraries
 
 %description -n %{libkaddressbookprivate}
-KDE 4 library.
+KDE 5 library.
 
 %files -n %{libkaddressbookprivate}
 %{_kde_libdir}/libkaddressbookprivate.so.%{kaddressbookprivate_major}*
+%{_kde_libdir}/libkaddressbookprivate.so.4*
 
 #-----------------------------------------------------------------------------
 
-%libpackage kdepim 5
-
-%define kdepim_major 4
+%define kdepim_major 5
 %define libkdepim %mklibname kdepim %{kdepim_major}
 
 %package -n %{libkdepim}
-Summary:	KDE 4 library
+Summary:	KDE 5 library
 Group:		System/Libraries
 
 %description -n %{libkdepim}
-KDE 4 library.
+KDE 5 library.
 
 %files -n %{libkdepim}
 %{_kde_libdir}/libkdepim.so.%{kdepim_major}*
+%{_kde_libdir}/libkdepim.so.4*
 
 #-----------------------------------------------------------------------
 
@@ -1103,282 +1105,266 @@ Summary:       KDE4 library
 Group:         System/Libraries
 
 %description -n %{libkdgantt2}
-KDE 4 library.
+KDE 5 library.
 
 %files -n %{libkdgantt2}
 %{_kde_libdir}/libkdgantt2.so.%{kdgantt2_major}*
 
 #-----------------------------------------------------------------------------
 
-%libpackage kleo 5
-
-%define kleo_major 4
+%define kleo_major 5
 %define libkleo %mklibname kleo %{kleo_major}
 
 %package -n %{libkleo}
-Summary:	KDE 4 library
+Summary:	KDE 5 library
 Group:		System/Libraries
 
 %description -n %{libkleo}
-KDE 4 library.
+KDE 5 library.
 
 %files -n %{libkleo}
 %{_kde_libdir}/libkleo.so.%{kleo_major}*
+%{_kde_libdir}/libkleo.so.4*
 
 #-----------------------------------------------------------------------------
 
-%libpackage kmailprivate 5
-
-%define kmailprivate_major 4
+%define kmailprivate_major 5
 %define libkmailprivate %mklibname kmailprivate %{kmailprivate_major}
 
 %package -n %{libkmailprivate}
-Summary:	KDE 4 library
+Summary:	KDE 5 library
 Group:		System/Libraries
 
 %description -n %{libkmailprivate}
-KDE 4 library.
+KDE 5 library.
 
 %files -n %{libkmailprivate}
 %{_kde_libdir}/libkmailprivate.so.%{kmailprivate_major}*
+%{_kde_libdir}/libkmailprivate.so.4*
 
 #-----------------------------------------------------------------------------
 
-%libpackage kmanagesieve 5
-
-%define kmanagesieve_major 4
+%define kmanagesieve_major 5
 %define libkmanagesieve %mklibname kmanagesieve %{kmanagesieve_major}
 
 %package -n %{libkmanagesieve}
-Summary:	KDE 4 library
+Summary:	KDE 5 library
 Group:		System/Libraries
 
 %description -n %{libkmanagesieve}
-KDE 4 library.
+KDE 5 library.
 
 %files -n %{libkmanagesieve}
 %{_kde_libdir}/libkmanagesieve.so.%{kmanagesieve_major}*
+%{_kde_libdir}/libkmanagesieve.so.4*
 
 #-----------------------------------------------------------------------------
 
-%libpackage knotesprivate 5
-
-%define knotesprivate_major 4
+%define knotesprivate_major 5
 %define libknotesprivate %mklibname knotesprivate %{knotesprivate_major}
 
 %package -n %{libknotesprivate}
-Summary:	KDE 4 library
+Summary:	KDE 5 library
 Group:		System/Libraries
 
 %description -n %{libknotesprivate}
-KDE 4 library.
+KDE 5 library.
 
 %files -n %{libknotesprivate}
 %{_kde_libdir}/libknotesprivate.so.%{knotesprivate_major}*
+%{_kde_libdir}/libknotesprivate.so.4*
 
 #-----------------------------------------------------------------------------
 
-%libpackage kontactprivate 5
-
-%define kontactprivate_major 4
+%define kontactprivate_major 5
 %define libkontactprivate %mklibname kontactprivate %{kontactprivate_major}
 
 %package -n %{libkontactprivate}
-Summary:	KDE 4 library
+Summary:	KDE 5 library
 Group:		System/Libraries
 
 %description -n %{libkontactprivate}
-KDE 4 library.
+KDE 5 library.
 
 %files -n %{libkontactprivate}
 %{_kde_libdir}/libkontactprivate.so.%{kontactprivate_major}*
+%{_kde_libdir}/libkontactprivate.so.4*
 
 #-----------------------------------------------------------------------------
 
-%libpackage korganizer_core 5
-
-%define korganizer_core_major 4
+%define korganizer_core_major 5
 %define libkorganizer_core %mklibname korganizer_core %{korganizer_core_major}
 
 %package -n %{libkorganizer_core}
-Summary:	KDE 4 library
+Summary:	KDE 5 library
 Group:		System/Libraries
 
 %description -n %{libkorganizer_core}
-KDE 4 library.
+KDE 5 library.
 
 %files -n %{libkorganizer_core}
 %{_kde_libdir}/libkorganizer_core.so.%{korganizer_core_major}*
+%{_kde_libdir}/libkorganizer_core.so.4*
 
 #-----------------------------------------------------------------------------
 
-%libpackage korganizer_interfaces 5
-
-%define korganizer_interfaces_major 4
+%define korganizer_interfaces_major 5
 %define libkorganizer_interfaces %mklibname korganizer_interfaces %{korganizer_interfaces_major}
 
 %package -n %{libkorganizer_interfaces}
-Summary:	KDE 4 library
+Summary:	KDE 5 library
 Group:		System/Libraries
 
 %description -n %{libkorganizer_interfaces}
-KDE 4 library.
+KDE 5 library.
 
 %files -n %{libkorganizer_interfaces}
 %{_kde_libdir}/libkorganizer_interfaces.so.%{korganizer_interfaces_major}*
+%{_kde_libdir}/libkorganizer_interfaces.so.4*
 
 #-----------------------------------------------------------------------------
 
-%libpackage korganizerprivate 5
-
-%define korganizerprivate_major 4
+%define korganizerprivate_major 5
 %define libkorganizerprivate %mklibname korganizerprivate %{korganizerprivate_major}
 
 %package -n %{libkorganizerprivate}
-Summary:	KDE 4 library
+Summary:	KDE 5 library
 Group:		System/Libraries
 
 %description -n %{libkorganizerprivate}
-KDE 4 library.
+KDE 5 library.
 
 %files -n %{libkorganizerprivate}
 %{_kde_libdir}/libkorganizerprivate.so.%{korganizerprivate_major}*
+%{_kde_libdir}/libkorganizerprivate.so.4*
 
 #-----------------------------------------------------------------------------
 
-%libpackage kpgp 5
-
-%define kpgp_major 4
+%define kpgp_major 5
 %define libkpgp %mklibname kpgp %{kpgp_major}
 
 %package -n %{libkpgp}
-Summary:	KDE 4 library
+Summary:	KDE 5 library
 Group:		System/Libraries
 
 %description -n %{libkpgp}
-KDE 4 library.
+KDE 5 library.
 
 %files -n %{libkpgp}
 %{_kde_libdir}/libkpgp.so.%{kpgp_major}*
+%{_kde_libdir}/libkpgp.so.4*
 
 #----------------------------------------------------------------------------
 
-%libpackage ksieve 5
-
-%define ksieve_major 4
+%define ksieve_major 5
 %define libksieve %mklibname ksieve %{ksieve_major}
 
 %package -n %{libksieve}
-Summary:	KDE 4 library
+Summary:	KDE 5 library
 Group:		System/Libraries
 
 %description -n %{libksieve}
-KDE 4 library.
+KDE 5 library.
 
 %files -n %{libksieve}
 %{_kde_libdir}/libksieve.so.%{ksieve_major}*
+%{_kde_libdir}/libksieve.so.4*
 
 #-----------------------------------------------------------------------------
 
-%libpackage ksieveui 5
-
-%define ksieveui_major 4
+%define ksieveui_major 5
 %define libksieveui %mklibname ksieveui %{ksieveui_major}
 
 %package -n %{libksieveui}
-Summary:	KDE 4 library
+Summary:	KDE 5 library
 Group:		System/Libraries
 
 %description -n %{libksieveui}
-KDE 4 library.
+KDE 5 library.
 
 %files -n %{libksieveui}
 %{_kde_libdir}/libksieveui.so.%{ksieveui_major}*
+%{_kde_libdir}/libksieveui.so.4*
 
 #-----------------------------------------------------------------------------
 
-%libpackage mailcommon 5
-
-%define mailcommon_major 4
+%define mailcommon_major 5
 %define libmailcommon %mklibname mailcommon %{mailcommon_major}
 
 %package -n %{libmailcommon}
-Summary:	KDE 4 library
+Summary:	KDE 5 library
 Group:		System/Libraries
 
 %description -n %{libmailcommon}
-KDE 4 library.
+KDE 5 library.
 
 %files -n %{libmailcommon}
 %{_kde_libdir}/libmailcommon.so.%{mailcommon_major}*
+%{_kde_libdir}/libmailcommon.so.4*
 
 #-----------------------------------------------------------------------------
 
-%libpackage mailimporter 5
-
-%define mailimporter_major 4
+%define mailimporter_major 5
 %define libmailimporter %mklibname mailimporter %{mailimporter_major}
 
 %package -n %{libmailimporter}
-Summary:	KDE 4 library
+Summary:	KDE 5 library
 Group:		System/Libraries
 
 %description -n %{libmailimporter}
-KDE 4 library.
+KDE 5 library.
 
 %files -n %{libmailimporter}
 %{_kde_libdir}/libmailimporter.so.%{mailimporter_major}*
+%{_kde_libdir}/libmailimporter.so.4*
 
 #-----------------------------------------------------------------------------
 
-%libpackage messagecore 5
-
-%define messagecore_major 4
+%define messagecore_major 5
 %define libmessagecore %mklibname messagecore %{messagecore_major}
 
 %package -n %{libmessagecore}
-Summary:	KDE 4 library
+Summary:	KDE 5 library
 Group:		System/Libraries
 
 %description -n %{libmessagecore}
-KDE 4 library.
+KDE 5 library.
 
 %files -n %{libmessagecore}
 %{_kde_libdir}/libmessagecore.so.%{messagecore_major}*
+%{_kde_libdir}/libmessagecore.so.4*
 
 #-----------------------------------------------------------------------------
 
-%libpackage messagelist 5
-
-%define messagelist_major 4
+%define messagelist_major 5
 %define libmessagelist %mklibname messagelist %{messagelist_major}
 
 %package -n %{libmessagelist}
-Summary:	KDE 4 library
+Summary:	KDE 5 library
 Group:		System/Libraries
 
 %description -n %{libmessagelist}
-KDE 4 library.
+KDE 5 library.
 
 %files -n %{libmessagelist}
 %{_kde_libdir}/libmessagelist.so.%{messagelist_major}*
+%{_kde_libdir}/libmessagelist.so.4*
 
 #-----------------------------------------------------------------------------
 
-%libpackage messageviewer 5
-
-%define messageviewer_major 4
+%define messageviewer_major 5
 %define libmessageviewer %mklibname messageviewer %{messageviewer_major}
 
 %package -n %{libmessageviewer}
-Summary:	KDE 4 library
+Summary:	KDE 5 library
 Group:		System/Libraries
 
 %description -n %{libmessageviewer}
-KDE 4 library.
+KDE 5 library.
 
 %files -n %{libmessageviewer}
 %{_kde_libdir}/libmessageviewer.so.%{messageviewer_major}*
+%{_kde_libdir}/libmessageviewer.so.4*
 
 #-----------------------------------------------------------------------------
 
@@ -1386,11 +1372,11 @@ KDE 4 library.
 %define libkdepimdbusinterfaces %mklibname kdepimdbusinterfaces %{kdepimdbusinterfaces_major}
 
 %package -n %{libkdepimdbusinterfaces}
-Summary:	KDE 4 library
+Summary:	KDE 5 library
 Group:		System/Libraries
 
 %description -n %{libkdepimdbusinterfaces}
-KDE 4 library.
+KDE 5 library.
 
 %files -n %{libkdepimdbusinterfaces}
 %{_kde_libdir}/libkdepimdbusinterfaces.so.%{kdepimdbusinterfaces_major}*
@@ -1401,12 +1387,12 @@ KDE 4 library.
 %define libkleopatraclientcore %mklibname kleopatraclientcore %{kleopatraclientcore_major}
 
 %package -n %{libkleopatraclientcore}
-Summary:	KDE 4 library
+Summary:	KDE 5 library
 Group:		System/Libraries
 Obsoletes:	%{_lib}kleopatraclientcore4 <= 2:4.5
 
 %description -n %{libkleopatraclientcore}
-KDE 4 library.
+KDE 5 library.
 
 %files -n %{libkleopatraclientcore}
 %{_kde_libdir}/libkleopatraclientcore.so.%{kleopatraclientcore_major}*
@@ -1417,55 +1403,51 @@ KDE 4 library.
 %define libkleopatraclientgui %mklibname kleopatraclientgui %{kleopatraclientgui_major}
 
 %package -n %{libkleopatraclientgui}
-Summary:	KDE 4 library
+Summary:	KDE 5 library
 Group:		System/Libraries
 Obsoletes:	%{_lib}kleopatraclientgui4 <= 2:4.5
 
 %description -n %{libkleopatraclientgui}
-KDE 4 library.
+KDE 5 library.
 
 %files -n %{libkleopatraclientgui}
 %{_kde_libdir}/libkleopatraclientgui.so.%{kleopatraclientgui_major}*
 
 #-----------------------------------------------------------------------------
 
-%libpackage messagecomposer 5
-
-%define messagecomposer_major 4
+%define messagecomposer_major 5
 %define libmessagecomposer %mklibname messagecomposer %{messagecomposer_major}
 
 %package -n %{libmessagecomposer}
-Summary:	KDE 4 library
+Summary:	KDE 5 library
 Group:		System/Libraries
 
 %description -n %{libmessagecomposer}
-KDE 4 library.
+KDE 5 library.
 
 %files -n %{libmessagecomposer}
 %{_kde_libdir}/libmessagecomposer.so.%{messagecomposer_major}*
+%{_kde_libdir}/libmessagecomposer.so.4*
 
 #-----------------------------------------------------------------------------
 
-%libpackage noteshared 5
-
-%define noteshared_major 4
+%define noteshared_major 5
 %define libnoteshared %mklibname noteshared %{noteshared_major}
 
 %package -n %{libnoteshared}
-Summary:	KDE 4 library
+Summary:	KDE 5 library
 Group:		System/Libraries
 
 %description -n %{libnoteshared}
-KDE 4 library.
+KDE 5 library.
 
 %files -n %{libnoteshared}
 %{_kde_libdir}/libnoteshared.so.%{noteshared_major}*
+%{_kde_libdir}/libnoteshared.so.4*
 
 #-----------------------------------------------------------------------------
 
-%libpackage pimcommon 5
-
-%define pimcommon_major 4
+%define pimcommon_major 5
 %define libpimcommon %mklibname pimcommon %{pimcommon_major}
 
 %package -n %{libpimcommon}
@@ -1477,12 +1459,11 @@ This library provides the tool to import/export PIM configuration.
 
 %files -n %{libpimcommon}
 %{_kde_libdir}/libpimcommon.so.%{pimcommon_major}*
+%{_kde_libdir}/libpimcommon.so.4*
 
 #-----------------------------------------------------------------------------
 
-%libpackage sendlater 5
-
-%define sendlater_major 4
+%define sendlater_major 5
 %define libsendlater %mklibname sendlater %{sendlater_major}
 
 %package -n %{libsendlater}
@@ -1494,23 +1475,23 @@ KDE PIM library.
 
 %files -n %{libsendlater}
 %{_kde_libdir}/libsendlater.so.%{sendlater_major}*
+%{_kde_libdir}/libsendlater.so.4*
 
 #-----------------------------------------------------------------------------
 
-%libpackage templateparser 5
-
-%define templateparser_major 4
+%define templateparser_major 5
 %define libtemplateparser %mklibname templateparser %{templateparser_major}
 
 %package -n %{libtemplateparser}
-Summary:	KDE 4 library
+Summary:	KDE 5 library
 Group:		System/Libraries
 
 %description -n %{libtemplateparser}
-KDE 4 library.
+KDE 5 library.
 
 %files -n %{libtemplateparser}
 %{_kde_libdir}/libtemplateparser.so.%{templateparser_major}*
+%{_kde_libdir}/libtemplateparser.so.4*
 
 #-----------------------------------------------------------------------------
 

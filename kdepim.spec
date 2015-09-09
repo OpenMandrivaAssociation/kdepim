@@ -125,7 +125,6 @@ Information Management applications for the K Desktop Environment.
 %package core
 Summary:	Core files for KDE PIM
 Group:		Graphical desktop/KDE
-Requires:	akonadi-kde >= 3:%{version}
 # (tpg) probably not needed
 #Requires:	kde-runtime
 #Requires:	kdelibs-core

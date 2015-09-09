@@ -42,9 +42,7 @@ BuildRequires:	pkgconfig(Qt5Concurrent)
 BuildRequires:	pkgconfig(Qt5Declarative)
 BuildRequires:	pkgconfig(Qt5OpenGL)
 BuildRequires:	pkgconfig(Qt5Gui)
-# (tpg) we are missing it
-#BuildRequires:	pkgconfig(Qt5TextToSpeech)
-
+BuildRequires:	pkgconfig(Qt5TextToSpeech)
 BuildRequires:	cmake(KF5Baloo)
 BuildRequires:	cmake(KF5Akonadi)
 BuildRequires:	cmake(KF5AkonadiCalendar)

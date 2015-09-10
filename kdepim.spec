@@ -519,6 +519,11 @@ Requires:	sasl-plug-plain
 Requires:	sasl-plug-ntlm
 Requires:	sasl-plug-login
 Requires:	sasl-plug-digestmd5
+Requires:	kio-pop3
+Requires:	kio-smtp
+Requires:	kio-mbox
+Requires:	kio-imap
+Requires:	kio-sieve
 Requires:	akonadi-archivemail-agent = %{EVRD}
 Requires:	akonadi-followupreminder-agent = %{EVRD}
 Requires:	akonadi-mailfilter-agent = %{EVRD}
@@ -607,6 +612,7 @@ Group:		Graphical desktop/KDE
 Url:		http://userbase.kde.org/KNotes
 Requires:	%{name}-core = %{EVRD}
 Requires:	akonadi-notes-agent = %{EVRD}
+Requires:	kio-nntp
 Provides:	kde4-knotes = %{EVRD}
 Conflicts:	%{name}-devel < 3:4.11.0
 
@@ -647,6 +653,7 @@ Summary:	Kontact Container
 Group:		Graphical desktop/KDE
 Url:		http://userbase.kde.org/Kontact
 Requires:	%{name}-core = %{EVRD}
+Requires:	kio-ldap
 Provides:	kde4-kontact = %{EVRD}
 Suggests:	akregator
 Suggests:	kmail
@@ -694,6 +701,7 @@ Summary:	Calendar and scheduling component
 Group:		Graphical desktop/KDE
 Url:		http://userbase.kde.org/KOrganizer
 Requires:	%{name}-core = %{EVRD}
+Requires:	kio-ldap
 Suggests:	kincidenceeditor
 Provides:	kde4-korganizer = %{EVRD}
 Conflicts:	%{name}-devel < 3:4.11.0

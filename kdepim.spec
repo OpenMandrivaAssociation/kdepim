@@ -819,7 +819,6 @@ Message viewer for KDE Email Client.
 %package -n %{libpimsettingexporterprivate}
 Summary:        KDE 5 library
 Group:          System/Libraries
-Requires:       %{mklibname pimsettingexporterprivatecollectionpage 4}
 
 %description -n %{libpimsettingexporterprivate}
 KDE 5 library for korganizer-Mobile.
@@ -835,7 +834,6 @@ Summary:	Allows to save data from KDE PIM applications and restore them in other
 Group:		Graphical desktop/KDE
 Requires:	kmail = %{EVRD}
 Obsoletes:	backupmail < 3:4.10.0
-Requires:	%{mklibname pimsettingexporterprivate 4}
 Requires:	%{mklibname pimsettingexporterprivate 5}
 
 %description -n pimsettingexporter
@@ -1531,7 +1529,7 @@ Requires:	%{libmessagelist} = %{EVRD}
 Requires:	%{libmessageviewer} = %{EVRD}
 Requires:	%{libnoteshared} = %{EVRD}
 Requires:	%{libpimcommon} = %{EVRD}
-Requires:	%{mklibname pimsettingexporterprivate 4}  = %{EVRD}
+Requires:	%{libpimsettingexporterprivate}  = %{EVRD}
 Requires:	%{libsendlater} = %{EVRD}
 Requires:	%{libtemplateparser} = %{EVRD}
 %rename		kdepim4-devel

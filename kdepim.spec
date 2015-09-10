@@ -922,7 +922,7 @@ KDE library.
 %package -n %{libcalendarsupport}
 Summary:	KDE library
 Group:		System/Libraries
-Requires:	%{mklibname calendarsupportcollectionpage 4}
+Requires:	%{mklibname calendarsupportcollectionpage 4.81.0}
 
 %description -n %{libcalendarsupport}
 KDE library for korganizer-Mobile.

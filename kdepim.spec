@@ -1494,7 +1494,6 @@ Summary:	Devel stuff for %{name}
 Group:		Development/KDE and Qt
 Requires:	kdelibs-devel
 Requires:	kdepimlibs-devel
-Requires:	kdepim-runtime-devel
 Requires:	%{libakregatorinterfaces} = %{EVRD}
 Requires:	%{libakregatorprivate} = %{EVRD}
 Requires:	%{libcalendarsupport} = %{EVRD}

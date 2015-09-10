@@ -608,7 +608,6 @@ Url:		http://userbase.kde.org/KNotes
 Requires:	%{name}-core = %{EVRD}
 Requires:	%{name}-kresources
 Requires:	akonadi-notes-agent = %{EVRD}
-Requires:	kio4-nntp
 Provides:	kde4-knotes = %{EVRD}
 Conflicts:	%{name}-devel < 3:4.11.0
 
@@ -649,7 +648,6 @@ Summary:	Kontact Container
 Group:		Graphical desktop/KDE
 Url:		http://userbase.kde.org/Kontact
 Requires:	%{name}-core = %{EVRD}
-Requires:	kio4-ldap
 Provides:	kde4-kontact = %{EVRD}
 Suggests:	akregator
 Suggests:	kmail
@@ -698,7 +696,6 @@ Group:		Graphical desktop/KDE
 Url:		http://userbase.kde.org/KOrganizer
 Requires:	%{name}-core = %{EVRD}
 Requires:	%{name}-kresources
-Requires:	kio4-ldap
 Suggests:	kincidenceeditor
 Provides:	kde4-korganizer = %{EVRD}
 Conflicts:	%{name}-devel < 3:4.11.0

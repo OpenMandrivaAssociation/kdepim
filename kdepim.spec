@@ -606,7 +606,6 @@ Summary:	Notes for the K Desktop Environment
 Group:		Graphical desktop/KDE
 Url:		http://userbase.kde.org/KNotes
 Requires:	%{name}-core = %{EVRD}
-Requires:	%{name}-kresources
 Requires:	akonadi-notes-agent = %{EVRD}
 Provides:	kde4-knotes = %{EVRD}
 Conflicts:	%{name}-devel < 3:4.11.0
@@ -695,7 +694,6 @@ Summary:	Calendar and scheduling component
 Group:		Graphical desktop/KDE
 Url:		http://userbase.kde.org/KOrganizer
 Requires:	%{name}-core = %{EVRD}
-Requires:	%{name}-kresources
 Suggests:	kincidenceeditor
 Provides:	kde4-korganizer = %{EVRD}
 Conflicts:	%{name}-devel < 3:4.11.0

@@ -1,0 +1,11 @@
+--- kdepim-15.08.0/kaddressbookgrantlee/CMakeLists.txt.orig	2015-09-11 00:30:57.430952345 +0100
++++ kdepim-15.08.0/kaddressbookgrantlee/CMakeLists.txt	2015-09-11 00:31:25.256954432 +0100
+@@ -45,7 +45,7 @@
+ )
+ 
+ set_target_properties(kaddressbookgrantlee PROPERTIES VERSION ${KDEPIM_LIB_VERSION} SOVERSION ${KDEPIM_LIB_SOVERSION})
+-install(TARGETS kaddressbookgrantlee ${KDE_INSTALL_TARGETS_DEFAULT_ARGS} LIBRARY NAMELINK_SKIP)
++install(TARGETS kaddressbookgrantlee ${KDE_INSTALL_TARGETS_DEFAULT_ARGS})
+ 
+ if (BUILD_TESTING)
+    add_subdirectory(printing/autotests)

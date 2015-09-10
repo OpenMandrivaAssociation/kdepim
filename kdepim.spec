@@ -13,6 +13,7 @@ Url:		http://community.kde.org/KDE_PIM
 %define ftpdir stable
 %endif
 Source0:	http://download.kde.org/%{ftpdir}/%{version}/src/%{name}-%{version}.tar.xz
+Patch1:		kdepim-15.08.0-cmake-libkaddressbookgrantlee.patch
 BuildRequires:	xsltproc
 BuildRequires:	boost-devel
 BuildRequires:	gpgme-devel
@@ -1544,6 +1545,7 @@ based on kdepim.
 
 %prep
 %setup -q -n kdepim-%{version}
+%apply_patches
 %cmake_kde5 -DKDEPIM_BUILD_MOBILE:BOOL=OFF
 
 %build

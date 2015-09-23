@@ -159,6 +159,7 @@ Core files for KDE PIM.
 %{_kde5_iconsdir}/*/*/*/quickview.png
 %{_kde5_iconsdir}/*/*/*/quickview.svgz
 %{_kde5_iconsdir}/*/*/*/x-mail-distribution-list.png
+%{_kde5_datadir}/kconf_update
 
 #-----------------------------------------------------------------------------
 
@@ -826,7 +827,6 @@ KDE 5 library for korganizer-Mobile.
 
 %files -n %{libpimsettingexporterprivate}
 %{_kde5_libdir}/libpimsettingexporterprivate.so.%{pimsettingexporterprivate_major}*
-%{_kde5_libdir}/libpimsettingexporterprivate.so.4*
 
 #-----------------------------------------------------------------------------
 
@@ -894,7 +894,6 @@ KDE library.
 
 %files -n %{libakregatorinterfaces}
 %{_kde5_libdir}/libakregatorinterfaces.so.%{akregatorinterfaces_major}*
-%{_kde5_libdir}/libakregatorinterfaces.so.4*
 
 #-----------------------------------------------------------------------------
 %define akregatorprivate_major 5
@@ -909,11 +908,10 @@ KDE library.
 
 %files -n %{libakregatorprivate}
 %{_kde5_libdir}/libakregatorprivate.so.%{akregatorprivate_major}*
-%{_kde5_libdir}/libakregatorprivate.so.4*
 
 #------------------------------------------------------------------------------
 
-%libpackage calendarsupportcollectionpage 4.81.0
+%libpackage calendarsupportcollectionpage 5.0.1
 
 %define calendarsupport_major 5
 %define libcalendarsupport %mklibname calendarsupport %{calendarsupport_major}
@@ -921,14 +919,13 @@ KDE library.
 %package -n %{libcalendarsupport}
 Summary:	KDE library
 Group:		System/Libraries
-Requires:	%{mklibname calendarsupportcollectionpage 4.81.0}
+Requires:	%{mklibname calendarsupportcollectionpage 5.0.1}
 
 %description -n %{libcalendarsupport}
 KDE library for korganizer-Mobile.
 
 %files -n %{libcalendarsupport}
 %{_kde5_libdir}/libcalendarsupport.so.%{calendarsupport_major}*
-%{_kde5_libdir}/libcalendarsupport.so.4*
 
 #-----------------------------------------------------------------------------
 %define composereditorng_major 5
@@ -943,7 +940,6 @@ This library provides autospell checking.
 
 %files -n %{libcomposereditorng}
 %{_kde5_libdir}/libcomposereditorng.so.%{composereditorng_major}*
-%{_kde5_libdir}/libcomposereditorng.so.4*
 
 #-----------------------------------------------------------------------------
 
@@ -959,7 +955,6 @@ KDE library.
 
 %files -n %{libeventviews}
 %{_kde5_libdir}/libeventviews.so.%{eventviews_major}*
-%{_kde5_libdir}/libeventviews.so.4*
 
 #-----------------------------------------------------------------------------
 
@@ -975,7 +970,6 @@ KDE library.
 
 %files -n %{libfollowupreminder}
 %{_kde5_libdir}/libfollowupreminder.so.%{followupreminder_major}*
-%{_kde5_libdir}/libfollowupreminder.so.4*
 
 #-----------------------------------------------------------------------------
 
@@ -991,7 +985,6 @@ KDE library.
 
 %files -n %{libgrantleetheme}
 %{_kde5_libdir}/libgrantleetheme.so.%{grantleetheme_major}*
-%{_kde5_libdir}/libgrantleetheme.so.4*
 
 #-----------------------------------------------------------------------------
 
@@ -1007,7 +1000,6 @@ KDE library.
 
 %files -n %{libgrantleethemeeditor}
 %{_kde5_libdir}/libgrantleethemeeditor.so.%{grantleethemeeditor_major}*
-%{_kde5_libdir}/libgrantleethemeeditor.so.4*
 
 #----------------------------------------------------------------------------
 
@@ -1024,7 +1016,6 @@ KDE library.
 
 %files -n %{libincidenceeditorsng}
 %{_kde5_libdir}/libincidenceeditorsng.so.%{incidenceeditorsng_major}*
-%{_kde5_libdir}/libincidenceeditorsng.so.4*
 
 #-----------------------------------------------------------------------------
 
@@ -1040,7 +1031,6 @@ KDE PIM Mobile library.
 
 %files -n %{libincidenceeditorsngmobile}
 %{_kde5_libdir}/libincidenceeditorsngmobile.so.%{incidenceeditorsngmobile_major}*
-%{_kde5_libdir}/libincidenceeditorsngmobile.so.4*
 
 #-----------------------------------------------------------------------------
 
@@ -1056,7 +1046,6 @@ KDE library.
 
 %files -n %{libkaddressbookgrantlee}
 %{_kde5_libdir}/libkaddressbookgrantlee.so.%{kaddressbookgrantlee_major}*
-%{_kde5_libdir}/libkaddressbookgrantlee.so.4*
 
 #-----------------------------------------------------------------------------
 
@@ -1072,7 +1061,6 @@ KDE library.
 
 %files -n %{libkaddressbookprivate}
 %{_kde5_libdir}/libkaddressbookprivate.so.%{kaddressbookprivate_major}*
-%{_kde5_libdir}/libkaddressbookprivate.so.4*
 
 #-----------------------------------------------------------------------------
 
@@ -1088,7 +1076,6 @@ KDE library.
 
 %files -n %{libkdepim}
 %{_kde5_libdir}/libkdepim.so.%{kdepim_major}*
-%{_kde5_libdir}/libkdepim.so.4*
 
 #-----------------------------------------------------------------------
 
@@ -1119,7 +1106,6 @@ KDE library.
 
 %files -n %{libkleo}
 %{_kde5_libdir}/libkleo.so.%{kleo_major}*
-%{_kde5_libdir}/libkleo.so.4*
 
 #-----------------------------------------------------------------------------
 
@@ -1135,7 +1121,6 @@ KDE library.
 
 %files -n %{libkmailprivate}
 %{_kde5_libdir}/libkmailprivate.so.%{kmailprivate_major}*
-%{_kde5_libdir}/libkmailprivate.so.4*
 
 #-----------------------------------------------------------------------------
 
@@ -1151,7 +1136,6 @@ KDE library.
 
 %files -n %{libkmanagesieve}
 %{_kde5_libdir}/libkmanagesieve.so.%{kmanagesieve_major}*
-%{_kde5_libdir}/libkmanagesieve.so.4*
 
 #-----------------------------------------------------------------------------
 
@@ -1167,7 +1151,6 @@ KDE library.
 
 %files -n %{libknotesprivate}
 %{_kde5_libdir}/libknotesprivate.so.%{knotesprivate_major}*
-%{_kde5_libdir}/libknotesprivate.so.4*
 
 #-----------------------------------------------------------------------------
 
@@ -1183,7 +1166,6 @@ KDE library.
 
 %files -n %{libkontactprivate}
 %{_kde5_libdir}/libkontactprivate.so.%{kontactprivate_major}*
-%{_kde5_libdir}/libkontactprivate.so.4*
 
 #-----------------------------------------------------------------------------
 
@@ -1199,7 +1181,6 @@ KDE library.
 
 %files -n %{libkorganizer_core}
 %{_kde5_libdir}/libkorganizer_core.so.%{korganizer_core_major}*
-%{_kde5_libdir}/libkorganizer_core.so.4*
 
 #-----------------------------------------------------------------------------
 
@@ -1215,7 +1196,6 @@ KDE library.
 
 %files -n %{libkorganizer_interfaces}
 %{_kde5_libdir}/libkorganizer_interfaces.so.%{korganizer_interfaces_major}*
-%{_kde5_libdir}/libkorganizer_interfaces.so.4*
 
 #-----------------------------------------------------------------------------
 
@@ -1231,7 +1211,6 @@ KDE library.
 
 %files -n %{libkorganizerprivate}
 %{_kde5_libdir}/libkorganizerprivate.so.%{korganizerprivate_major}*
-%{_kde5_libdir}/libkorganizerprivate.so.4*
 
 #-----------------------------------------------------------------------------
 
@@ -1247,7 +1226,6 @@ KDE library.
 
 %files -n %{libkpgp}
 %{_kde5_libdir}/libkpgp.so.%{kpgp_major}*
-%{_kde5_libdir}/libkpgp.so.4*
 
 #----------------------------------------------------------------------------
 
@@ -1263,7 +1241,6 @@ KDE library.
 
 %files -n %{libksieve}
 %{_kde5_libdir}/libksieve.so.%{ksieve_major}*
-%{_kde5_libdir}/libksieve.so.4*
 
 #-----------------------------------------------------------------------------
 
@@ -1279,7 +1256,6 @@ KDE library.
 
 %files -n %{libksieveui}
 %{_kde5_libdir}/libksieveui.so.%{ksieveui_major}*
-%{_kde5_libdir}/libksieveui.so.4*
 
 #-----------------------------------------------------------------------------
 
@@ -1295,7 +1271,6 @@ KDE library.
 
 %files -n %{libmailcommon}
 %{_kde5_libdir}/libmailcommon.so.%{mailcommon_major}*
-%{_kde5_libdir}/libmailcommon.so.4*
 
 #-----------------------------------------------------------------------------
 
@@ -1311,7 +1286,6 @@ KDE library.
 
 %files -n %{libmailimporter}
 %{_kde5_libdir}/libmailimporter.so.%{mailimporter_major}*
-%{_kde5_libdir}/libmailimporter.so.4*
 
 #-----------------------------------------------------------------------------
 
@@ -1327,7 +1301,6 @@ KDE library.
 
 %files -n %{libmessagecore}
 %{_kde5_libdir}/libmessagecore.so.%{messagecore_major}*
-%{_kde5_libdir}/libmessagecore.so.4*
 
 #-----------------------------------------------------------------------------
 
@@ -1343,7 +1316,6 @@ KDE library.
 
 %files -n %{libmessagelist}
 %{_kde5_libdir}/libmessagelist.so.%{messagelist_major}*
-%{_kde5_libdir}/libmessagelist.so.4*
 
 #-----------------------------------------------------------------------------
 
@@ -1359,11 +1331,10 @@ KDE library.
 
 %files -n %{libmessageviewer}
 %{_kde5_libdir}/libmessageviewer.so.%{messageviewer_major}*
-%{_kde5_libdir}/libmessageviewer.so.4*
 
 #-----------------------------------------------------------------------------
 
-%define kdepimdbusinterfaces_major 4.81.0
+%define kdepimdbusinterfaces_major 5.0.1
 %define libkdepimdbusinterfaces %mklibname kdepimdbusinterfaces %{kdepimdbusinterfaces_major}
 
 %package -n %{libkdepimdbusinterfaces}
@@ -1422,7 +1393,6 @@ KDE library.
 
 %files -n %{libmessagecomposer}
 %{_kde5_libdir}/libmessagecomposer.so.%{messagecomposer_major}*
-%{_kde5_libdir}/libmessagecomposer.so.4*
 
 #-----------------------------------------------------------------------------
 
@@ -1438,7 +1408,6 @@ KDE library.
 
 %files -n %{libnoteshared}
 %{_kde5_libdir}/libnoteshared.so.%{noteshared_major}*
-%{_kde5_libdir}/libnoteshared.so.4*
 
 #-----------------------------------------------------------------------------
 
@@ -1454,7 +1423,6 @@ This library provides the tool to import/export PIM configuration.
 
 %files -n %{libpimcommon}
 %{_kde5_libdir}/libpimcommon.so.%{pimcommon_major}*
-%{_kde5_libdir}/libpimcommon.so.4*
 
 #-----------------------------------------------------------------------------
 
@@ -1470,7 +1438,6 @@ KDE PIM library.
 
 %files -n %{libsendlater}
 %{_kde5_libdir}/libsendlater.so.%{sendlater_major}*
-%{_kde5_libdir}/libsendlater.so.4*
 
 #-----------------------------------------------------------------------------
 
@@ -1486,7 +1453,6 @@ KDE library.
 
 %files -n %{libtemplateparser}
 %{_kde5_libdir}/libtemplateparser.so.%{templateparser_major}*
-%{_kde5_libdir}/libtemplateparser.so.4*
 
 #-----------------------------------------------------------------------------
 

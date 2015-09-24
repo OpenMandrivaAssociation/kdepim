@@ -459,6 +459,7 @@ or you can schedule commands to be executed or emails to be sent.
 %{_kde5_datadir}/kconf_update/kalarm-2.1.5-general.pl
 %{_kde5_datadir}/kconf_update/kalarm-version.pl
 %{_kde5_datadir}/kconf_update/kalarm.upd
+%{_kde5_datadir}/kconf_update/kalarm-*-kickoff.sh
 %{_kde5_datadir}/config.kcfg/kalarmconfig.kcfg
 %{_kde5_datadir}/polkit-1/actions/org.kde.kalarmrtcwake.policy
 %{_kde5_iconsdir}/*/*/apps/kalarm.*

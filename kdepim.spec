@@ -913,7 +913,7 @@ KDE library.
 
 #------------------------------------------------------------------------------
 
-%libpackage calendarsupportcollectionpage 5.0.1.0
+%libpackage calendarsupportcollectionpage 5.0.2.0
 
 %define calendarsupport_major 5
 %define libcalendarsupport %mklibname calendarsupport %{calendarsupport_major}
@@ -1336,7 +1336,7 @@ KDE library.
 
 #-----------------------------------------------------------------------------
 
-%define kdepimdbusinterfaces_major 5.0.1.0
+%define kdepimdbusinterfaces_major 5.0.2.0
 %define libkdepimdbusinterfaces %mklibname kdepimdbusinterfaces %{kdepimdbusinterfaces_major}
 
 %package -n %{libkdepimdbusinterfaces}

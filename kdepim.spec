@@ -2,7 +2,7 @@ Summary:	An application suite to manage personal information
 Name:		kdepim
 Epoch:		3
 Version:	15.08.2
-Release:	1
+Release:	2
 License:	GPLv2+
 Group:		Graphical desktop/KDE
 Url:		http://community.kde.org/KDE_PIM
@@ -921,7 +921,7 @@ KDE library.
 %package -n %{libcalendarsupport}
 Summary:	KDE library
 Group:		System/Libraries
-Requires:	%{mklibname calendarsupportcollectionpage 5.0.1.0}
+Requires:	%{mklibname calendarsupportcollectionpage 5.0.2.0}
 
 %description -n %{libcalendarsupport}
 KDE library for korganizer-Mobile.

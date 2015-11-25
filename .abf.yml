@@ -1,2 +1,4 @@
-sources:
+removed_sources:
   kdepim-4.14.3.tar.xz: da7ae7e595119a92f5f2399cbe60b0a6cb38817f
+sources:
+  kdepim-4.14.10.tar.xz: 6f74763dda68dbb44394e807eab9204777bddf0a

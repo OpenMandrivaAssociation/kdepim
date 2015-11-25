@@ -1,7 +1,7 @@
 Summary:	An application suite to manage personal information
 Name:		kdepim4
 Epoch:		3
-Version:	4.14.3
+Version:	4.14.10
 Release:	1
 License:	GPLv2+
 Group:		Graphical desktop/KDE
@@ -12,7 +12,7 @@ Url:		http://community.kde.org/KDE_PIM
 %else
 %define ftpdir stable
 %endif
-Source0:	ftp://ftp.kde.org/pub/kde/%{ftpdir}/%{version}/src/kdepim-%{version}.tar.xz
+Source0:	http://download.kde.org/%{ftpdir}/applications/15.04.3/src/kdepim-%{version}.tar.xz
 Patch0:		kdepim-4.12.1-cmake-libkaddressbookgrantlee.patch
 Patch1:		kdepim-4.14.1-storageservicemanager-desktop.patch
 BuildRequires:	xsltproc

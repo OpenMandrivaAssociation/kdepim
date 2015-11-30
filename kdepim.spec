@@ -913,7 +913,7 @@ KDE library.
 
 #------------------------------------------------------------------------------
 
-%libpackage calendarsupportcollectionpage 5.0.2.0
+%libpackage calendarsupportcollectionpage 5.0.3.0
 
 %define calendarsupport_major 5
 %define libcalendarsupport %mklibname calendarsupport %{calendarsupport_major}
@@ -921,7 +921,7 @@ KDE library.
 %package -n %{libcalendarsupport}
 Summary:	KDE library
 Group:		System/Libraries
-Requires:	%{mklibname calendarsupportcollectionpage 5.0.2.0}
+Requires:	%{mklibname calendarsupportcollectionpage 5.0.3.0}
 
 %description -n %{libcalendarsupport}
 KDE library for korganizer-Mobile.
@@ -1336,7 +1336,7 @@ KDE library.
 
 #-----------------------------------------------------------------------------
 
-%define kdepimdbusinterfaces_major 5.0.2.0
+%define kdepimdbusinterfaces_major 5.0.3.0
 %define libkdepimdbusinterfaces %mklibname kdepimdbusinterfaces %{kdepimdbusinterfaces_major}
 
 %package -n %{libkdepimdbusinterfaces}

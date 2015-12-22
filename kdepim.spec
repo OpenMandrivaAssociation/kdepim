@@ -13,7 +13,7 @@ Url:		http://community.kde.org/KDE_PIM
 %define ftpdir stable
 %endif
 Source0:	http://download.kde.org/%{ftpdir}/%{version}/src/%{name}-%{version}.tar.xz
-Patch1:		kdepim-15.08.0-cmake-libkaddressbookgrantlee.patch
+#Patch1:		kdepim-15.08.0-cmake-libkaddressbookgrantlee.patch
 BuildRequires:	xsltproc
 BuildRequires:	boost-devel
 BuildRequires:	gpgme-devel
@@ -126,9 +126,6 @@ Information Management applications for the K Desktop Environment.
 %package core
 Summary:	Core files for KDE PIM
 Group:		Graphical desktop/KDE
-# (tpg) probably not needed
-#Requires:	kde-runtime
-#Requires:	kdelibs-core
 Requires:	storageservicemanager = %{EVRD}
 Conflicts:	%{_lib}kdepim4 < 3:4.11.0
 Conflicts:	%{_lib}kpgp4 < 3:4.11.0

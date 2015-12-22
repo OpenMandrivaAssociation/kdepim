@@ -13,6 +13,7 @@ Url:		http://community.kde.org/KDE_PIM
 %define ftpdir stable
 %endif
 Source0:	http://download.kde.org/%{ftpdir}/%{version}/src/%{name}-%{version}.tar.xz
+Patch0:		kdepim-kleopatra-conf-link-against-i18n.patch
 BuildRequires:	xsltproc
 BuildRequires:	boost-devel
 BuildRequires:	gpgme-devel
@@ -139,6 +140,7 @@ Core files for KDE PIM.
 
 %files core -f %{name}.lang
 %exclude %{_kde5_docdir}/HTML/en/*
+%dir %{_qt5_plugindir}/pimcommon
 %{_kde5_bindir}/contactprintthemeeditor
 %{_kde5_datadir}/kdepimwidgets
 %{_sysconfdir}/xdg/kdepim.categories
@@ -146,16 +148,16 @@ Core files for KDE PIM.
 %{_kde5_docdir}/HTML/en/contactthemeeditor
 %{_kde5_datadir}/applications/org.kde.storageservicemanager.desktop
 %{_kde5_datadir}/knotifications5/storageservicemanager.notifyrc
-%{_kde5_datadir}/kxmlgui5/storageservicemanager
 %{_qt5_plugindir}/designer/kdepimwidgets.so
 %{_qt5_plugindir}/designer/pimcommonwidgets.so
+%{_qt5_plugindir}/pimcommon/pimcommon_*.so
 %{_kde5_datadir}/applications/org.kde.contactprintthemeeditor.desktop
 %{_kde5_datadir}/composereditor/composereditorinitialhtml
-%{_kde5_datadir}/kxmlgui5/contactprintthemeeditor/contactprintthemeeditorui.rc
 %{_kde5_iconsdir}/*/*/*/quickview.png
 %{_kde5_iconsdir}/*/*/*/quickview.svgz
 %{_kde5_iconsdir}/*/*/*/x-mail-distribution-list.png
 %{_kde5_datadir}/kconf_update
+%{_libdir}/grantlee/5.0/kde_grantlee_plugin.so
 %exclude %{_kde5_datadir}/kconf_update/kalarm*
 
 #-----------------------------------------------------------------------------
@@ -172,7 +174,6 @@ Console that help to debug akonadi.
 %files -n akonadiconsole
 %{_kde5_bindir}/akonadiconsole
 %{_kde5_applicationsdir}/org.kde.akonadiconsole.desktop
-%{_kde5_datadir}/kxmlgui5/akonadiconsole/akonadiconsoleui.rc
 %{_kde5_iconsdir}/hicolor/*/apps/akonadiconsole.png
 
 #-----------------------------------------------------------------------------
@@ -335,7 +336,6 @@ intervals.
 %{_kde5_applicationsdir}/org.kde.blogilo.desktop
 %{_datadir}/appdata/blogilo.appdata.xml
 %{_kde5_datadir}/config.kcfg/blogilo.kcfg
-%{_datadir}/kxmlgui5/blogilo
 %{_kde5_iconsdir}/*/*/apps/blogilo.*
 %{_kde5_iconsdir}/*/*/actions/format-text-blockquote.*
 %{_kde5_iconsdir}/*/*/actions/format-text-code.*
@@ -357,7 +357,6 @@ KMail Header Theme Editor.
 %doc %{_kde5_docdir}/HTML/en/headerthemeeditor
 %{_kde5_bindir}/headerthemeeditor
 %{_kde5_applicationsdir}/org.kde.headerthemeeditor.desktop
-%{_kde5_datadir}/kxmlgui5/headerthemeeditor
 
 #-----------------------------------------------------------------------------
 
@@ -373,7 +372,6 @@ KDE Contact Theme Editor.
 %doc %{_kde5_docdir}/HTML/en/contactthemeeditor
 %{_kde5_bindir}/contactthemeeditor
 %{_kde5_applicationsdir}/org.kde.contactthemeeditor.desktop
-%{_kde5_datadir}/kxmlgui5/contactthemeeditor
 
 #-----------------------------------------------------------------------------
 
@@ -445,7 +443,7 @@ or you can schedule commands to be executed or emails to be sent.
 %doc %{_kde5_docdir}/HTML/en/kalarm
 %{_kde5_bindir}/kalarm
 %{_kde5_bindir}/kalarmautostart
-%_kde5_libexecdir/kalarm_helper
+%{_kde5_libexecdir}/kalarm_helper
 %{_sysconfdir}/xdg/autostart/kalarm.autostart.desktop
 %{_kde5_applicationsdir}/org.kde.kalarm.desktop
 %{_kde5_datadir}/kalarm
@@ -493,15 +491,12 @@ KDE Certificate Manager.
 %doc %{_kde5_docdir}/HTML/en/kwatchgnupg
 %{_sysconfdir}/xdg/libkleopatrarc
 %{_kde5_bindir}/kleopatra
-%{_kde5_bindir}/kgpgconf
 %{_kde5_bindir}/kwatchgnupg
 %{_kde5_applicationsdir}/org.kde.kleopatra.desktop
 %{_kde5_applicationsdir}/kleopatra_import.desktop
 %{_kde5_datadir}/kleopatra
 %{_kde5_datadir}/libkleopatra
 %{_kde5_datadir}/kwatchgnupg
-%{_datadir}/kxmlgui5/kleopatra
-%{_datadir}/kxmlgui5/kwatchgnupg
 %{_kde5_iconsdir}/*/*/apps/kleopatra.*
 %{_kde5_services}/kleopatra_*
 %{_qt5_plugindir}/kcm_kleopatra.so
@@ -673,7 +668,6 @@ technology, existing applications are seamlessly integrated into one.
 %doc %{_kde5_docdir}/HTML/en/kontact-admin
 %{_kde5_bindir}/kontact
 %{_kde5_datadir}/kontact
-%{_kde5_datadir}/knode
 %{_kde5_applicationsdir}/org.kde.kontact.desktop
 %{_kde5_applicationsdir}/kontact-admin.desktop
 %{_kde5_datadir}/config.kcfg/kontact.kcfg
@@ -774,7 +768,6 @@ mail servers and embed the mail properties as well as the actual attachments.
 %{_kde5_applicationsdir}/org.kde.ktnef.desktop
 %{_kde5_iconsdir}/*/*/apps/ktnef*.*
 %{_kde5_iconsdir}/*/*/actions/ktnef*.*
-%{_kde5_datadir}/kxmlgui5/ktnef
 
 #-----------------------------------------------------------------------------
 
@@ -804,11 +797,12 @@ Obsoletes:	kmail-common < 3:4.11.0
 Message viewer for KDE Email Client.
 
 %files -n messageviewer
+%dir %{_qt5_plugindir}/messageviewer
 %{_kde5_datadir}/libmessageviewer
 %{_kde5_datadir}/messageviewer
 %{_kde5_datadir}/knotifications5/messageviewer.notifyrc
 %{_qt5_plugindir}/grantlee/5.0/grantlee_messageheaderfilters.so
-%{_qt5_plugindir}/messageviewer_*
+%{_qt5_plugindir}/messageviewer/messageviewer_*.so
 %{_sysconfdir}/xdg/messageviewer_header_themes.knsrc
 
 #-----------------------------------------------------------------------------
@@ -844,8 +838,6 @@ systems. Successor of Backup Mail from KDE.9.
 %{_kde5_bindir}/pimsettingexporter
 %{_kde5_bindir}/pimsettingexporterconsole
 %{_kde5_datadir}/applications/org.kde.pimsettingexporter.desktop
-%{_kde5_datadir}/kxmlgui5/pimsettingexporter
-%{_kde5_datadir}/pimsettingexporter
 #-----------------------------------------------------------------------------
 
 %package -n sieveeditor
@@ -861,7 +853,6 @@ DropBox etc.
 %doc %{_kde5_docdir}/HTML/en/sieveeditor
 %{_kde5_bindir}/sieveeditor
 %{_kde5_applicationsdir}/org.kde.sieveeditor.desktop
-%{_kde5_datadir}/kxmlgui5/sieveeditor
 
 #-----------------------------------------------------------------------------
 
@@ -909,141 +900,447 @@ KDE library.
 
 #------------------------------------------------------------------------------
 
-%libpackage calendarsupportcollectionpage 5.0.3.0
+%define KF5CalendarSupport_major 5
+%define libKF5CalendarSupport %mklibname KF5CalendarSupport %{KF5CalendarSupport_major}
 
-%define calendarsupport_major 5
-%define libcalendarsupport %mklibname calendarsupport %{calendarsupport_major}
-
-%package -n %{libcalendarsupport}
+%package -n %{libKF5CalendarSupport}
 Summary:	KDE library
 Group:		System/Libraries
-Requires:	%{mklibname calendarsupportcollectionpage 5.0.3.0}
+Obsoletes:	%{mklibname calendarsupportcollectionpage 5.0.3.0} < 3:5.12.0
+Provides:	%{mklibname calendarsupportcollectionpage 5.0.3.0} = 3:5.12.0
+Obsoletes:	%{mklibname calendarsupport 5} < 3:5.12.0
+Provides:	%{mklibname calendarsupport 5} = 3:5.12.0
 
-%description -n %{libcalendarsupport}
+%description -n %{libKF5CalendarSupport}
 KDE library for korganizer-Mobile.
 
-%files -n %{libcalendarsupport}
-%{_kde5_libdir}/libcalendarsupport.so.%{calendarsupport_major}*
+%files -n %{libKF5CalendarSupport}
+%{_kde5_libdir}/libKF5CalendarSupport.so.%{KF5CalendarSupport_major}*
 
 #-----------------------------------------------------------------------------
-%define composereditorng_major 5
-%define libcomposereditorng %mklibname composereditorng %{composereditorng_major}
+%define KF5ComposerEditorNG_major 5
+%define libKF5ComposerEditorNG %mklibname KF5ComposerEditorNG %{KF5ComposerEditorNG_major}
 
-%package -n %{libcomposereditorng}
+%package -n %{libKF5ComposerEditorNG}
 Summary:	Library providing autospell checking
 Group:		System/Libraries
+Obsoletes:	%{mklibname composereditorng 5} < 3:5.12.0
+Provides:	%{mklibname composereditorng 5} = 3:5.12.0
 
-%description -n %{libcomposereditorng}
+%description -n %{libKF5ComposerEditorNG}
 This library provides autospell checking.
 
-%files -n %{libcomposereditorng}
-%{_kde5_libdir}/libcomposereditorng.so.%{composereditorng_major}*
+%files -n %{libKF5ComposerEditorNG}
+%{_kde5_libdir}/libKF5ComposerEditorNG.so.%{KF5ComposerEditorNG_major}*
 
 #-----------------------------------------------------------------------------
 
-%define eventviews_major 5
-%define libeventviews %mklibname eventviews %{eventviews_major}
+%define KF5EventViews_major 5
+%define libKF5EventViews %mklibname KF5EventViews %{KF5EventViews_major}
 
-%package -n %{libeventviews}
+%package -n %{libKF5EventViews}
 Summary:	KDE library
 Group:		System/Libraries
+Obsoletes:	%{mklibname eventviews 5} < 3:5.12.0
+Provides:	%{mklibname eventviews 5} = 3:5.12.0
 
-%description -n %{libeventviews}
+%description -n %{libKF5EventViews}
 KDE library.
 
-%files -n %{libeventviews}
-%{_kde5_libdir}/libeventviews.so.%{eventviews_major}*
+%files -n %{libKF5EventViews}
+%{_kde5_libdir}/libKF5EventViews.so.%{KF5EventViews_major}*
 
 #-----------------------------------------------------------------------------
 
-%define followupreminder_major 5
-%define libfollowupreminder %mklibname followupreminder %{followupreminder_major}
+%define KF5FollowupReminder_major 5
+%define libKF5FollowupReminder %mklibname KF5FollowupReminder %{KF5FollowupReminder_major}
 
-%package -n %{libfollowupreminder}
+%package -n %{libKF5FollowupReminder}
 Summary:	KDE library
 Group:		System/Libraries
+Obsoletes:	%{mklibname followupreminder 5} < 3:5.12.0
+Provides:	%{mklibname followupreminder 5} = 3:5.12.0
 
-%description -n %{libfollowupreminder}
+%description -n %{libKF5FollowupReminder}
 KDE library.
 
-%files -n %{libfollowupreminder}
-%{_kde5_libdir}/libfollowupreminder.so.%{followupreminder_major}*
+%files -n %{libKF5FollowupReminder}
+%{_kde5_libdir}/libKF5FollowupReminder.so.%{KF5FollowupReminder_major}*
 
 #-----------------------------------------------------------------------------
 
-%define grantleetheme_major 5
-%define libgrantleetheme %mklibname grantleetheme %{grantleetheme_major}
+%define KF5GrantleeTheme_major 5
+%define libKF5GrantleeTheme %mklibname KF5GrantleeTheme %{KF5GrantleeTheme_major}
 
-%package -n %{libgrantleetheme}
+%package -n %{libKF5GrantleeTheme}
 Summary:	KDE library
 Group:		System/Libraries
+Obsoletes:	%{mklibname grantletheme 5} < 3:5.12.0
+Provides:	%{mklibname grantletheme 5} = 3:5.12.0
 
-%description -n %{libgrantleetheme}
+%description -n %{libKF5GrantleeTheme}
 KDE library.
 
-%files -n %{libgrantleetheme}
-%{_kde5_libdir}/libgrantleetheme.so.%{grantleetheme_major}*
+%files -n %{libKF5GrantleeTheme}
+%{_kde5_libdir}/libKF5GrantleeTheme.so.%{KF5GrantleeTheme_major}*
 
 #-----------------------------------------------------------------------------
 
-%define grantleethemeeditor_major 5
-%define libgrantleethemeeditor %mklibname grantleethemeeditor %{grantleethemeeditor_major}
+%define KF5KF5Gravatar_major 5
+%define libKF5KF5Gravatar %mklibname KF5Gravatar %{KF5Gravatar_major}
 
-%package -n %{libgrantleethemeeditor}
+%package -n %{libKF5Gravatar}
 Summary:	KDE library
 Group:		System/Libraries
 
-%description -n %{libgrantleethemeeditor}
+%description -n %{libKF5Gravatar}
 KDE library.
 
-%files -n %{libgrantleethemeeditor}
-%{_kde5_libdir}/libgrantleethemeeditor.so.%{grantleethemeeditor_major}*
+%files -n %{libKF5Gravatar}
+%{_kde5_libdir}/libKF5Gravatar.so.%{KF5Gravatar_major}*
 
-#----------------------------------------------------------------------------
+#-----------------------------------------------------------------------------
 
-%define incidenceeditorsng_major 5
-%define libincidenceeditorsng %mklibname incidenceeditorsng %{incidenceeditorsng_major}
+%define KF5IncidenceEditorsng_major 5
+%define libKF5IncidenceEditorsng %mklibname KF5IncidenceEditorsng %{KF5IncidenceEditorsng_major}
 
-%package -n %{libincidenceeditorsng}
+%package -n %{libKF5IncidenceEditorsng}
 Summary:	KDE library
 Group:		System/Libraries
 Obsoletes:	%{_lib}incidenceeditors4 < 2:4.5.68
+Obsoletes:	%{mklibname incidenceeditorsng 5} < 3:5.12.0
+Provides:	%{mklibname incidenceeditorsng 5} = 3:5.12.0
+Obsoletes:	%{mklibname incidenceeditorssngmobile 5} < 3:5.12.0
+Provides:	%{mklibname incidenceeditorssngmobile 5} = 3:5.12.0
 
-%description -n %{libincidenceeditorsng}
+%description -n %{libKF5IncidenceEditorsng}
 KDE library.
 
-%files -n %{libincidenceeditorsng}
-%{_kde5_libdir}/libincidenceeditorsng.so.%{incidenceeditorsng_major}*
+%files -n %{libKF5IncidenceEditorsng}
+%{_kde5_libdir}/libKF5IncidenceEditorsng.so.%{KF5IncidenceEditorsng_major}*
 
 #-----------------------------------------------------------------------------
 
-%define incidenceeditorsngmobile_major 5
-%define libincidenceeditorsngmobile %mklibname incidenceeditorssngmobile %{incidenceeditorsngmobile_major}
+%define KF5KaddressbookGrantlee_major 5
+%define libKF5KaddressbookGrantlee %mklibname KF5KaddressbookGrantlee %{KF5KaddressbookGrantlee_major}
 
-%package -n %{libincidenceeditorsngmobile}
-Summary:	KDEPIM Mobile Library
+%package -n %{libKF5KaddressbookGrantlee}
+Summary:	KDE library
 Group:		System/Libraries
+Obsoletes:	%{mklibname kaddressbookgrantlee 5} < 3:5.12.0
+Provides:	%{mklibname kaddressbookgrantlee 5} = 3:5.12.0
 
-%description -n %{libincidenceeditorsngmobile}
-KDE PIM Mobile library.
+%description -n %{libKF5KaddressbookGrantlee}
+KDE library.
 
-%files -n %{libincidenceeditorsngmobile}
-%{_kde5_libdir}/libincidenceeditorsngmobile.so.%{incidenceeditorsngmobile_major}*
+%files -n %{libKF5KaddressbookGrantlee}
+%{_kde5_libdir}/libKF5KaddressbookGrantlee.so.%{KF5KaddressbookGrantlee_major}*
 
 #-----------------------------------------------------------------------------
 
-%define kaddressbookgrantlee_major 5
-%define libkaddressbookgrantlee %mklibname kaddressbookgrantlee %{kaddressbookgrantlee_major}
+%define KF5KDGantt2_major 5
+%define libKF5KDGantt2 %mklibname KF5KDGantt2 _%{KF5KDGantt2_major}
 
-%package -n %{libkaddressbookgrantlee}
+%package -n %{libKF5KDGantt2}
+Summary:	KDE library
+Group:		System/Libraries
+Obsoletes:	%{mklibname kdgantt2 1} < 3:5.12.0
+Provides:	%{mklibname kdgantt2 1} = 3:5.12.0
+
+%description -n %{libKF5KDGantt2}
+KDE library.
+
+%files -n %{libKF5KDGantt2}
+%{_kde5_libdir}/libKF5KDGantt2.so.%{KF5KDGantt2_major}*
+
+#-----------------------------------------------------------------------------
+
+%define KF5KManageSieve_major 5
+%define libKF5KManageSieve %mklibname KF5KManageSieve %{KF5KManageSieve_major}
+
+%package -n %{libKF5KManageSieve}
+Summary:	KDE library
+Group:		System/Libraries
+Obsoletes:	%{mklibname managesieve 5} < 3:5.12.0
+Provides:	%{mklibname managesieve 5} = 3:5.12.0
+
+%description -n %{libKF5KManageSieve}
+KDE library.
+
+%files -n %{libKF5KManageSieve}
+%{_kde5_libdir}/libKF5KManageSieve.so.%{KF5KManageSieve_major}*
+
+#-----------------------------------------------------------------------------
+
+%define KF5KSieve_major 5
+%define libKF5KSieve %mklibname KF5KSieve %{KF5KSieve_major}
+
+%package -n %{libKF5KSieve}
+Summary:	KDE library
+Group:		System/Libraries
+Obsoletes:	%{mklibname ksieve 5} < 3:5.12.0
+Provides:	%{mklibname ksieve 5} = 3:5.12.0
+
+%description -n %{libKF5KSieve}
+KDE library.
+
+%files -n %{libKF5KSieve}
+%{_kde5_libdir}/libKF5KSieve.so.%{KF5KSieve_major}*
+
+#-----------------------------------------------------------------------------
+
+%define KF5KSieveUi_major 5
+%define libKF5KSieveUi %mklibname KF5KSieveUi %{KF5KSieveUi_major}
+
+%package -n %{libKF5KSieveUi}
+Summary:	KDE library
+Group:		System/Libraries
+Obsoletes:	%{mklibname ksieveui 5} < 3:5.12.0
+Provides:	%{mklibname ksieveui 5} = 3:5.12.0
+
+%description -n %{libKF5KSieveUi}
+KDE library.
+
+%files -n %{libKF5KSieveUi}
+%{_kde5_libdir}/libKF5KSieveUi.so.%{KF5KSieveUi_major}*
+
+#-----------------------------------------------------------------------------
+
+%define KF5KaddressbookGrantlee_major 5
+%define libKF5KaddressbookGrantlee %mklibname KF5KaddressbookGrantlee %{KF5KaddressbookGrantlee_major}
+
+%package -n %{libKF5KaddressbookGrantlee}
 Summary:	KDE library
 Group:		System/Libraries
 
-%description -n %{libkaddressbookgrantlee}
+%description -n %{libKF5KaddressbookGrantlee}
 KDE library.
 
-%files -n %{libkaddressbookgrantlee}
-%{_kde5_libdir}/libkaddressbookgrantlee.so.%{kaddressbookgrantlee_major}*
+%files -n %{libKF5KaddressbookGrantlee}
+%{_kde5_libdir}/libKF5KaddressbookGrantlee.so.%{KF5KaddressbookGrantlee_major}*
+
+#-----------------------------------------------------------------------------
+
+%define KF5KdepimDBusInterfaces_major 5
+%define libKF5KdepimDBusInterfaces %mklibname KF5KdepimDBusInterfaces %{KF5KdepimDBusInterfaces_major}
+
+%package -n %{libKF5KdepimDBusInterfaces}
+Summary:	KDE library
+Group:		System/Libraries
+Obsoletes:	%{mklibname kdepimdbusinterfaces 5} < 3:5.12.0
+Provides:	%{mklibname kdepimdbusinterfaces 5} = 3:5.12.0
+
+%description -n %{libKF5KdepimDBusInterfaces}
+KDE library.
+
+%files -n %{libKF5KdepimDBusInterfaces}
+%{_kde5_libdir}/libKF5KdepimDBusInterfaces.so.%{KF5KdepimDBusInterfaces_major}*
+
+#-----------------------------------------------------------------------------
+
+%define KF5Libkdepim_major 5
+%define libKF5Libkdepim %mklibname KF5Libkdepim %{KF5Libkdepim_major}
+
+%package -n %{libKF5Libkdepim}
+Summary:	KDE library
+Group:		System/Libraries
+Obsoletes:	%{mklibname kdepim 5} < 3:5.12.0
+Provides:	%{mklibname kdepim 5} = 3:5.12.0
+
+%description -n %{libKF5Libkdepim}
+KDE library.
+
+%files -n %{libKF5Libkdepim}
+%{_kde5_libdir}/libKF5Libkdepim.so.%{KF5Libkdepim_major}*
+
+#-----------------------------------------------------------------------------
+
+%define KF5Libkleo_major 5
+%define libKKF5Libkleo %mklibname KF5Libkleo %{KF5Libkleo_major}
+
+%package -n %{libKF5Libkleo}
+Summary:	KDE library
+Group:		System/Libraries
+Obsoletes:	%{mklibname kleo 5} < 3:5.12.0
+Provides:	%{mklibname kleo 5} = 3:5.12.0
+Obsoletes:	%{mklibname kpgp 5} < 3:5.12.0
+Provides:	%{mklibname kpgp 5} = 3:5.12.0
+
+%description -n %{libKKF5Libkleo}
+KDE library.
+
+%files -n %{libKF5Libkleo}
+%{_kde5_libdir}/libKF5Libkleo.so.%{KF5Libkleo_major}*
+
+#-----------------------------------------------------------------------------
+
+%define KF5MailCommon_major 5
+%define libKF5MailCommon %mklibname KF5MailCommon %{KF5MailCommon_major}
+
+%package -n %{libKF5MailCommon}
+Summary:	KDE library
+Group:		System/Libraries
+Obsoletes:	%{mklibname mailcommon 5} < 3:5.12.0
+Provides:	%{mklibname mailcommon 5} = 3:5.12.0
+
+%description -n %{libKF5MailCommon}
+KDE library.
+
+%files -n %{libKF5MailCommon}
+%{_kde5_libdir}/libKF5MailCommon.so.%{KF5MailCommon_major}*
+
+#-----------------------------------------------------------------------------
+
+%define KF5MailImporter_major 5
+%define libKF5MailImporter %mklibname KF5MailImporter %{KF5MailImporter_major}
+
+%package -n %{libKF5MailImporter}
+Summary:	KDE library
+Group:		System/Libraries
+Obsoletes:	%{mklibname mailimporter 5} < 3:5.12.0
+Provides:	%{mklibname mailimporter 5} = 3:5.12.0
+
+%description -n %{libKF5MailImporter}
+KDE library.
+
+%files -n %{libKF5MailImporter}
+%{_kde5_libdir}/libKF5MailImporter.so.%{KF5MailImporter_major}*
+
+#-----------------------------------------------------------------------------
+
+%define KF5MessageComposer_major 5
+%define libKF5MessageComposer %mklibname KF5MessageComposer %{KF5MessageComposer_major}
+
+%package -n %{libKF5MessageComposer}
+Summary:	KDE library
+Group:		System/Libraries
+Obsoletes:	%{mklibname messagecomposer 5} < 3:5.12.0
+Provides:	%{mklibname messagecomposer 5} = 3:5.12.0
+
+%description -n %{libKF5MessageComposer}
+KDE library.
+
+%files -n %{libKF5MessageComposer}
+%{_kde5_libdir}/libKF5MessageComposer.so.%{KF5MessageComposer_major}*
+
+#-----------------------------------------------------------------------------
+
+%define KF5MessageCore_major 5
+%define libKF5MessageCore %mklibname KF5MessageCore %{KF5MessageCore_major}
+
+%package -n %{libKF5MessageCore}
+Summary:	KDE library
+Group:		System/Libraries
+Obsoletes:	%{mklibname messagecore 5} < 3:5.12.0
+Provides:	%{mklibname messagecore 5} = 3:5.12.0
+
+%description -n %{libKF5MessageCore}
+KDE library.
+
+%files -n %{libKF5MessageCore}
+%{_kde5_libdir}/libKF5MessageCore.so.%{KF5MessageCore_major}*
+
+#-----------------------------------------------------------------------------
+
+%define KF5MessageList_major 5
+%define libKF5MessageList %mklibname KF5MessageList %{KF5MessageList_major}
+
+%package -n %{libKF5MessageList}
+Summary:	KDE library
+Group:		System/Libraries
+Obsoletes:	%{mklibname messagelist 5} < 3:5.12.0
+Provides:	%{mklibname messagelist 5} = 3:5.12.0
+
+%description -n %{libKF5MessageList}
+KDE library.
+
+%files -n %{libKF5MessageList}
+%{_kde5_libdir}/libKF5MessageList.so.%{KF5MessageList_major}*
+
+#-----------------------------------------------------------------------------
+
+%define KF5MessageViewer_major 5
+%define libKF5MessageViewer %mklibname KF5MessageViewer %{KF5MessageViewer_major}
+
+%package -n %{libKF5MessageViewer}
+Summary:	KDE library
+Group:		System/Libraries
+Obsoletes:	%{mklibname messageviewer 5} < 3:5.12.0
+Provides:	%{mklibname messageviewer 5} = 3:5.12.0
+
+%description -n %{libKF5MessageViewer}
+KDE library.
+
+%files -n %{libKF5MessageViewer}
+%{_kde5_libdir}/libKF5MessageViewer.so.%{KF5MessageViewer_major}*
+
+#-----------------------------------------------------------------------------
+
+%define KF5NoteShared_major 5
+%define libKF5NoteShared %mklibname KF5NoteShared %{KF5NoteShared_major}
+
+%package -n %{libKF5NoteShared}
+Summary:	KDE library
+Group:		System/Libraries
+Obsoletes:	%{mklibname noteshared 5} < 3:5.12.0
+Provides:	%{mklibname noteshared 5} = 3:5.12.0
+
+%description -n %{libKF5NoteShared}
+KDE library.
+
+%files -n %{libKF5NoteShared}
+%{_kde5_libdir}/libKF5NoteShared.so.%{KF5NoteShared_major}*
+
+#-----------------------------------------------------------------------------
+
+%define KF5PimCommon_major 5
+%define libKF5PimCommon %mklibname KF5PimCommon %{KF5PimCommon_major}
+
+%package -n %{libKF5PimCommon}
+Summary:	KDE library
+Group:		System/Libraries
+Obsoletes:	%{mklibname pimcommon 5} < 3:5.12.0
+Provides:	%{mklibname pimcommon 5} = 3:5.12.0
+
+%description -n %{libKF5PimCommon}
+KDE library.
+
+%files -n %{libKF5PimCommon}
+%{_kde5_libdir}/libKF5PimCommon.so.%{KF5PimCommon_major}*
+
+#-----------------------------------------------------------------------------
+
+%define KF5SendLater_major 5
+%define libKF5SendLater %mklibname KF5SendLater %{KF5SendLater_major}
+
+%package -n %{libKF5SendLater}
+Summary:	KDE library
+Group:		System/Libraries
+Obsoletes:	%{mklibname sendlater 5} < 3:5.12.0
+Provides:	%{mklibname sendlater 5} = 3:5.12.0
+
+%description -n %{libKF5SendLater}
+KDE library.
+
+%files -n %{libKF5SendLater}
+%{_kde5_libdir}/libKF5SendLater.so.%{KF5SendLater_major}*
+
+#-----------------------------------------------------------------------------
+
+%define KF5TemplateParser_major 5
+%define libKF5TemplateParser %mklibname KF5TemplateParser %{KF5TemplateParser_major}
+
+%package -n %{libKF5TemplateParser}
+Summary:	KDE library
+Group:		System/Libraries
+Obsoletes:	%{mklibname templateparser 5} < 3:5.12.0
+Provides:	%{mklibname templateparser 5} = 3:5.12.0
+
+%description -n %{libKF5TemplateParser}
+KDE library.
+
+%files -n %{libKF5TemplateParser}
+%{_kde5_libdir}/libKF5TemplateParser.so.%{KF5TemplateParser_major}*
 
 #-----------------------------------------------------------------------------
 
@@ -1062,51 +1359,6 @@ KDE library.
 
 #-----------------------------------------------------------------------------
 
-%define kdepim_major 5
-%define libkdepim %mklibname kdepim %{kdepim_major}
-
-%package -n %{libkdepim}
-Summary:	KDE library
-Group:		System/Libraries
-
-%description -n %{libkdepim}
-KDE library.
-
-%files -n %{libkdepim}
-%{_kde5_libdir}/libkdepim.so.%{kdepim_major}*
-
-#-----------------------------------------------------------------------
-
-%define kdgantt2_major 1
-%define libkdgantt2 %mklibname kdgantt2 %{kdgantt2_major}
-
-%package -n %{libkdgantt2}
-Summary:       KDE4 library
-Group:         System/Libraries
-
-%description -n %{libkdgantt2}
-KDE library.
-
-%files -n %{libkdgantt2}
-%{_kde5_libdir}/libkdgantt2.so.%{kdgantt2_major}*
-
-#-----------------------------------------------------------------------------
-
-%define kleo_major 5
-%define libkleo %mklibname kleo %{kleo_major}
-
-%package -n %{libkleo}
-Summary:	KDE library
-Group:		System/Libraries
-
-%description -n %{libkleo}
-KDE library.
-
-%files -n %{libkleo}
-%{_kde5_libdir}/libkleo.so.%{kleo_major}*
-
-#-----------------------------------------------------------------------------
-
 %define kmailprivate_major 5
 %define libkmailprivate %mklibname kmailprivate %{kmailprivate_major}
 
@@ -1119,21 +1371,6 @@ KDE library.
 
 %files -n %{libkmailprivate}
 %{_kde5_libdir}/libkmailprivate.so.%{kmailprivate_major}*
-
-#-----------------------------------------------------------------------------
-
-%define kmanagesieve_major 5
-%define libkmanagesieve %mklibname kmanagesieve %{kmanagesieve_major}
-
-%package -n %{libkmanagesieve}
-Summary:	KDE library
-Group:		System/Libraries
-
-%description -n %{libkmanagesieve}
-KDE library.
-
-%files -n %{libkmanagesieve}
-%{_kde5_libdir}/libkmanagesieve.so.%{kmanagesieve_major}*
 
 #-----------------------------------------------------------------------------
 
@@ -1212,141 +1449,6 @@ KDE library.
 
 #-----------------------------------------------------------------------------
 
-%define kpgp_major 5
-%define libkpgp %mklibname kpgp %{kpgp_major}
-
-%package -n %{libkpgp}
-Summary:	KDE library
-Group:		System/Libraries
-
-%description -n %{libkpgp}
-KDE library.
-
-%files -n %{libkpgp}
-%{_kde5_libdir}/libkpgp.so.%{kpgp_major}*
-
-#----------------------------------------------------------------------------
-
-%define ksieve_major 5
-%define libksieve %mklibname ksieve %{ksieve_major}
-
-%package -n %{libksieve}
-Summary:	KDE library
-Group:		System/Libraries
-
-%description -n %{libksieve}
-KDE library.
-
-%files -n %{libksieve}
-%{_kde5_libdir}/libksieve.so.%{ksieve_major}*
-
-#-----------------------------------------------------------------------------
-
-%define ksieveui_major 5
-%define libksieveui %mklibname ksieveui %{ksieveui_major}
-
-%package -n %{libksieveui}
-Summary:	KDE library
-Group:		System/Libraries
-
-%description -n %{libksieveui}
-KDE library.
-
-%files -n %{libksieveui}
-%{_kde5_libdir}/libksieveui.so.%{ksieveui_major}*
-
-#-----------------------------------------------------------------------------
-
-%define mailcommon_major 5
-%define libmailcommon %mklibname mailcommon %{mailcommon_major}
-
-%package -n %{libmailcommon}
-Summary:	KDE library
-Group:		System/Libraries
-
-%description -n %{libmailcommon}
-KDE library.
-
-%files -n %{libmailcommon}
-%{_kde5_libdir}/libmailcommon.so.%{mailcommon_major}*
-
-#-----------------------------------------------------------------------------
-
-%define mailimporter_major 5
-%define libmailimporter %mklibname mailimporter %{mailimporter_major}
-
-%package -n %{libmailimporter}
-Summary:	KDE library
-Group:		System/Libraries
-
-%description -n %{libmailimporter}
-KDE library.
-
-%files -n %{libmailimporter}
-%{_kde5_libdir}/libmailimporter.so.%{mailimporter_major}*
-
-#-----------------------------------------------------------------------------
-
-%define messagecore_major 5
-%define libmessagecore %mklibname messagecore %{messagecore_major}
-
-%package -n %{libmessagecore}
-Summary:	KDE library
-Group:		System/Libraries
-
-%description -n %{libmessagecore}
-KDE library.
-
-%files -n %{libmessagecore}
-%{_kde5_libdir}/libmessagecore.so.%{messagecore_major}*
-
-#-----------------------------------------------------------------------------
-
-%define messagelist_major 5
-%define libmessagelist %mklibname messagelist %{messagelist_major}
-
-%package -n %{libmessagelist}
-Summary:	KDE library
-Group:		System/Libraries
-
-%description -n %{libmessagelist}
-KDE library.
-
-%files -n %{libmessagelist}
-%{_kde5_libdir}/libmessagelist.so.%{messagelist_major}*
-
-#-----------------------------------------------------------------------------
-
-%define messageviewer_major 5
-%define libmessageviewer %mklibname messageviewer %{messageviewer_major}
-
-%package -n %{libmessageviewer}
-Summary:	KDE library
-Group:		System/Libraries
-
-%description -n %{libmessageviewer}
-KDE library.
-
-%files -n %{libmessageviewer}
-%{_kde5_libdir}/libmessageviewer.so.%{messageviewer_major}*
-
-#-----------------------------------------------------------------------------
-
-%define kdepimdbusinterfaces_major 5.0.3.0
-%define libkdepimdbusinterfaces %mklibname kdepimdbusinterfaces %{kdepimdbusinterfaces_major}
-
-%package -n %{libkdepimdbusinterfaces}
-Summary:	KDE library
-Group:		System/Libraries
-
-%description -n %{libkdepimdbusinterfaces}
-KDE library.
-
-%files -n %{libkdepimdbusinterfaces}
-%{_kde5_libdir}/libkdepimdbusinterfaces.so.%{kdepimdbusinterfaces_major}*
-
-#-----------------------------------------------------------------------------
-
 %define kleopatraclientcore_major 1
 %define libkleopatraclientcore %mklibname kleopatraclientcore %{kleopatraclientcore_major}
 
@@ -1378,123 +1480,63 @@ KDE library.
 
 #-----------------------------------------------------------------------------
 
-%define messagecomposer_major 5
-%define libmessagecomposer %mklibname messagecomposer %{messagecomposer_major}
+%define grantleethemeeditor_major 5
+%define libgrantleethemeeditor %mklibname grantleethemeeditor %{grantleethemeeditor_major}
 
-%package -n %{libmessagecomposer}
+%package -n %{libgrantleethemeeditor}
 Summary:	KDE library
 Group:		System/Libraries
 
-%description -n %{libmessagecomposer}
+%description -n %{libgrantleethemeeditor}
 KDE library.
 
-%files -n %{libmessagecomposer}
-%{_kde5_libdir}/libmessagecomposer.so.%{messagecomposer_major}*
+%files -n %{libgrantleethemeeditor}
+%{_kde5_libdir}/libgrantleethemeeditor.so.%{grantleethemeeditor_major}*
 
-#-----------------------------------------------------------------------------
-
-%define noteshared_major 5
-%define libnoteshared %mklibname noteshared %{noteshared_major}
-
-%package -n %{libnoteshared}
-Summary:	KDE library
-Group:		System/Libraries
-
-%description -n %{libnoteshared}
-KDE library.
-
-%files -n %{libnoteshared}
-%{_kde5_libdir}/libnoteshared.so.%{noteshared_major}*
-
-#-----------------------------------------------------------------------------
-
-%define pimcommon_major 5
-%define libpimcommon %mklibname pimcommon %{pimcommon_major}
-
-%package -n %{libpimcommon}
-Summary:	Library to import/export PIM configuration
-Group:		System/Libraries
-
-%description -n %{libpimcommon}
-This library provides the tool to import/export PIM configuration.
-
-%files -n %{libpimcommon}
-%{_kde5_libdir}/libpimcommon.so.%{pimcommon_major}*
-
-#-----------------------------------------------------------------------------
-
-%define sendlater_major 5
-%define libsendlater %mklibname sendlater %{sendlater_major}
-
-%package -n %{libsendlater}
-Summary:	KDE PIM library
-Group:		System/Libraries
-
-%description -n %{libsendlater}
-KDE PIM library.
-
-%files -n %{libsendlater}
-%{_kde5_libdir}/libsendlater.so.%{sendlater_major}*
-
-#-----------------------------------------------------------------------------
-
-%define templateparser_major 5
-%define libtemplateparser %mklibname templateparser %{templateparser_major}
-
-%package -n %{libtemplateparser}
-Summary:	KDE library
-Group:		System/Libraries
-
-%description -n %{libtemplateparser}
-KDE library.
-
-%files -n %{libtemplateparser}
-%{_kde5_libdir}/libtemplateparser.so.%{templateparser_major}*
-
-#-----------------------------------------------------------------------------
+#----------------------------------------------------------------------------
 
 %package devel
 Summary:	Devel stuff for %{name}
 Group:		Development/KDE and Qt
-Requires:	kdelibs-devel
 Requires:	kdepimlibs-devel
 Requires:	%{libakregatorinterfaces} = %{EVRD}
 Requires:	%{libakregatorprivate} = %{EVRD}
-Requires:	%{libcalendarsupport} = %{EVRD}
-Requires:	%{libcomposereditorng} = %{EVRD}
-Requires:	%{libeventviews} = %{EVRD}
-Requires:	%{libfollowupreminder} = %{EVRD}
-Requires:	%{libgrantleetheme} = %{EVRD}
-Requires:	%{libgrantleethemeeditor} = %{EVRD}
-Requires:	%{libincidenceeditorsng} = %{EVRD}
-Requires:	%{libincidenceeditorsngmobile} = %{EVRD}
-Requires:	%{libkaddressbookgrantlee} = %{EVRD}
 Requires:	%{libkaddressbookprivate} = %{EVRD}
-Requires:	%{libkdepim} = %{EVRD}
-Requires:	%{libkdepimdbusinterfaces} = %{EVRD}
-Requires:	%{libkdgantt2} = %{EVRD}
-Requires:	%{libkleo} = %{EVRD}
+Requires:	%{libgrantleethemeeditor} = %{EVRD}
 Requires:	%{libkleopatraclientcore} = %{EVRD}
 Requires:	%{libkleopatraclientgui} = %{EVRD}
 Requires:	%{libkmailprivate} = %{EVRD}
-Requires:	%{libkmanagesieve} = %{EVRD}
 Requires:	%{libknotesprivate} = %{EVRD}
+Requires:	%{libkontactprivate} = %{EVRD}
+Requires:	%{libkorganizer_core} = %{EVRD}
 Requires:	%{libkorganizer_interfaces} = %{EVRD}
 Requires:	%{libkorganizerprivate} = %{EVRD}
-Requires:	%{libkpgp} = %{EVRD}
-Requires:	%{libksieve} = %{EVRD}
-Requires:	%{libksieveui} = %{EVRD}
-Requires:	%{libmailcommon} = %{EVRD}
-Requires:	%{libmailimporter} = %{EVRD}
-Requires:	%{libmessagecomposer} = %{EVRD}
-Requires:	%{libmessagecore} = %{EVRD}
-Requires:	%{libmessagelist} = %{EVRD}
-Requires:	%{libmessageviewer} = %{EVRD}
-Requires:	%{libnoteshared} = %{EVRD}
-Requires:	%{libpimcommon} = %{EVRD}
-Requires:	%{libpimsettingexporterprivate}  = %{EVRD}
-Requires:	%{libsendlater} = %{EVRD}
-Requires:	%{libtemplateparser} = %{EVRD}
+Requires:	%{libpimsettingexporterprivate} = %{EVRD}
+Requires:	%{libKF5CalendarSupport} = %{EVRD}
+Requires:	%{libKF5ComposerEditorNG} = %{EVRD}
+Requires:	%{libKF5EventViews} = %{EVRD}
+Requires:	%{libKF5FollowupReminder} = %{EVRD}
+Requires:	%{libKF5GrantleeTheme} = %{EVRD}
+Requires:	%{libKF5IncidenceEditorsng} = %{EVRD}
+Requires:	%{libKF5KDGantt2} = %{EVRD}
+Requires:	%{libKF5KF5Gravatar} = %{EVRD}
+Requires:	%{libKF5KManageSieve} = %{EVRD}
+Requires:	%{libKF5KSieveUi} = %{EVRD}
+Requires:	%{libKF5KSieve} = %{EVRD}
+Requires:	%{libKF5KaddressbookGrantlee} = %{EVRD}
+Requires:	%{libKF5KdepimDBusInterfaces} = %{EVRD}
+Requires:	%{libKF5Libkdepim} = %{EVRD}
+Requires:	%{libKF5Libkleo} = %{EVRD}
+Requires:	%{libKF5MailCommon} = %{EVRD}
+Requires:	%{libKF5MailImporter} = %{EVRD}
+Requires:	%{libKF5MessageComposer} = %{EVRD}
+Requires:	%{libKF5MessageCore} = %{EVRD}
+Requires:	%{libKF5MessageList} = %{EVRD}
+Requires:	%{libKF5MessageViewer} = %{EVRD}
+Requires:	%{libKF5NoteShared} = %{EVRD}
+Requires:	%{libKF5PimCommon} = %{EVRD}
+Requires:	%{libKF5SendLater} = %{EVRD}
+Requires:	%{libKF5TemplateParser} = %{EVRD}
 %rename		kdepim4-devel
 
 %description devel

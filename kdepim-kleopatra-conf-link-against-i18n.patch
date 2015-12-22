@@ -1,0 +1,12 @@
+diff --git a/kleopatra/conf/CMakeLists.txt b/kleopatra/conf/CMakeLists.txt
+index be0f89f..447ac7f 100644
+--- a/kleopatra/conf/CMakeLists.txt
++++ b/kleopatra/conf/CMakeLists.txt
+@@ -70,6 +70,7 @@ target_link_libraries(kcm_kleopatra
+   KF5::Libkleo
+   KF5::KCMUtils
+   KF5::IconThemes
++  KF5::I18n
+   Qt5::DBus
+   ${_kcm_kleopatra_extra_libs}
+   ${_kcm_kleopatra_libkleopatraclient_extra_LIBS}

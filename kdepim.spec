@@ -13,7 +13,6 @@ Url:		http://community.kde.org/KDE_PIM
 %define ftpdir stable
 %endif
 Source0:	http://download.kde.org/%{ftpdir}/%{version}/src/%{name}-%{version}.tar.xz
-#Patch1:		kdepim-15.08.0-cmake-libkaddressbookgrantlee.patch
 BuildRequires:	xsltproc
 BuildRequires:	boost-devel
 BuildRequires:	gpgme-devel
@@ -27,9 +26,9 @@ BuildRequires:	pkgconfig(x11)
 BuildRequires:	pkgconfig(xscrnsaver)
 BuildRequires:	pkgconfig(zlib)
 BuildRequires:	cmake(ECM)
-BuildRequires:	pkgconfig(Qt5Core) 
-BuildRequires:	pkgconfig(Qt5Test) 
-BuildRequires:	pkgconfig(Qt5Script) 
+BuildRequires:	pkgconfig(Qt5Core)
+BuildRequires:	pkgconfig(Qt5Test)
+BuildRequires:	pkgconfig(Qt5Script)
 BuildRequires:	pkgconfig(Qt5Help)
 BuildRequires:	pkgconfig(Qt5UiTools)
 BuildRequires:	pkgconfig(Qt5X11Extras)
@@ -93,7 +92,7 @@ BuildRequires:	cmake(KF5Wallet)
 BuildRequires:	cmake(KF5WebKit)
 BuildRequires:	cmake(KF5XmlRpcClient)
 BuildRequires:	cmake(Grantlee5)
-BuildRequires:	cmake(Prison)
+BuildRequires:	cmake(KF5Prison) >= 1.2.1
 Suggests:	akonadi-common
 Suggests:	kleopatra
 Suggests:	akregator

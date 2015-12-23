@@ -1156,7 +1156,7 @@ KDE library.
 #-----------------------------------------------------------------------------
 
 %define KF5Libkleo_major 5
-%define libKKF5Libkleo %mklibname KF5Libkleo %{KF5Libkleo_major}
+%define libKF5Libkleo %mklibname KF5Libkleo %{KF5Libkleo_major}
 
 %package -n %{libKF5Libkleo}
 Summary:	KDE library
@@ -1166,7 +1166,7 @@ Provides:	%{mklibname kleo 5} = 3:5.12.0
 Obsoletes:	%{mklibname kpgp 5} < 3:5.12.0
 Provides:	%{mklibname kpgp 5} = 3:5.12.0
 
-%description -n %{libKKF5Libkleo}
+%description -n %{libKF5Libkleo}
 KDE library.
 
 %files -n %{libKF5Libkleo}

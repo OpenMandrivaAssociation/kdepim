@@ -802,6 +802,7 @@ Message viewer for KDE Email Client.
 %{_kde5_datadir}/messageviewer
 %{_kde5_datadir}/knotifications5/messageviewer.notifyrc
 %{_qt5_plugindir}/grantlee/5.0/grantlee_messageheaderfilters.so
+%{_qt5_plugindir}/messageviewer_*.so
 %{_qt5_plugindir}/messageviewer/messageviewer_*.so
 %{_sysconfdir}/xdg/messageviewer_header_themes.knsrc
 
@@ -986,8 +987,8 @@ KDE library.
 
 #-----------------------------------------------------------------------------
 
-%define KF5KF5Gravatar_major 5
-%define libKF5KF5Gravatar %mklibname KF5Gravatar %{KF5Gravatar_major}
+%define KF5Gravatar_major 5
+%define libKF5Gravatar %mklibname KF5Gravatar %{KF5Gravatar_major}
 
 %package -n %{libKF5Gravatar}
 Summary:	KDE library
@@ -1103,21 +1104,6 @@ KDE library.
 
 %files -n %{libKF5KSieveUi}
 %{_kde5_libdir}/libKF5KSieveUi.so.%{KF5KSieveUi_major}*
-
-#-----------------------------------------------------------------------------
-
-%define KF5KaddressbookGrantlee_major 5
-%define libKF5KaddressbookGrantlee %mklibname KF5KaddressbookGrantlee %{KF5KaddressbookGrantlee_major}
-
-%package -n %{libKF5KaddressbookGrantlee}
-Summary:	KDE library
-Group:		System/Libraries
-
-%description -n %{libKF5KaddressbookGrantlee}
-KDE library.
-
-%files -n %{libKF5KaddressbookGrantlee}
-%{_kde5_libdir}/libKF5KaddressbookGrantlee.so.%{KF5KaddressbookGrantlee_major}*
 
 #-----------------------------------------------------------------------------
 

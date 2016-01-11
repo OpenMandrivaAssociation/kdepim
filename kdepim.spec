@@ -2,7 +2,7 @@ Summary:	An application suite to manage personal information
 Name:		kdepim
 Epoch:		3
 Version:	15.12.0
-Release:	2
+Release:	3
 License:	GPLv2+
 Group:		Graphical desktop/KDE
 Url:		http://community.kde.org/KDE_PIM
@@ -260,6 +260,8 @@ Summary:	A Feed Reader for KDE
 Group:		Graphical desktop/KDE
 Url:		http://userbase.kde.org/Akregator
 Requires:	%{name}-core = %{EVRD}
+# (tpg) https://issues.openmandriva.org/show_bug.cgi?id=1462
+Requires:	khtml >= 5.17.0
 Provides:	kde4-akregator = %{EVRD}
 Conflicts:	%{name}-core < 2:4.5.77
 Conflicts:	%{name}-devel < 3:4.11.0

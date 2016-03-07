@@ -1498,6 +1498,6 @@ KDE library.
 rm -f %{buildroot}%{_kde5_datadir}/akonadi/agents/folderarchiveagent.desktop
 
 # Remove .so files, we don't have any headers for -devel anyway
-rm -fv %{buildroot}%{_kf5_libdir}/lib*.so
+rm -fv %{buildroot}%{_kde5_libdir}/lib*.so
 
 %find_lang %{name} --all-name --with-html

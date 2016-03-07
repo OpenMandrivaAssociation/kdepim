@@ -2,7 +2,7 @@ Summary:	An application suite to manage personal information
 Name:		kdepim
 Epoch:		3
 Version:	15.12.2
-Release:	1
+Release:	2
 License:	GPLv2+
 Group:		Graphical desktop/KDE
 Url:		http://community.kde.org/KDE_PIM
@@ -1481,59 +1481,6 @@ KDE library.
 %files -n %{libgrantleethemeeditor}
 %{_kde5_libdir}/libgrantleethemeeditor.so.%{grantleethemeeditor_major}*
 
-#----------------------------------------------------------------------------
-
-%package devel
-Summary:	Devel stuff for %{name}
-Group:		Development/KDE and Qt
-Requires:	kdepimlibs-devel
-Requires:	%{libakregatorinterfaces} = %{EVRD}
-Requires:	%{libakregatorprivate} = %{EVRD}
-Requires:	%{libkaddressbookprivate} = %{EVRD}
-Requires:	%{libgrantleethemeeditor} = %{EVRD}
-Requires:	%{libkleopatraclientcore} = %{EVRD}
-Requires:	%{libkleopatraclientgui} = %{EVRD}
-Requires:	%{libkmailprivate} = %{EVRD}
-Requires:	%{libknotesprivate} = %{EVRD}
-Requires:	%{libkontactprivate} = %{EVRD}
-Requires:	%{libkorganizer_core} = %{EVRD}
-Requires:	%{libkorganizer_interfaces} = %{EVRD}
-Requires:	%{libkorganizerprivate} = %{EVRD}
-Requires:	%{libpimsettingexporterprivate} = %{EVRD}
-Requires:	%{libKF5CalendarSupport} = %{EVRD}
-Requires:	%{libKF5ComposerEditorNG} = %{EVRD}
-Requires:	%{libKF5EventViews} = %{EVRD}
-Requires:	%{libKF5FollowupReminder} = %{EVRD}
-Requires:	%{libKF5GrantleeTheme} = %{EVRD}
-Requires:	%{libKF5IncidenceEditorsng} = %{EVRD}
-Requires:	%{libKF5KDGantt2} = %{EVRD}
-Requires:	%{libKF5Gravatar} = %{EVRD}
-Requires:	%{libKF5KManageSieve} = %{EVRD}
-Requires:	%{libKF5KSieveUi} = %{EVRD}
-Requires:	%{libKF5KSieve} = %{EVRD}
-Requires:	%{libKF5KaddressbookGrantlee} = %{EVRD}
-Requires:	%{libKF5KdepimDBusInterfaces} = %{EVRD}
-Requires:	%{libKF5Libkdepim} = %{EVRD}
-Requires:	%{libKF5Libkleo} = %{EVRD}
-Requires:	%{libKF5MailCommon} = %{EVRD}
-Requires:	%{libKF5MailImporter} = %{EVRD}
-Requires:	%{libKF5MessageComposer} = %{EVRD}
-Requires:	%{libKF5MessageCore} = %{EVRD}
-Requires:	%{libKF5MessageList} = %{EVRD}
-Requires:	%{libKF5MessageViewer} = %{EVRD}
-Requires:	%{libKF5NoteShared} = %{EVRD}
-Requires:	%{libKF5PimCommon} = %{EVRD}
-Requires:	%{libKF5SendLater} = %{EVRD}
-Requires:	%{libKF5TemplateParser} = %{EVRD}
-%rename		kdepim4-devel
-
-%description devel
-This package contains header files needed if you wish to build applications
-based on kdepim.
-
-%files devel
-%{_kde5_libdir}/*.so
-
 #----------------------------------------------------------------------
 
 %prep
@@ -1549,5 +1496,8 @@ based on kdepim.
 
 # akonadi_folderarchive_agent was removed, no need to keep desktop file
 rm -f %{buildroot}%{_kde5_datadir}/akonadi/agents/folderarchiveagent.desktop
+
+# Remove .so files, we don't have any headers for -devel anyway
+rm -fv %{buildroot}%{_kf5_libdir}/lib*.so
 
 %find_lang %{name} --all-name --with-html

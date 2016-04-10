@@ -2,7 +2,7 @@ Summary:	An application suite to manage personal information
 Name:		kdepim
 Epoch:		3
 Version:	15.12.3
-Release:	2
+Release:	3
 License:	GPLv2+
 Group:		Graphical desktop/KDE
 Url:		http://community.kde.org/KDE_PIM
@@ -1485,6 +1485,12 @@ KDE library.
 %prep
 %setup -q -n kdepim-%{version}
 %apply_patches
+
+# omit icons conflicting with oxygen-icons-5.19
+# https://bugzilla.redhat.com/show_bug.cgi?id=1308358
+sed -i -e 's|^add_subdirectory(icons)|#add_subdirectory(icons)|g' CMakeLists.txt ||:
+mv icons icons.BAK ||:
+
 %cmake_kde5 -DKDEPIM_BUILD_MOBILE:BOOL=OFF
 
 %build

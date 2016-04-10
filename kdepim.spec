@@ -154,7 +154,6 @@ Core files for KDE PIM.
 %{_kde5_datadir}/composereditor/composereditorinitialhtml
 %{_kde5_iconsdir}/*/*/*/quickview.png
 %{_kde5_iconsdir}/*/*/*/quickview.svgz
-%{_kde5_iconsdir}/*/*/*/x-mail-distribution-list.png
 %{_kde5_datadir}/kconf_update
 %{_libdir}/grantlee/5.0/kde_grantlee_plugin.so
 %exclude %{_kde5_datadir}/kconf_update/kalarm*

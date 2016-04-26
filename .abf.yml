@@ -1,5 +1,2 @@
-removed_sources:
-  kdepim-15.08.0.tar.xz: e0bdf22fbf9bc4ebcb85f8202315334d4eff8c3f
-  kdepim-4.14.10.tar.xz: 6f74763dda68dbb44394e807eab9204777bddf0a
 sources:
-  kdepim-15.12.3.tar.xz: baa4feff57dc33a8edcdcb64dc0d5409a5c564b4
+  kdepim-16.04.0.tar.xz: fa8bc8fa7c5d40ced34688f69a9910dd1ebcee9f

@@ -92,6 +92,8 @@ BuildRequires:	cmake(KF5WebKit)
 BuildRequires:	cmake(KF5XmlRpcClient)
 BuildRequires:	cmake(Grantlee5)
 BuildRequires:	cmake(KF5Prison) >= 1.2.1
+BuildRequires:	cmake(KF5IncidenceEditor)
+BuildRequires:	cmake(KF5LibKSieve)
 Suggests:	akonadi-common
 Suggests:	kleopatra
 Suggests:	akregator

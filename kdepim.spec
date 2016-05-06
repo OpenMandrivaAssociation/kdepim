@@ -2,7 +2,7 @@ Summary:	An application suite to manage personal information
 Name:		kdepim
 Epoch:		3
 Version:	16.04.0
-Release:	1
+Release:	2
 License:	GPLv2+
 Group:		Graphical desktop/KDE
 Url:		http://community.kde.org/KDE_PIM
@@ -475,7 +475,6 @@ Requires:	akonadi-followupreminder-agent = %{EVRD}
 Requires:	akonadi-mailfilter-agent = %{EVRD}
 Requires:	akonadi-sendlater-agent = %{EVRD}
 Requires:	headerthemeeditor = %{EVRD}
-Requires:	messageviewer
 Suggests:	kaddressbook = %{EVRD}
 Suggests:	pinentry-qt4
 Suggests:	openssh-askpass-qt4
@@ -487,6 +486,7 @@ Provides:	kde4-kmail = %{EVRD}
 Provides:	kmail2 = %{EVRD}
 Conflicts:	kmail-common < 3:4.11.0
 Conflicts:	%{name}-devel < 3:4.11.0
+Obsoletes:	messageviewer
 
 %description -n kmail
 KMail is the email component of Kontact, the integrated personal

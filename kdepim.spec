@@ -1,8 +1,8 @@
 Summary:	An application suite to manage personal information
 Name:		kdepim
 Epoch:		3
-Version:	16.04.0
-Release:	5
+Version:	16.04.1
+Release:	1
 License:	GPLv2+
 Group:		Graphical desktop/KDE
 Url:		http://community.kde.org/KDE_PIM

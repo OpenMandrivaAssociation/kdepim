@@ -2,7 +2,7 @@ Summary:	An application suite to manage personal information
 Name:		kdepim
 Epoch:		3
 Version:	16.04.2
-Release:	1
+Release:	2
 License:	GPLv2+
 Group:		Graphical desktop/KDE
 Url:		http://community.kde.org/KDE_PIM
@@ -256,6 +256,7 @@ Requires:	%{name}-core = %{EVRD}
 # (tpg) https://issues.openmandriva.org/show_bug.cgi?id=1462
 Requires:	khtml >= 5.17.0
 Provides:	kde4-akregator = %{EVRD}
+Requires:	kdepim-addons >= %{EVRD}
 Conflicts:	%{name}-core < 2:4.5.77
 Conflicts:	%{name}-devel < 3:4.11.0
 
@@ -396,6 +397,7 @@ Requires:	%{name}-core = %{EVRD}
 # Grantlee is needed for the simple view in kaddressbook
 Requires:	grantlee
 Requires:	akonadi-common
+Requires:	kdepim-addons >= %{EVRD}
 Suggests:	contactthemeeditor = %{EVRD}
 Provides:	kde4-kaddressbook = %{EVRD}
 Conflicts:	%{name}-devel < 3:4.11.0
@@ -423,6 +425,8 @@ Summary:	A personal alarm message, command and email scheduler
 Group:		Graphical desktop/KDE
 Url:		http://userbase.kde.org/KAlarm
 Requires:	%{name}-core = %{EVRD}
+Requires:	akonadi-kde >= %{EVRD}
+Requires:	kdepim-addons >= %{EVRD}
 Provides:	kde4-kalarm = %{EVRD}
 Conflicts:	%{name}-devel < 3:4.11.0
 
@@ -462,6 +466,7 @@ Summary:	KDE Email Client
 Group:		Graphical desktop/KDE
 Url:		http://userbase.kde.org/KMail
 Requires:	%{name}-core = %{EVRD}
+Requires:	kdepim-addons >= %{EVRD}
 Requires:	kdepimlibs-core
 Requires:	sasl-plug-plain
 Requires:	sasl-plug-ntlm
@@ -647,6 +652,7 @@ Group:		Graphical desktop/KDE
 Url:		http://userbase.kde.org/KOrganizer
 Requires:	%{name}-core = %{EVRD}
 Requires:	kio-ldap
+Requires:	kdepim-addons >= %{EVRD}
 Suggests:	kincidenceeditor
 Provides:	kde4-korganizer = %{EVRD}
 Conflicts:	%{name}-devel < 3:4.11.0

@@ -977,4 +977,7 @@ rm -f %{buildroot}%{_datadir}/akonadi/agents/folderarchiveagent.desktop
 # Remove .so files, we don't have any headers for -devel anyway
 rm -fv %{buildroot}%{_libdir}/lib*.so
 
+# (tpg) fix bug https://issues.openmandriva.org/show_bug.cgi?id=1607
+desktop-file-install --vendor="" --add-only-show-in="KDE;" --delete-original --dir=%{buildroot}%{_sysconfdir}/xdg/autostart %{buildroot}%{_sysconfdir}/xdg/autostart/kalarm.autostart.desktop
+
 %find_lang %{name} --all-name --with-html

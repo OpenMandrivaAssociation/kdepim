@@ -813,7 +813,7 @@ DropBox etc.
 %{_sysconfdir}/xdg/sieveeditor.categories
 %{_bindir}/sieveeditor
 %{_kde5_applicationsdir}/org.kde.sieveeditor.desktop
-%{_datdir}/config.kcfg/sieveeditorglobalconfig.kcfg
+%{_datadir}/config.kcfg/sieveeditorglobalconfig.kcfg
 
 #-----------------------------------------------------------------------------
 

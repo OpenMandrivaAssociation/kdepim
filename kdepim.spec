@@ -145,6 +145,7 @@ Core files for KDE PIM.
 %exclude %{_kde5_docdir}/HTML/en/*
 %{_bindir}/contactprintthemeeditor
 %{_sysconfdir}/xdg/kdepim.categories
+%{_sysconfdir}/xdg/grantleeditor.categories
 %{_kde5_docdir}/HTML/en/contactthemeeditor
 %{_datadir}/applications/org.kde.storageservicemanager.desktop
 %{_datadir}/knotifications5/storageservicemanager.notifyrc
@@ -166,6 +167,7 @@ Conflicts:	kdepim4-core < 2:4.4.2-5
 Console that help to debug akonadi.
 
 %files -n akonadiconsole
+%{_sysconfdir}/xdg/akonadiconsole.categories
 %{_bindir}/akonadiconsole
 %{_kde5_applicationsdir}/org.kde.akonadiconsole.desktop
 %{_kde5_iconsdir}/hicolor/*/apps/akonadiconsole.png
@@ -184,6 +186,7 @@ Akonadi archivemail agent.
 %doc %{_kde5_docdir}/HTML/en/akonadi_archivemail_agent
 %{_bindir}/akonadi_archivemail_agent
 %{_datadir}/akonadi/agents/archivemailagent.desktop
+%{_datadir}/config.kcfg/archivemailagentsettings.kcfg
 
 #-----------------------------------------------------------------------------
 
@@ -272,11 +275,12 @@ easy news reading.
 
 %files -n akregator
 %doc %{_kde5_docdir}/HTML/en/akregator
+%{_sysconfdir}/xdg/akregator.categories
 %{_bindir}/akregator
 %{_bindir}/akregatorstorageexporter
 %{_kde5_applicationsdir}/org.kde.akregator.desktop
 %{_datadir}/akregator
-%{_datadir}/appdata/org.kde.akregator.appdata.xml
+%{_datadir}/metainfo/org.kde.akregator.appdata.xml
 %{_datadir}/knotifications5/akregator.notifyrc
 %{_qt5_plugindir}/akregator*
 %{_datadir}/kxmlgui5/akregator
@@ -330,8 +334,12 @@ intervals.
 
 %files -n blogilo
 %doc %{_kde5_docdir}/HTML/en/blogilo
+%{_sysconfdir}/xdg/blogilo.categories
 %{_bindir}/blogilo
-%{_datadir}/appdata/org.kde.blogilo.appdata.xml
+%{_bindir}/composerhtmleditor
+%{_datadir}/composereditorwebengine/composereditorinitialhtml
+%{_datadir}/kxmlgui5/composerhtmleditor/composerhtmleditorui.rc
+%{_datadir}/metainfo/org.kde.blogilo.appdata.xml
 %{_kde5_applicationsdir}/org.kde.blogilo.desktop
 %{_datadir}/config.kcfg/blogilo.kcfg
 %{_kde5_iconsdir}/*/*/apps/blogilo.*
@@ -340,6 +348,8 @@ intervals.
 %{_kde5_iconsdir}/*/*/actions/insert-more-mark.*
 %{_kde5_iconsdir}/*/*/actions/remove-link.*
 %{_kde5_iconsdir}/*/*/actions/upload-media.*
+
+%libpackage libcomposereditorwebengineprivate 5
 
 #-----------------------------------------------------------------------------
 
@@ -383,6 +393,7 @@ Import Wizard allows to migrate data from mailer as thunderbird/evolution etc.
 
 %files -n importwizard
 %doc %{_kde5_docdir}/HTML/en/importwizard
+%{_sysconfdir}/xdg/importwizard.categories
 %{_bindir}/importwizard
 %{_kde5_applicationsdir}/org.kde.importwizard.desktop
 %{_datadir}/importwizard
@@ -407,10 +418,11 @@ Conflicts:	%{name}-devel < 3:4.11.0
 The KDE addressbook application.
 
 %files -n kaddressbook
+%{_sysconfdir}/xdg/kaddressbook.categories
 %{_bindir}/kaddressbook
 %{_kde5_applicationsdir}/org.kde.kaddressbook.desktop
 %{_datadir}/kaddressbook
-%{_datadir}/appdata/org.kde.kaddressbook.appdata.xml
+%{_datadir}/metainfo/org.kde.kaddressbook.appdata.xml
 %{_sysconfdir}/xdg/kaddressbook_themes.knsrc
 %{_kde5_iconsdir}/*/*/apps/kaddressbook.*
 %{_kde5_services}/kaddressbookpart.desktop
@@ -438,10 +450,11 @@ or you can schedule commands to be executed or emails to be sent.
 
 %files -n kalarm
 %doc %{_kde5_docdir}/HTML/en/kalarm
+%{_sysconfdir}/xdg/kalarm.categories
 %{_bindir}/kalarm
 %{_bindir}/kalarmautostart
 %{_kde5_libexecdir}/kalarm_helper
-%{_datadir}/appdata/org.kde.kalarm.appdata.xml
+%{_datadir}/metainfo/org.kde.kalarm.appdata.xml
 %{_sysconfdir}/xdg/autostart/kalarm.autostart.desktop
 %{_kde5_applicationsdir}/org.kde.kalarm.desktop
 %{_datadir}/kalarm
@@ -502,6 +515,7 @@ information manager of KDE.
 
 %files -n kmail
 %doc %{_kde5_docdir}/HTML/en/kmail
+%{_sysconfdir}/xdg/kmail.categories
 %{_bindir}/kmail
 %{_kde5_applicationsdir}/kmail_view.desktop
 %{_datadir}/kmail2
@@ -530,7 +544,7 @@ information manager of KDE.
 %{_qt5_plugindir}/kmailpart.so
 %{_datadir}/dbus-1/interfaces/org.kde.kmail.kmail.xml
 %{_datadir}/dbus-1/interfaces/org.kde.kmail.kmailpart.xml
-%{_datadir}/appdata/org.kde.kmail.appdata.xml
+%{_datadir}/metainfo/org.kde.kmail.appdata.xml
 %{_datadir}/kservicetypes5/dbusmail.desktop
 %{_libdir}/qt5/plugins/messageviewer_bodypartformatter_text_calendar.so
 %{_datadir}/messageviewer/about/default/introduction_kmail.html
@@ -546,6 +560,7 @@ Group: Graphical desktop/KDE
 New incidence editors
 
 %files accountwizard
+%{_sysconfdir}/xdg/accountwizard.categories
 %{_bindir}/accountwizard
 %{_bindir}/ispdb
 %{_sysconfdir}/xdg/accountwizard.knsrc
@@ -573,9 +588,10 @@ although including some advanced features.
 
 %files -n knotes
 %doc %{_kde5_docdir}/HTML/en/knotes
+%{_sysconfdir}/xdg/knotes.categories
 %{_bindir}/knotes
 %{_sysconfdir}/xdg/knotes_printing_theme.knsrc
-%{_datadir}/appdata/org.kde.knotes.appdata.xml
+%{_datadir}/metainfo/org.kde.knotes.appdata.xml
 %{_kde5_applicationsdir}/org.kde.knotes.desktop
 %{_datadir}/config.kcfg/knotesglobalconfig.kcfg
 %{_datadir}/knotes
@@ -595,6 +611,7 @@ although including some advanced features.
 %{_qt5_plugindir}/kcm_knotessummary.so
 %{_datadir}/dbus-1/interfaces/org.kde.KNotes.xml
 %{_datadir}/knotifications5/akonadi_notes_agent.notifyrc
+%{_datadir}/config.kcfg/notesagentsettings.kcfg
 
 #-----------------------------------------------------------------------------
 
@@ -621,7 +638,8 @@ technology, existing applications are seamlessly integrated into one.
 %files -n kontact
 %doc %{_kde5_docdir}/HTML/en/kontact
 %doc %{_kde5_docdir}/HTML/en/kontact-admin
-%{_datadir}/appdata/org.kde.kontact.appdata.xml
+%{_sysconfdir}/xdg/kontact.categories
+%{_datadir}/metainfo/org.kde.kontact.appdata.xml
 %{_bindir}/kontact
 %{_datadir}/kontact
 %{_kde5_applicationsdir}/org.kde.kontact.desktop
@@ -668,13 +686,14 @@ Citadel or OpenGroupware.org.
 %files -n korganizer
 %doc %{_kde5_docdir}/HTML/en/korganizer
 %doc %{_kde5_docdir}/HTML/en/konsolecalendar
-
+%{_sysconfdir}/xdg/console.categories
+%{_sysconfdir}/xdg/korganizer.categories
 %{_bindir}/calendarjanitor
 %{_bindir}/ical2vcal
 %{_bindir}/konsolekalendar
 %{_bindir}/korgac
 %{_bindir}/korganizer
-%{_datadir}/appdata/org.kde.korganizer.appdata.xml
+%{_datadir}/metainfo/org.kde.korganizer.appdata.xml
 %{_kde5_applicationsdir}/konsolekalendar.desktop
 %{_kde5_applicationsdir}/korganizer-import.desktop
 %{_kde5_applicationsdir}/org.kde.korganizer.desktop
@@ -719,6 +738,7 @@ mail servers and embed the mail properties as well as the actual attachments.
 
 %files -n ktnef
 %doc %{_kde5_docdir}/HTML/en/ktnef
+%{_sysconfdir}/xdg/ktnef.categories
 %{_bindir}/ktnef
 %{_kde5_applicationsdir}/org.kde.ktnef.desktop
 %{_kde5_iconsdir}/*/*/apps/ktnef*.*
@@ -771,9 +791,12 @@ systems. Successor of Backup Mail from KDE.9.
 
 %files -n pimsettingexporter
 %doc %{_kde5_docdir}/HTML/en/pimsettingexporter
+%{_sysconfdir}/xdg/pimsettingexporter.categories
 %{_bindir}/pimsettingexporter
 %{_bindir}/pimsettingexporterconsole
 %{_datadir}/applications/org.kde.pimsettingexporter.desktop
+%{_datadir}/config.kcfg/pimsettingexporterglobalconfig.kcfg
+
 #-----------------------------------------------------------------------------
 
 %package -n sieveeditor
@@ -787,8 +810,10 @@ DropBox etc.
 
 %files -n sieveeditor
 %doc %{_kde5_docdir}/HTML/en/sieveeditor
+%{_sysconfdir}/xdg/sieveeditor.categories
 %{_bindir}/sieveeditor
 %{_kde5_applicationsdir}/org.kde.sieveeditor.desktop
+%{_datdir}/config.kcfg/sieveeditorglobalconfig.kcfg
 
 #-----------------------------------------------------------------------------
 
@@ -802,8 +827,9 @@ KDE storage service manager. It allows to manage your storage service as
 DropBox etc.
 
 %files -n storageservicemanager
+%{_sysconfdir}/xdg/storageservicemanager.categories
 %{_bindir}/storageservicemanager
-
+%{_datadir}/config.kcfg/storageservicemanagerglobalconfig.kcfg
 #-----------------------------------------------------------------------------
 
 %define akregatorinterfaces_major 5

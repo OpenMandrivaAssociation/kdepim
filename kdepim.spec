@@ -142,13 +142,9 @@ Core files for KDE PIM.
 
 %files core -f %{name}.lang
 %exclude %{_kde5_docdir}/HTML/en/*
-%{_bindir}/contactprintthemeeditor
-%{_sysconfdir}/xdg/kdepim.categories
-%{_sysconfdir}/xdg/grantleeditor.categories
 %{_kde5_docdir}/HTML/en/contactthemeeditor
 %{_datadir}/applications/org.kde.storageservicemanager.desktop
 %{_datadir}/knotifications5/storageservicemanager.notifyrc
-%{_datadir}/applications/org.kde.contactprintthemeeditor.desktop
 %{_kde5_iconsdir}/*/*/*/quickview.png
 %{_kde5_iconsdir}/*/*/*/quickview.svgz
 %{_datadir}/kconf_update
@@ -348,13 +344,14 @@ intervals.
 %{_kde5_iconsdir}/*/*/actions/remove-link.*
 %{_kde5_iconsdir}/*/*/actions/upload-media.*
 
-%libpackage libcomposereditorwebengineprivate 5
+%libpackage composereditorwebengineprivate 5
 
 #-----------------------------------------------------------------------------
 
 %package -n grantleeeditor
 Summary:	Grantlee editor for KDE PIM applications
 Group:		Graphical desktop/KDE
+Conflicts:	%{name}-core < 3:16.08.2
 Conflicts:	contactthemeeditor < 3:16.08.2
 Conflicts:	headerthemeeditor < 3:16.08.2
 Obsoletes:	contactthemeeditor < 3:16.08.2
@@ -364,16 +361,16 @@ Obsoletes:	headerthemeeditor < 3:16.08.2
 Grantlee editor for KDE PIM applications.
 
 %files -n grantleeeditor
-%{_kde5_applicationsdir}/org.kde.contactprintthemeeditor.desktop
-%{_kde5_applicationsdir}/org.kde.contactthemeeditor.desktop
-%{_kde5_applicationsdir}/org.kde.headerthemeeditor.desktop
-%{_kde5_bindir}/contactprintthemeeditor
-%{_kde5_bindir}/contactthemeeditor
-%{_kde5_bindir}/headerthemeeditor
+%{_datadir}/applications/org.kde.contactprintthemeeditor.desktop
+%{_datadir}/applications/org.kde.contactthemeeditor.desktop
+%{_datadir}/applications/org.kde.headerthemeeditor.desktop
+%{_bindir}/contactprintthemeeditor
+%{_bindir}/contactthemeeditor
+%{_bindir}/headerthemeeditor
 %{_kde5_datadir}/config.kcfg/grantleethemeeditor.kcfg
 %{_kde5_docdir}/*/*/contactthemeeditor
 %{_kde5_docdir}/*/*/headerthemeeditor
-%{_kde5_sysconfdir}/xdg/grantleeditor.categories
+%{_sysconfdir}/xdg/grantleeditor.categories
 
 #-----------------------------------------------------------------------------
 
@@ -540,10 +537,7 @@ information manager of KDE.
 %{_datadir}/dbus-1/interfaces/org.kde.kmail.kmailpart.xml
 %{_datadir}/metainfo/org.kde.kmail.appdata.xml
 %{_datadir}/kservicetypes5/dbusmail.desktop
-%{_libdir}/qt5/plugins/messageviewer_bodypartformatter_text_calendar.so
 %{_datadir}/messageviewer/about/default/introduction_kmail.html
-%{_datadir}/messageviewer/plugins/bodypartformatter/text_calendar.desktop
-
 #------------------------------------------------------------------------------
 
 %package accountwizard

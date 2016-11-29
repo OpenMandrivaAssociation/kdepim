@@ -352,33 +352,28 @@ intervals.
 
 #-----------------------------------------------------------------------------
 
-%package -n headerthemeeditor
-Summary:	KMail Header Theme Editor
+%package -n grantleeeditor
+Summary:	Grantlee editor for KDE PIM applications
 Group:		Graphical desktop/KDE
-Requires:	kmail = %{EVRD}
+Conflicts:	contactthemeeditor < 3:16.08.2
+Conflicts:	headerthemeeditor < 3:16.08.2
+Obsoletes:	contactthemeeditor < 3:16.08.2
+Obsoletes:	headerthemeeditor < 3:16.08.2
 
-%description -n headerthemeeditor
-KMail Header Theme Editor.
+%description -n grantleeeditor
+Grantlee editor for KDE PIM applications.
 
-%files -n headerthemeeditor
-%doc %{_kde5_docdir}/HTML/en/headerthemeeditor
-%{_bindir}/headerthemeeditor
-%{_kde5_applicationsdir}/org.kde.headerthemeeditor.desktop
-
-#-----------------------------------------------------------------------------
-
-%package -n contactthemeeditor
-Summary:	KDE Contact Theme Editor
-Group:		Graphical desktop/KDE
-Requires:	kaddressbook = %{EVRD}
-
-%description -n contactthemeeditor
-KDE Contact Theme Editor.
-
-%files -n contactthemeeditor
-%doc %{_kde5_docdir}/HTML/en/contactthemeeditor
-%{_bindir}/contactthemeeditor
+%files -n grantleeeditor
+%{_kde5_applicationsdir}/org.kde.contactprintthemeeditor.desktop
 %{_kde5_applicationsdir}/org.kde.contactthemeeditor.desktop
+%{_kde5_applicationsdir}/org.kde.headerthemeeditor.desktop
+%{_kde5_bindir}/contactprintthemeeditor
+%{_kde5_bindir}/contactthemeeditor
+%{_kde5_bindir}/headerthemeeditor
+%{_kde5_datadir}/config.kcfg/grantleethemeeditor.kcfg
+%{_kde5_docdir}/*/*/contactthemeeditor
+%{_kde5_docdir}/*/*/headerthemeeditor
+%{_kde5_sysconfdir}/xdg/grantleeditor.categories
 
 #-----------------------------------------------------------------------------
 
@@ -409,7 +404,7 @@ Requires:	%{name}-core = %{EVRD}
 Requires:	grantlee
 Requires:	akonadi-common
 Requires:	kdepim-addons >= %{version}
-Suggests:	contactthemeeditor = %{EVRD}
+Suggests:	grantleeeditor = %{EVRD}
 Provides:	kde4-kaddressbook = %{EVRD}
 Conflicts:	%{name}-devel < 3:4.11.0
 
@@ -494,7 +489,7 @@ Requires:	akonadi-archivemail-agent = %{EVRD}
 Requires:	akonadi-followupreminder-agent = %{EVRD}
 Requires:	akonadi-mailfilter-agent = %{EVRD}
 Requires:	akonadi-sendlater-agent = %{EVRD}
-Requires:	headerthemeeditor = %{EVRD}
+Requires:	grantleeeditor = %{EVRD}
 Suggests:	kaddressbook = %{EVRD}
 Suggests:	pinentry-qt4
 Suggests:	openssh-askpass-qt4

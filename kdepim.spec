@@ -2,7 +2,7 @@ Summary:	An application suite to manage personal information
 Name:		kdepim
 Epoch:		3
 Version:	16.08.3
-Release:	1
+Release:	2
 License:	GPLv2+
 Group:		Graphical desktop/KDE
 Url:		http://community.kde.org/KDE_PIM
@@ -128,6 +128,8 @@ Summary:	Core files for KDE PIM
 Group:		Graphical desktop/KDE
 Requires:	storageservicemanager = %{EVRD}
 Requires:	kdepim-runtime >= 3:16.08.3
+Requires:	akonadi-contacts >= 3:16.08.3
+Requires:	kdepim-addons >= 1:16.08.3
 Conflicts:	%{_lib}kdepim4 < 3:4.11.0
 Conflicts:	%{_lib}kpgp4 < 3:4.11.0
 Conflicts:	%{name}-devel < 3:4.11.0
@@ -256,7 +258,6 @@ Requires:	%{name}-core = %{EVRD}
 # (tpg) https://issues.openmandriva.org/show_bug.cgi?id=1462
 Requires:	khtml >= 5.17.0
 Provides:	kde4-akregator = %{EVRD}
-Requires:	kdepim-addons >= %{version}
 Conflicts:	%{name}-core < 2:4.5.77
 Conflicts:	%{name}-devel < 3:4.11.0
 
@@ -402,7 +403,6 @@ Requires:	%{name}-core = %{EVRD}
 # Grantlee is needed for the simple view in kaddressbook
 Requires:	grantlee
 Requires:	akonadi-common
-Requires:	kdepim-addons >= %{version}
 Suggests:	grantleeeditor = %{EVRD}
 Provides:	kde4-kaddressbook = %{EVRD}
 Conflicts:	%{name}-devel < 3:4.11.0
@@ -431,8 +431,6 @@ Summary:	A personal alarm message, command and email scheduler
 Group:		Graphical desktop/KDE
 Url:		http://userbase.kde.org/KAlarm
 Requires:	%{name}-core = %{EVRD}
-Requires:	akonadi-kde >= %{version}
-Requires:	kdepim-addons >= %{version}
 Provides:	kde4-kalarm = %{EVRD}
 Conflicts:	%{name}-devel < 3:4.11.0
 
@@ -473,7 +471,6 @@ Summary:	KDE Email Client
 Group:		Graphical desktop/KDE
 Url:		http://userbase.kde.org/KMail
 Requires:	%{name}-core = %{EVRD}
-Requires:	kdepim-addons >= %{version}
 Requires:	sasl-plug-plain
 Requires:	sasl-plug-ntlm
 Requires:	sasl-plug-login
@@ -539,9 +536,10 @@ information manager of KDE.
 %package accountwizard
 Summary: kincidenceeditor
 Group: Graphical desktop/KDE
+Requires: kross
 
 %description accountwizard
-New incidence editors
+New incidence editors.
 
 %files accountwizard
 %{_sysconfdir}/xdg/accountwizard.categories
@@ -652,7 +650,6 @@ Summary:	Calendar and scheduling component
 Group:		Graphical desktop/KDE
 Url:		http://userbase.kde.org/KOrganizer
 Requires:	%{name}-core = %{EVRD}
-Requires:	kdepim-addons >= %{version}
 Suggests:	kincidenceeditor
 Provides:	kde4-korganizer = %{EVRD}
 Conflicts:	%{name}-devel < 3:4.11.0

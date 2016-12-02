@@ -2,7 +2,7 @@ Summary:	An application suite to manage personal information
 Name:		kdepim
 Epoch:		3
 Version:	16.08.3
-Release:	2
+Release:	3
 License:	GPLv2+
 Group:		Graphical desktop/KDE
 Url:		http://community.kde.org/KDE_PIM
@@ -534,10 +534,8 @@ information manager of KDE.
 #------------------------------------------------------------------------------
 
 %package accountwizard
-Summary: kincidenceeditor
+Summary: New incidenceeditor
 Group: Graphical desktop/KDE
-Provides: incidenceeditor = %{EVRD}
-Obsoletes: incidenceeditor < %{EVRD}
 Requires: kross
 
 %description accountwizard

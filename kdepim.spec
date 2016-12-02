@@ -536,6 +536,8 @@ information manager of KDE.
 %package accountwizard
 Summary: kincidenceeditor
 Group: Graphical desktop/KDE
+Provides: incidenceeditor = %{EVRD}
+Obsoletes: incidenceeditor < %{EVRD}
 Requires: kross
 
 %description accountwizard

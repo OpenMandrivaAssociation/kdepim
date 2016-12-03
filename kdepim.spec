@@ -2,7 +2,7 @@ Summary:	An application suite to manage personal information
 Name:		kdepim
 Epoch:		3
 Version:	16.08.3
-Release:	3
+Release:	4
 License:	GPLv2+
 Group:		Graphical desktop/KDE
 Url:		http://community.kde.org/KDE_PIM
@@ -481,8 +481,8 @@ Requires:	akonadi-mailfilter-agent = %{EVRD}
 Requires:	akonadi-sendlater-agent = %{EVRD}
 Requires:	grantleeeditor = %{EVRD}
 Suggests:	kaddressbook = %{EVRD}
-Suggests:	pinentry-qt4
-Suggests:	openssh-askpass-qt4
+Suggests:	pinentry-qt5
+Suggests:	ksshaskpass
 Suggests:	pimsettingexporter
 Suggests:	importwizard
 Suggests:	mboximporter

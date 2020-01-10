@@ -961,7 +961,7 @@ KDE library.
 
 %prep
 %setup -q -n kdepim-%{version}
-%apply_patches
+%autopatch -p1
 
 # omit icons conflicting with oxygen-icons-5.19
 # https://bugzilla.redhat.com/show_bug.cgi?id=1308358

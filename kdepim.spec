@@ -5,7 +5,7 @@ Version:	16.08.3
 Release:	4
 License:	GPLv2+
 Group:		Graphical desktop/KDE
-Url:		http://community.kde.org/KDE_PIM
+Url:		https://community.kde.org/KDE_PIM
 %define is_beta %(if test `echo %{version} |cut -d. -f3` -ge 70; then echo -n 1; else echo -n 0; fi)
 %if %{is_beta}
 %define ftpdir unstable
@@ -253,7 +253,7 @@ Akonadi sendlater agent.
 %package -n akregator
 Summary:	A Feed Reader for KDE
 Group:		Graphical desktop/KDE
-Url:		http://userbase.kde.org/Akregator
+Url:		https://userbase.kde.org/Akregator
 Requires:	%{name}-core = %{EVRD}
 # (tpg) https://issues.openmandriva.org/show_bug.cgi?id=1462
 Requires:	khtml >= 5.17.0
@@ -398,7 +398,7 @@ Import Wizard allows to migrate data from mailer as thunderbird/evolution etc.
 %package -n kaddressbook
 Summary:	The KDE addressbook application
 Group:		Graphical desktop/KDE
-Url:		http://userbase.kde.org/KAddressBook
+Url:		https://userbase.kde.org/KAddressBook
 Requires:	%{name}-core = %{EVRD}
 # Grantlee is needed for the simple view in kaddressbook
 Requires:	grantlee
@@ -429,7 +429,7 @@ The KDE addressbook application.
 %package -n kalarm
 Summary:	A personal alarm message, command and email scheduler
 Group:		Graphical desktop/KDE
-Url:		http://userbase.kde.org/KAlarm
+Url:		https://userbase.kde.org/KAlarm
 Requires:	%{name}-core = %{EVRD}
 Provides:	kde4-kalarm = %{EVRD}
 Conflicts:	%{name}-devel < 3:4.11.0
@@ -469,7 +469,7 @@ or you can schedule commands to be executed or emails to be sent.
 %package -n kmail
 Summary:	KDE Email Client
 Group:		Graphical desktop/KDE
-Url:		http://userbase.kde.org/KMail
+Url:		https://userbase.kde.org/KMail
 Requires:	%{name}-core = %{EVRD}
 Requires:	sasl-plug-plain
 Requires:	sasl-plug-ntlm
@@ -556,7 +556,7 @@ New incidence editors.
 %package -n knotes
 Summary:	Notes for the K Desktop Environment
 Group:		Graphical desktop/KDE
-Url:		http://userbase.kde.org/KNotes
+Url:		https://userbase.kde.org/KNotes
 Requires:	%{name}-core = %{EVRD}
 Requires:	akonadi-notes-agent = %{EVRD}
 Provides:	kde4-knotes = %{EVRD}
@@ -599,7 +599,7 @@ although including some advanced features.
 %package -n kontact
 Summary:	Kontact Container
 Group:		Graphical desktop/KDE
-Url:		http://userbase.kde.org/Kontact
+Url:		https://userbase.kde.org/Kontact
 Requires:	%{name}-core = %{EVRD}
 Provides:	kde4-kontact = %{EVRD}
 Suggests:	akregator
@@ -648,7 +648,7 @@ technology, existing applications are seamlessly integrated into one.
 %package -n korganizer
 Summary:	Calendar and scheduling component
 Group:		Graphical desktop/KDE
-Url:		http://userbase.kde.org/KOrganizer
+Url:		https://userbase.kde.org/KOrganizer
 Requires:	%{name}-core = %{EVRD}
 Suggests:	kincidenceeditor
 Provides:	kde4-korganizer = %{EVRD}
